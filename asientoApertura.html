@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Asiento de Apertura</title>
+	<link rel="shorcut icon" href="/AccountingCourse/img/favicon.png">
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<link rel="stylesheet" href="/AccountingCourse/css/animate.css">
+	<link rel="stylesheet" href="/AccountingCourse/css/responsiveslides.css">
+	<script src="/AccountingCourse/js/responsiveslides.js"></script>
+	<script src="/AccountingCourse/js/asientoApertura.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#slider-home").responsiveSlides({	
+				speed:800,		
+				nav: true,
+				namespace: 'slid-btns',
+				titleAnimation: 'bounceIn'
+			});
+		});
+	</script>
+</head>
+<body>
+<header class="cabecera">
+	<div class="container clearfix">
+		<div class="logo">
+			<img src="/AccountingCourse/img/logo.png">
+		</div>
+		<div>
+			<h1 align="center">Asiento de Apertura</h1>
+		</div>
+	</div>
+</header>
+<button id="btnAdd" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
+	<table class="table table-bordered" id="tblData">			
+		<thead>
+			<tr>
+				<th>Fecha</th>
+				<th>Detalle</th>
+				<th>Debe</th>
+				<th>Haber</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</body>
+</html>
