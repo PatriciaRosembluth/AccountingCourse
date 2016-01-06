@@ -30,10 +30,10 @@ function Save(){
     var tdButtons = par.children("td:nth-child(6)");
 
     tdDetail.html(tdDetail.children("input[type=text]").val());
-    tdDeudor.html(tdDebe.children("input[type=text]").val());
-    tdAcreedor.html(tdDebe.children("input[type=text]").val());
     tdDebe.html(tdDebe.children("input[type=text]").val());
     tdHaber.html(tdHaber.children("input[type=text]").val());
+    tdDeudor.html(tdDeudor.children("input[type=text]").val());
+    tdAcreedor.html(tdAcreedor.children("input[type=text]").val());
     tdButtons.html("<img src='/AccountingCourse/img/delete.png' class='btnDelete'/><img src='/AccountingCourse/img/pencil.png' class='btnEdit'/>");
 
     $(".btnEdit").bind("click", Edit);
