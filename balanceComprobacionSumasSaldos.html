@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Accounting Course</title>
+	<title>Balance de Comprobacion de Sumas y Saldos</title>
 	<link rel="shorcut icon" href="/AccountingCourse/img/favicon.png">
 	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
 	<link rel="stylesheet" href="/AccountingCourse/css/animate.css">
 	<link rel="stylesheet" href="/AccountingCourse/css/responsiveslides.css">
 	<script src="/AccountingCourse/js/responsiveslides.js"></script>
+	<script src="/AccountingCourse/js/balanceComprobacionSumasSaldos.js"></script>
 	<script>
 		$(document).ready(function(){
 			$("#slider-home").responsiveSlides({	
@@ -28,35 +29,27 @@
 		<div class="logo">
 			<img src="/AccountingCourse/img/logo.png">
 		</div>
-		<nav class="menu">
-			<ul>
-			 <li class="active"><a href="#">Inicio</a></li>
-			 <li><a href="asientoApertura.html">Introducción</a></li>
-			 <li><a href="balanceApertura.html">Conceptos</a></li>
-			 <li><a href="balanceComprobacionSumasSaldos.html">Evaluaciones</a></li>
-			</ul>
-		</nav>
+		<div>
+			<h1 align="center">Balance de Comprobacion de Sumas y Saldos</h1>
+		</div>
 	</div>
 </header>
-<div class="slider">
-    <ul class="rslides" id="slider-home">
-      <li>
-        <img src="img/11.jpg" alt="">
-        
-      </li>
-      <li>
-        <img src="img/12.jpg" alt="">
-        
-      </li>
-      <li>
-        <img src="img/13.jpg" alt="">
-        
-      </li>
-    </ul>
-</div>
+<button id="btnAdd" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
+	<table class="table table-bordered" id="tblData">			
+		<tr>
+    		<th>Detalle</th>
+    		<th colspan="2">Sumas</th>
+			<th colspan="2">Saldos</th>
+  		</tr>
+  		<tr align="center">
+    		<td></td>
+    		<td>Debe</td>
+    		<td>Haber</td>
+		    <td>Deudor</td>
+		    <td>Acreedor</td>
+  		</tr>
+		<tbody>
+		</tbody>
+	</table>
 </body>
-<script type="text/javascript" src="/AccountingCourse/js/wow.min.js"></script>
-<script>
-	new WOW().init();
-</script>
 </html>
