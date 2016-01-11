@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Balance General</title>
+	<title>Estado de Resultados</title>
 	<link rel="shorcut icon" href="/AccountingCourse/img/favicon.png">
 	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/AccountingCourse/css/animate.css">
 	<link rel="stylesheet" href="/AccountingCourse/css/responsiveslides.css">
 	<script src="/AccountingCourse/js/responsiveslides.js"></script>
-	<script src="/AccountingCourse/js/balanceGeneral.js"></script>
+	<script src="/AccountingCourse/js/estadoResultados.js"></script>
 	<script>
 		$(document).ready(function(){
 			$("#slider-home").responsiveSlides({	
@@ -30,17 +30,15 @@
 			<a href="index.html"><img src="/AccountingCourse/img/logo.png"></a>
 		</div>
 		<div>
+			<h1 align="center">Estado de Resultados</h1>
 			<h2 align="center">Empresa X</h2>
-			<h1 align="center">Balance General</h1>
 			<h2 align="center">En bolivianos</h2>
 		</div>
 	</div>
 </header>
-<h3>Activo</h3>
-<h3>Corriente</h3>
-<h3>Disponible</h3>
-<button id="btnAddACD" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblACD">			
+<h3>Ventas</h3>
+<button id="btnAddV" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
+	<table class="table table-bordered" id="tblV">			
 		<thead>
 			<tr>
 				<th>Detalle</th>
@@ -50,9 +48,9 @@
 		<tbody>
 		</tbody>
 	</table>
-<h3>Exigible</h3>
-<button id="btnAddACE" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblACE">			
+<h3>-/Costo ventas</h3>
+<button id="btnAddCV" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
+	<table class="table table-bordered" id="tblCV">			
 		<thead>
 			<tr>
 				<th>Detalle</th>
@@ -62,10 +60,11 @@
 		<tbody>
 		</tbody>
 	</table>
-<h3>No Corriente</h3>
-<h3>Activo fijo</h3>
-<button id="btnAddANCF" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblANCF">			
+<h2>Costo ventas: 0</h2>
+<h2>Utilidad bruta: 0</h2>
+<h3>-/Operaciones</h3>
+<button id="btnAddOP" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
+	<table class="table table-bordered" id="tblOP">			
 		<thead>
 			<tr>
 				<th>Detalle</th>
@@ -75,11 +74,10 @@
 		<tbody>
 		</tbody>
 	</table>
-<h3>Pasivo</h3>
-<h3>Corriente</h3>
-<h3>Exigible</h3>
-<button id="btnAddPC" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblPC">			
+<h2>Total gastos: 0</h2>
+<h3>+/Otros ingresos</h3>
+<button id="btnAddOI" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
+	<table class="table table-bordered" id="tblOI">			
 		<thead>
 			<tr>
 				<th>Detalle</th>
@@ -89,20 +87,10 @@
 		<tbody>
 		</tbody>
 	</table>
-<h3>Patrimonio</h3>
-<button id="btnAddPAC" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblPAC">			
-		<thead>
-			<tr>
-				<th>Detalle</th>
-				<th>Monto</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
+<h2>Total ingresos: 0</h2>
+<h2>Utilidad Neta: 0</h2>
 <form align="right">
-    <a href="estadoResultados.html"><img src="/AccountingCourse/img/next.jpg"></a>
+    <a href="asientoCierre.html"><img src="/AccountingCourse/img/next.jpg"></a>
 </form>
 </body>
 </html>
