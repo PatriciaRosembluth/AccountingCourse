@@ -1,3 +1,6 @@
+var totalActivo = 0;
+var totalPasPat = 0;
+var intAmount;
 $(function(){
     //Add, Save, Edit and Delete functions code
     $(".btnEditACD").bind("click", EditACD);
@@ -14,6 +17,7 @@ $(function(){
     $("#btnAddPC").bind("click", AddPC);
     $("#btnAddPAC").bind("click", AddPAC);
 });
+
 
 function AddACD(){
     $("#tblACD tbody").append(
@@ -76,7 +80,7 @@ function AddPAC(){
 }; 
 
 function SaveACD(){
-    var par = $(this).parent().parent(); //tr
+    var par = $(this).closest('tr') //tr
     var tdDetail = par.children("td:nth-child(1)");
     var tdAmount = par.children("td:nth-child(2)");
     var tdButtons = par.children("td:nth-child(3)");
@@ -84,6 +88,13 @@ function SaveACD(){
     tdDetail.html(tdDetail.children("input[type=text]").val());
     tdAmount.html(tdAmount.children("input[type=text]").val());
     tdButtons.html("<img src='/AccountingCourse/img/delete.png' class='btnDelete'/><img src='/AccountingCourse/img/pencil.png' class='btnEditACD'/>");
+
+    intAmount = parseInt(tdAmount.html());
+    
+    if(isNaN(intAmount) == false){
+    totalActivo = totalActivo + intAmount;
+    $("#totalActivo").text(totalActivo);
+    }
 
     $(".btnEditACD").bind("click", EditACD);
     $(".btnDelete").bind("click", Delete);
@@ -99,6 +110,13 @@ function SaveACE(){
     tdAmount.html(tdAmount.children("input[type=text]").val());
     tdButtons.html("<img src='/AccountingCourse/img/delete.png' class='btnDelete'/><img src='/AccountingCourse/img/pencil.png' class='btnEditACE'/>");
 
+    intAmount = parseInt(tdAmount.html());
+    
+    if(isNaN(intAmount) == false){
+    totalActivo = totalActivo + intAmount;
+    $("#totalActivo").text(totalActivo);
+    }
+
     $(".btnEditACE").bind("click", EditACE);
     $(".btnDelete").bind("click", Delete);
 }; 
@@ -112,6 +130,13 @@ function SaveANCF(){
     tdDetail.html(tdDetail.children("input[type=text]").val());
     tdAmount.html(tdAmount.children("input[type=text]").val());
     tdButtons.html("<img src='/AccountingCourse/img/delete.png' class='btnDelete'/><img src='/AccountingCourse/img/pencil.png' class='btnEditANCF'/>");
+
+    intAmount = parseInt(tdAmount.html());
+    
+    if(isNaN(intAmount) == false){
+    totalActivo = totalActivo + intAmount;
+    $("#totalActivo").text(totalActivo);
+    }
 
     $(".btnEditANCF").bind("click", EditANCF);
     $(".btnDelete").bind("click", Delete);
@@ -127,6 +152,13 @@ function SavePC(){
     tdAmount.html(tdAmount.children("input[type=text]").val());
     tdButtons.html("<img src='/AccountingCourse/img/delete.png' class='btnDelete'/><img src='/AccountingCourse/img/pencil.png' class='btnEditPC'/>");
 
+    intAmount = parseInt(tdAmount.html());
+
+    if(isNaN(intAmount) == false){
+    totalPasPat = totalPasPat + intAmount;
+    $("#totalPasivoPatrimonio").text(totalPasPat);
+    }
+
     $(".btnEditPC").bind("click", EditPC);
     $(".btnDelete").bind("click", Delete);
 }; 
@@ -140,6 +172,13 @@ function SavePAC(){
     tdDetail.html(tdDetail.children("input[type=text]").val());
     tdAmount.html(tdAmount.children("input[type=text]").val());
     tdButtons.html("<img src='/AccountingCourse/img/delete.png' class='btnDelete'/><img src='/AccountingCourse/img/pencil.png' class='btnEditPAC'/>");
+
+    intAmount = parseInt(tdAmount.html());
+
+    if(isNaN(intAmount) == false){
+    totalPasPat = totalPasPat + intAmount;
+    $("#totalPasivoPatrimonio").text(totalPasPat);
+    }
 
     $(".btnEditPAC").bind("click", EditPAC);
     $(".btnDelete").bind("click", Delete);

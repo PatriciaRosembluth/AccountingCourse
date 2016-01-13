@@ -1,3 +1,4 @@
+var total;
 $(function(){
     //Add, Save, Edit and Delete functions code
     $(".btnEdit").bind("click", Edit);
@@ -20,7 +21,7 @@ function Add(){
 }; 
 
 function Save(){
-    var par = $(this).parent().parent(); //tr
+    var par = $(this).closest('tr') //tr
     var tdDate = par.children("td:nth-child(1)");
     var tdDetail = par.children("td:nth-child(2)");
     var tdDebe = par.children("td:nth-child(3)");
@@ -32,7 +33,10 @@ function Save(){
     tdDebe.html(tdDebe.children("input[type=text]").val());
     tdHaber.html(tdHaber.children("input[type=text]").val());
     tdButtons.html("<img src='/AccountingCourse/img/delete.png' class='btnDelete'/><img src='/AccountingCourse/img/pencil.png' class='btnEdit'/>");
+    
 
+    $("#total").text(tdDate.html());
+    
     $(".btnEdit").bind("click", Edit);
     $(".btnDelete").bind("click", Delete);
 }; 
