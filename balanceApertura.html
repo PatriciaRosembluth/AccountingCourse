@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Balance de Apertura</title>
+	<title>Accounting Course</title>
 	<link rel="shorcut icon" href="/AccountingCourse/img/favicon.png">
 	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
@@ -9,18 +9,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link rel="stylesheet" href="/AccountingCourse/css/animate.css">
 	<link rel="stylesheet" href="/AccountingCourse/css/responsiveslides.css">
-	<script src="/AccountingCourse/js/responsiveslides.js"></script>
-	<script src="/AccountingCourse/js/balanceApertura.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("#slider-home").responsiveSlides({	
-				speed:800,		
-				nav: true,
-				namespace: 'slid-btns',
-				titleAnimation: 'bounceIn'
-			});
-		});
-	</script>
+	<script src="/AccountingCourse/models/responsiveslides.js"></script>
+	<script src="/AccountingCourse/models/program.js"></script>
 </head>
 <body>
 <header class="cabecera">
@@ -35,11 +25,8 @@
 		</div>
 	</div>
 </header>
-<h3><strong>Activo</strong></h3>
-<h3>Corriente</h3>
-<h3>Disponible</h3>
-<button id="btnAddACD" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblACD">			
+<p id="demo"></p>
+<table class="table table-bordered" id="mainDiv">			
 		<thead>
 			<tr>
 				<th>Detalle</th>
@@ -47,66 +34,24 @@
 			</tr>
 		</thead>
 		<tbody>
+		<tr>
+        <td><input type='text' name="detalle-1" /></td>
+        <td><input type='text' name="monto-1" /></td>
+        </tr>
+        <tr>
+        <td><input type='text' name="detalle-2" /></td>
+        <td><input type='text' name="monto-2" /></td>
+        </tr>
 		</tbody>
 	</table>
-<h3>Exigible</h3>
-<button id="btnAddACE" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblACE">			
-		<thead>
-			<tr>
-				<th>Detalle</th>
-				<th>Monto</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-<h3>No Corriente</h3>
-<h3>Activo fijo</h3>
-<button id="btnAddANCF" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblANCF">			
-		<thead>
-			<tr>
-				<th>Detalle</th>
-				<th>Monto</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-<h2>Total Activo:-----------------------<label id="totalActivo" value="0" type="text"></label></h2>
-<h3><strong>Pasivo</strong></h3>
-<h3>Corriente</h3>
-<h3>Exigible</h3>
-<button id="btnAddPC" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblPC">			
-		<thead>
-			<tr>
-				<th>Detalle</th>
-				<th>Monto</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-<h3>Patrimonio</h3>
-<button id="btnAddPAC" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblPAC">			
-		<thead>
-			<tr>
-				<th>Detalle</th>
-				<th>Monto</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-<h2>Total Pasivo y Patrimonio:----------<label id="totalPasivoPatrimonio" value="0" type="text"></label></h2>
-<form align="right">
-    <a href="asientoApertura.html"><img src="/AccountingCourse/img/next.jpg"></a>
-</form>
+
 <br>
-<br>
+<input type="submit" class="btn btn-info" onclick="getAllValues();" value="Guardar" />
+
+<h2>Total Activo:--------<label id="totalActivo" value="0" type="text"></label></h2>
+<h3><u><strong>Capital</strong></u></h3>
+<h2>Capital:--------<label id="capital" value="0" type="text"></label></h2>
+
 </body>
 
 </html>

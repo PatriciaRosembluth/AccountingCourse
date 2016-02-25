@@ -1,3 +1,4 @@
+
 var total;
 $(function(){
     //Add, Save, Edit and Delete functions code

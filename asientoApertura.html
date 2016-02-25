@@ -9,18 +9,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link rel="stylesheet" href="/AccountingCourse/css/animate.css">
 	<link rel="stylesheet" href="/AccountingCourse/css/responsiveslides.css">
-	<script src="/AccountingCourse/js/responsiveslides.js"></script>
-	<script src="/AccountingCourse/js/asientoApertura.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("#slider-home").responsiveSlides({	
-				speed:800,		
-				nav: true,
-				namespace: 'slid-btns',
-				titleAnimation: 'bounceIn'
-			});
-		});
-	</script>
+	<script src="/AccountingCourse/models/responsiveslides.js"></script>
+	<script src="/AccountingCourse/models/program.js"></script>
 </head>
 <body>
 <header class="cabecera">
@@ -30,6 +20,7 @@
 		</div>
 		<div>
 			<h1 align="center">Asiento de Apertura</h1>
+			<h1 align="center">Libro diario</h1>
 		</div>
 	</div>
 </header>
@@ -46,9 +37,7 @@
 		<tbody>
 		</tbody>
 	</table>
-<h2>Total:<label id="total" type="text"></label></h2>
-<form align="right">
-    <a href="libroMayor.html"><img src="/AccountingCourse/img/next.jpg"></a>
-</form>
+	<br>
+<input type="button" class="btn btn-info" onclick="location.href='libroMayor.html';" value="Pasar a mayores" />
 </body>
 </html>
