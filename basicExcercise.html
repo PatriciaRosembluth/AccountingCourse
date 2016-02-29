@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="/AccountingCourse/css/animate.css">
 	<link rel="stylesheet" href="/AccountingCourse/css/responsiveslides.css">
 	<script src="/AccountingCourse/models/responsiveslides.js"></script>
-	<!-- <script src="models/database.js" type="text/javascript"></script> -->
 	<script src="/AccountingCourse/models/program.js"></script>
 
 </head>
@@ -21,14 +20,17 @@
 			<a href="index.html"><img src="/AccountingCourse/img/logo.png"></a>
 		</div>
 		<div>
-			<h2 align="center">Empresa X</h2>
-			<h1 align="center">Balance de Apertura</h1>
-			<h2 align="center">En bolivianos</h2>
+			<u><h1 align="center">Nivel Basico</h1></u>
 		</div>
 	</div>
 </header>
 <p id="dbBalanceApertura"></p>
 <p id="detailBalance"></p>
+<div>
+	<h2 align="center">Empresa X</h2>
+	<h1 align="center">Balance de Apertura</h1>
+	<h2 align="center">En bolivianos</h2>
+</div>
 <u><h2>Activo</h2></u>
 <table class="table table-bordered" id="balanceApertura">			
 		<thead>
@@ -54,8 +56,6 @@
 <h2>Total Activo:--------<label id="totalActivo" value="0" type="text"></label></h2>
 <h3><u><strong>Capital</strong></u></h3>
 <h2>Capital:--------<label id="capital" value="0" type="text"></label></h2><br><br>
-<!-- <input type="button" class="btn btn-info" onclick="location.href='asientoApertura.html';" value="Registrar datos de operacion" /> -->
-
 <div>
 	<h1 align="center">Asiento de Apertura</h1>
 	<h1 align="center">Libro diario</h1>
@@ -134,17 +134,11 @@
 	<input type="submit" class="btn btn-info" onclick="getAllValuesAsientoApertura();" value="Registrar Asiento" />
 	<h2>Total debe:--------<label id="totalDebe" value="0" type="text"></label></h2>
 	<h2>Total haber:--------<label id="totalHaber" value="0" type="text"></label></h2>
-	<input type="button" class="btn btn-info" onclick="generateLibrosMayores();" value="Pasar a mayores" />
+	<input type="button" class="btn btn-info" onclick="generateLibrosMayores();" value="Generar libros Mayores" />
 
 	<div>
 		<h1 align="center">Libro Mayor</h1>
 	</div>
-	<p id="libro2"></p>
-	<p id="libro3"></p>
-	<p id="libro4"></p>
-	<p id="libro5"></p>
-	<p id="libro6"></p>
-
 	<p id="libro1"></p>
 	<table border="1">
 	<thead>
@@ -152,16 +146,102 @@
 				<th>Detalle</th>
 				<th>Debe</th>
 				<th>Haber</th>
+				<th>Saldo</th>
 			</tr>
 		</thead>
 		<tbody>
-		<tr><td id="campo0"></td><td id="campo1"></td><td id="campo2"></td></tr>
-		<tr><td id="campo3"></td><td id="campo4"></td><td id="campo5"></td></tr>
-		<tr><td id="campo6"></td><td id="campo7"></td><td id="campo8"></td></tr>
-		<tr><td id="campo9"></td><td id="campo10"></td><td id="campo11"></td></tr>
+			<tr><td id="libro1-0"></td><td id="libro1-1"></td><td id="libro1-2"></td><td id="libro1-3"></td></tr>
+			<tr><td id="libro1-4"></td><td id="libro1-5"></td><td id="libro1-6"></td><td id="libro1-7"></td></tr>
+			<tr><td id="libro1-8"></td><td id="libro1-9"></td><td id="libro1-10"></td><td id="libro1-11"></td></tr>
+			<tr><td id="libro1-12"></td><td id="libro1-13"></td><td id="libro1-14"></td><td id="libro1-15"></td></tr>
 		</tbody>
-		
 	</table>
+	<p id="libro2"></p>
+	<table border="1">
+	<thead>
+			<tr>
+				<th>Detalle</th>
+				<th>Debe</th>
+				<th>Haber</th>
+				<th>Saldo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td id="libro2-0"></td><td id="libro2-1"></td><td id="libro2-2"></td><td id="libro2-3"></td></tr>
+			<tr><td id="libro2-4"></td><td id="libro2-5"></td><td id="libro2-6"></td><td id="libro2-7"></td></tr>
+			<tr><td id="libro2-8"></td><td id="libro2-9"></td><td id="libro2-10"></td><td id="libro2-11"></td></tr>
+			<tr><td id="libro2-12"></td><td id="libro2-13"></td><td id="libro2-14"></td><td id="libro2-15"></td></tr>
+		</tbody>
+	</table>
+	<p id="libro3"></p>
+	<table border="1">
+	<thead>
+			<tr>
+				<th>Detalle</th>
+				<th>Debe</th>
+				<th>Haber</th>
+				<th>Saldo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td id="libro3-0"></td><td id="libro3-1"></td><td id="libro3-2"></td><td id="libro3-3"></td></tr>
+			<tr><td id="libro3-4"></td><td id="libro3-5"></td><td id="libro3-6"></td><td id="libro3-7"></td></tr>
+			<tr><td id="libro3-8"></td><td id="libro3-9"></td><td id="libro3-10"></td><td id="libro3-11"></td></tr>
+			<tr><td id="libro3-12"></td><td id="libro3-13"></td><td id="libro3-14"></td><td id="libro3-15"></td></tr>
+		</tbody>
+	</table>
+	<p id="libro4"></p>
+	<table border="1">
+	<thead>
+			<tr>
+				<th>Detalle</th>
+				<th>Debe</th>
+				<th>Haber</th>
+				<th>Saldo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td id="libro4-0"></td><td id="libro4-1"></td><td id="libro4-2"></td><td id="libro4-3"></td></tr>
+			<tr><td id="libro4-4"></td><td id="libro4-5"></td><td id="libro4-6"></td><td id="libro4-7"></td></tr>
+			<tr><td id="libro4-8"></td><td id="libro4-9"></td><td id="libro4-10"></td><td id="libro4-11"></td></tr>
+			<tr><td id="libro4-12"></td><td id="libro4-13"></td><td id="libro4-14"></td><td id="libro4-15"></td></tr>
+		</tbody>
+	</table>
+	<p id="libro5"></p>
+	<table border="1">
+	<thead>
+			<tr>
+				<th>Detalle</th>
+				<th>Debe</th>
+				<th>Haber</th>
+				<th>Saldo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td id="libro5-0"></td><td id="libro5-1"></td><td id="libro5-2"></td><td id="libro5-3"></td></tr>
+			<tr><td id="libro5-4"></td><td id="libro5-5"></td><td id="libro5-6"></td><td id="libro5-7"></td></tr>
+			<tr><td id="libro5-8"></td><td id="libro5-9"></td><td id="libro5-10"></td><td id="libro5-11"></td></tr>
+			<tr><td id="libro5-12"></td><td id="libro5-13"></td><td id="libro5-14"></td><td id="libro5-15"></td></tr>
+		</tbody>
+	</table>
+	<p id="libro6"></p>
+	<table border="1">
+	<thead>
+			<tr>
+				<th>Detalle</th>
+				<th>Debe</th>
+				<th>Haber</th>
+				<th>Saldo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td id="libro6-0"></td><td id="libro6-1"></td><td id="libro6-2"></td><td id="libro6-3"></td></tr>
+			<tr><td id="libro6-4"></td><td id="libro6-5"></td><td id="libro6-6"></td><td id="libro6-7"></td></tr>
+			<tr><td id="libro6-8"></td><td id="libro6-9"></td><td id="libro6-10"></td><td id="libro6-11"></td></tr>
+			<tr><td id="libro6-12"></td><td id="libro6-13"></td><td id="libro6-14"></td><td id="libro6-15"></td></tr>
+		</tbody>
+	</table>
+
 </body>
 
 </html>
