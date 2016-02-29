@@ -10,17 +10,8 @@
 	<link rel="stylesheet" href="/AccountingCourse/css/animate.css">
 	<link rel="stylesheet" href="/AccountingCourse/css/responsiveslides.css">
 	<script src="/AccountingCourse/models/responsiveslides.js"></script>
-	<script src="/AccountingCourse/models/libroMayor.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("#slider-home").responsiveSlides({	
-				speed:800,		
-				nav: true,
-				namespace: 'slid-btns',
-				titleAnimation: 'bounceIn'
-			});
-		});
-	</script>
+	<script src="/AccountingCourse/db/balanceApertura.txt"></script>
+	<script src="/AccountingCourse/models/database.js"></script>
 </head>
 <body>
 <header class="cabecera">
@@ -33,22 +24,14 @@
 		</div>
 	</div>
 </header>
-<button id="btnAdd" type="button" class="btn btn-info">Agregar Transaccion</button><br><br>
-	<table class="table table-bordered" id="tblData">			
-		<thead>
-			<tr>
-				<th>Fecha</th>
-				<th>Detalle</th>
-				<th>Debe</th>
-				<th>Haber</th>
-				<th>Saldo</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-	<br>
-<input type="button" class="btn btn-info" onclick="location.href='balanceComprobacionSumasSaldos.html';" value="Sumas y Saldos" />
+<table>
+	<tr><td id="campo1"></td></tr>
+	<tr><td id="campo2"></td></tr>
+	<tr><td id="campo3"></td></tr>
+	<tr><td id="campo4"></td></tr>
+</table>
+<input type="button" class="btn btn-info" onclick="cargarDatos();" value="Cargar" />
+<input type="button" class="btn btn-info" onclick="WriteToAFile();" value="Cargar datos" />
 
 </body>
 </html>

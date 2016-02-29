@@ -1,0 +1,4 @@
+registro1="pepito";
+registro2="juanito";
+registro3="federico";
+registro4="anselmo";
