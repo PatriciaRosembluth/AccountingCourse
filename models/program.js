@@ -1,5 +1,6 @@
 var inputValuesBalanceApertura;
 var inputValuesAsientoApertura;
+var balanceSumasSaldos;
 var detailMayores;
 var detailBalance;
 var totalActivo;
@@ -12,23 +13,23 @@ function getAllValuesBalanceApertura() {
      inputValuesBalanceApertura = [];
      detailBalance = [];
      totalActivo = 0;
-     //OBTENER TODOS LOS DATOS DE LA TABLA BALANCE DE APERTURA
     $('#balanceApertura input').each(function() {
         var type = $(this).attr("type");
         inputValuesBalanceApertura.push($(this).val()); 
     })
-    //OBTENER TOTAL ACTIVO Y CAPITAL
+    calculateTotalActivo();
+    getDetailsBalanceApertura();
+    document.getElementById("totalActivo").innerHTML = totalActivo;
+    document.getElementById("capital").innerHTML = totalActivo;
+}
+
+function calculateTotalActivo(){
     for (var i = 0; i < inputValuesBalanceApertura.length; i++) {
         i++;
         totalActivo += parseInt(inputValuesBalanceApertura[i]);
     }
     inputValuesBalanceApertura.push("capital");
     inputValuesBalanceApertura.push(totalActivo);
-    document.getElementById("dbBalanceApertura").innerHTML = inputValuesBalanceApertura;
-    getDetailsBalanceApertura();
-    document.getElementById("totalActivo").innerHTML = totalActivo;
-    document.getElementById("capital").innerHTML = totalActivo;
-    document.getElementById("detailBalance").innerHTML = detailBalance;
 }
 
 function getDetailsBalanceApertura(){
@@ -39,18 +40,22 @@ function getDetailsBalanceApertura(){
 
 function getAllValuesAsientoApertura(){
     inputValuesAsientoApertura = [];
-    totalDebe = 0;
-    totalHaber = 0;
-    detailMayores = [];
     var find = false;
-    //OBTENER VALORES DEL ASIENTO DE APERTURA
     $('#asientoApertura input').each(function() {
         var type = $(this).attr("type");
         inputValuesAsientoApertura.push($(this).val()); 
     })
     setSpaceFromArray();
-    document.getElementById("dbAsientoApertura").innerHTML = inputValuesAsientoApertura;
-    //OBTENER TOTAL DEBE Y HABER
+    getTotalDebeYhaber();
+    getLibrosMayores();
+    
+    document.getElementById("totalDebe").innerHTML = totalDebe;
+    document.getElementById("totalHaber").innerHTML = totalHaber;
+}
+
+function getTotalDebeYhaber(){
+    totalDebe = 0;
+    totalHaber = 0;
     for (var i = 1; i < inputValuesAsientoApertura.length; i++) {
         var value = inputValuesAsientoApertura[i];
         if(value != ""){
@@ -62,7 +67,10 @@ function getAllValuesAsientoApertura(){
         }
         i=i+2;
     }
-    //OBTENER DETALLE DE ASIENTO DE APERTURA
+}
+
+function getLibrosMayores(){
+    detailMayores = [];
     detailMayores.push(inputValuesAsientoApertura[0].toLowerCase());
     for (var k = 0; k < inputValuesAsientoApertura.length; k = k+3) {
         for (var j = 0; j < inputValuesAsientoApertura.length; j++) {
@@ -76,28 +84,13 @@ function getAllValuesAsientoApertura(){
         }
         find = false;
     }
-    document.getElementById("totalDebe").innerHTML = totalDebe;
-    document.getElementById("totalHaber").innerHTML = totalHaber;
-    document.getElementById("dbMayores").innerHTML = detailMayores;
 }
+
  function generateLibrosMayores(){
+    var inicio = detailBalance.length * 3;
     libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [];
     saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0; saldo5 = 0, saldo6 = 0;
-    var inicio = detailBalance.length * 3;
-    for (var m = 0 ; m < detailBalance.length; m++) {
-        if(m>0){
-            calculateSaldo(1,inputValuesAsientoApertura[m],0);
-            calculateSaldo(2,inputValuesAsientoApertura[m+3],0);;
-            calculateSaldo(3,inputValuesAsientoApertura[m+6],0);
-        }
-        libro1.push(inputValuesAsientoApertura[m]);
-        libro2.push(inputValuesAsientoApertura[m+3]);
-        libro3.push(inputValuesAsientoApertura[m+6]);     
-     }
-    libro1.push(saldo1);
-    libro2.push(saldo2);
-    libro3.push(saldo3); 
-
+    initializeLibrosMayores();
      var q = inicio;
      for (var p = q; p < inputValuesAsientoApertura.length; p = p+6 ) {
         var bloque = inicio+5;
@@ -159,25 +152,47 @@ function getAllValuesAsientoApertura(){
     drawLibrosMayores();
  }
 
+ function initializeLibrosMayores(){
+    for (var m = 0 ; m < detailBalance.length; m++) {
+        if(m>0){
+            calculateSaldo(1,inputValuesAsientoApertura[m],0);
+            calculateSaldo(2,inputValuesAsientoApertura[m+3],0);;
+            calculateSaldo(3,inputValuesAsientoApertura[m+6],0);
+        }
+        libro1.push(inputValuesAsientoApertura[m]);
+        libro2.push(inputValuesAsientoApertura[m+3]);
+        libro3.push(inputValuesAsientoApertura[m+6]);     
+     }
+    libro1.push(saldo1);
+    libro2.push(saldo2);
+    libro3.push(saldo3); 
+ }
+
  function calculateSaldo(saldo,AmountDebe, AmountHaber){
     switch (saldo) {
         case 1:
             saldo1 = saldo1 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            if (saldo1 < 0) {saldo1*=-1}
             break;
         case 2:
             saldo2 = saldo2 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            if (saldo2 < 0) {saldo2*=-1}
             break;
         case 3:
             saldo3 = saldo3 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            if (saldo3 < 0) {saldo3*=-1}
             break;    
         case 4:
             saldo4 = saldo4 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            if (saldo4 < 0) {saldo4*=-1}
             break;
         case 5:
             saldo5 = saldo5 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            if (saldo5 < 0) {saldo5*=-1}
             break;
         case 6:
             saldo6 = saldo6 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            if (saldo6 < 0) {saldo6*=-1}
             break;
     }
  }
@@ -234,3 +249,40 @@ function findLibro(detalle){
     }
         return 0;
 }
+
+function generateSumasSaldos(){
+    balanceSumasSaldos = [];
+    calculateDebeHaberLibro(libro1);
+    calculateDebeHaberLibro(libro2);
+    calculateDebeHaberLibro(libro3);
+    calculateDebeHaberLibro(libro4);
+    calculateDebeHaberLibro(libro5);
+    calculateDebeHaberLibro(libro6);
+    drawBalanceSumasSaldor();
+}
+
+function calculateDebeHaberLibro(libro){
+    var totalD = 0 , totalH = 0;
+    for (var i = 1; i <libro.length; i = i + 4) {
+        totalD += parseInt(libro[i]);
+        totalH += parseInt(libro[i+1]);
+    }
+    balanceSumasSaldos.push(libro[0]);
+    balanceSumasSaldos.push(totalD);
+    balanceSumasSaldos.push(totalH);
+    if (totalD>totalH) {
+        balanceSumasSaldos.push(libro[libro.length-1]);
+        balanceSumasSaldos.push(0);
+         
+    }else{
+        balanceSumasSaldos.push(0);
+        balanceSumasSaldos.push(libro[libro.length-1]);
+    }
+}
+
+function drawBalanceSumasSaldor(){
+    for (var i = 0; i < balanceSumasSaldos.length; i++) {
+        document.getElementById("registro-"+ i).innerHTML = balanceSumasSaldos[i];
+    }
+}
+
