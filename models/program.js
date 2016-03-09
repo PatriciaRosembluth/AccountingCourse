@@ -27,8 +27,7 @@ function getAllValuesBalanceApertura() {
 }
 
 function calculateTotalActivo(){
-    for (var i = 0; i < inputValuesBalanceApertura.length; i++) {
-        i++;
+    for (var i = 1; i < inputValuesBalanceApertura.length; i=i+2) {
         totalActivo += parseInt(inputValuesBalanceApertura[i]);
     }
     inputValuesBalanceApertura.push("capital");
@@ -43,7 +42,6 @@ function getDetailsBalanceApertura(){
 
 function getAllValuesAsientoApertura(){
     inputValuesAsientoApertura = [];
-    
     $('#asientoApertura input').each(function() {
         inputValuesAsientoApertura.push($(this).val()); 
     })
@@ -55,10 +53,18 @@ function getAllValuesAsientoApertura(){
     document.getElementById("totalHaber").innerHTML = totalHaber;
 }
 
+function setSpaceFromArray(){
+    for (var i = 0; i < inputValuesAsientoApertura.length; i++) {
+        if (inputValuesAsientoApertura[i] === '') {
+            inputValuesAsientoApertura[i] = 0;
+        }
+    }
+}
+
 function getTotalDebeYhaber(){
     totalDebe = 0;
     totalHaber = 0;
-    for (var i = 1; i < inputValuesAsientoApertura.length; i++) {
+    for (var i = 2; i < inputValuesAsientoApertura.length; i++) {
         var value = inputValuesAsientoApertura[i];
         if(value != ""){
             totalDebe += parseInt(inputValuesAsientoApertura[i]);    
@@ -67,16 +73,16 @@ function getTotalDebeYhaber(){
             totalHaber += parseInt(inputValuesAsientoApertura[i]);
             i--;   
         }
-        i=i+2;
+        i=i+3;
     }
 }
 
 function getLibrosMayores(){
     detailMayores = [];
     var find = false;
-    detailMayores.push(inputValuesAsientoApertura[0].toLowerCase());
-    for (var k = 0; k < inputValuesAsientoApertura.length; k = k+3) {
-        for (var j = 0; j < inputValuesAsientoApertura.length; j++) {
+    detailMayores.push(inputValuesAsientoApertura[1].toLowerCase());
+    for (var k = 1; k < inputValuesAsientoApertura.length; k = k+4) {
+        for (var j = 0; j < detailMayores.length; j++) {
             if(isNaN(inputValuesAsientoApertura[k])){
                 if (detailMayores[j] === inputValuesAsientoApertura[k].toLowerCase()) {
                     find = true;
@@ -89,27 +95,29 @@ function getLibrosMayores(){
         }
         find = false;
     }
+    console.log(detailMayores);
 }
 
  function generateLibrosMayores(){
-    var inicio = detailBalance.length * 3;
+    var inicio = detailBalance.length * 4;
     libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [];
     saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0; saldo5 = 0, saldo6 = 0;
     initializeLibrosMayores();
      var q = inicio;
-     for (var p = q; p < inputValuesAsientoApertura.length; p = p+6 ) {
-        var bloque = inicio+5;
-        var aux = inputValuesAsientoApertura[p];
+     for (var p = q; p < inputValuesAsientoApertura.length; p = p+8 ) {
+        var bloque = inicio+7;
+        var aux = inputValuesAsientoApertura[p+1];
         if (aux === 0 ){drawLibrosMayores();return}
-        var detalle = inputValuesAsientoApertura[p+3];
+        var detalle = inputValuesAsientoApertura[p+5];
         if (findDetalleBalance(detalle)) {
             detalle = aux;
         }
-        for (var r = inicio; r < bloque; r = r+3) {
+        for (var r = inicio + 1; r < bloque; r = r+4) {
             var value;
             var libro = findLibro(inputValuesAsientoApertura[r]);
             switch (libro) {
                 case 1:
+                    libro1.push(inputValuesAsientoApertura[r-1]);
                     libro1.push(detalle);
                     libro1.push(inputValuesAsientoApertura[r+1]);
                     libro1.push(inputValuesAsientoApertura[r+2]);
@@ -117,6 +125,7 @@ function getLibrosMayores(){
                     libro1.push(saldo1);
                     break;
                 case 2:
+                    libro2.push(inputValuesAsientoApertura[r-1]);
                     libro2.push(detalle);
                     libro2.push(inputValuesAsientoApertura[r+1]);
                     libro2.push(inputValuesAsientoApertura[r+2]);
@@ -124,6 +133,7 @@ function getLibrosMayores(){
                     libro2.push(saldo2);
                     break;
                 case 3:
+                    libro3.push(inputValuesAsientoApertura[r-1]);
                     libro3.push(detalle);
                     libro3.push(inputValuesAsientoApertura[r+1]);
                     libro3.push(inputValuesAsientoApertura[r+2]);
@@ -131,6 +141,7 @@ function getLibrosMayores(){
                     libro3.push(saldo3);
                     break;
                 case 4:
+                    libro4.push(inputValuesAsientoApertura[r-1]);
                     libro4.push(detalle);
                     libro4.push(inputValuesAsientoApertura[r+1]);
                     libro4.push(inputValuesAsientoApertura[r+2]);
@@ -138,6 +149,7 @@ function getLibrosMayores(){
                     libro4.push(saldo4);
                     break;
                 case 5:
+                    libro5.push(inputValuesAsientoApertura[r-1]);
                     libro5.push(detalle);
                     libro5.push(inputValuesAsientoApertura[r+1]);
                     libro5.push(inputValuesAsientoApertura[r+2]);
@@ -145,6 +157,7 @@ function getLibrosMayores(){
                     libro5.push(saldo5);
                     break;
                 case 6:
+                    libro6.push(inputValuesAsientoApertura[r-1]);
                     libro6.push(detalle);
                     libro6.push(inputValuesAsientoApertura[r+1]);
                     libro6.push(inputValuesAsientoApertura[r+2]);
@@ -159,15 +172,15 @@ function getLibrosMayores(){
  }
 
  function initializeLibrosMayores(){
-    for (var m = 0 ; m < detailBalance.length; m++) {
-        if(m>0){
+    for (var m = 0 ; m < detailBalance.length + 1; m++) {
+        if(m>1){
             calculateSaldo(1,inputValuesAsientoApertura[m],0);
-            calculateSaldo(2,inputValuesAsientoApertura[m+3],0);;
-            calculateSaldo(3,inputValuesAsientoApertura[m+6],0);
+            calculateSaldo(2,inputValuesAsientoApertura[m+4],0);
+            calculateSaldo(3,inputValuesAsientoApertura[m+8],0);
         }
         libro1.push(inputValuesAsientoApertura[m]);
-        libro2.push(inputValuesAsientoApertura[m+3]);
-        libro3.push(inputValuesAsientoApertura[m+6]);     
+        libro2.push(inputValuesAsientoApertura[m+4]);
+        libro3.push(inputValuesAsientoApertura[m+8]);     
      }
     libro1.push(saldo1);
     libro2.push(saldo2);
@@ -205,42 +218,34 @@ function getLibrosMayores(){
 
  function drawLibrosMayores(){
     if (libro1[0]===undefined){return}
-    document.getElementById("libro1").innerHTML = libro1[0];
+    document.getElementById("libro1").innerHTML = libro1[1];
     for (var i = 0; i < libro1.length; i++) {
         document.getElementById("libro1-"+ i).innerHTML = libro1[i];
     }
     if (libro2[0]===undefined){return}
-    document.getElementById("libro2").innerHTML = libro2[0];
+    document.getElementById("libro2").innerHTML = libro2[1];
      for (var i = 0; i < libro2.length; i++) {
         document.getElementById("libro2-"+ i).innerHTML = libro2[i];
     }
     if (libro3[0]===undefined){return}
-    document.getElementById("libro3").innerHTML = libro3[0];
+    document.getElementById("libro3").innerHTML = libro3[1];
      for (var i = 0; i < libro3.length; i++) {
         document.getElementById("libro3-"+ i).innerHTML = libro3[i];
     }
     if (libro4[0]===undefined){return}
-    document.getElementById("libro4").innerHTML = libro4[0];
+    document.getElementById("libro4").innerHTML = libro4[1];
      for (var i = 0; i < libro4.length; i++) {
         document.getElementById("libro4-"+ i).innerHTML = libro4[i];
     }
     if (libro5[0]===undefined){return}
-    document.getElementById("libro5").innerHTML = libro5[0];
+    document.getElementById("libro5").innerHTML = libro5[1];
      for (var i = 0; i < libro5.length; i++) {
         document.getElementById("libro5-"+ i).innerHTML = libro5[i];
     }
     if (libro6[0]===undefined){return}
-    document.getElementById("libro6").innerHTML = libro6[0];
+    document.getElementById("libro6").innerHTML = libro6[1];
      for (var i = 0; i < libro6.length; i++) {
         document.getElementById("libro6-"+ i).innerHTML = libro6[i];
-    }
- }
-
- function setSpaceFromArray(){
-    for (var i = 0; i < inputValuesAsientoApertura.length; i++) {
-        if (inputValuesAsientoApertura[i] === '') {
-            inputValuesAsientoApertura[i] = 0;
-        }
     }
  }
 
@@ -276,12 +281,12 @@ function generateSumasSaldos(){
 
 function calculateDebeHaberLibro(libro){
     var totalD = 0 , totalH = 0;
-    if (libro[0]===undefined){return}
-    for (var i = 1; i <libro.length; i = i + 4) {
+    if (libro[1]===undefined){return}
+    for (var i = 2; i <libro.length; i = i + 5) {
         totalD += parseInt(libro[i]);
         totalH += parseInt(libro[i+1]);
     }
-    balanceSumasSaldos.push(libro[0]);
+    balanceSumasSaldos.push(libro[1]);
     balanceSumasSaldos.push(totalD);
     balanceSumasSaldos.push(totalH);
     totalDebeSs += totalD;
