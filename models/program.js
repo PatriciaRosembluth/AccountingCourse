@@ -14,7 +14,7 @@ function getAllValuesBalanceApertura() {
      detailBalance = [];
      totalActivo = 0;
     $('#balanceApertura input').each(function() {
-        var type = $(this).attr("type");
+        //var type = $(this).attr("type");
         inputValuesBalanceApertura.push($(this).val()); 
     })
     calculateTotalActivo();
@@ -40,9 +40,10 @@ function getDetailsBalanceApertura(){
 
 function getAllValuesAsientoApertura(){
     inputValuesAsientoApertura = [];
-    var find = false;
+    
     $('#asientoApertura input').each(function() {
-        var type = $(this).attr("type");
+        //var type = $(this).attr("type");
+        //console.log($(this).val().length);
         inputValuesAsientoApertura.push($(this).val()); 
     })
     setSpaceFromArray();
@@ -71,12 +72,15 @@ function getTotalDebeYhaber(){
 
 function getLibrosMayores(){
     detailMayores = [];
+    var find = false;
     detailMayores.push(inputValuesAsientoApertura[0].toLowerCase());
     for (var k = 0; k < inputValuesAsientoApertura.length; k = k+3) {
         for (var j = 0; j < inputValuesAsientoApertura.length; j++) {
-            if (detailMayores[j] === inputValuesAsientoApertura[k].toLowerCase()) {
-                find = true;
-                j = detailMayores.length;
+            if(isNaN(inputValuesAsientoApertura[k])){
+                if (detailMayores[j] === inputValuesAsientoApertura[k].toLowerCase()) {
+                    find = true;
+                    j = detailMayores.length;
+                }
             }
         }
         if (find === false) {
@@ -95,6 +99,7 @@ function getLibrosMayores(){
      for (var p = q; p < inputValuesAsientoApertura.length; p = p+6 ) {
         var bloque = inicio+5;
         var aux = inputValuesAsientoApertura[p];
+        if (aux === 0 ){drawLibrosMayores();return}
         var detalle = inputValuesAsientoApertura[p+3];
         if (findDetalleBalance(detalle)) {
             detalle = aux;
@@ -198,26 +203,32 @@ function getLibrosMayores(){
  }
 
  function drawLibrosMayores(){
+    if (libro1[0]===undefined){return}
     document.getElementById("libro1").innerHTML = libro1[0];
     for (var i = 0; i < libro1.length; i++) {
         document.getElementById("libro1-"+ i).innerHTML = libro1[i];
     }
+    if (libro2[0]===undefined){return}
     document.getElementById("libro2").innerHTML = libro2[0];
      for (var i = 0; i < libro2.length; i++) {
         document.getElementById("libro2-"+ i).innerHTML = libro2[i];
     }
+    if (libro3[0]===undefined){return}
     document.getElementById("libro3").innerHTML = libro3[0];
      for (var i = 0; i < libro3.length; i++) {
         document.getElementById("libro3-"+ i).innerHTML = libro3[i];
     }
+    if (libro4[0]===undefined){return}
     document.getElementById("libro4").innerHTML = libro4[0];
      for (var i = 0; i < libro4.length; i++) {
         document.getElementById("libro4-"+ i).innerHTML = libro4[i];
     }
+    if (libro5[0]===undefined){return}
     document.getElementById("libro5").innerHTML = libro5[0];
      for (var i = 0; i < libro5.length; i++) {
         document.getElementById("libro5-"+ i).innerHTML = libro5[i];
     }
+    if (libro6[0]===undefined){return}
     document.getElementById("libro6").innerHTML = libro6[0];
      for (var i = 0; i < libro6.length; i++) {
         document.getElementById("libro6-"+ i).innerHTML = libro6[i];
@@ -263,6 +274,7 @@ function generateSumasSaldos(){
 
 function calculateDebeHaberLibro(libro){
     var totalD = 0 , totalH = 0;
+    if (libro[0]===undefined){return}
     for (var i = 1; i <libro.length; i = i + 4) {
         totalD += parseInt(libro[i]);
         totalH += parseInt(libro[i+1]);
