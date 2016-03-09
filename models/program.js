@@ -8,13 +8,16 @@ var totalDebe;
 var totalHaber;
 var libro1, libro2, libro3, libro4, libro5, libro6;
 var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6;
+var totalDebeSs;
+var totalHaberSs;
+var totalDeudorSs;
+var totalAcreedorSs;
 
 function getAllValuesBalanceApertura() {
      inputValuesBalanceApertura = [];
      detailBalance = [];
      totalActivo = 0;
     $('#balanceApertura input').each(function() {
-        //var type = $(this).attr("type");
         inputValuesBalanceApertura.push($(this).val()); 
     })
     calculateTotalActivo();
@@ -42,8 +45,6 @@ function getAllValuesAsientoApertura(){
     inputValuesAsientoApertura = [];
     
     $('#asientoApertura input').each(function() {
-        //var type = $(this).attr("type");
-        //console.log($(this).val().length);
         inputValuesAsientoApertura.push($(this).val()); 
     })
     setSpaceFromArray();
@@ -263,6 +264,7 @@ function findLibro(detalle){
 
 function generateSumasSaldos(){
     balanceSumasSaldos = [];
+    totalDebeSs = 0, totalHaberSs = 0, totalDeudorSs = 0, totalAcreedorSs = 0;
     calculateDebeHaberLibro(libro1);
     calculateDebeHaberLibro(libro2);
     calculateDebeHaberLibro(libro3);
@@ -282,13 +284,17 @@ function calculateDebeHaberLibro(libro){
     balanceSumasSaldos.push(libro[0]);
     balanceSumasSaldos.push(totalD);
     balanceSumasSaldos.push(totalH);
+    totalDebeSs += totalD;
+    totalHaberSs += totalH;
     if (totalD>totalH) {
         balanceSumasSaldos.push(libro[libro.length-1]);
         balanceSumasSaldos.push(0);
+        totalDeudorSs += libro[libro.length-1];
          
     }else{
         balanceSumasSaldos.push(0);
         balanceSumasSaldos.push(libro[libro.length-1]);
+        totalAcreedorSs += libro[libro.length-1];
     }
 }
 
@@ -296,5 +302,9 @@ function drawBalanceSumasSaldor(){
     for (var i = 0; i < balanceSumasSaldos.length; i++) {
         document.getElementById("registro-"+ i).innerHTML = balanceSumasSaldos[i];
     }
+    document.getElementById("totalDebeSs").innerHTML = totalDebeSs;
+    document.getElementById("totalHaberSs").innerHTML = totalHaberSs;
+    document.getElementById("totalDeudorSs").innerHTML = totalDeudorSs;
+    document.getElementById("totalAcreedorSs").innerHTML = totalAcreedorSs;
 }
 

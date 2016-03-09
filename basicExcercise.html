@@ -35,30 +35,26 @@
 		</thead>
 		<tbody>
 		<tr>
-        <td><input type='text' name="detalle-1" /></td>
-        <td><input type='text' name="monto-1" /></td>
+        <td><input type='text'/></td>
+        <td><input type='text'/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-2" /></td>
-        <td><input type='text' name="monto-2" /></td>
+        <td><input type='text'/></td>
+        <td><input type='text'/></td>
         </tr>
 		</tbody>
 	</table>
-
 	<br>
 	<input type="submit" class="btn btn-info" onclick="getAllValuesBalanceApertura();" value="Registrar balance" />
-	<h2>Total Activo:--------<label id="totalActivo" value="0" type="text"></label></h2>
+	<h2>Total Activo: <label id="totalActivo"></label></h2>
 	<h3><u><strong>Capital</strong></u></h3>
-	<h2>Capital:--------<label id="capital" value="0" type="text"></label></h2><br><br>
+	<h2>Capital: <label id="capital"></label></h2>
 	<div>
 		<h1 align="center">Asiento de Apertura</h1>
 		<h1 align="center">Libro diario</h1>
 	</div>
-
-<p id="dbAsientoApertura"></p>
-<p id="dbMayores"></p>
-<input type='text' name="fecha-1" placeholder="Glosa" size="65" /><br><br>
-	<table class="table table-bordered" id="asientoApertura">			
+<input type='text' placeholder="Glosa" size="97" /><br><br>
+	<table class="table table-bordered" id="asientoApertura">		
 		<thead>
 			<tr>
 				<th>Detalle</th>
@@ -68,74 +64,76 @@
 		</thead>
 		<tbody>
 		<tr>
-        <td><input type='text' name="detalle-1" /></td>
-        <td><input type='text' name="debe-1" /></td>
-        <td><input type='text' name="haber-1" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-2" /></td>
-        <td><input type='text' name="debe-2" /></td>
-        <td><input type='text' name="haber-2" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text'  size="30"/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-3" /></td>
-        <td><input type='text' name="debe-3" /></td>
-        <td><input type='text' name="haber-3" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-4" /></td>
-        <td><input type='text' name="debe-4" /></td>
-        <td><input type='text' name="haber-4" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-5" /></td>
-        <td><input type='text' name="debe-5" /></td>
-        <td><input type='text' name="haber-5" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-6" /></td>
-        <td><input type='text' name="debe-6" /></td>
-        <td><input type='text' name="haber-6" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-7" /></td>
-        <td><input type='text' name="debe-7" /></td>
-        <td><input type='text' name="haber-7" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-8" /></td>
-        <td><input type='text' name="debe-8" /></td>
-        <td><input type='text' name="haber-8" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-9" /></td>
-        <td><input type='text' name="debe-9" /></td>
-        <td><input type='text' name="haber-9" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-10" /></td>
-        <td><input type='text' name="debe-10" /></td>
-        <td><input type='text' name="haber-10" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
-        <td><input type='text' name="detalle-11" /></td>
-        <td><input type='text' name="debe-11" /></td>
-        <td><input type='text' name="haber-11" /></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+        </tr>
+        <tr>
+        	<td></td>
+        	<td><h3>Total: <label id="totalDebe"></label></h3></td>
+        	<td><h3>Total: <label id="totalHaber"></label></h3></td>
         </tr>
 		</tbody>
 	</table>
 	<br>
 	<input type="submit" class="btn btn-info" onclick="getAllValuesAsientoApertura();" value="Registrar Asiento" />
-	<h2>Total debe:--------<label id="totalDebe" value="0" type="text"></label></h2>
-	<h2>Total haber:--------<label id="totalHaber" value="0" type="text"></label></h2>
-	<input type="button" class="btn btn-info" onclick="generateLibrosMayores();" value="Generar libros Mayores" />
-
 	<div>
 		<h1 align="center">Libro Mayor</h1>
 	</div>
+	<input type="button" class="btn btn-info" onclick="generateLibrosMayores();" value="Generar libros Mayores" />
 	<u><h3 id="libro1"></h3></u>
 	<table border="1">
-	<col width="150">
+	<col width="230">
   	<col width="150">
   	<col width="150">
   	<col width="150">
@@ -156,7 +154,7 @@
 	</table>
 	<u><h3 id="libro2"></h3></u>
 	<table border="1">
-	<col width="150">
+	<col width="230">
   	<col width="150">
   	<col width="150">
   	<col width="150">
@@ -177,7 +175,7 @@
 	</table>
 	<u><h3 id="libro3"></h3></u>
 	<table border="1">
-	<col width="150">
+	<col width="230">
   	<col width="150">
   	<col width="150">
   	<col width="150">
@@ -198,7 +196,7 @@
 	</table>
 	<u><h3 id="libro4"></h3></u>
 	<table border="1">
-	<col width="150">
+	<col width="230">
   	<col width="150">
   	<col width="150">
   	<col width="150">
@@ -219,7 +217,7 @@
 	</table>
 	<u><h3 id="libro5"></h3></u>
 	<table border="1">
-	<col width="150">
+	<col width="230">
   	<col width="150">
   	<col width="150">
   	<col width="150">
@@ -240,7 +238,7 @@
 	</table>
 	<u><h3 id="libro6"></h3></u>
 	<table border="1">
-	<col width="150">
+	<col width="230">
   	<col width="150">
   	<col width="150">
   	<col width="150">
@@ -258,16 +256,13 @@
 			<tr><td id="libro6-8"></td><td id="libro6-9"></td><td id="libro6-10"></td><td id="libro6-11"></td></tr>
 			<tr><td id="libro6-12"></td><td id="libro6-13"></td><td id="libro6-14"></td><td id="libro6-15"></td></tr>
 		</tbody>
-	</table><br><br>
-	<input type="submit" class="btn btn-info" onclick="generateSumasSaldos();" value="Generar Balance de Sumas y Saldos" />
-
+	</table>
 	<div>
 		<h1 align="center">Balance de Comprobacion de Sumas y Saldos</h1>
 	</div>
-
-	<p id="dbSumasSaldos"></p>
+	<input type="submit" class="btn btn-info" onclick="generateSumasSaldos();" value="Generar Balance de Sumas y Saldos" /><br><br>
 	<table border="1">
-	<col width="150">
+	<col width="230">
   	<col width="150">
   	<col width="150">
   	<col width="150">
@@ -291,7 +286,8 @@
 		 <tr><td id = registro-15></td><td id= registro-16></td><td id= registro-17></td><td id=registro-18 ></td><td id=registro-19 ></td></tr>
 		 <tr><td id = registro-20></td><td id= registro-21></td><td id= registro-22></td><td id=registro-23 ></td><td id=registro-24 ></td></tr>
 		 <tr><td id = registro-25></td><td id= registro-26></td><td id= registro-27></td><td id=registro-28 ></td><td id=registro-29 ></td></tr>
+		 <tr><td>Total: </td><td id="totalDebeSs"></td><td id="totalHaberSs"></td><td id="totalDeudorSs"></td><td id="totalAcreedorSs"></td></tr>
 		</tbody>
 	</table>
-</body>
+</body>	
 </html>
