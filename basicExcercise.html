@@ -34,18 +34,18 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr>
-        <td><input type='text'/></td>
-        <td><input type='text'/></td>
-        </tr>
-        <tr>
-        <td><input type='text'/></td>
-        <td><input type='text'/></td>
-        </tr>
+			<tr>
+		        <td><input type='text'/></td>
+		        <td><input type='text'/></td>
+	        </tr>
+	        <tr>
+		        <td><input type='text'/></td>
+		        <td><input type='text'/></td>
+	        </tr>
 		</tbody>
 	</table>
 	<br>
-	<input type="submit" class="btn btn-info" onclick="getAllValuesBalanceApertura();" value="Registrar balance" />
+	<input type="submit" class="btn btn-info" onclick="getAllValuesBalanceApertura();" value="Registrar balance"/>
 	<h2>Total Activo: <label id="totalActivo"></label></h2>
 	<h3><u><strong>Capital</strong></u></h3>
 	<h2>Capital: <label id="capital"></label></h2>
@@ -282,6 +282,30 @@
 			<tr><td id="libro6-15"></td><td id="libro6-16"></td><td id="libro6-17"></td><td id="libro6-18"></td><td id="libro6-19"></td></tr>
 		</tbody>
 	</table>
+	</table>
+	<u><h3 id="libro7"></h3></u>
+	<table border="1">
+	<col width="150">
+	<col width="230">
+  	<col width="150">
+  	<col width="150">
+  	<col width="150">
+	<thead>
+			<tr>
+				<th>Fecha</th>
+				<th>Detalle</th>
+				<th>Debe</th>
+				<th>Haber</th>
+				<th>Saldo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td id="libro7-0"></td><td id="libro7-1"></td><td id="libro7-2"></td><td id="libro7-3"></td><td id="libro7-4"></td></tr>
+			<tr><td id="libro7-5"></td><td id="libro7-6"></td><td id="libro7-7"></td><td id="libro7-8"></td><td id="libro7-9"></td></tr>
+			<tr><td id="libro7-10"></td><td id="libro7-11"></td><td id="libro7-12"></td><td id="libro7-13"></td><td id="libro7-14"></td></tr>
+			<tr><td id="libro7-15"></td><td id="libro7-16"></td><td id="libro7-17"></td><td id="libro7-18"></td><td id="libro7-19"></td></tr>
+		</tbody>
+	</table>
 	<div>
 		<h1 align="center">Balance de Comprobacion de Sumas y Saldos</h1>
 	</div>
@@ -291,7 +315,8 @@
   	<col width="150">
   	<col width="150">
   	<col width="150">
-  	<col width="150">			
+  	<col width="150">	
+  	<thead>		
 		<tr>
     		<th>Detalle</th>
     		<th colspan="2">Sumas</th>
@@ -304,6 +329,7 @@
 		    <td>Deudor</td>
 		    <td>Acreedor</td>
   		</tr>
+  	<thead>
 		<tbody>
 		 <tr><td id = registro-0></td><td id= registro-1></td><td id= registro-2></td><td id=registro-3 ></td><td id=registro-4 ></td></tr>
 		 <tr><td id = registro-5></td><td id= registro-6></td><td id= registro-7></td><td id=registro-8 ></td><td id=registro-9 ></td></tr>
@@ -311,9 +337,154 @@
 		 <tr><td id = registro-15></td><td id= registro-16></td><td id= registro-17></td><td id=registro-18 ></td><td id=registro-19 ></td></tr>
 		 <tr><td id = registro-20></td><td id= registro-21></td><td id= registro-22></td><td id=registro-23 ></td><td id=registro-24 ></td></tr>
 		 <tr><td id = registro-25></td><td id= registro-26></td><td id= registro-27></td><td id=registro-28 ></td><td id=registro-29 ></td></tr>
-		 <tr><td><b>Total:</b></td><td id="totalDebeSs"></td><td id="totalHaberSs"></td><td id="totalDeudorSs"></td><td id="totalAcreedorSs"></td></tr>
+		  <tr><td id = registro-30></td><td id= registro-31></td><td id= registro-32></td><td id=registro-33 ></td><td id=registro-34 ></td></tr>
+		 <tr bgcolor="#A9E2F3"><td><b>Total:</b></td><td id="totalDebeSs"></td><td id="totalHaberSs"></td><td id="totalDeudorSs"></td><td id="totalAcreedorSs"></td></tr>
 		</tbody>
 	</table>
+	<div>
+ 		<h1 align="center">Hoja de Trabajo</h1>
+ 	</div>
+ 	<b><p>*Definir cada detalle antes de generar la hoja de trabajo</p></b>
+ 	<p id="tdSelect"></p>
+ <table border="1" id="selectType">
+ 	<col width="200">
+  	<col width="150">
+  	<thead>	
+ 	<tr>
+		<td id = opcion-0></td>
+		<td><select style = "width:150px;" style = "width:150px;">
+	  	<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+	<tr>
+		<td id = opcion-1></td>
+		<td><select style = "width:150px;">
+		<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td id = opcion-2></td>
+		<td><select style = "width:150px;">
+		<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td id = opcion-3></td>
+		<td><select style = "width:150px;">
+		<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td id = opcion-4></td>
+		<td><select style = "width:150px;">
+		<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td id = opcion-5></td>
+		<td><select style = "width:150px;">
+		<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td id = opcion-6></td>
+		<td><select style = "width:150px;">
+		<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	</thead>	
+</table><br>
+
+<input type="submit" class="btn btn-info" onclick="generateHojaTrabajo();" value="Generar Hoja de Trabajo" /><br><br> 
+ <table border="1">
+ 	<col width="230">
+  	<col width="150">
+  	<col width="150">
+  	<col width="150">
+  	<col width="150">
+  	<col width="150">
+  	<col width="150">	
+ 	<thead>			
+		<tr>
+    		<th>Detalle</th>
+			<th colspan="2">Saldos</th>
+			<th colspan="2">Esta. de Resultado</th>
+			<th colspan="2">Balance General</th>
+  		</tr>
+  		<tr align="center">
+    		<td></td>
+    		<td>Deudor</td>
+		    <td>Acreedor</td>
+		    <td>Gasto</td>
+		    <td>Ingreso</td>
+		    <td>Activo</td>
+		    <td>Pasivo/Capital</td>
+  		</tr>
+  	</thead>
+		<tbody>
+			 <tr>
+			 	<td id = hoja-0></td><td id= hoja-1></td><td id= hoja-2></td><td id=hoja-3 ></td><td id=hoja-4 ></td><td id = hoja-5></td><td id= hoja-6></td>
+			 </tr>
+			 <tr>
+			 	<td id= hoja-7></td><td id=hoja-8 ></td><td id=hoja-9 ></td><td id = hoja-10></td><td id= hoja-11></td><td id= hoja-12></td><td id=hoja-13 ></td>
+			 </tr>
+			 <tr>
+			 	<td id=hoja-14 ></td><td id = hoja-15></td><td id= hoja-16></td><td id= hoja-17></td><td id=hoja-18 ></td><td id=hoja-19 ></td><td id = hoja-20></td>
+			 </tr>
+			 <tr>
+			 	<td id= hoja-21></td><td id= hoja-22></td><td id=hoja-23 ></td><td id=hoja-24 ></td><td id = hoja-25></td><td id= hoja-26></td><td id= hoja-27></td>
+			 </tr>
+			 <tr>
+			 	<td id=hoja-28 ></td><td id=hoja-29 ></td><td id = hoja-30></td><td id= hoja-31></td><td id= hoja-32></td><td id=hoja-33 ></td><td id=hoja-34></td>
+			 </tr>
+			 <tr>
+			 	<td id=hoja-35 ></td><td id=hoja-36 ></td><td id=hoja-37 ></td><td id=hoja-38 ></td><td id=hoja-39 ></td><td id=hoja-40 ></td><td id=hoja-41></td>
+			 </tr>
+			 <tr>
+			 	<td id=hoja-42></td><td id=hoja-43 ></td><td id=hoja-44 ></td><td id=hoja-45></td><td id=hoja-46 ></td><td id=hoja-47></td><td id=hoja-48 ></td>
+			 </tr>
+			 <tr bgcolor="#A9E2F3">
+			 <td><b>Total:</b></td><td id="totalDeudorHt"></td><td id="totalAcreedorHt"></td><td id="totalGastoHt"></td><td id="totalIngresoHt"></td><td id="totalActivoHt"></td><td id="totalCapitalHt"></td>
+			 </tr>
+		</tbody>
+	</table>
+	<h2>Utilidad Neta: <label id="utilidadNeta"></label></h2>
 </body>	
 </html>
 

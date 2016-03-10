@@ -6,12 +6,18 @@ var detailBalance;
 var totalActivo;
 var totalDebe;
 var totalHaber;
-var libro1, libro2, libro3, libro4, libro5, libro6;
-var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6;
+var libro1, libro2, libro3, libro4, libro5, libro6, libro7;
+var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7;
 var totalDebeSs;
 var totalHaberSs;
 var totalDeudorSs;
 var totalAcreedorSs;
+var inputSelectType;
+var hojaTrabajo;
+var totalGastoHt;
+var totalIngresoHt;
+var totalActivoHt;
+var totalCapitalHt;
 
 function getAllValuesBalanceApertura() {
      inputValuesBalanceApertura = [];
@@ -95,13 +101,12 @@ function getLibrosMayores(){
         }
         find = false;
     }
-    console.log(detailMayores);
 }
 
  function generateLibrosMayores(){
     var inicio = detailBalance.length * 4;
-    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [];
-    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0; saldo5 = 0, saldo6 = 0;
+    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [], libro7 = [];
+    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0; saldo5 = 0, saldo6 = 0, saldo7 = 0;
     initializeLibrosMayores();
      var q = inicio;
      for (var p = q; p < inputValuesAsientoApertura.length; p = p+8 ) {
@@ -164,6 +169,14 @@ function getLibrosMayores(){
                     calculateSaldo(6,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
                     libro6.push(saldo6);
                     break;
+                case 7:
+                    libro7.push(inputValuesAsientoApertura[r-1]);
+                    libro7.push(detalle);
+                    libro7.push(inputValuesAsientoApertura[r+1]);
+                    libro7.push(inputValuesAsientoApertura[r+2]);
+                    calculateSaldo(7,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
+                    libro7.push(saldo7);
+                    break;
             }
         }
         inicio = bloque + 1;
@@ -213,6 +226,10 @@ function getLibrosMayores(){
             saldo6 = saldo6 + parseInt(AmountDebe) - parseInt(AmountHaber);
             if (saldo6 < 0) {saldo6*=-1}
             break;
+        case 7:
+            saldo7 = saldo7 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            if (saldo7 < 0) {saldo7*=-1}
+            break;
     }
  }
 
@@ -247,6 +264,11 @@ function getLibrosMayores(){
      for (var i = 0; i < libro6.length; i++) {
         document.getElementById("libro6-"+ i).innerHTML = libro6[i];
     }
+    if (libro7[0]===undefined){return}
+    document.getElementById("libro7").innerHTML = libro7[1];
+     for (var i = 0; i < libro7.length; i++) {
+        document.getElementById("libro7-"+ i).innerHTML = libro7[i];
+    }
  }
 
 function findDetalleBalance(detalle){
@@ -276,6 +298,7 @@ function generateSumasSaldos(){
     calculateDebeHaberLibro(libro4);
     calculateDebeHaberLibro(libro5);
     calculateDebeHaberLibro(libro6);
+    calculateDebeHaberLibro(libro7);
     drawBalanceSumasSaldor();
 }
 
@@ -311,5 +334,57 @@ function drawBalanceSumasSaldor(){
     document.getElementById("totalHaberSs").innerHTML = totalHaberSs;
     document.getElementById("totalDeudorSs").innerHTML = totalDeudorSs;
     document.getElementById("totalAcreedorSs").innerHTML = totalAcreedorSs;
+    loadSelectionDetail()
 }
 
+function loadSelectionDetail(){
+    for (var i = 0; i < detailMayores.length; i++) {
+        if(detailMayores[i]==0){return}
+        document.getElementById("opcion-"+ i).innerHTML = detailMayores[i];
+    }
+}
+
+function generateHojaTrabajo(){
+    inputSelectType = [];
+    hojaTrabajo = [];
+    totalGastoHt = 0, totalIngresoHt = 0, totalActivoHt = 0, totalCapitalHt = 0;
+    var j = 0;
+    var valor;
+    $('#selectType select').each(function() {
+        if ($(this).val()==="0") {return}
+        inputSelectType.push($(this).val()); 
+    });
+    for (var i = 0; i < balanceSumasSaldos.length-1; i=i+5) {
+        hojaTrabajo.push(balanceSumasSaldos[i]);
+        hojaTrabajo.push(balanceSumasSaldos[i+3]);
+        hojaTrabajo.push(balanceSumasSaldos[i+4]);
+        if (balanceSumasSaldos[i+3] != 0) {valor = balanceSumasSaldos[i+3];}else{valor = balanceSumasSaldos[i+4];}
+        if (inputSelectType[j] === "A") {hojaTrabajo.push(0,0,valor,0); totalActivoHt+=valor;}
+        if (inputSelectType[j] === "P" || inputSelectType[j] === "C") {hojaTrabajo.push(0,0,0,valor); totalCapitalHt+=valor;}
+        if (inputSelectType[j] === "G") {hojaTrabajo.push(valor,0,0,0); totalGastoHt+=valor;}
+        if (inputSelectType[j] === "I") {hojaTrabajo.push(0,valor,0,0);totalIngresoHt+=valor;}
+        j++;
+    }
+    drawHojaTrabajo();
+}
+
+function drawHojaTrabajo(){
+    for (var i = 0; i < hojaTrabajo.length; i++) {
+        document.getElementById("hoja-"+ i).innerHTML = hojaTrabajo[i];
+    }
+    document.getElementById("totalDeudorHt").innerHTML = totalDeudorSs;
+    document.getElementById("totalAcreedorHt").innerHTML = totalAcreedorSs;
+    document.getElementById("totalGastoHt").innerHTML = totalGastoHt;
+    document.getElementById("totalIngresoHt").innerHTML = totalIngresoHt;
+    document.getElementById("totalActivoHt").innerHTML = totalActivoHt;
+    document.getElementById("totalCapitalHt").innerHTML = totalCapitalHt;
+    if (totalIngresoHt - totalGastoHt === totalActivoHt - totalCapitalHt) {
+        var utilidadNeta = totalActivoHt - totalCapitalHt;
+        document.getElementById("utilidadNeta").innerHTML = utilidadNeta;
+    }
+    else{
+        document.getElementById("utilidadNeta").innerHTML = "Mala seleccion";
+    }
+
+
+}
