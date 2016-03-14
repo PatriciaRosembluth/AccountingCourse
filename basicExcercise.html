@@ -139,11 +139,11 @@
 		</tbody>
 	</table>
 	<br>
-	<input type="submit" class="btn btn-info" onclick="getAllValuesAsientoApertura();" value="Registrar Asiento" />
+	<input type="submit" class="btn btn-info" onclick="verifyIfBalanceAperturaIsComplete('asiento');" value="Registrar Asiento" />
 	<div>
 		<h1 align="center">Libro Mayor</h1>
 	</div>
-	<input type="button" class="btn btn-info" onclick="generateLibrosMayores();" value="Generar libros Mayores" />
+	<input type="button" class="btn btn-info" onclick="verifyIfAsientoAperturaIsComplete('libros');" value="Generar libros Mayores" />
 	<u><h3 id="libro1"></h3></u>
 	<table border="1">
 	<col width="150">
@@ -309,7 +309,7 @@
 	<div>
 		<h1 align="center">Balance de Comprobacion de Sumas y Saldos</h1>
 	</div>
-	<input type="submit" class="btn btn-info" onclick="generateSumasSaldos();" value="Generar Balance de Sumas y Saldos" /><br><br>
+	<input type="submit" class="btn btn-info" onclick="verifyIfLibrosMayoresAreGenerate();" value="Generar Balance de Sumas y Saldos" /><br><br>
 	<table border="1">
 	<col width="230">
   	<col width="150">
@@ -431,7 +431,7 @@
 	</thead>	
 </table><br>
 
-<input type="submit" class="btn btn-info" onclick="generateHojaTrabajo();" value="Generar Hoja de Trabajo" /><br><br> 
+<input type="submit" class="btn btn-info" onclick="verifyIfSumasSaldosAreGenerate();" value="Generar Hoja de Trabajo" /><br><br> 
  <table border="1">
  	<col width="230">
   	<col width="150">

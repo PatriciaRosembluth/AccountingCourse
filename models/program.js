@@ -19,6 +19,76 @@ var totalIngresoHt;
 var totalActivoHt;
 var totalCapitalHt;
 
+//VERIFICACIONES
+function verifyIfBalanceAperturaIsComplete(caso) {
+    switch(caso){
+        case 'balance':
+            if(totalActivo <= 0 || isNaN(totalActivo)){
+                alert("Debe registrar los datos del Balace de Apertura");
+                return false;
+            }else{
+                return true;
+            }
+        break;
+        case 'asiento':
+            if(totalActivo <= 0 || totalActivo === undefined || isNaN(totalActivo)){
+                alert("Debe registrar los datos del Balace de Apertura");
+                return false;
+            }else{
+                getAllValuesAsientoApertura();
+            }
+        break;
+    }
+   
+}
+
+function verifyIfAsientoAperturaIsComplete(caso) {
+    switch(caso){
+        case 'asiento':
+            if(totalDebe === 0 && totalHaber === 0){
+                alert("Debe registrar los datos del Asiento De Apertura");
+                return false;
+            }else if(totalDebe != totalHaber){
+                alert("Total Debe y Haber el Asiento de apertura deben ser iguales");
+                return false;
+            }else{
+                return true;
+             }
+        break;
+        case 'libros':
+            if(totalDebe === 0 && totalHaber === 0 || totalDebe != totalHaber){
+                alert("Total Debe y Haber el Asiento de apertura deben ser iguales y mayores a 0");
+                return false; 
+            }else if (detailMayores === undefined ){
+                alert("Debe registrar datos del Balance de Apertura");
+                return false; 
+            }else if (totalDebe != totalHaber){
+                alert("Total Debe y Haber el Asiento de apertura deben ser iguales");
+               return false; 
+            }else{
+                generateLibrosMayores();
+            }
+        break;
+    }
+}
+
+function verifyIfLibrosMayoresAreGenerate(){
+    if(detailMayores === undefined || libro1 === undefined){
+        alert("Debe generar los Libros Mayores");
+    }else{
+        generateSumasSaldos();
+    }
+}
+
+function verifyIfSumasSaldosAreGenerate(){
+    if(balanceSumasSaldos === undefined){
+        alert("Debe generar Balance Sumas de Comprobacion de Sumas y Saldos");
+    }else{
+        generateHojaTrabajo();
+    }
+}
+//END VERIFICACIONES
+
 function getAllValuesBalanceApertura() {
      inputValuesBalanceApertura = [];
      detailBalance = [];
@@ -28,8 +98,10 @@ function getAllValuesBalanceApertura() {
     })
     calculateTotalActivo();
     getDetailsBalanceApertura();
-    document.getElementById("totalActivo").innerHTML = totalActivo;
-    document.getElementById("capital").innerHTML = totalActivo;
+    if (verifyIfBalanceAperturaIsComplete('balance')){
+        document.getElementById("totalActivo").innerHTML = totalActivo;
+        document.getElementById("capital").innerHTML = totalActivo;
+    }
 }
 
 function calculateTotalActivo(){
@@ -53,10 +125,11 @@ function getAllValuesAsientoApertura(){
     })
     setSpaceFromArray();
     getTotalDebeYhaber();
-    getLibrosMayores();
-    
     document.getElementById("totalDebe").innerHTML = totalDebe;
     document.getElementById("totalHaber").innerHTML = totalHaber;
+    if (verifyIfAsientoAperturaIsComplete('asiento')) {
+        getLibrosMayores();
+    }
 }
 
 function setSpaceFromArray(){
@@ -114,7 +187,7 @@ function getLibrosMayores(){
         var aux = inputValuesAsientoApertura[p+1];
         if (aux === 0 ){drawLibrosMayores();return}
         var detalle = inputValuesAsientoApertura[p+5];
-        if (findDetalleBalance(detalle)) {
+        if (findDetailBalance(detalle)) {
             detalle = aux;
         }
         for (var r = inicio + 1; r < bloque; r = r+4) {
@@ -271,7 +344,7 @@ function getLibrosMayores(){
     }
  }
 
-function findDetalleBalance(detalle){
+function findDetailBalance(detalle){
     for (var i = 0; i < detailBalance.length; i++) {
         if (detalle === detailBalance[i]){
             return true;
@@ -365,7 +438,11 @@ function generateHojaTrabajo(){
         if (inputSelectType[j] === "I") {hojaTrabajo.push(0,valor,0,0);totalIngresoHt+=valor;}
         j++;
     }
-    drawHojaTrabajo();
+    if(hojaTrabajo.length % 7 === 0){
+        drawHojaTrabajo();
+    }else{
+        alert("Debe seleccionar todos los tipos de los detalles");
+    }  
 }
 
 function drawHojaTrabajo(){
