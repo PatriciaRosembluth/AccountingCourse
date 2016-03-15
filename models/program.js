@@ -1,3 +1,4 @@
+var accounts;
 var inputValuesBalanceApertura;
 var inputValuesAsientoApertura;
 var balanceSumasSaldos;
@@ -12,7 +13,7 @@ var totalDebeSs;
 var totalHaberSs;
 var totalDeudorSs;
 var totalAcreedorSs;
-var inputSelectType;
+var accounts;
 var hojaTrabajo;
 var totalGastoHt;
 var totalIngresoHt;
@@ -23,8 +24,11 @@ var totalCapitalHt;
 function verifyIfBalanceAperturaIsComplete(caso) {
     switch(caso){
         case 'balance':
-            if(totalActivo <= 0 || isNaN(totalActivo)){
+            if(isNaN(totalActivo)){ 
                 alert("Debe registrar los datos del Balace de Apertura");
+                return false;
+            }else if(totalActivo <= 0){
+                alert("El Capital y Total Activo no pueden ser menores a 0");
                 return false;
             }else{
                 return true;
@@ -32,7 +36,7 @@ function verifyIfBalanceAperturaIsComplete(caso) {
         break;
         case 'asiento':
             if(totalActivo <= 0 || totalActivo === undefined || isNaN(totalActivo)){
-                alert("Debe registrar los datos del Balace de Apertura");
+                alert("Debe registrar los datos del Balace de Apertura correctamente");
                 return false;
             }else{
                 getAllValuesAsientoApertura();
@@ -89,18 +93,55 @@ function verifyIfSumasSaldosAreGenerate(){
 }
 //END VERIFICACIONES
 
+function getAccounts(){
+    stringAccounts = [];
+    stringTypesAccounts = [];
+    accounts = [];
+    optionsAsString = "<option value = 0>Seleccionar</option>";
+    $('#accounts input').each(function() {
+        if ($(this).val()==="") {return}
+        stringAccounts.push($(this).val()); 
+    });
+    $('#accounts select').each(function() {
+        if ($(this).val()==="0") {return}
+        stringTypesAccounts.push($(this).val()); 
+    });
+    for (var i = 0; i < stringAccounts.length; i++) {
+        accounts.push(stringAccounts[i]);
+        accounts.push(stringTypesAccounts[i]); 
+    }
+
+    for(var i = 0; i < accounts.length; i=i+2) {
+        optionsAsString += "<option value='" + accounts[i] + "'>" + accounts[i] + "</option>";
+    }
+    $("#balanceApertura select").empty().append(optionsAsString);
+    $("#asientoApertura select").empty().append(optionsAsString);
+}
+
 function getAllValuesBalanceApertura() {
-     inputValuesBalanceApertura = [];
-     detailBalance = [];
-     totalActivo = 0;
+    accountsBalance = [];
+    amountBalance = [];
+    inputValuesBalanceApertura = [];
+    detailBalance = [];
+    totalActivo = 0;
+    optionsAsString = "<option value = 0>Seleccionar</option>";
+    $('#balanceApertura select').each(function() {
+        if ($(this).val()==="0") {return}
+         accountsBalance.push($(this).val()); 
+    });
     $('#balanceApertura input').each(function() {
-        inputValuesBalanceApertura.push($(this).val()); 
-    })
+        amountBalance.push($(this).val()); 
+    });
+    for (var i = 0; i <accountsBalance.length; i++) {
+       inputValuesBalanceApertura.push(accountsBalance[i]);
+       inputValuesBalanceApertura.push(amountBalance[i]); 
+    }
     calculateTotalActivo();
-    getDetailsBalanceApertura();
+    document.getElementById("totalActivo").innerHTML = totalActivo;
+    document.getElementById("capital").innerHTML = totalActivo;
+    console.log(inputValuesBalanceApertura);
     if (verifyIfBalanceAperturaIsComplete('balance')){
-        document.getElementById("totalActivo").innerHTML = totalActivo;
-        document.getElementById("capital").innerHTML = totalActivo;
+        getDetailsBalanceApertura();
     }
 }
 
@@ -119,14 +160,30 @@ function getDetailsBalanceApertura(){
 }
 
 function getAllValuesAsientoApertura(){
+    accountsAsiento = [];
+    detailsAsiento = [];
+    details = 0;
     inputValuesAsientoApertura = [];
     $('#asientoApertura input').each(function() {
-        inputValuesAsientoApertura.push($(this).val()); 
-    })
+        detailsAsiento.push($(this).val()); 
+    });
+    console.log(detailsAsiento);
+    $('#asientoApertura select').each(function() {
+        if ($(this).val()==="0") {return}
+         accountsAsiento.push($(this).val()); 
+    });
+    console.log(accountsAsiento);
+    for (var i = 0; i < detailsAsiento.length; i=i+3) {
+        inputValuesAsientoApertura.push(detailsAsiento[i]);
+        inputValuesAsientoApertura.push(accountsAsiento[details]);
+        inputValuesAsientoApertura.push(detailsAsiento[i+1], detailsAsiento[i+2]);
+        details++;
+    }
     setSpaceFromArray();
     getTotalDebeYhaber();
     document.getElementById("totalDebe").innerHTML = totalDebe;
     document.getElementById("totalHaber").innerHTML = totalHaber;
+    console.log(inputValuesAsientoApertura);
     if (verifyIfAsientoAperturaIsComplete('asiento')) {
         getLibrosMayores();
     }
@@ -407,42 +464,33 @@ function drawBalanceSumasSaldor(){
     document.getElementById("totalHaberSs").innerHTML = totalHaberSs;
     document.getElementById("totalDeudorSs").innerHTML = totalDeudorSs;
     document.getElementById("totalAcreedorSs").innerHTML = totalAcreedorSs;
-    loadSelectionDetail()
+    //loadSelectionDetail()
 }
 
-function loadSelectionDetail(){
-    for (var i = 0; i < detailMayores.length; i++) {
-        if(detailMayores[i]==0){return}
-        document.getElementById("opcion-"+ i).innerHTML = detailMayores[i];
-    }
-}
+// function loadSelectionDetail(){
+//     for (var i = 0; i < detailMayores.length; i++) {
+//         if(detailMayores[i]==0){return}
+//         document.getElementById("opcion-"+ i).innerHTML = detailMayores[i];
+//     }
+// }
 
 function generateHojaTrabajo(){
-    inputSelectType = [];
     hojaTrabajo = [];
     totalGastoHt = 0, totalIngresoHt = 0, totalActivoHt = 0, totalCapitalHt = 0;
-    var j = 0;
+    var j = 1;
     var valor;
-    $('#selectType select').each(function() {
-        if ($(this).val()==="0") {return}
-        inputSelectType.push($(this).val()); 
-    });
     for (var i = 0; i < balanceSumasSaldos.length-1; i=i+5) {
         hojaTrabajo.push(balanceSumasSaldos[i]);
         hojaTrabajo.push(balanceSumasSaldos[i+3]);
         hojaTrabajo.push(balanceSumasSaldos[i+4]);
         if (balanceSumasSaldos[i+3] != 0) {valor = balanceSumasSaldos[i+3];}else{valor = balanceSumasSaldos[i+4];}
-        if (inputSelectType[j] === "A") {hojaTrabajo.push(0,0,valor,0); totalActivoHt+=valor;}
-        if (inputSelectType[j] === "P" || inputSelectType[j] === "C") {hojaTrabajo.push(0,0,0,valor); totalCapitalHt+=valor;}
-        if (inputSelectType[j] === "G") {hojaTrabajo.push(valor,0,0,0); totalGastoHt+=valor;}
-        if (inputSelectType[j] === "I") {hojaTrabajo.push(0,valor,0,0);totalIngresoHt+=valor;}
-        j++;
+        if (accounts[j] === "A") {hojaTrabajo.push(0,0,valor,0); totalActivoHt+=valor;}
+        if (accounts[j] === "P" || accounts[j] === "C") {hojaTrabajo.push(0,0,0,valor); totalCapitalHt+=valor;}
+        if (accounts[j] === "G") {hojaTrabajo.push(valor,0,0,0); totalGastoHt+=valor;}
+        if (accounts[j] === "I") {hojaTrabajo.push(0,valor,0,0);totalIngresoHt+=valor;}
+        j=j+2;
     }
-    if(hojaTrabajo.length % 7 === 0){
-        drawHojaTrabajo();
-    }else{
-        alert("Debe seleccionar todos los tipos de los detalles");
-    }  
+    drawHojaTrabajo();
 }
 
 function drawHojaTrabajo(){
@@ -462,6 +510,4 @@ function drawHojaTrabajo(){
     else{
         document.getElementById("utilidadNeta").innerHTML = "Mala seleccion";
     }
-
-
 }

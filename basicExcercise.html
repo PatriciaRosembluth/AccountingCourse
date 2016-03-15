@@ -18,15 +18,142 @@
 		</div>
 	</div>
 </header>
-<p id="dbBalanceApertura"></p>
-<p id="detailBalance"></p>
+<div>
+	<h2 align="center">Cuentas</h2>
+</div>
+<p>*Ingrese la cuentas que utilizara en el ejercicio</p>
+<table border="1" id="accounts">
+ 	<col width="150">
+  	<col width="150">
+  	<thead>
+  		<tr>
+  			<th>Cuenta</th>
+  			<th>Tipo</th>
+  		</tr>
+  	</thead>
+  	<tbody>	
+ 	<tr>
+		<td><input type='text' size="30"/></td>
+		<td><select style = "width:200px;height:24px;">
+	  	<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><input type='text' size="30"/></td>
+		<td><select style = "width:200px;height:24px;">
+		<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><input type='text' size="30"/></td>
+		<td><select style = "width:200px;height:24px;">
+	  	<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><input type='text' size="30"/></td>
+		<td><select style = "width:200px;height:24px;">
+	  	<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><input type='text' size="30"/></td>
+		<td><select style = "width:200px;height:24px;">
+	  	<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><input type='text' size="30"/></td>
+		<td><select style = "width:200px;height:24px;">
+	  	<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><input type='text' size="30"/></td>
+		<td><select style = "width:200px;height:24px;">
+	  	<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><input type='text' size="30"/></td>
+		<td><select style = "width:200px;height:24px;">
+	  	<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><input type='text' size="30"/></td>
+		<td><select style = "width:200px;height:24px;">
+	  	<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><input type='text' size="30"/></td>
+		<td><select style = "width:200px;height:24px;">
+	  	<option value="0">Seleccionar</option>
+	  	<option value="A">Activo</option>
+	  	<option value="P">Pasivo</option>
+	  	<option value="C">Capital</option>
+	  	<option value="G">Gasto</option>
+	  	<option value="I">Ingreso</option>
+		</select></td>
+	</tr>
+	</tbody>	
+</table><br>
+<input type="submit" class="btn btn-info" onclick="getAccounts();" value="Registrar Cuentas" /><br><br>
 <div>
 	<h2 align="center">Empresa X</h2>
 	<h1 align="center">Balance de Apertura</h1>
 	<h2 align="center">En bolivianos</h2>
 </div>
 <u><h2>Activo</h2></u>
-<table class="table table-bordered" id="balanceApertura">			
+<table class="table table-bordered" id="balanceApertura">
+	<col width="200">
+ 	<col width="150">			
 		<thead>
 			<tr>
 				<th>Detalle</th>
@@ -35,11 +162,11 @@
 		</thead>
 		<tbody>
 			<tr>
-		        <td><input type='text'/></td>
+		        <td><select style = "width:200px;height:24px;"></select></td>
 		        <td><input type='text'/></td>
 	        </tr>
 	        <tr>
-		        <td><input type='text'/></td>
+		        <td><select style = "width:200px;height:24px;"></select></td>
 		        <td><input type='text'/></td>
 	        </tr>
 		</tbody>
@@ -66,67 +193,67 @@
 		<tbody>
 		<tr>
 			<td><input style = "height:24px;width:235px;" type = "date"></td>
-	        <td><input type='text' size="30"/></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
 	        <td><input type='text' size="30"/></td>
 	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
         	<td><input style = "height:24px;width:235px;" type = "date"></td>
-	        <td><input type='text' size="30"/></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
 	        <td><input type='text' size="30"/></td>
 	        <td><input type='text'  size="30"/></td>
         </tr>
         <tr>
         	<td><input style = "height:24px;width:235px;" type = "date"></td>
-	        <td><input type='text' size="30"/></td>
-	        <td><input type='text' size="30"/></td>
-	        <td><input type='text' size="30"/></td>
-        </tr>
-        <tr>
-        	<td><input style = "height:24px;width:235px;" type = "date"></td>
-	        <td><input type='text' size="30"/></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
 	        <td><input type='text' size="30"/></td>
 	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
         	<td><input style = "height:24px;width:235px;" type = "date"></td>
-	        <td><input type='text' size="30"/></td>
-	        <td><input type='text' size="30"/></td>
-	        <td><input type='text' size="30"/></td>
-        </tr>
-        <tr>
-        	<td><input style = "height:24px;width:235px;" type = "date"></td>
-	        <td><input type='text' size="30"/></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
 	        <td><input type='text' size="30"/></td>
 	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
         	<td><input style = "height:24px;width:235px;" type = "date"></td>
-	        <td><input type='text' size="30"/></td>
-	        <td><input type='text' size="30"/></td>
-	        <td><input type='text' size="30"/></td>
-        </tr>
-        <tr>
-        	<td><input style = "height:24px;width:235px;" type = "date"></td>
-	        <td><input type='text' size="30"/></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
 	        <td><input type='text' size="30"/></td>
 	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
         	<td><input style = "height:24px;width:235px;" type = "date"></td>
-	        <td><input type='text' size="30"/></td>
-	        <td><input type='text' size="30"/></td>
-	        <td><input type='text' size="30"/></td>
-        </tr>
-        <tr>
-        	<td><input style = "height:24px;width:235px;" type = "date"></td>
-	        <td><input type='text' size="30"/></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
 	        <td><input type='text' size="30"/></td>
 	        <td><input type='text' size="30"/></td>
         </tr>
         <tr>
         	<td><input style = "height:24px;width:235px;" type = "date"></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
 	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+        </tr>
+        <tr>
+        	<td><input style = "height:24px;width:235px;" type = "date"></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+        </tr>
+        <tr>
+        	<td><input style = "height:24px;width:235px;" type = "date"></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+        </tr>
+        <tr>
+        	<td><input style = "height:24px;width:235px;" type = "date"></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+        </tr>
+        <tr>
+        	<td><input style = "height:24px;width:235px;" type = "date"></td>
+	        <td><select style = "width:200px;height:24px;"></select></td>
 	        <td><input type='text' size="30"/></td>
 	        <td><input type='text' size="30"/></td>
         </tr>
@@ -344,93 +471,6 @@
 	<div>
  		<h1 align="center">Hoja de Trabajo</h1>
  	</div>
- 	<b><p>*Definir cada detalle antes de generar la hoja de trabajo</p></b>
- 	<p id="tdSelect"></p>
- <table border="1" id="selectType">
- 	<col width="200">
-  	<col width="150">
-  	<thead>	
- 	<tr>
-		<td id = opcion-0></td>
-		<td><select style = "width:150px;" style = "width:150px;">
-	  	<option value="0">Seleccionar</option>
-	  	<option value="A">Activo</option>
-	  	<option value="P">Pasivo</option>
-	  	<option value="C">Capital</option>
-	  	<option value="G">Gasto</option>
-	  	<option value="I">Ingreso</option>
-		</select></td>
-	</tr>
-	<tr>
-	<tr>
-		<td id = opcion-1></td>
-		<td><select style = "width:150px;">
-		<option value="0">Seleccionar</option>
-	  	<option value="A">Activo</option>
-	  	<option value="P">Pasivo</option>
-	  	<option value="C">Capital</option>
-	  	<option value="G">Gasto</option>
-	  	<option value="I">Ingreso</option>
-		</select></td>
-	</tr>
-	<tr>
-		<td id = opcion-2></td>
-		<td><select style = "width:150px;">
-		<option value="0">Seleccionar</option>
-	  	<option value="A">Activo</option>
-	  	<option value="P">Pasivo</option>
-	  	<option value="C">Capital</option>
-	  	<option value="G">Gasto</option>
-	  	<option value="I">Ingreso</option>
-		</select></td>
-	</tr>
-	<tr>
-		<td id = opcion-3></td>
-		<td><select style = "width:150px;">
-		<option value="0">Seleccionar</option>
-	  	<option value="A">Activo</option>
-	  	<option value="P">Pasivo</option>
-	  	<option value="C">Capital</option>
-	  	<option value="G">Gasto</option>
-	  	<option value="I">Ingreso</option>
-		</select></td>
-	</tr>
-	<tr>
-		<td id = opcion-4></td>
-		<td><select style = "width:150px;">
-		<option value="0">Seleccionar</option>
-	  	<option value="A">Activo</option>
-	  	<option value="P">Pasivo</option>
-	  	<option value="C">Capital</option>
-	  	<option value="G">Gasto</option>
-	  	<option value="I">Ingreso</option>
-		</select></td>
-	</tr>
-	<tr>
-		<td id = opcion-5></td>
-		<td><select style = "width:150px;">
-		<option value="0">Seleccionar</option>
-	  	<option value="A">Activo</option>
-	  	<option value="P">Pasivo</option>
-	  	<option value="C">Capital</option>
-	  	<option value="G">Gasto</option>
-	  	<option value="I">Ingreso</option>
-		</select></td>
-	</tr>
-	<tr>
-		<td id = opcion-6></td>
-		<td><select style = "width:150px;">
-		<option value="0">Seleccionar</option>
-	  	<option value="A">Activo</option>
-	  	<option value="P">Pasivo</option>
-	  	<option value="C">Capital</option>
-	  	<option value="G">Gasto</option>
-	  	<option value="I">Ingreso</option>
-		</select></td>
-	</tr>
-	</thead>	
-</table><br>
-
 <input type="submit" class="btn btn-info" onclick="verifyIfSumasSaldosAreGenerate();" value="Generar Hoja de Trabajo" /><br><br> 
  <table border="1">
  	<col width="230">
