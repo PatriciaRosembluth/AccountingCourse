@@ -308,6 +308,30 @@ function generateLibrosMayores(){
                     calculateSaldo(7,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
                     libro7.push(saldo7);
                     break;
+                 case 8:
+                    libro8.push(inputValuesAsientoApertura[r-1]);
+                    libro8.push(detalle);
+                    libro8.push(inputValuesAsientoApertura[r+1]);
+                    libro8.push(inputValuesAsientoApertura[r+2]);
+                    calculateSaldo(8,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
+                    libro8.push(saldo8);
+                    break;
+                 case 9:
+                    libro9.push(inputValuesAsientoApertura[r-1]);
+                    libro9.push(detalle);
+                    libro9.push(inputValuesAsientoApertura[r+1]);
+                    libro9.push(inputValuesAsientoApertura[r+2]);
+                    calculateSaldo(9,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
+                    libro9.push(saldo9);
+                    break;
+                 case 10:
+                    libro10.push(inputValuesAsientoApertura[r-1]);
+                    libro10.push(detalle);
+                    libro10.push(inputValuesAsientoApertura[r+1]);
+                    libro10.push(inputValuesAsientoApertura[r+2]);
+                    calculateSaldo(10,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
+                    libro10.push(saldo10);
+                    break;
             }
         }
         inicio = bloque + 2;
@@ -369,6 +393,18 @@ function generateLibrosMayores(){
             saldo7 = saldo7 + parseInt(AmountDebe) - parseInt(AmountHaber);
             if (saldo7 < 0) {saldo7*=-1}
             break;
+        case 8:
+            saldo8 = saldo8 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            if (saldo8 < 0) {saldo8*=-1}
+            break;
+        case 9:
+            saldo9 = saldo9 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            if (saldo9 < 0) {saldo9*=-1}
+            break;
+        case 10:
+            saldo10 = saldo10 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            if (saldo10 < 0) {saldo10*=-1}
+            break;
     }
  }
 
@@ -415,6 +451,24 @@ function generateLibrosMayores(){
             document.getElementById("libro7-"+ i).innerHTML = libro7[i];
         }
     }
+    if (libro8[0]!=undefined){
+        document.getElementById("libro8").innerHTML = detailMayores[7];
+         for (var i = 0; i < libro8.length; i++) {
+            document.getElementById("libro8-"+ i).innerHTML = libro8[i];
+        }
+    }
+    if (libro9[0]!=undefined){
+        document.getElementById("libro9").innerHTML = detailMayores[8];
+         for (var i = 0; i < libro9.length; i++) {
+            document.getElementById("libro9-"+ i).innerHTML = libro9[i];
+        }
+    }
+    if (libro10[0]!=undefined){
+        document.getElementById("libro10").innerHTML = detailMayores[9];
+         for (var i = 0; i < libro10.length; i++) {
+            document.getElementById("libro10-"+ i).innerHTML = libro10[i];
+        }
+    }
  }
 
 function findDetailBalance(detalle){
@@ -445,6 +499,9 @@ function generateSumasSaldos(){
     calculateDebeHaberLibro(libro5,4);
     calculateDebeHaberLibro(libro6,5);
     calculateDebeHaberLibro(libro7,6);
+    calculateDebeHaberLibro(libro8,7);
+    calculateDebeHaberLibro(libro9,8);
+    calculateDebeHaberLibro(libro10,9);
     drawBalanceSumasSaldor();
 }
 
