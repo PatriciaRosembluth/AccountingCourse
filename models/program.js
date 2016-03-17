@@ -115,6 +115,7 @@ function getAccounts(){
     }
     $("#balanceApertura select").empty().append(optionsAsString);
     $('select[name="optionsAccounts"]').empty().append(optionsAsString);
+    $('select[name="optionsBalance"]').empty().append(optionsAsString);
 }
 
 function getAllValuesBalanceApertura() {
@@ -124,7 +125,6 @@ function getAllValuesBalanceApertura() {
     inputValuesAsientoApertura = [];
     detailBalance = [];
     totalActivo = 0;
-    optionsAsString = "<option value = 0>Seleccionar</option>";
     $('#balanceApertura select').each(function() {
         if ($(this).val()==="0") {return}
          accountsBalance.push($(this).val()); 
@@ -143,10 +143,6 @@ function getAllValuesBalanceApertura() {
     if (verifyIfBalanceAperturaIsComplete('balance')){
         getDetailsBalanceApertura();
     }
-    for(var i = 0; i < accountsBalance.length; i++) {
-        optionsAsString += "<option value='" + accountsBalance[i] + "'>" + accountsBalance[i] + "</option>";
-    }
-    $('select[name="optionsBalance"]').empty().append(optionsAsString);
 }
 
 function calculateTotalActivo(){
@@ -252,12 +248,6 @@ function generateLibrosMayores(){
     var q = inicio;
     for (var p = q; p < inputValuesAsientoApertura.length; p = p+9 ) {
         var bloque = inicio+7;
-        // var aux = inputValuesAsientoApertura[p+1];
-        //if (aux === 0 ){drawLibrosMayores();return}
-        // var detalle = inputValuesAsientoApertura[p+5];
-        // if (findDetailBalance(detalle)) {
-        //     detalle = aux;
-        // }
         detalle = inputValuesAsientoApertura[bloque+1]; 
         for (var r = inicio + 1; r < bloque; r = r+4) {
             var libro = findLibro(inputValuesAsientoApertura[r]);
@@ -383,40 +373,47 @@ function generateLibrosMayores(){
  }
 
  function drawLibrosMayores(){
-    if (libro1[0]===undefined){return}
-    document.getElementById("libro1").innerHTML = detailMayores[0];
-    for (var i = 0; i < libro1.length; i++) {
-        document.getElementById("libro1-"+ i).innerHTML = libro1[i];
+    if (libro1[0]!=undefined){
+        document.getElementById("libro1").innerHTML = detailMayores[0];
+        for (var i = 0; i < libro1.length; i++) {
+            document.getElementById("libro1-"+ i).innerHTML = libro1[i];
+        }
     }
-    if (libro2[0]===undefined){return}
-    document.getElementById("libro2").innerHTML = detailMayores[1];
-     for (var i = 0; i < libro2.length; i++) {
-        document.getElementById("libro2-"+ i).innerHTML = libro2[i];
+    if (libro2[0]!=undefined){
+        document.getElementById("libro2").innerHTML = detailMayores[1];
+         for (var i = 0; i < libro2.length; i++) {
+            document.getElementById("libro2-"+ i).innerHTML = libro2[i];
+        }
     }
-    if (libro3[0]===undefined){return}
-    document.getElementById("libro3").innerHTML =detailMayores[2];
-     for (var i = 0; i < libro3.length; i++) {
-        document.getElementById("libro3-"+ i).innerHTML = libro3[i];
+    if (libro3[0]!=undefined){
+        document.getElementById("libro3").innerHTML =detailMayores[2];
+         for (var i = 0; i < libro3.length; i++) {
+            document.getElementById("libro3-"+ i).innerHTML = libro3[i];
+        }
     }
-    if (libro4[0]===undefined){return}
-    document.getElementById("libro4").innerHTML = detailMayores[3];
-     for (var i = 0; i < libro4.length; i++) {
-        document.getElementById("libro4-"+ i).innerHTML = libro4[i];
+    if (libro4[0]!=undefined){
+        document.getElementById("libro4").innerHTML = detailMayores[3];
+         for (var i = 0; i < libro4.length; i++) {
+            document.getElementById("libro4-"+ i).innerHTML = libro4[i];
+        }
     }
-    if (libro5[0]===undefined){return}
-    document.getElementById("libro5").innerHTML = detailMayores[4];
-     for (var i = 0; i < libro5.length; i++) {
-        document.getElementById("libro5-"+ i).innerHTML = libro5[i];
+    if (libro5[0]!=undefined){
+        document.getElementById("libro5").innerHTML = detailMayores[4];
+         for (var i = 0; i < libro5.length; i++) {
+            document.getElementById("libro5-"+ i).innerHTML = libro5[i];
+        }
     }
-    if (libro6[0]===undefined){return}
-    document.getElementById("libro6").innerHTML = detailMayores[5];
-     for (var i = 0; i < libro6.length; i++) {
-        document.getElementById("libro6-"+ i).innerHTML = libro6[i];
+    if (libro6[0]!=undefined){
+        document.getElementById("libro6").innerHTML = detailMayores[5];
+         for (var i = 0; i < libro6.length; i++) {
+            document.getElementById("libro6-"+ i).innerHTML = libro6[i];
+        }
     }
-    if (libro7[0]===undefined){return}
-    document.getElementById("libro7").innerHTML = detailMayores[6];
-     for (var i = 0; i < libro7.length; i++) {
-        document.getElementById("libro7-"+ i).innerHTML = libro7[i];
+    if (libro7[0]!=undefined){
+        document.getElementById("libro7").innerHTML = detailMayores[6];
+         for (var i = 0; i < libro7.length; i++) {
+            document.getElementById("libro7-"+ i).innerHTML = libro7[i];
+        }
     }
  }
 
@@ -483,15 +480,7 @@ function drawBalanceSumasSaldor(){
     document.getElementById("totalHaberSs").innerHTML = totalHaberSs;
     document.getElementById("totalDeudorSs").innerHTML = totalDeudorSs;
     document.getElementById("totalAcreedorSs").innerHTML = totalAcreedorSs;
-    //loadSelectionDetail()
 }
-
-// function loadSelectionDetail(){
-//     for (var i = 0; i < detailMayores.length; i++) {
-//         if(detailMayores[i]==0){return}
-//         document.getElementById("opcion-"+ i).innerHTML = detailMayores[i];
-//     }
-// }
 
 function generateHojaTrabajo(){
     hojaTrabajo = [];
@@ -526,7 +515,7 @@ function drawHojaTrabajo(){
         var utilidadNeta = totalActivoHt - totalCapitalHt;
         document.getElementById("utilidadNeta").innerHTML = utilidadNeta;
     }
-    else{
-        document.getElementById("utilidadNeta").innerHTML = "Mala seleccion";
-    }
+    // else{
+    //     document.getElementById("utilidadNeta").innerHTML = "Mala seleccion";
+    // }
 }
