@@ -194,20 +194,53 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 	</thead>
 	<tbody>
 		<tr>
-			<td><select name = "optionsAccounts" style = "width:206px;height:24px;"></select></td>
+			<td><select style = "width:206px;height:24px;"></select></td>
 	        <td><input type='text' size="30"/></td>
 	        <td><input type='text' size="30"/></td>
 		</tr>
 		<tr>
-			<td><select name = "optionsBalance" style = "width:206px;height:24px;"></select></td>
+			<td><select style = "width:206px;height:24px;"></select></td>
 	        <td><input type='text' size="30"/></td>
 	        <td><input type='text'  size="30"/></td>
 		</tr>
-		<tr >
-			<td colspan = "3"><input type='text' size="93" placeholder="Glosa" /></td>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr bgcolor="#A9E2F3">
+			 <td>Total:</td>
+			 <td id="totalDebeR"></td>
+			 <td id="totalHaberR"></td>
 		</tr>
 	</tbody>
-</table><br>
+</table>
+	<input size="93" type = "text" id="glosa" placeholder="Glosa"><br><br>
 <input type="submit" class="btn btn-info"   onclick="registerAsiento();" value="Registrar Asiento"/>
 </div><br>
 
@@ -225,6 +258,9 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			</tr>
 		</thead>
 		<tbody>
+		<tr>
+        	<td id = "asiento-1" colspan = "4" align="center"></td>
+        </tr>
 		<tr>
 			<td id = "balance-0"></td>
 			<td id = "balance-1"></td>
@@ -247,6 +283,9 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
         	<td bgcolor="#D8D8D8" id = "balance-12" colspan = "4"></td>
         </tr>
         <tr>
+        	<td id = "asiento-2" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
         	<td id = "balance-13"></td>
 	        <td id = "balance-14"></td>
 	        <td id = "balance-15"></td>
@@ -259,52 +298,205 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 	        <td id = "balance-20"></td>
         </tr>
         <tr>
-        	<td bgcolor="#D8D8D8" id = "balance-21" colspan = "4"></td>
-        </tr>
-        <tr>
-        	<td id = "balance-22"></td>
+        	<td id = "balance-21"></td>
+	        <td id = "balance-22"></td>
 	        <td id = "balance-23"></td>
 	        <td id = "balance-24"></td>
-	        <td id = "balance-25"></td>
         </tr>
         <tr>
-        	<td id = "balance-26"></td>
+        	<td id = "balance-25"></td>
+	        <td id = "balance-26"></td>
 	        <td id = "balance-27"></td>
 	        <td id = "balance-28"></td>
-	        <td id = "balance-29"></td>
         </tr>
         <tr>
-        	<td bgcolor="#D8D8D8" id = "balance-30" colspan = "4"></td>
-        </tr>
-        <tr>
-        	<td id = "balance-31"></td>
+        	<td id = "balance-29"></td>
+	        <td id = "balance-30"></td>
+	        <td id = "balance-31"></td>
 	        <td id = "balance-32"></td>
-	        <td id = "balance-33"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-33"></td>
 	        <td id = "balance-34"></td>
-        </tr>
-        <tr>
-        	<td id = "balance-35"></td>
+	        <td id = "balance-35"></td>
 	        <td id = "balance-36"></td>
-	        <td id = "balance-37"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-37"></td>
 	        <td id = "balance-38"></td>
+	        <td id = "balance-39"></td>
+	        <td id = "balance-40"></td>
         </tr>
         <tr>
-        	<td bgcolor="#D8D8D8" id = "balance-39" colspan = "4"></td>
-        </tr>
-        <tr>
-        	<td id = "balance-40"></td>
-	        <td id = "balance-41"></td>
+        	<td id = "balance-41"></td>
 	        <td id = "balance-42"></td>
 	        <td id = "balance-43"></td>
+	        <td id = "balance-44"></td>
         </tr>
         <tr>
-        	<td id = "balance-44"></td>
-	        <td id = "balance-45"></td>
-	        <td id = "balance-46"></td>
+        	<td bgcolor="#D8D8D8" id = "balance-45" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-3" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-46"></td>
 	        <td id = "balance-47"></td>
+	        <td id = "balance-48"></td>
+	        <td id = "balance-49"></td>
         </tr>
         <tr>
-        	<td bgcolor="#D8D8D8" id = "balance-48" colspan = "4"></td>
+        	<td id = "balance-50"></td>
+	        <td id = "balance-51"></td>
+	        <td id = "balance-52"></td>
+	        <td id = "balance-53"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-54"></td>
+	        <td id = "balance-55"></td>
+	        <td id = "balance-56"></td>
+	        <td id = "balance-57"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-58"></td>
+	        <td id = "balance-59"></td>
+	        <td id = "balance-60"></td>
+	        <td id = "balance-61"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-62"></td>
+	        <td id = "balance-63"></td>
+	        <td id = "balance-64"></td>
+	        <td id = "balance-65"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-66"></td>
+	        <td id = "balance-67"></td>
+	        <td id = "balance-68"></td>
+	        <td id = "balance-69"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-70"></td>
+	        <td id = "balance-71"></td>
+	        <td id = "balance-72"></td>
+	        <td id = "balance-73"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-74"></td>
+	        <td id = "balance-75"></td>
+	        <td id = "balance-76"></td>
+	        <td id = "balance-77"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-78" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-4" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-79"></td>
+	        <td id = "balance-80"></td>
+	        <td id = "balance-81"></td>
+	        <td id = "balance-82"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-83"></td>
+	        <td id = "balance-84"></td>
+	        <td id = "balance-85"></td>
+	        <td id = "balance-86"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-87"></td>
+	        <td id = "balance-88"></td>
+	        <td id = "balance-89"></td>
+	        <td id = "balance-90"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-91"></td>
+	        <td id = "balance-92"></td>
+	        <td id = "balance-93"></td>
+	        <td id = "balance-94"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-95"></td>
+	        <td id = "balance-96"></td>
+	        <td id = "balance-97"></td>
+	        <td id = "balance-98"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-99"></td>
+	        <td id = "balance-100"></td>
+	        <td id = "balance-101"></td>
+	        <td id = "balance-102"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-103"></td>
+	        <td id = "balance-104"></td>
+	        <td id = "balance-105"></td>
+	        <td id = "balance-106"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-107"></td>
+	        <td id = "balance-108"></td>
+	        <td id = "balance-109"></td>
+	        <td id = "balance-110"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-111" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-5" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-112"></td>
+	        <td id = "balance-113"></td>
+	        <td id = "balance-114"></td>
+	        <td id = "balance-115"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-116"></td>
+	        <td id = "balance-117"></td>
+	        <td id = "balance-118"></td>
+	        <td id = "balance-119"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-120"></td>
+	        <td id = "balance-121"></td>
+	        <td id = "balance-122"></td>
+	        <td id = "balance-123"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-124"></td>
+	        <td id = "balance-125"></td>
+	        <td id = "balance-126"></td>
+	        <td id = "balance-127"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-128"></td>
+	        <td id = "balance-129"></td>
+	        <td id = "balance-130"></td>
+	        <td id = "balance-131"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-132"></td>
+	        <td id = "balance-133"></td>
+	        <td id = "balance-134"></td>
+	        <td id = "balance-135"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-136"></td>
+	        <td id = "balance-137"></td>
+	        <td id = "balance-138"></td>
+	        <td id = "balance-139"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-140"></td>
+	        <td id = "balance-141"></td>
+	        <td id = "balance-142"></td>
+	        <td id = "balance-143"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-144" colspan = "4"></td>
         </tr>
 		<tr bgcolor="#A9E2F3">
 			 <td colspan = "2"><b>Total:</b></td>
@@ -315,7 +507,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 </table>
 		<h1 align="center">Libro Mayor</h1>
 	</div>
-	<input type="button" class="btn btn-info" onclick="generateLibrosMayores();" value="Generar libros Mayores" />
+	<input type="button" class="btn btn-info" onclick="drawLibrosMayores();" value="Generar libros Mayores" />
 	<u><h3 id="libro1"></h3></u>
 	<table border="1">
 	<col width="150">
@@ -337,6 +529,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			<tr><td id="libro1-5"></td><td id="libro1-6"></td><td id="libro1-7"></td><td id="libro1-8"></td><td id="libro1-9"></td></tr>
 			<tr><td id="libro1-10"></td><td id="libro1-11"></td><td id="libro1-12"></td><td id="libro1-13"></td><td id="libro1-14"></td></tr>
 			<tr><td id="libro1-15"></td><td id="libro1-16"></td><td id="libro1-17"></td><td id="libro1-18"></td><td id="libro1-19"></td></tr>
+			<tr><td id="libro1-20"></td><td id="libro1-21"></td><td id="libro1-22"></td><td id="libro1-23"></td><td id="libro1-24"></td></tr>
+			<tr><td id="libro1-25"></td><td id="libro1-26"></td><td id="libro1-27"></td><td id="libro1-28"></td><td id="libro1-29"></td></tr>
 		</tbody>
 	</table>
 	<u><h3 id="libro2"></h3></u>
@@ -360,6 +554,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			<tr><td id="libro2-5"></td><td id="libro2-6"></td><td id="libro2-7"></td><td id="libro2-8"></td><td id="libro2-9"></td></tr>
 			<tr><td id="libro2-10"></td><td id="libro2-11"></td><td id="libro2-12"></td><td id="libro2-13"></td><td id="libro2-14"></td></tr>
 			<tr><td id="libro2-15"></td><td id="libro2-16"></td><td id="libro2-17"></td><td id="libro2-18"></td><td id="libro2-19"></td></tr>
+			<tr><td id="libro2-20"></td><td id="libro2-21"></td><td id="libro2-22"></td><td id="libro2-23"></td><td id="libro2-24"></td></tr>
+			<tr><td id="libro2-25"></td><td id="libro2-26"></td><td id="libro2-27"></td><td id="libro2-28"></td><td id="libro2-29"></td></tr>
 		</tbody>
 	</table>
 	<u><h3 id="libro3"></h3></u>
@@ -383,6 +579,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			<tr><td id="libro3-5"></td><td id="libro3-6"></td><td id="libro3-7"></td><td id="libro3-8"></td><td id="libro3-9"></td></tr>
 			<tr><td id="libro3-10"></td><td id="libro3-11"></td><td id="libro3-12"></td><td id="libro3-13"></td><td id="libro3-14"></td></tr>
 			<tr><td id="libro3-15"></td><td id="libro3-16"></td><td id="libro3-17"></td><td id="libro3-18"></td><td id="libro3-19"></td></tr>
+			<tr><td id="libro3-20"></td><td id="libro3-21"></td><td id="libro3-22"></td><td id="libro3-23"></td><td id="libro3-24"></td></tr>
+			<tr><td id="libro3-25"></td><td id="libro3-26"></td><td id="libro3-27"></td><td id="libro3-28"></td><td id="libro3-29"></td></tr>
 		</tbody>
 	</table>
 	<u><h3 id="libro4"></h3></u>
@@ -406,6 +604,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			<tr><td id="libro4-5"></td><td id="libro4-6"></td><td id="libro4-7"></td><td id="libro4-8"></td><td id="libro4-9"></td></tr>
 			<tr><td id="libro4-10"></td><td id="libro4-11"></td><td id="libro4-12"></td><td id="libro4-13"></td><td id="libro4-14"></td></tr>
 			<tr><td id="libro4-15"></td><td id="libro4-16"></td><td id="libro4-17"></td><td id="libro4-18"></td><td id="libro4-19"></td></tr>
+			<tr><td id="libro4-20"></td><td id="libro4-21"></td><td id="libro4-22"></td><td id="libro4-23"></td><td id="libro4-24"></td></tr>
+			<tr><td id="libro4-25"></td><td id="libro4-26"></td><td id="libro4-27"></td><td id="libro4-28"></td><td id="libro4-29"></td></tr>
 		</tbody>
 	</table>
 	<u><h3 id="libro5"></h3></u>
@@ -429,6 +629,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			<tr><td id="libro5-5"></td><td id="libro5-6"></td><td id="libro5-7"></td><td id="libro5-8"></td><td id="libro5-9"></td></tr>
 			<tr><td id="libro5-10"></td><td id="libro5-11"></td><td id="libro5-12"></td><td id="libro5-13"></td><td id="libro5-14"></td></tr>
 			<tr><td id="libro5-15"></td><td id="libro5-16"></td><td id="libro5-17"></td><td id="libro5-18"></td><td id="libro5-19"></td></tr>
+			<tr><td id="libro5-20"></td><td id="libro5-21"></td><td id="libro5-22"></td><td id="libro5-23"></td><td id="libro5-24"></td></tr>
+			<tr><td id="libro5-25"></td><td id="libro5-26"></td><td id="libro5-27"></td><td id="libro5-28"></td><td id="libro5-29"></td></tr>
 		</tbody>
 	</table>
 	<u><h3 id="libro6"></h3></u>
@@ -452,6 +654,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			<tr><td id="libro6-5"></td><td id="libro6-6"></td><td id="libro6-7"></td><td id="libro6-8"></td><td id="libro6-9"></td></tr>
 			<tr><td id="libro6-10"></td><td id="libro6-11"></td><td id="libro6-12"></td><td id="libro6-13"></td><td id="libro6-14"></td></tr>
 			<tr><td id="libro6-15"></td><td id="libro6-16"></td><td id="libro6-17"></td><td id="libro6-18"></td><td id="libro6-19"></td></tr>
+			<tr><td id="libro6-20"></td><td id="libro6-21"></td><td id="libro6-22"></td><td id="libro6-23"></td><td id="libro6-24"></td></tr>
+			<tr><td id="libro6-25"></td><td id="libro6-26"></td><td id="libro6-27"></td><td id="libro6-28"></td><td id="libro6-29"></td></tr>
 		</tbody>
 	</table>
 	</table>
@@ -476,6 +680,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			<tr><td id="libro7-5"></td><td id="libro7-6"></td><td id="libro7-7"></td><td id="libro7-8"></td><td id="libro7-9"></td></tr>
 			<tr><td id="libro7-10"></td><td id="libro7-11"></td><td id="libro7-12"></td><td id="libro7-13"></td><td id="libro7-14"></td></tr>
 			<tr><td id="libro7-15"></td><td id="libro7-16"></td><td id="libro7-17"></td><td id="libro7-18"></td><td id="libro7-19"></td></tr>
+			<tr><td id="libro7-20"></td><td id="libro7-21"></td><td id="libro7-22"></td><td id="libro7-23"></td><td id="libro7-24"></td></tr>
+			<tr><td id="libro7-25"></td><td id="libro7-26"></td><td id="libro7-27"></td><td id="libro7-28"></td><td id="libro7-29"></td></tr>
 		</tbody>
 	</table>
 	<u><h3 id="libro8"></h3></u>
@@ -499,6 +705,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			<tr><td id="libro8-5"></td><td id="libro8-6"></td><td id="libro8-7"></td><td id="libro8-8"></td><td id="libro8-9"></td></tr>
 			<tr><td id="libro8-10"></td><td id="libro8-11"></td><td id="libro8-12"></td><td id="libro8-13"></td><td id="libro8-14"></td></tr>
 			<tr><td id="libro8-15"></td><td id="libro8-16"></td><td id="libro8-17"></td><td id="libro8-18"></td><td id="libro8-19"></td></tr>
+			<tr><td id="libro8-20"></td><td id="libro8-21"></td><td id="libro8-22"></td><td id="libro8-23"></td><td id="libro8-24"></td></tr>
+			<tr><td id="libro8-25"></td><td id="libro8-26"></td><td id="libro8-27"></td><td id="libro8-28"></td><td id="libro8-29"></td></tr>
 		</tbody>
 	</table>
 	<u><h3 id="libro9"></h3></u>
@@ -522,6 +730,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			<tr><td id="libro9-5"></td><td id="libro9-6"></td><td id="libro9-7"></td><td id="libro9-8"></td><td id="libro9-9"></td></tr>
 			<tr><td id="libro9-10"></td><td id="libro9-11"></td><td id="libro9-12"></td><td id="libro9-13"></td><td id="libro9-14"></td></tr>
 			<tr><td id="libro9-15"></td><td id="libro9-16"></td><td id="libro9-17"></td><td id="libro9-18"></td><td id="libro9-19"></td></tr>
+			<tr><td id="libro9-20"></td><td id="libro9-21"></td><td id="libro9-22"></td><td id="libro9-23"></td><td id="libro9-24"></td></tr>
+			<tr><td id="libro9-25"></td><td id="libro9-26"></td><td id="libro9-27"></td><td id="libro9-28"></td><td id="libro9-29"></td></tr>
 		</tbody>
 	</table>
 	<u><h3 id="libro10"></h3></u>
@@ -545,12 +755,14 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			<tr><td id="libro10-5"></td><td id="libro10-6"></td><td id="libro10-7"></td><td id="libro10-8"></td><td id="libro10-9"></td></tr>
 			<tr><td id="libro10-10"></td><td id="libro10-11"></td><td id="libro10-12"></td><td id="libro10-13"></td><td id="libro10-14"></td></tr>
 			<tr><td id="libro10-15"></td><td id="libro10-16"></td><td id="libro10-17"></td><td id="libro10-18"></td><td id="libro10-19"></td></tr>
+			<tr><td id="libro10-20"></td><td id="libro10-21"></td><td id="libro10-22"></td><td id="libro10-23"></td><td id="libro10-24"></td></tr>
+			<tr><td id="libro10-25"></td><td id="libro10-26"></td><td id="libro10-27"></td><td id="libro10-28"></td><td id="libro10-29"></td></tr>
 		</tbody>
 	</table>
 	<div>
 		<h1 align="center">Balance de Comprobacion de Sumas y Saldos</h1>
 	</div>
-	<input type="submit" class="btn btn-info" onclick="verifyIfLibrosMayoresAreGenerate();" value="Generar Balance de Sumas y Saldos" /><br><br>
+	<input type="submit" class="btn btn-info" onclick="generateSumasSaldos();" value="Generar Balance de Sumas y Saldos" /><br><br>
 	<table border="1">
 	<col width="230">
   	<col width="150">
@@ -585,7 +797,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 	<div>
  		<h1 align="center">Hoja de Trabajo</h1>
  	</div>
-<input type="submit" class="btn btn-info" onclick="verifyIfSumasSaldosAreGenerate();" value="Generar Hoja de Trabajo" /><br><br> 
+<input type="submit" class="btn btn-info" onclick="generateHojaTrabajo();" value="Generar Hoja de Trabajo" /><br><br> 
  <table border="1">
  	<col width="230">
   	<col width="150">
@@ -634,11 +846,18 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 			 	<td id=hoja-42></td><td id=hoja-43 ></td><td id=hoja-44 ></td><td id=hoja-45></td><td id=hoja-46 ></td><td id=hoja-47></td><td id=hoja-48 ></td>
 			 </tr>
 			 <tr bgcolor="#A9E2F3">
-			 <td><b>Total:</b></td><td id="totalDeudorHt"></td><td id="totalAcreedorHt"></td><td id="totalGastoHt"></td><td id="totalIngresoHt"></td><td id="totalActivoHt"></td><td id="totalCapitalHt"></td>
+			 <td><b>Sumas:</b></td><td id="totalDeudorHt"></td><td id="totalAcreedorHt"></td><td id="totalGastoHt"></td><td id="totalIngresoHt"></td><td id="totalActivoHt"></td><td id="totalCapitalHt"></td>
+			 </tr>
+			 <tr bgcolor="#00FF40">
+			 <td><b>Utilidad:</b><td></td><td></td></td><td id="uGastos"></td><td id="uIngresos"></td><td id="uActivo"></td><td id="uPasivo"></td>
+			 </tr>
+			 <tr>
+			 	<td><b>Total:</b></td><td></td><td></td><td id="totalGastosTs"></td>
+			 	<td id="totalIngresosTs"></td><td id="totalActivoTs"></td><td id="totalPasivoTs"></td>
 			 </tr>
 		</tbody>
 	</table>
-	<h2>Utilidad Neta: <label id="utilidadNeta"></label></h2>
+	<!-- <h2>Utilidad Neta: <label id="utilidadNeta"></label></h2> -->
 </body>	
 </html>
 

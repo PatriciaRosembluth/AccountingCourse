@@ -3,7 +3,6 @@ var inputValuesBalanceApertura;
 var inputValuesAsientoApertura;
 var balanceSumasSaldos;
 var detailMayores;
-var detailBalance;
 var totalActivo;
 var totalDebe;
 var totalHaber;
@@ -18,80 +17,11 @@ var totalGastoHt;
 var totalIngresoHt;
 var totalActivoHt;
 var totalCapitalHt;
+var glosaAsiento;
+var numberAsientos;
+var posLastAsiento;
 
-//VERIFICACIONES
-function verifyIfBalanceAperturaIsComplete(caso) {
-    switch(caso){
-        case 'balance':
-            if(isNaN(totalActivo)){ 
-                alert("Debe registrar los datos del Balace de Apertura");
-                return false;
-            }else if(totalActivo <= 0){
-                alert("El Capital y Total Activo no pueden ser menores a 0");
-                return false;
-            }else{
-                return true;
-            }
-        break;
-        case 'asiento':
-            if(totalActivo <= 0 || totalActivo === undefined || isNaN(totalActivo)){
-                alert("Debe registrar los datos del Balace de Apertura correctamente");
-                return false;
-            }else{
-                getAllValuesAsientoApertura();
-            }
-        break;
-    }
-   
-}
-
-function verifyIfAsientoAperturaIsComplete(caso) {
-    switch(caso){
-        case 'asiento':
-            if(totalDebe === 0 && totalHaber === 0){
-                alert("Debe registrar los datos del Asiento De Apertura");
-                return false;
-            }else if(totalDebe != totalHaber){
-                alert("Total Debe y Haber el Asiento de apertura deben ser iguales");
-                return false;
-            }else{
-                return true;
-             }
-        break;
-        case 'libros':
-            if(totalDebe === 0 && totalHaber === 0 || totalDebe != totalHaber){
-                alert("Total Debe y Haber el Asiento de apertura deben ser iguales y mayores a 0");
-                return false; 
-            }else if (detailMayores === undefined ){
-                alert("Debe registrar datos del Balance de Apertura");
-                return false; 
-            }else if (totalDebe != totalHaber){
-                alert("Total Debe y Haber el Asiento de apertura deben ser iguales");
-               return false; 
-            }else{
-                generateLibrosMayores();
-            }
-        break;
-    }
-}
-
-function verifyIfLibrosMayoresAreGenerate(){
-    if(detailMayores === undefined || libro1 === undefined){
-        alert("Debe generar los Libros Mayores");
-    }else{
-        generateSumasSaldos();
-    }
-}
-
-function verifyIfSumasSaldosAreGenerate(){
-    if(balanceSumasSaldos === undefined){
-        alert("Debe generar Balance Sumas de Comprobacion de Sumas y Saldos");
-    }else{
-        generateHojaTrabajo();
-    }
-}
-//END VERIFICACIONES
-
+//obtener cuentas y sus tipos
 function getAccounts(){
     detailMayores = [];
     stringTypesAccounts = [];
@@ -114,17 +44,19 @@ function getAccounts(){
         optionsAsString += "<option value='" + accounts[i] + "'>" + accounts[i] + "</option>";
     }
     $("#balanceApertura select").empty().append(optionsAsString);
-    $('select[name="optionsAccounts"]').empty().append(optionsAsString);
-    $('select[name="optionsBalance"]').empty().append(optionsAsString);
+    $('#registroAsiento select').empty().append(optionsAsString);
 }
 
 function getAllValuesBalanceApertura() {
+    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [], libro7 = [];
+    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0; saldo5 = 0, saldo6 = 0, saldo7 = 0;
     accountsBalance = [];
     amountBalance = [];
     inputValuesBalanceApertura = [];
     inputValuesAsientoApertura = [];
     detailBalance = [];
     totalActivo = 0;
+    fechaBalance = $('#dateBalance').val();
     $('#balanceApertura select').each(function() {
         if ($(this).val()==="0") {return}
          accountsBalance.push($(this).val()); 
@@ -132,16 +64,18 @@ function getAllValuesBalanceApertura() {
     $('#balanceApertura input').each(function() {
         amountBalance.push($(this).val()); 
     });
-    for (var i = 0; i <accountsBalance.length; i++) {
-       inputValuesBalanceApertura.push(accountsBalance[i]);
-       inputValuesBalanceApertura.push(amountBalance[i]); 
-    }
-    calculateTotalActivo();
-    initializeAsientoApertura();
-    document.getElementById("totalActivo").innerHTML = totalActivo;
-    document.getElementById("capital").innerHTML = totalActivo;
-    if (verifyIfBalanceAperturaIsComplete('balance')){
-        getDetailsBalanceApertura();
+    if (fechaBalance != "") {
+        for (var i = 0; i <accountsBalance.length; i++) {
+           inputValuesBalanceApertura.push(accountsBalance[i]);
+           inputValuesBalanceApertura.push(amountBalance[i]); 
+        }
+        calculateTotalActivo();
+        initializeAsientoApertura();
+        document.getElementById("totalActivo").innerHTML = totalActivo;
+        document.getElementById("capital").innerHTML = totalActivo;
+    }else{
+        alert("Ingrese la fecha de incio de actividades");
+        return;
     }
 }
 
@@ -154,8 +88,11 @@ function calculateTotalActivo(){
 }
 
 function initializeAsientoApertura(){
+    numberAsientos = 0;
     totalDebe = totalActivo;
     totalHaber = totalActivo;
+    glosaAsiento = 12;
+    posLastAsiento = 13;
     fechaBalance = $('#dateBalance').val();
     for (var i = 0; i < inputValuesBalanceApertura.length; i=i+2) {
         inputValuesAsientoApertura.push(fechaBalance);
@@ -170,48 +107,80 @@ function initializeAsientoApertura(){
         }
     }
     inputValuesAsientoApertura.push("Inicio de actividades");
-    drawAsientoApertura();
+    numberAsientos++;
+    document.getElementById("asiento-"+numberAsientos).innerHTML = "A-" + numberAsientos;
+    drawAsientoApertura(0,inputValuesAsientoApertura.length);
+    generateLibrosMayores(inputValuesAsientoApertura);
 }
 
-function drawAsientoApertura(){
-    for (var i = 0; i < inputValuesAsientoApertura.length; i++) {
-        document.getElementById("balance-"+ i).innerHTML = inputValuesAsientoApertura[i];   
+function drawAsientoApertura(inicio,bloque){
+    j=0;
+    for (var i = inicio; i < bloque-1; i++) {
+        document.getElementById("balance-"+ i).innerHTML = inputValuesAsientoApertura[j];
+        j++;   
     }
+    document.getElementById("balance-"+ glosaAsiento).innerHTML = inputValuesAsientoApertura[inputValuesAsientoApertura.length-1]; 
     document.getElementById("totalDebe").innerHTML = totalDebe;
     document.getElementById("totalHaber").innerHTML = totalHaber;
-}
-
-
-function getDetailsBalanceApertura(){
-    for (var j = 0 ; j<inputValuesBalanceApertura.length; j = j+2) {
-        detailBalance.push(inputValuesBalanceApertura[j]);
-    }
+    posLastAsiento = glosaAsiento+1;
+    glosaAsiento+=33;
 }
 
 function registerAsiento(){
+    inputValuesAsientoApertura = [];
     fechaAsiento = $('#dateAsiento').val();
-    registroAsiento = [];
-    detailAsiento = [];
+    glosa = $('#glosa').val();
+    amountAsiento = [];
+    accountAsiento = [];
+    indexAsiento = 0;
     j=0;
-    $('#registroAsiento input').each(function() {
-        registroAsiento.push($(this).val()); 
-    });
     $('#registroAsiento select').each(function() {
-         detailAsiento.push($(this).val()); 
+        if ($(this).val()!= "0"){
+            accountAsiento.push($(this).val()); 
+            indexAsiento++;
+        }
     });
-   for (var i = 0; i < registroAsiento.length-1; i=i+2) {
-    inputValuesAsientoApertura.push(fechaAsiento);
-    inputValuesAsientoApertura.push(detailAsiento[j]);
-    inputValuesAsientoApertura.push(registroAsiento[i]);
-    inputValuesAsientoApertura.push(registroAsiento[i+1]);
-    j++;
-   }
-   inputValuesAsientoApertura.push(registroAsiento[registroAsiento.length-1]);
-   setSpaceFromArray();
-   getTotalDebeYhaber(registroAsiento);
-   drawAsientoApertura();
-   $('#dateAsiento').val("");
-   $('#registroAsiento input').each(function() {
+    indexAsiento *=2;
+    $('#registroAsiento input').each(function() {
+        if (indexAsiento != 0) {
+            amountAsiento.push($(this).val()); 
+            indexAsiento--;
+        }
+    });
+
+    if(getTotalDebeYhaber(amountAsiento)){
+        if (fechaAsiento!= "") {
+            if (glosa != "") {
+                for (var i = 0; i < amountAsiento.length-1; i=i+2) {
+                    inputValuesAsientoApertura.push(fechaAsiento);
+                    inputValuesAsientoApertura.push(accountAsiento[j]);
+                    inputValuesAsientoApertura.push(amountAsiento[i]);
+                    inputValuesAsientoApertura.push(amountAsiento[i+1]);
+                    j++;
+                }
+                inputValuesAsientoApertura.push(glosa);
+                setSpaceFromArray();
+                numberAsientos++;
+                document.getElementById("asiento-"+numberAsientos).innerHTML = "A-" + numberAsientos;
+                generateLibrosMayores(inputValuesAsientoApertura);
+                bloque = posLastAsiento + inputValuesAsientoApertura.length;
+                drawAsientoApertura(posLastAsiento,bloque);
+            }else{
+                alert("Debe poner glosa al asiento");
+                return;
+            }
+        }else{
+            alert("Debe poner fecha de inicio a al asiento");
+            return;
+        }
+    }else{
+        return;
+    }
+    $('#dateAsiento').val("");
+    $('#glosa').val("");
+    document.getElementById("totalDebeR").innerHTML = "";
+    document.getElementById("totalHaberR").innerHTML = "";
+    $('#registroAsiento input').each(function() {
         $(this).val("");
     });
     $('#registroAsiento select').each(function() {
@@ -228,139 +197,117 @@ function setSpaceFromArray(){
 }
 
 function getTotalDebeYhaber(debeHaber){
+    totalDebeR = 0;
+    totalHaberR = 0;
     for (var i = 0; i < debeHaber.length-1; i=i+2) {
         var value = debeHaber[i];
-        if(value != 0){
-            totalDebe += parseInt(debeHaber[i]);    
+        if(value != ""){
+            totalDebeR += parseInt(debeHaber[i]);    
         }else{
             i++;
-            totalHaber += parseInt(debeHaber[i]);
+            totalHaberR += parseInt(debeHaber[i]);
             i--;   
         }
     }
+    document.getElementById("totalDebeR").innerHTML = totalDebeR;
+    document.getElementById("totalHaberR").innerHTML = totalHaberR;
+    if(totalDebeR===totalHaberR){
+        totalHaber+=totalHaberR;
+        totalDebe+=totalDebeR;
+        return true;
+    }else{
+        alert("Total Debe y Haber del registro deben ser iguales");
+        return false;
+    }
 }
 
-function generateLibrosMayores(){
-    var inicio = (detailBalance.length * 4) + 1;
-    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [], libro7 = [];
-    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0; saldo5 = 0, saldo6 = 0, saldo7 = 0;
-    initializeLibrosMayores(detailBalance.length * 4);
-    var q = inicio;
-    for (var p = q; p < inputValuesAsientoApertura.length; p = p+9 ) {
-        var bloque = inicio+7;
-        detalle = inputValuesAsientoApertura[bloque+1]; 
-        for (var r = inicio + 1; r < bloque; r = r+4) {
-            var libro = findLibro(inputValuesAsientoApertura[r]);
-            switch (libro) {
-                case 1:
-                    libro1.push(inputValuesAsientoApertura[r-1]);
-                    libro1.push(detalle);
-                    libro1.push(inputValuesAsientoApertura[r+1]);
-                    libro1.push(inputValuesAsientoApertura[r+2]);
-                    calculateSaldo(1,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
-                    libro1.push(saldo1);
-                    break;
-                case 2:
-                    libro2.push(inputValuesAsientoApertura[r-1]);
-                    libro2.push(detalle);
-                    libro2.push(inputValuesAsientoApertura[r+1]);
-                    libro2.push(inputValuesAsientoApertura[r+2]);
-                    calculateSaldo(2,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
-                    libro2.push(saldo2);
-                    break;
-                case 3:
-                    libro3.push(inputValuesAsientoApertura[r-1]);
-                    libro3.push(detalle);
-                    libro3.push(inputValuesAsientoApertura[r+1]);
-                    libro3.push(inputValuesAsientoApertura[r+2]);
-                    calculateSaldo(3,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
-                    libro3.push(saldo3);
-                    break;
-                case 4:
-                    libro4.push(inputValuesAsientoApertura[r-1]);
-                    libro4.push(detalle);
-                    libro4.push(inputValuesAsientoApertura[r+1]);
-                    libro4.push(inputValuesAsientoApertura[r+2]);
-                    calculateSaldo(4,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
-                    libro4.push(saldo4);
-                    break;
-                case 5:
-                    libro5.push(inputValuesAsientoApertura[r-1]);
-                    libro5.push(detalle);
-                    libro5.push(inputValuesAsientoApertura[r+1]);
-                    libro5.push(inputValuesAsientoApertura[r+2]);
-                    calculateSaldo(5,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
-                    libro5.push(saldo5);
-                    break;
-                case 6:
-                    libro6.push(inputValuesAsientoApertura[r-1]);
-                    libro6.push(detalle);
-                    libro6.push(inputValuesAsientoApertura[r+1]);
-                    libro6.push(inputValuesAsientoApertura[r+2]);
-                    calculateSaldo(6,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
-                    libro6.push(saldo6);
-                    break;
-                case 7:
-                    libro7.push(inputValuesAsientoApertura[r-1]);
-                    libro7.push(detalle);
-                    libro7.push(inputValuesAsientoApertura[r+1]);
-                    libro7.push(inputValuesAsientoApertura[r+2]);
-                    calculateSaldo(7,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
-                    libro7.push(saldo7);
-                    break;
-                 case 8:
-                    libro8.push(inputValuesAsientoApertura[r-1]);
-                    libro8.push(detalle);
-                    libro8.push(inputValuesAsientoApertura[r+1]);
-                    libro8.push(inputValuesAsientoApertura[r+2]);
-                    calculateSaldo(8,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
-                    libro8.push(saldo8);
-                    break;
-                 case 9:
-                    libro9.push(inputValuesAsientoApertura[r-1]);
-                    libro9.push(detalle);
-                    libro9.push(inputValuesAsientoApertura[r+1]);
-                    libro9.push(inputValuesAsientoApertura[r+2]);
-                    calculateSaldo(9,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
-                    libro9.push(saldo9);
-                    break;
-                 case 10:
-                    libro10.push(inputValuesAsientoApertura[r-1]);
-                    libro10.push(detalle);
-                    libro10.push(inputValuesAsientoApertura[r+1]);
-                    libro10.push(inputValuesAsientoApertura[r+2]);
-                    calculateSaldo(10,inputValuesAsientoApertura[r+1],inputValuesAsientoApertura[r+2]);
-                    libro10.push(saldo10);
-                    break;
-            }
-        }
-        inicio = bloque + 2;
-    }
-    drawLibrosMayores();
- }
-
- function initializeLibrosMayores(inicio){
-    for (var m = 0 ; m < detailBalance.length + 1; m++) {
-        if(m>1){
-            calculateSaldo(1,inputValuesAsientoApertura[m],0);
-            calculateSaldo(2,inputValuesAsientoApertura[m+4],0);
-            calculateSaldo(3,inputValuesAsientoApertura[m+8],0);
-            libro1.push(inputValuesAsientoApertura[m]);
-            libro2.push(inputValuesAsientoApertura[m+4]);
-            libro3.push(inputValuesAsientoApertura[m+8]);  
-        }else if(m===1){
-            libro1.push(inputValuesAsientoApertura[inicio]);
-            libro2.push(inputValuesAsientoApertura[inicio]);
-            libro3.push(inputValuesAsientoApertura[inicio]);
-        }else{
-            libro1.push(inputValuesAsientoApertura[m]);
-            libro2.push(inputValuesAsientoApertura[m+4]);
-            libro3.push(inputValuesAsientoApertura[m+8]);     
+function generateLibrosMayores(values){
+    detalle = values[values.length-1];
+    for (var r = 0; r < values.length-1; r+=4) {
+        var libro = findLibro(inputValuesAsientoApertura[r+1]);
+        switch (libro) {
+            case 1:
+                libro1.push(values[r]);
+                libro1.push(detalle);
+                libro1.push(values[r+2]);
+                libro1.push(values[r+3]);
+                calculateSaldo(1,values[r+2],values[r+3]);
+                libro1.push(saldo1);
+            break;
+            case 2:
+                libro2.push(values[r]);
+                libro2.push(detalle);
+                libro2.push(values[r+2]);
+                libro2.push(values[r+3]);
+                calculateSaldo(2,values[r+2],values[r+3]);
+                libro2.push(saldo2);
+            break;
+            case 3:
+                libro3.push(values[r]);
+                libro3.push(detalle);
+                libro3.push(values[r+2]);
+                libro3.push(values[r+3]);
+                calculateSaldo(3,values[r+2],values[r+3]);
+                libro3.push(saldo3);
+            break;
+            case 4:
+                libro4.push(values[r]);
+                libro4.push(detalle);
+                libro4.push(values[r+2]);
+                libro4.push(values[r+3]);
+                calculateSaldo(4,values[r+2],values[r+3]);
+                libro4.push(saldo4);
+            break;
+            case 5:
+                libro5.push(values[r]);
+                libro5.push(detalle);
+                libro5.push(values[r+2]);
+                libro5.push(values[r+3]);
+                calculateSaldo(5,values[r+2],values[r+3]);
+                libro5.push(saldo5);
+            break;
+            case 6:
+                libro6.push(values[r]);
+                libro6.push(detalle);
+                libro6.push(values[r+2]);
+                libro6.push(values[r+3]);
+                calculateSaldo(6,values[r+2],values[r+3]);
+                libro6.push(saldo6);
+            break;
+            case 7:
+                libro7.push(values[r]);
+                libro7.push(detalle);
+                libro7.push(values[r+2]);
+                libro7.push(values[r+3]);
+                calculateSaldo(7,values[r+2],values[r+3]);
+                libro7.push(saldo7);
+            break;
+            case 8:
+                libro8.push(values[r]);
+                libro8.push(detalle);
+                libro8.push(values[r+2]);
+                libro8.push(values[r+3]);
+                calculateSaldo(8,values[r+2],values[r+3]);
+                libro8.push(saldo8);
+            break;
+            case 9:
+                libro9.push(values[r]);
+                libro9.push(detalle);
+                libro9.push(values[r+2]);
+                libro9.push(values[r+3]);
+                calculateSaldo(9,values[r+2],values[r+3]);
+                libro9.push(saldo9);
+            break;
+            case 10:
+                libro10.push(values[r]);
+                libro10.push(detalle);
+                libro10.push(values[r+2]);
+                libro10.push(values[r+3]);
+                calculateSaldo(10,values[r+2],values[r+3]);
+                libro10.push(saldo10);
+             break;
         }
     }
-    libro1.push(saldo1);
-    libro2.push(saldo2);
-    libro3.push(saldo3); 
  }
 
  function calculateSaldo(saldo,AmountDebe, AmountHaber){
@@ -517,15 +464,17 @@ function calculateDebeHaberLibro(libro,detalle){
     balanceSumasSaldos.push(totalH);
     totalDebeSs += totalD;
     totalHaberSs += totalH;
-    if (totalD>totalH) {
-        balanceSumasSaldos.push(libro[libro.length-1]);
+    resultado = totalD - totalH;
+    if (resultado >= 0) {
+        balanceSumasSaldos.push(resultado);
         balanceSumasSaldos.push(0);
-        totalDeudorSs += libro[libro.length-1];
+        totalDeudorSs += resultado;
          
     }else{
+        resultado*=-1;
         balanceSumasSaldos.push(0);
-        balanceSumasSaldos.push(libro[libro.length-1]);
-        totalAcreedorSs += libro[libro.length-1];
+        balanceSumasSaldos.push(resultado);
+        totalAcreedorSs += resultado;
     }
 }
 
@@ -568,11 +517,21 @@ function drawHojaTrabajo(){
     document.getElementById("totalIngresoHt").innerHTML = totalIngresoHt;
     document.getElementById("totalActivoHt").innerHTML = totalActivoHt;
     document.getElementById("totalCapitalHt").innerHTML = totalCapitalHt;
-    if (totalIngresoHt - totalGastoHt === totalActivoHt - totalCapitalHt) {
-        var utilidadNeta = totalActivoHt - totalCapitalHt;
-        document.getElementById("utilidadNeta").innerHTML = utilidadNeta;
+    utilidadNeta = totalIngresoHt - totalGastoHt;
+    if (utilidadNeta >= 0) {
+        document.getElementById("uGastos").innerHTML = utilidadNeta;
+        document.getElementById("uPasivo").innerHTML = utilidadNeta;
+        document.getElementById("totalGastosTs").innerHTML = totalGastoHt + utilidadNeta;
+        document.getElementById("totalIngresosTs").innerHTML = totalIngresoHt;
+        document.getElementById("totalActivoTs").innerHTML = totalActivoHt;
+        document.getElementById("totalPasivoTs").innerHTML = totalCapitalHt + utilidadNeta;
+    }else{
+        utilidadNeta*=-1;
+        document.getElementById("uIngresos").innerHTML = utilidadNeta;
+        document.getElementById("uActivo").innerHTML = utilidadNeta;
+        document.getElementById("totalGastosTs").innerHTML = totalGastoHt;
+        document.getElementById("totalIngresosTs").innerHTML = totalIngresoHt + utilidadNeta;
+        document.getElementById("totalActivoTs").innerHTML = totalActivoHt + utilidadNeta;
+        document.getElementById("totalPasivoTs").innerHTML = totalCapitalHt;
     }
-    // else{
-    //     document.getElementById("utilidadNeta").innerHTML = "Mala seleccion";
-    // }
 }
