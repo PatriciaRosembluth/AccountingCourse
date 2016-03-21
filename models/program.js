@@ -6,8 +6,8 @@ var detailMayores;
 var totalActivo;
 var totalDebe;
 var totalHaber;
-var libro1, libro2, libro3, libro4, libro5, libro6, libro7;
-var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7;
+var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10;
+var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10;
 var totalDebeSs;
 var totalHaberSs;
 var totalDeudorSs;
@@ -48,8 +48,8 @@ function getAccounts(){
 }
 
 function getAllValuesBalanceApertura() {
-    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [], libro7 = [];
-    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0; saldo5 = 0, saldo6 = 0, saldo7 = 0;
+    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [], libro7 = [], libro8 = [], libro9 = [], libro10 = [];
+    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0; saldo5 = 0, saldo6 = 0, saldo7 = 0, saldo8 = 0, saldo9 = 0, saldo10 = 0;
     accountsBalance = [];
     amountBalance = [];
     inputValuesBalanceApertura = [];
