@@ -314,43 +314,33 @@ function generateLibrosMayores(values){
     switch (saldo) {
         case 1:
             saldo1 = saldo1 + parseInt(AmountDebe) - parseInt(AmountHaber);
-            if (saldo1 < 0) {saldo1*=-1}
             break;
         case 2:
             saldo2 = saldo2 + parseInt(AmountDebe) - parseInt(AmountHaber);
-            if (saldo2 < 0) {saldo2*=-1}
             break;
         case 3:
             saldo3 = saldo3 + parseInt(AmountDebe) - parseInt(AmountHaber);
-            if (saldo3 < 0) {saldo3*=-1}
             break;    
         case 4:
             saldo4 = saldo4 + parseInt(AmountDebe) - parseInt(AmountHaber);
-            if (saldo4 < 0) {saldo4*=-1}
             break;
         case 5:
             saldo5 = saldo5 + parseInt(AmountDebe) - parseInt(AmountHaber);
-            if (saldo5 < 0) {saldo5*=-1}
             break;
         case 6:
             saldo6 = saldo6 + parseInt(AmountDebe) - parseInt(AmountHaber);
-            if (saldo6 < 0) {saldo6*=-1}
             break;
         case 7:
             saldo7 = saldo7 + parseInt(AmountDebe) - parseInt(AmountHaber);
-            if (saldo7 < 0) {saldo7*=-1}
             break;
         case 8:
             saldo8 = saldo8 + parseInt(AmountDebe) - parseInt(AmountHaber);
-            if (saldo8 < 0) {saldo8*=-1}
             break;
         case 9:
             saldo9 = saldo9 + parseInt(AmountDebe) - parseInt(AmountHaber);
-            if (saldo9 < 0) {saldo9*=-1}
             break;
         case 10:
             saldo10 = saldo10 + parseInt(AmountDebe) - parseInt(AmountHaber);
-            if (saldo10 < 0) {saldo10*=-1}
             break;
     }
  }
@@ -498,16 +488,28 @@ function generateHojaTrabajo(){
         hojaTrabajo.push(balanceSumasSaldos[i+3]);
         hojaTrabajo.push(balanceSumasSaldos[i+4]);
         if (balanceSumasSaldos[i+3] != 0) {valor = balanceSumasSaldos[i+3];}else{valor = balanceSumasSaldos[i+4];}
-        if (accounts[j] === "A") {hojaTrabajo.push(0,0,valor,0); totalActivoHt+=valor;}
-        if (accounts[j] === "P" || accounts[j] === "C") {hojaTrabajo.push(0,0,0,valor); totalCapitalHt+=valor;}
-        if (accounts[j] === "G") {hojaTrabajo.push(valor,0,0,0); totalGastoHt+=valor;}
-        if (accounts[j] === "I") {hojaTrabajo.push(0,valor,0,0);totalIngresoHt+=valor;}
+        if (getTypeAccount(balanceSumasSaldos[i]) === "A") {hojaTrabajo.push(0,0,valor,0); totalActivoHt+=valor;}
+        if (getTypeAccount(balanceSumasSaldos[i]) === "P" || getTypeAccount(balanceSumasSaldos[i]) === "C") {hojaTrabajo.push(0,0,0,valor); totalCapitalHt+=valor;}
+        if (getTypeAccount(balanceSumasSaldos[i]) === "G") {hojaTrabajo.push(valor,0,0,0); totalGastoHt+=valor;}
+        if (getTypeAccount(balanceSumasSaldos[i]) === "I") {hojaTrabajo.push(0,valor,0,0);totalIngresoHt+=valor;}
         j=j+2;
     }
     drawHojaTrabajo();
 }
 
+function getTypeAccount(account){
+    for (var i = 0; i < accounts.length; i++) {
+        if (account === accounts[i]) {
+            return accounts[i+1];
+        }
+    }
+}
+
 function drawHojaTrabajo(){
+     $('#uGastos').val("");
+     $('#uIngresos').val("");
+     $('#uActivo').val("");
+     $('#uPasivo').val("");
     for (var i = 0; i < hojaTrabajo.length; i++) {
         document.getElementById("hoja-"+ i).innerHTML = hojaTrabajo[i];
     }
