@@ -1,56 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Accounting Course</title>
-	<link rel="shorcut icon" href="/AccountingCourse/img/favicon.png">
-	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<link rel="stylesheet" href="/AccountingCourse/css/responsiveslides.css">
-	<script src="/AccountingCourse/models/responsiveslides.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("#slider-home").responsiveSlides({	
-				speed:800,		
-				nav: true,
-				namespace: 'slid-btns',
-				titleAnimation: 'bounceIn'
-			});
-		});
-	</script>
+  <title>Indice</title>
+  <link rel="shorcut icon" href="/AccountingCourse/img/favicon.png">
+  <link rel="stylesheet" href="/AccountingCourse/css/index.css">
 </head>
 <body>
-<header class="cabecera">
-	<div class="container clearfix">
-		<div class="logo">
-			<img src="/AccountingCourse/img/logo.png">
-		</div>
-		<nav class="menu">
-			<ul>
-			 <li class="active"><a href="#">Home</a></li>
-			 <li><a href="menu.html">Iniciar</a></li>
-			 <li><a href="#">Conceptos</a></li>
-			</ul>
-		</nav>
-	</div>
-</header>
-<div class="slider">
-    <ul class="rslides" id="slider-home">
-      <li>
-        <img src="img/11.jpg" alt="">
-        
-      </li>
-      <li>
-        <img src="img/12.jpg" alt="">
-        
-      </li>
-      <li>
-        <img src="img/13.jpg" alt="">
-        
-      </li>
-    </ul>
-</div>
+<center>  
+  <h1>Accounting Course</h1><br><br><br><br><br><br>
+  <button class="sleeve" onclick="location.href='excercise.html';">
+    Ejercicio
+    <span class="insert ejercicio">Iniciar</span>
+  </button>
+  <button class="sleeve">
+    Conceptos
+    <span class="insert conceptos">Ver</span>
+  </button>
+  <button class="sleeve">
+    Tutorial
+    <span class="insert tutorial">Reproducir</span>
+  </button>
+  <br><br>
+</center>
 </body>
 </html>

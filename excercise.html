@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Basico</title>
+	<title>Ejercicio</title>
 	<link rel="shorcut icon" href="/AccountingCourse/img/favicon.png">
 	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
@@ -19,10 +19,9 @@
 	</div>
 </header>
 <div>
-	<h2 align="center">Cuentas</h2>
+	<b><h1 align="center">Cuentas</h1></b>
 </div>
-<p>*Ingrese la cuentas que utilizara en el ejercicio</p>
-<table border="1" id="accounts">
+<table class="inputtable" id="accounts">
  	<col width="150">
   	<col width="150">
   	<thead>
@@ -144,7 +143,7 @@
 	</tr>
 	</tbody>	
 </table><br>
-<input type="submit" class="btn btn-info" onclick="getAccounts();" value="Registrar Cuentas" /><br><br>
+<button onclick="getAccounts();">Registrar Cuentas</button>
 <div>
 	<h2 align="center">Empresa X</h2>
 	<h1 align="center">Balance de Apertura</h1>
@@ -152,7 +151,7 @@
 </div>
 Fecha inicio actividades: <input style = "height:24px;width:235px;" type = "date" id = "dateBalance">
 <u><h2>Activo</h2></u>
-<table class="table table-bordered" id="balanceApertura">
+<table class="inputtable" id="balanceApertura">
 	<col width="200">
  	<col width="150">			
 		<thead>
@@ -173,7 +172,7 @@ Fecha inicio actividades: <input style = "height:24px;width:235px;" type = "date
 		</tbody>
 	</table>
 	<br>
-	<input type="submit" class="btn btn-info" onclick="getAllValuesBalanceApertura();" value="Registrar balance"/>
+	<button onclick="getAllValuesBalanceApertura();">Registrar balance</button><br><br>
 	<h2>Total Activo: <label id="totalActivo"></label></h2>
 	<h3><u><strong>Capital</strong></u></h3>
 	<h2>Capital: <label id="capital"></label></h2>
@@ -184,7 +183,7 @@ Fecha inicio actividades: <input style = "height:24px;width:235px;" type = "date
 
 <div align="center">
 Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="dateAsiento"><br><br>
-<table class="table table-bordered" id = "registroAsiento">
+<table class="inputtable" id = "registroAsiento">
 	<thead>
 		<tr>
 			<th>Detalle</th>
@@ -240,11 +239,11 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 		</tr>
 	</tbody>
 </table>
-	<input size="93" type = "text" id="glosa" placeholder="Glosa"><br><br>
-<input type="submit" class="btn btn-info"   onclick="registerAsiento();" value="Registrar Asiento"/>
+<input size="93" type = "text" id="glosa" placeholder="Glosa"><br><br>
+<button onclick="registerAsiento();">Registrar Asiento</button>
 </div><br>
 
-<table class="table table-bordered" id="asientoApertura" border="1" align="center">
+<table class="showtable" id="asientoApertura" border="1" align="center">
 	<col width="230">
   	<col width="150">
   	<col width="150">
@@ -507,9 +506,9 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 </table>
 		<h1 align="center">Libro Mayor</h1>
 	</div>
-	<input type="button" class="btn btn-info" onclick="drawLibrosMayores();" value="Generar libros Mayores" />
+	<button onclick="drawLibrosMayores();">Generar libros Mayores</button>
 	<u><h3 id="libro1"></h3></u>
-	<table border="1">
+	<table class="showtable">
 	<col width="150">
 	<col width="230">
   	<col width="150">
@@ -534,7 +533,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 		</tbody>
 	</table>
 	<u><h3 id="libro2"></h3></u>
-	<table border="1">
+	<table class="showtable">
 	<col width="150">
 	<col width="230">
   	<col width="150">
@@ -559,7 +558,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 		</tbody>
 	</table>
 	<u><h3 id="libro3"></h3></u>
-	<table border="1">
+	<table class="showtable">
 	<col width="150">
 	<col width="230">
   	<col width="150">
@@ -584,7 +583,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 		</tbody>
 	</table>
 	<u><h3 id="libro4"></h3></u>
-	<table border="1">
+	<table class="showtable">
 	<col width="150">
 	<col width="230">
   	<col width="150">
@@ -609,7 +608,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 		</tbody>
 	</table>
 	<u><h3 id="libro5"></h3></u>
-	<table border="1">
+	<table class="showtable">
 	<col width="150">
 	<col width="230">
   	<col width="150">
@@ -634,7 +633,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 		</tbody>
 	</table>
 	<u><h3 id="libro6"></h3></u>
-	<table border="1">
+	<table class="showtable">
 	<col width="150">
 	<col width="230">
   	<col width="150">
@@ -660,7 +659,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 	</table>
 	</table>
 	<u><h3 id="libro7"></h3></u>
-	<table border="1">
+	<table class="showtable">
 	<col width="150">
 	<col width="230">
   	<col width="150">
@@ -685,7 +684,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 		</tbody>
 	</table>
 	<u><h3 id="libro8"></h3></u>
-	<table border="1">
+	<table class="showtable">
 	<col width="150">
 	<col width="230">
   	<col width="150">
@@ -710,7 +709,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 		</tbody>
 	</table>
 	<u><h3 id="libro9"></h3></u>
-	<table border="1">
+	<table class="showtable">
 	<col width="150">
 	<col width="230">
   	<col width="150">
@@ -735,7 +734,7 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 		</tbody>
 	</table>
 	<u><h3 id="libro10"></h3></u>
-	<table border="1">
+	<table class="showtable">
 	<col width="150">
 	<col width="230">
   	<col width="150">
@@ -762,8 +761,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 	<div>
 		<h1 align="center">Balance de Comprobacion de Sumas y Saldos</h1>
 	</div>
-	<input type="submit" class="btn btn-info" onclick="generateSumasSaldos();" value="Generar Balance de Sumas y Saldos" /><br><br>
-	<table border="1">
+	<button onclick="generateSumasSaldos();">Generar Balance de Sumas y Saldos</button><br><br>
+	<table class="showtable">
 	<col width="230">
   	<col width="150">
   	<col width="150">
@@ -798,8 +797,8 @@ Fecha del asiento: <input style = "height:24px;width:235px;" type = "date" id="d
 	<div>
  		<h1 align="center">Hoja de Trabajo</h1>
  	</div>
-<input type="submit" class="btn btn-info" onclick="generateHojaTrabajo();" value="Generar Hoja de Trabajo" /><br><br> 
- <table border="1">
+ 	<button onclick="generateHojaTrabajo();">Generar Hoja de Trabajo</button><br><br> 
+ <table class="showtable">
  	<col width="230">
   	<col width="150">
   	<col width="150">
