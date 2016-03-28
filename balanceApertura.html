@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Balance de Apertura</title>
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="/AccountingCourse/models/balanceApertura.js"></script>
+</head>
+<body>
+<header class="cabecera">
+	<div class="container clearfix">
+		<div class="logo">
+			<a href="index.html"><img src="/AccountingCourse/img/logo.png"></a>
+		</div>
+	</div>
+</header>
+<div align="center">
+	<h2>Empresa X</h2>
+	<h1>Balance de Apertura</h1>
+	<h2>En bolivianos</h2>
+</div>
+<b>Fecha inicio actividades:  </b><input style = "height:24px;width:235px;" type = "date" id = "dateBalance">
+<u><h2>Activo</h2></u>
+<table class="inputtable" id="balanceApertura">
+	<col width="200">
+ 	<col width="150">			
+		<thead>
+			<tr>
+				<th>Detalle</th>
+				<th>Monto</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+		        <td><select style = "width:200px;height:24px;"></select></td>
+		        <td><input type='text'/></td>
+	        </tr>
+	        <tr>
+		        <td><select style = "width:200px;height:24px;"></select></td>
+		        <td><input type='text'/></td>
+	        </tr>
+		</tbody>
+	</table>
+	<br>
+	<button onclick="getAllValuesBalanceApertura();">Registrar balance</button><br><br>
+	<h2>Total Activo: <label id="totalActivo"></label></h2>
+	<h3><u><strong>Capital</strong></u></h3>
+	<h2>Capital: <label id="capital"></label></h2><br><br>
+	<a href="asientoApertura.html">Asiento Apertura</a>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Balance de Comprobacion de Sumas y Saldos</title>
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="/AccountingCourse/models/sumasSaldos.js"></script>
+</head>
+<body>
+<header class="cabecera">
+	<div class="container clearfix">
+		<div class="logo">
+			<a href="index.html"><img src="/AccountingCourse/img/logo.png"></a>
+		</div>
+	</div>
+</header>
+
+<div>
+		<h1 align="center">Balance de Comprobacion de Sumas y Saldos</h1>
+	</div>
+	<button onclick="generateSumasSaldos();">Generar Balance de Sumas y Saldos</button><br><br>
+	<table class="showtable">
+	<col width="230">
+  	<col width="150">
+  	<col width="150">
+  	<col width="150">
+  	<col width="150">	
+  	<thead>		
+		<tr>
+    		<th>Detalle</th>
+    		<th colspan="2">Sumas</th>
+			<th colspan="2">Saldos</th>
+  		</tr>
+  		<tr align="center">
+    		<td></td>
+    		<td>Debe</td>
+    		<td>Haber</td>
+		    <td>Deudor</td>
+		    <td>Acreedor</td>
+  		</tr>
+  	<thead>
+		<tbody>
+		 <tr>
+		 	<td id = registro-0></td><td id= registro-1></td><td id= registro-2></td><td id=registro-3 ></td><td id=registro-4 ></td>
+		 </tr>
+		 <tr>
+		 	<td id = registro-5></td><td id= registro-6></td><td id= registro-7></td><td id=registro-8 ></td><td id=registro-9 ></td>
+		 </tr>
+		 <tr>
+		 	<td id = registro-10></td><td id= registro-11></td><td id= registro-12></td><td id=registro-13 ></td><td id=registro-14 ></td>
+		 </tr>
+		 <tr>
+		 	<td id = registro-15></td><td id= registro-16></td><td id= registro-17></td><td id=registro-18 ></td><td id=registro-19 ></td>
+		 </tr>
+		 <tr>
+		 	<td id = registro-20></td><td id= registro-21></td><td id= registro-22></td><td id=registro-23 ></td><td id=registro-24 ></td>
+		 </tr>
+		 <tr>
+		 	<td id = registro-25></td><td id= registro-26></td><td id= registro-27></td><td id=registro-28 ></td><td id=registro-29 ></td>
+		 </tr>
+		 <tr>
+		 	<td id = registro-30></td><td id= registro-31></td><td id= registro-32></td><td id=registro-33 ></td><td id=registro-34 ></td>
+		 </tr>
+		 <tr>
+		 	<td id = registro-35></td><td id= registro-36></td><td id= registro-37></td><td id=registro-38 ></td><td id=registro-39 ></td>
+		 </tr>
+		 <tr>
+		 	<td id = registro-40></td><td id= registro-41></td><td id= registro-42></td><td id=registro-43 ></td><td id=registro-44 ></td>
+		 </tr>
+		 <tr>
+		 	<td id = registro-45></td><td id= registro-46></td><td id= registro-47></td><td id=registro-48 ></td><td id=registro-49 ></td>
+		 </tr>
+		 <tr bgcolor="#A9E2F3">
+		 	<td><b>Total:</b></td><td id="totalDebeSs"></td><td id="totalHaberSs"></td><td id="totalDeudorSs"></td><td id="totalAcreedorSs"></td>
+		 </tr>
+		</tbody>
+	</table>
+	<a href="hojaTrabajo.html">Hoja de Trabajo</a>
+
+</body>
+</html>

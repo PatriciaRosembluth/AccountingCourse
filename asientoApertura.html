@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Asiento de Apertura</title>
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="/AccountingCourse/models/asientoApertura.js"></script>
+</head>
+<body>
+<header class="cabecera">
+	<div class="container clearfix">
+		<div class="logo">
+			<a href="index.html"><img src="/AccountingCourse/img/logo.png"></a>
+		</div>
+	</div>
+</header>
+<div align="center">
+	<h1>Asiento de Apertura</h1>
+	<h1>Libro diario</h1>
+</div>
+
+<div align="center">
+<b>Fecha del asiento: </b><input style = "height:24px;width:235px;" type = "date" id="dateAsiento"><br><br>
+<table class="inputtable" id = "registroAsiento">
+	<thead>
+		<tr>
+			<th>Detalle</th>
+			<th>Debe</th>
+			<th>Haber</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text'  size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr>
+			<td><select style = "width:206px;height:24px;"></select></td>
+	        <td><input type='text' size="30"/></td>
+	        <td><input type='text' size="30"/></td>
+		</tr>
+		<tr bgcolor="#A9E2F3">
+			 <td>Total:</td>
+			 <td id="totalDebeR"></td>
+			 <td id="totalHaberR"></td>
+		</tr>
+	</tbody>
+</table>
+<input size="93" type = "text" id="glosa" placeholder="Glosa"><br><br>
+<button onclick="registerAsiento();">Registrar Asiento</button>
+</div><br>
+
+<table class="showtable" id="asientoApertura" border="1" align="center">
+	<col width="230">
+  	<col width="150">
+  	<col width="150">
+  	<col width="150">		
+		<thead>
+			<tr>
+				<th>Fecha</th>
+				<th>Detalle</th>
+				<th>Debe</th>
+				<th>Haber</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr>
+        	<td id = "asiento-1" colspan = "4" align="center"></td>
+        </tr>
+		<tr>
+			<td id = "balance-0"></td>
+			<td id = "balance-1"></td>
+	        <td id = "balance-2"></td>
+	        <td id = "balance-3"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-4"></td>
+        	<td id = "balance-5"></td>
+	        <td id = "balance-6"></td>
+	        <td id = "balance-7"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-8"></td>
+	        <td id = "balance-9"></td>
+	        <td id = "balance-10"></td>
+	        <td id = "balance-11"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-12" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-2" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-13"></td>
+	        <td id = "balance-14"></td>
+	        <td id = "balance-15"></td>
+	        <td id = "balance-16"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-17"></td>
+	        <td id = "balance-18"></td>
+	        <td id = "balance-19"></td>
+	        <td id = "balance-20"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-21"></td>
+	        <td id = "balance-22"></td>
+	        <td id = "balance-23"></td>
+	        <td id = "balance-24"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-25"></td>
+	        <td id = "balance-26"></td>
+	        <td id = "balance-27"></td>
+	        <td id = "balance-28"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-29"></td>
+	        <td id = "balance-30"></td>
+	        <td id = "balance-31"></td>
+	        <td id = "balance-32"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-33"></td>
+	        <td id = "balance-34"></td>
+	        <td id = "balance-35"></td>
+	        <td id = "balance-36"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-37"></td>
+	        <td id = "balance-38"></td>
+	        <td id = "balance-39"></td>
+	        <td id = "balance-40"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-41"></td>
+	        <td id = "balance-42"></td>
+	        <td id = "balance-43"></td>
+	        <td id = "balance-44"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-45" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-3" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-46"></td>
+	        <td id = "balance-47"></td>
+	        <td id = "balance-48"></td>
+	        <td id = "balance-49"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-50"></td>
+	        <td id = "balance-51"></td>
+	        <td id = "balance-52"></td>
+	        <td id = "balance-53"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-54"></td>
+	        <td id = "balance-55"></td>
+	        <td id = "balance-56"></td>
+	        <td id = "balance-57"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-58"></td>
+	        <td id = "balance-59"></td>
+	        <td id = "balance-60"></td>
+	        <td id = "balance-61"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-62"></td>
+	        <td id = "balance-63"></td>
+	        <td id = "balance-64"></td>
+	        <td id = "balance-65"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-66"></td>
+	        <td id = "balance-67"></td>
+	        <td id = "balance-68"></td>
+	        <td id = "balance-69"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-70"></td>
+	        <td id = "balance-71"></td>
+	        <td id = "balance-72"></td>
+	        <td id = "balance-73"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-74"></td>
+	        <td id = "balance-75"></td>
+	        <td id = "balance-76"></td>
+	        <td id = "balance-77"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-78" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-4" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-79"></td>
+	        <td id = "balance-80"></td>
+	        <td id = "balance-81"></td>
+	        <td id = "balance-82"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-83"></td>
+	        <td id = "balance-84"></td>
+	        <td id = "balance-85"></td>
+	        <td id = "balance-86"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-87"></td>
+	        <td id = "balance-88"></td>
+	        <td id = "balance-89"></td>
+	        <td id = "balance-90"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-91"></td>
+	        <td id = "balance-92"></td>
+	        <td id = "balance-93"></td>
+	        <td id = "balance-94"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-95"></td>
+	        <td id = "balance-96"></td>
+	        <td id = "balance-97"></td>
+	        <td id = "balance-98"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-99"></td>
+	        <td id = "balance-100"></td>
+	        <td id = "balance-101"></td>
+	        <td id = "balance-102"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-103"></td>
+	        <td id = "balance-104"></td>
+	        <td id = "balance-105"></td>
+	        <td id = "balance-106"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-107"></td>
+	        <td id = "balance-108"></td>
+	        <td id = "balance-109"></td>
+	        <td id = "balance-110"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-111" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-5" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-112"></td>
+	        <td id = "balance-113"></td>
+	        <td id = "balance-114"></td>
+	        <td id = "balance-115"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-116"></td>
+	        <td id = "balance-117"></td>
+	        <td id = "balance-118"></td>
+	        <td id = "balance-119"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-120"></td>
+	        <td id = "balance-121"></td>
+	        <td id = "balance-122"></td>
+	        <td id = "balance-123"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-124"></td>
+	        <td id = "balance-125"></td>
+	        <td id = "balance-126"></td>
+	        <td id = "balance-127"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-128"></td>
+	        <td id = "balance-129"></td>
+	        <td id = "balance-130"></td>
+	        <td id = "balance-131"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-132"></td>
+	        <td id = "balance-133"></td>
+	        <td id = "balance-134"></td>
+	        <td id = "balance-135"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-136"></td>
+	        <td id = "balance-137"></td>
+	        <td id = "balance-138"></td>
+	        <td id = "balance-139"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-140"></td>
+	        <td id = "balance-141"></td>
+	        <td id = "balance-142"></td>
+	        <td id = "balance-143"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-144" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-6" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-145"></td>
+	        <td id = "balance-146"></td>
+	        <td id = "balance-147"></td>
+	        <td id = "balance-148"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-149"></td>
+	        <td id = "balance-150"></td>
+	        <td id = "balance-151"></td>
+	        <td id = "balance-152"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-153"></td>
+	        <td id = "balance-154"></td>
+	        <td id = "balance-155"></td>
+	        <td id = "balance-156"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-157"></td>
+	        <td id = "balance-158"></td>
+	        <td id = "balance-159"></td>
+	        <td id = "balance-160"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-161"></td>
+	        <td id = "balance-162"></td>
+	        <td id = "balance-163"></td>
+	        <td id = "balance-164"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-165"></td>
+	        <td id = "balance-166"></td>
+	        <td id = "balance-167"></td>
+	        <td id = "balance-168"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-169"></td>
+	        <td id = "balance-170"></td>
+	        <td id = "balance-171"></td>
+	        <td id = "balance-172"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-173"></td>
+	        <td id = "balance-174"></td>
+	        <td id = "balance-175"></td>
+	        <td id = "balance-176"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-177" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-7" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-178"></td>
+	        <td id = "balance-179"></td>
+	        <td id = "balance-180"></td>
+	        <td id = "balance-181"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-182"></td>
+	        <td id = "balance-183"></td>
+	        <td id = "balance-184"></td>
+	        <td id = "balance-185"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-186"></td>
+	        <td id = "balance-187"></td>
+	        <td id = "balance-188"></td>
+	        <td id = "balance-189"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-190"></td>
+	        <td id = "balance-191"></td>
+	        <td id = "balance-192"></td>
+	        <td id = "balance-193"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-194"></td>
+	        <td id = "balance-195"></td>
+	        <td id = "balance-196"></td>
+	        <td id = "balance-197"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-198"></td>
+	        <td id = "balance-199"></td>
+	        <td id = "balance-200"></td>
+	        <td id = "balance-201"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-202"></td>
+	        <td id = "balance-203"></td>
+	        <td id = "balance-204"></td>
+	        <td id = "balance-205"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-206"></td>
+	        <td id = "balance-207"></td>
+	        <td id = "balance-208"></td>
+	        <td id = "balance-209"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-210" colspan = "4"></td>
+        </tr>
+
+        <tr>
+        	<td id = "asiento-8" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-211"></td>
+	        <td id = "balance-212"></td>
+	        <td id = "balance-213"></td>
+	        <td id = "balance-214"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-215"></td>
+	        <td id = "balance-216"></td>
+	        <td id = "balance-217"></td>
+	        <td id = "balance-218"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-219"></td>
+	        <td id = "balance-220"></td>
+	        <td id = "balance-221"></td>
+	        <td id = "balance-222"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-223"></td>
+	        <td id = "balance-224"></td>
+	        <td id = "balance-225"></td>
+	        <td id = "balance-226"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-227"></td>
+	        <td id = "balance-228"></td>
+	        <td id = "balance-229"></td>
+	        <td id = "balance-230"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-231"></td>
+	        <td id = "balance-232"></td>
+	        <td id = "balance-233"></td>
+	        <td id = "balance-234"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-235"></td>
+	        <td id = "balance-236"></td>
+	        <td id = "balance-237"></td>
+	        <td id = "balance-238"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-239"></td>
+	        <td id = "balance-240"></td>
+	        <td id = "balance-241"></td>
+	        <td id = "balance-242"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-243" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-9" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-244"></td>
+	        <td id = "balance-245"></td>
+	        <td id = "balance-246"></td>
+	        <td id = "balance-247"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-248"></td>
+	        <td id = "balance-249"></td>
+	        <td id = "balance-250"></td>
+	        <td id = "balance-251"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-252"></td>
+	        <td id = "balance-253"></td>
+	        <td id = "balance-254"></td>
+	        <td id = "balance-255"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-256"></td>
+	        <td id = "balance-257"></td>
+	        <td id = "balance-258"></td>
+	        <td id = "balance-259"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-260"></td>
+	        <td id = "balance-261"></td>
+	        <td id = "balance-262"></td>
+	        <td id = "balance-263"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-264"></td>
+	        <td id = "balance-265"></td>
+	        <td id = "balance-266"></td>
+	        <td id = "balance-267"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-268"></td>
+	        <td id = "balance-269"></td>
+	        <td id = "balance-270"></td>
+	        <td id = "balance-271"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-272"></td>
+	        <td id = "balance-273"></td>
+	        <td id = "balance-274"></td>
+	        <td id = "balance-275"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-276" colspan = "4"></td>
+        </tr>
+        <tr>
+        	<td id = "asiento-10" colspan = "4" align="center"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-277"></td>
+	        <td id = "balance-278"></td>
+	        <td id = "balance-279"></td>
+	        <td id = "balance-280"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-281"></td>
+	        <td id = "balance-282"></td>
+	        <td id = "balance-283"></td>
+	        <td id = "balance-284"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-285"></td>
+	        <td id = "balance-286"></td>
+	        <td id = "balance-287"></td>
+	        <td id = "balance-288"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-289"></td>
+	        <td id = "balance-290"></td>
+	        <td id = "balance-291"></td>
+	        <td id = "balance-292"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-293"></td>
+	        <td id = "balance-294"></td>
+	        <td id = "balance-295"></td>
+	        <td id = "balance-296"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-297"></td>
+	        <td id = "balance-298"></td>
+	        <td id = "balance-299"></td>
+	        <td id = "balance-300"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-301"></td>
+	        <td id = "balance-302"></td>
+	        <td id = "balance-303"></td>
+	        <td id = "balance-304"></td>
+        </tr>
+        <tr>
+        	<td id = "balance-305"></td>
+	        <td id = "balance-306"></td>
+	        <td id = "balance-307"></td>
+	        <td id = "balance-308"></td>
+        </tr>
+        <tr>
+        	<td bgcolor="#D8D8D8" id = "balance-309" colspan = "4"></td>
+        </tr>
+		<tr bgcolor="#A9E2F3">
+			 <td colspan = "2"><b>Total:</b></td>
+			 <td id="totalDebe"></td>
+			 <td id="totalHaber"></td>
+		</tr>
+		</tbody>
+</table>
+<a href="libroMayor.html">LibroMayor</a>
+
+</body>
+</html>

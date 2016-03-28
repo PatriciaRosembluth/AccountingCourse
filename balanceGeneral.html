@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Balance General</title>
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="/AccountingCourse/models/balanceGeneral.js"></script>
+</head>
+<body>
+<header class="cabecera">
+	<div class="container clearfix">
+		<div class="logo">
+			<a href="index.html"><img src="/AccountingCourse/img/logo.png"></a>
+		</div>
+	</div>
+</header>
+<div align="center">
+	<h2>Empresa X</h2>
+	<h1>Balance General</h1>
+	<h2>En bolivianos</h2>
+</div>
+<u><h2>Activo</h2></u>
+<table>
+<col width="150">
+<col width="150">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td id="activo-1"></td>
+			<td><select style = "width:200px;height:24px;">
+	  		<option value="0">Seleccionar</option>
+	  		<option value="D">Disponible</option>
+	  		<option value="AE">Exigible</option>
+	  		<option value="AF">Activo Fijo</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td id="activo-2"></td>
+			<td><select style = "width:200px;height:24px;">
+	  		<option value="0">Seleccionar</option>
+	  		<option value="D">Disponible</option>
+	  		<option value="AE">Exigible</option>
+	  		<option value="AF">Activo Fijo</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td id="activo-3"></td>
+			<td><select style = "width:200px;height:24px;">
+	  		<option value="0">Seleccionar</option>
+	  		<option value="D">Disponible</option>
+	  		<option value="AE">Exigible</option>
+	  		<option value="AF">Activo Fijo</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td id="activo-4"></td>
+			<td><select style = "width:200px;height:24px;">
+	  		<option value="0">Seleccionar</option>
+	  		<option value="D">Disponible</option>
+	  		<option value="AE">Exigible</option>
+	  		<option value="AF">Activo Fijo</option>
+			</select></td>
+		</tr>
+	</tbody>
+</table>
+<u><h2>Pasivo / Capital</h2></u>
+<table>
+<col width="150">
+<col width="150">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td id="pasivo-1"></td>
+			<td><select style = "width:200px;height:24px;">
+	  		<option value="0">Seleccionar</option>
+	  		<option value="PE">Exigible</option>
+	  		<option value="P">Patrimonio</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td id="pasivo-2"></td>
+			<td><select style = "width:200px;height:24px;">
+	  		<option value="0">Seleccionar</option>
+	  		<option value="PE">Exigible</option>
+	  		<option value="P">Patrimonio</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td id="pasivo-3"></td>
+			<td><select style = "width:200px;height:24px;">
+	  		<option value="0">Seleccionar</option>
+	  		<option value="PE">Exigible</option>
+	  		<option value="P">Patrimonio</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td id="pasivo-4"></td>
+			<td><select style = "width:200px;height:24px;">
+	  		<option value="0">Seleccionar</option>
+	  		<option value="PE">Exigible</option>
+	  		<option value="P">Patrimonio</option>
+			</select></td>
+		</tr>
+	</tbody>
+</table>
+<button onclick="getTypesBalanceGeneral();">Definir</button><br><br>
+<div style="width: 100%; overflow: hidden;">
+    <div style="width: 600px; float: left;">
+    	<u><h1>Activo</h1></u>
+		<u><h2>Corriente</h2></u>
+		<u><h3>Disponible</h3></u>
+		<i><h3 id="activoD-1"></h3></i>
+    	<i><h3 id="activoD-2"></h3></i>
+    	<i><h3 id="activoD-3"></h3></i>
+    	<i><h3 id="activoD-4"></h3></i>
+
+		<u><h3>Exigible</h3></u>
+		<i><h3 id="activoE-1"></h3></i>
+    	<i><h3 id="activoE-2"></h3></i>
+    	<i><h3 id="activoE-3"></h3></i>
+    	<i><h3 id="activoE-4"></h3></i>
+
+		<u><h2>No Corriente</h2></u>
+		<u><h3>Activo Fijo</h3></u>
+		<i><h3 id="activoF-1"></h3></i>
+    	<i><h3 id="activoF-2"></h3></i>
+    	<i><h3 id="activoF-3"></h3></i>
+    	<i><h3 id="activoF-4"></h3></i>
+		<b><h2 id="totalActivo"></h2></b>
+	</div>
+    <div style="margin-left: 620px;"> 
+    	<u><h1>Pasivo</h1></u>
+		<u><h2>Corriente</h2></u>
+		<u><h3>Exigible</h3></u>
+		<i><h3 id="pasivoE-1"></h3></i>
+    	<i><h3 id="pasivoE-2"></h3></i>
+    	<i><h3 id="pasivoE-3"></h3></i>
+    	<i><h3 id="pasivoE-4"></h3></i>
+
+		<u><h2>Patrimonio</h2></u>
+		<i><h3 id="pasivoP-1"></h3></i>
+    	<i><h3 id="pasivoP-2"></h3></i>
+    	<i><h3 id="pasivoP-3"></h3></i>
+    	<i><h3 id="pasivoP-4"></h3></i>
+		<b><h2 id="totalPasivo"></h2></b>
+	</div>
+
+</body>
+</html>
