@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Estado de Resultados</title>
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="/AccountingCourse/models/estadoResultados.js"></script>
+</head>
+<body>
+<header class="cabecera">
+	<div class="container clearfix">
+		<div class="logo">
+			<a href="index.html"><img src="/AccountingCourse/img/logo.png"></a>
+		</div>
+	</div>
+</header>
+<div align="center">
+	<h2>Empresa X</h2>
+	<h1>Estado de Resultados</h1>
+	<h2>En bolivianos</h2>
+</div>
+<button onclick="generateEstadoResultados();">Generar Estado de Resultados</button><br><br>
+	<i><h3 id="ventas"></h3></i>
+    
+	<u><h2>-/Costo de Ventas</h2></u>
+	<i><h3 id="costo-ventas"></h3></i>
+    <i><h3 id="utilidad-bruta" style="color:#DF013A"></h3></i>
+
+	<u><h2>-/Gastos de operaciones</h2></u>
+	<i><h3 id="utilidad-neta" style="color:#DF013A"></h3></i>
+
+</body>
+</html>

@@ -8,6 +8,7 @@ var totalActivoHt;
 var totalCapitalHt;
 var accounts;
 var balanceGeneral;
+var estadoResultados;
 window.onload = cargarSumasSaldos;
 
 function cargarSumasSaldos(){
@@ -20,6 +21,7 @@ function cargarSumasSaldos(){
 function generateHojaTrabajo(){
     hojaTrabajo = [];
     balanceGeneral = [];
+    estadoResultados = [];
     totalGastoHt = 0, totalIngresoHt = 0, totalActivoHt = 0, totalCapitalHt = 0;
     var j = 1;
     var valor;
@@ -28,10 +30,11 @@ function generateHojaTrabajo(){
         hojaTrabajo.push(balanceSumasSaldos[i+3]);
         hojaTrabajo.push(balanceSumasSaldos[i+4]);
         if (balanceSumasSaldos[i+3] != 0) {valor = parseInt(balanceSumasSaldos[i+3]);}else{valor = parseInt(balanceSumasSaldos[i+4]);}
+
         if (getTypeAccount(balanceSumasSaldos[i]) === "A") {hojaTrabajo.push(0,0,valor,0); totalActivoHt+=valor; balanceGeneral.push(balanceSumasSaldos[i],valor);}
         if (getTypeAccount(balanceSumasSaldos[i]) === "P" || getTypeAccount(balanceSumasSaldos[i]) === "C") {hojaTrabajo.push(0,0,0,valor); totalCapitalHt+=valor; balanceGeneral.push(balanceSumasSaldos[i],valor)}
-        if (getTypeAccount(balanceSumasSaldos[i]) === "G") {hojaTrabajo.push(valor,0,0,0); totalGastoHt+=valor;}
-        if (getTypeAccount(balanceSumasSaldos[i]) === "I") {hojaTrabajo.push(0,valor,0,0);totalIngresoHt+=valor;}
+        if (getTypeAccount(balanceSumasSaldos[i]) === "G") {hojaTrabajo.push(valor,0,0,0); totalGastoHt+=valor; estadoResultados.push(balanceSumasSaldos[i],valor);}
+        if (getTypeAccount(balanceSumasSaldos[i]) === "I") {hojaTrabajo.push(0,valor,0,0);totalIngresoHt+=valor; estadoResultados.push(balanceSumasSaldos[i],valor);}
         j=j+2;
     }
     drawHojaTrabajo();
@@ -61,6 +64,7 @@ function drawHojaTrabajo(){
     document.getElementById("totalCapitalHt").innerHTML = totalCapitalHt;
     utilidadNeta = totalIngresoHt - totalGastoHt;
     balanceGeneral.push("utilidad neta",utilidadNeta);
+    estadoResultados.push("utilidad neta",utilidadNeta);
     if (utilidadNeta >= 0) {
         document.getElementById("uGastos").innerHTML = utilidadNeta;
         document.getElementById("uPasivo").innerHTML = utilidadNeta;
@@ -79,5 +83,6 @@ function drawHojaTrabajo(){
     }
      //variables de sesion
     sessionStorage.setItem('balanceGeneral',balanceGeneral);
+    sessionStorage.setItem('estadoResultados',estadoResultados);
     //end
 }
