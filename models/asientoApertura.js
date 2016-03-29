@@ -13,37 +13,67 @@ window.onload = cargarCuentas;
 
 function cargarCuentas(){
 	numberAsientos = parseInt(sessionStorage.numberAsientos);
-	glosaAsiento = 12;
-    posLastAsiento = 13;
+    stringAsientoApertura = (sessionStorage.stringAsientoApertura);
 	totalDebe = parseInt(sessionStorage.totalDebe);
 	totalHaber = parseInt(sessionStorage.totalHaber);
     inputValuesBalanceApertura = sessionStorage.inputValuesBalanceApertura.split(',');
 	inputValuesAsientoApertura = sessionStorage.inputValuesAsientoApertura.split(',');
 	libro1 = sessionStorage.libro1.split(',');
+    if (libro1.length === 1) {libro1 = [];}
 	libro2 = sessionStorage.libro2.split(',');
+    if (libro2.length === 1) {libro2 = [];}
 	libro3 = sessionStorage.libro3.split(',');
+    if (libro3.length === 1) {libro3 = [];}
+    libro4 = sessionStorage.libro4.split(',');
+    if (libro4.length === 1) {libro4 = [];}
+    libro5 = sessionStorage.libro5.split(',');
+    if (libro5.length === 1) {libro5 = [];}
+    libro6 = sessionStorage.libro6.split(',');
+    if (libro6.length === 1) {libro6 = [];}
+    libro7 = sessionStorage.libro7.split(',');
+    if (libro7.length === 1) {libro7 = [];}
+    libro8 = sessionStorage.libro8.split(',');
+    if (libro8.length === 1) {libro8 = [];}
+    libro9 = sessionStorage.libro9.split(',');
+    if (libro9.length === 1) {libro9 = [];}
+    libro10 = sessionStorage.libro10.split(',');
+    if (libro10.length === 1) {libro10 = [];}
 	saldo1 = parseInt(sessionStorage.saldo1);
 	saldo2 = parseInt(sessionStorage.saldo2);
 	saldo3 = parseInt(sessionStorage.saldo3);
-	libro4 = [], libro5 = [], libro6 = [],libro7 = [], libro8 = [], libro9 = [], libro10 = [];
-	saldo4 = 0, saldo5 = 0, saldo6 = 0, saldo7 = 0, saldo8 = 0, saldo9 = 0, saldo10 = 0;
+    saldo4 = parseInt(sessionStorage.saldo4);
+    saldo5 = parseInt(sessionStorage.saldo5);
+    saldo6 = parseInt(sessionStorage.saldo6);
+    saldo7 = parseInt(sessionStorage.saldo7);
+    saldo8 = parseInt(sessionStorage.saldo8);
+    saldo9 = parseInt(sessionStorage.saldo9);
+    saldo10 = parseInt(sessionStorage.saldo10);
+	
     $('#registroAsiento select').empty().append(sessionStorage.optionsAsString);
     detailMayores = sessionStorage.detailMayores.split(',');
-    document.getElementById("asiento-"+numberAsientos).innerHTML = "A-" + numberAsientos;
-    drawAsientoApertura(0,inputValuesAsientoApertura.length);
+    drawAsientoApertura();
 }
 
-function drawAsientoApertura(inicio,bloque){
-    j=0;
-    for (var i = inicio; i < bloque-1; i++) {
-        document.getElementById("balance-"+ i).innerHTML = inputValuesAsientoApertura[j];
-        j++;   
+function appendAsientoApertura(fin){
+    for (var i = 0; i < fin; i=i+4) {
+        if (i===0) {
+            stringAsientoApertura += "<tr><td colspan = '4' align ='center'>A-'"+numberAsientos+"'</td></tr>";
+        }
+        stringAsientoApertura += "<tr><td>'"+inputValuesAsientoApertura[i]+"'</td><td>'"+inputValuesAsientoApertura[i+1]+"'</td><td>'"+inputValuesAsientoApertura[i+2]+"'</td><td>'"+inputValuesAsientoApertura[i+3]+"'</td></tr>";
     }
-    document.getElementById("balance-"+ glosaAsiento).innerHTML = inputValuesAsientoApertura[inputValuesAsientoApertura.length-1]; 
-    document.getElementById("totalDebe").innerHTML = totalDebe;
-    document.getElementById("totalHaber").innerHTML = totalHaber;
-    posLastAsiento = glosaAsiento+1;
-    glosaAsiento+=33;
+    stringAsientoApertura += "<tr><td bgcolor='#D8D8D8' colspan = '4'>'"+inputValuesAsientoApertura[fin]+"'</td></tr>";
+    
+    stringAsientoApertura += "<tr bgcolor='#A9E2F3'><td colspan = '2'><b>Total:</b></td><td>'"+totalDebe+"'</td><td>'"+totalHaber+"'</td></tr>";
+    //variables de session
+    sessionStorage.setItem('stringAsientoApertura',stringAsientoApertura);
+    sessionStorage.setItem('totalDebe',totalHaber);
+    sessionStorage.setItem('totalHaber',totalHaber);
+    //end
+    drawAsientoApertura();
+}
+
+function drawAsientoApertura(){
+    $('#asientoApertura tbody').empty().append(sessionStorage.stringAsientoApertura);
 }
 
 function registerAsiento(){
@@ -81,10 +111,10 @@ function registerAsiento(){
                 inputValuesAsientoApertura.push(glosa);
                 setSpaceFromArray();
                 numberAsientos++;
-                document.getElementById("asiento-"+numberAsientos).innerHTML = "A-" + numberAsientos;
+                sessionStorage.setItem('numberAsientos',numberAsientos);
                 generateLibrosMayores(inputValuesAsientoApertura);
                 bloque = posLastAsiento + inputValuesAsientoApertura.length;
-                drawAsientoApertura(posLastAsiento,bloque);
+                appendAsientoApertura(inputValuesAsientoApertura.length-1)
             }else{
                 alert("Debe poner glosa al asiento");
                 return;

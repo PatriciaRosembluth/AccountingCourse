@@ -6,9 +6,10 @@ var totalDebe;
 var totalHaber;
 var glosaAsiento;
 var posLastAsiento;
-var libro1, libro2, libro3;
-var saldo1, saldo2, saldo3;
+var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10;
+var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10;
 var detailMayores;
+var stringAsientoApertura;
 window.onload = cargarCuentas;
 
 function cargarCuentas(){
@@ -17,8 +18,8 @@ function cargarCuentas(){
 }
 
 function getAllValuesBalanceApertura() {
-    libro1 = [], libro2 = [], libro3 = [];
-    saldo1 = 0, saldo2 = 0, saldo3 = 0;
+    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [],libro7 = [], libro8 = [], libro9 = [], libro10 = [];
+    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0, saldo5 = 0, saldo6 = 0, saldo7 = 0, saldo8 = 0, saldo9 = 0, saldo10 = 0;
     accountsBalance = [];
     amountBalance = [];
     inputValuesBalanceApertura = [];
@@ -59,6 +60,7 @@ function calculateTotalActivo(){
 }
 
 function initializeAsientoApertura(){
+    stringAsientoApertura = "";
     numberAsientos = 0;
     totalDebe = totalActivo;
     totalHaber = totalActivo;
@@ -83,8 +85,25 @@ function initializeAsientoApertura(){
     sessionStorage.setItem('totalDebe',totalHaber);
     sessionStorage.setItem('totalHaber',totalHaber);
     //end
+    appendAsientoApertura(inputValuesAsientoApertura.length-1)
     generateLibrosMayores(inputValuesAsientoApertura);
 }
+
+function appendAsientoApertura(fin){
+    for (var i = 0; i < fin; i=i+4) {
+        if (i===0) {
+            stringAsientoApertura += "<tr><td colspan = '4' align ='center'>A-'"+numberAsientos+"'</td></tr>";
+        }
+        stringAsientoApertura += "<tr><td>'"+inputValuesAsientoApertura[i]+"'</td><td>'"+inputValuesAsientoApertura[i+1]+"'</td><td>'"+inputValuesAsientoApertura[i+2]+"'</td><td>'"+inputValuesAsientoApertura[i+3]+"'</td></tr>";
+    }
+    stringAsientoApertura += "<tr><td bgcolor='#D8D8D8' colspan = '4'>'"+inputValuesAsientoApertura[fin]+"'</td></tr>";
+    
+    stringAsientoApertura += "<tr bgcolor='#A9E2F3'><td colspan = '2'><b>Total:</b></td><td>'"+totalDebe+"'</td><td>'"+totalHaber+"'</td></tr>";
+    //variables de session
+    sessionStorage.setItem('stringAsientoApertura',stringAsientoApertura);
+    //end
+}
+
 
 function generateLibrosMayores(values){
     detalle = values[values.length-1];
@@ -115,6 +134,62 @@ function generateLibrosMayores(values){
                 calculateSaldo(3,values[r+2],values[r+3]);
                 libro3.push(saldo3);
             break;
+            case 4:
+                libro4.push(values[r]);
+                libro4.push(detalle);
+                libro4.push(values[r+2]);
+                libro4.push(values[r+3]);
+                calculateSaldo(4,values[r+2],values[r+3]);
+                libro4.push(saldo4);
+            break;
+            case 5:
+                libro5.push(values[r]);
+                libro5.push(detalle);
+                libro5.push(values[r+2]);
+                libro5.push(values[r+3]);
+                calculateSaldo(5,values[r+2],values[r+3]);
+                libro5.push(saldo5);
+            break;
+            case 6:
+                libro6.push(values[r]);
+                libro6.push(detalle);
+                libro6.push(values[r+2]);
+                libro6.push(values[r+3]);
+                calculateSaldo(6,values[r+2],values[r+3]);
+                libro6.push(saldo6);
+            break;
+            case 7:
+                libro7.push(values[r]);
+                libro7.push(detalle);
+                libro7.push(values[r+2]);
+                libro7.push(values[r+3]);
+                calculateSaldo(7,values[r+2],values[r+3]);
+                libro7.push(saldo7);
+            break;
+            case 8:
+                libro8.push(values[r]);
+                libro8.push(detalle);
+                libro8.push(values[r+2]);
+                libro8.push(values[r+3]);
+                calculateSaldo(8,values[r+2],values[r+3]);
+                libro8.push(saldo8);
+            break;
+            case 9:
+                libro9.push(values[r]);
+                libro9.push(detalle);
+                libro9.push(values[r+2]);
+                libro9.push(values[r+3]);
+                calculateSaldo(9,values[r+2],values[r+3]);
+                libro9.push(saldo9);
+            break;
+            case 10:
+                libro10.push(values[r]);
+                libro10.push(detalle);
+                libro10.push(values[r+2]);
+                libro10.push(values[r+3]);
+                calculateSaldo(10,values[r+2],values[r+3]);
+                libro10.push(saldo10);
+             break;
         }
     }
     //variables de sesion
@@ -124,6 +199,20 @@ function generateLibrosMayores(values){
     sessionStorage.setItem('saldo2',saldo2);
     sessionStorage.setItem('libro3',libro3);
     sessionStorage.setItem('saldo3',saldo3);
+    sessionStorage.setItem('libro4',libro4);
+    sessionStorage.setItem('saldo4',saldo4);
+    sessionStorage.setItem('libro5',libro5);
+    sessionStorage.setItem('saldo5',saldo5);
+    sessionStorage.setItem('libro6',libro6);
+    sessionStorage.setItem('saldo6',saldo6);
+    sessionStorage.setItem('libro7',libro7);
+    sessionStorage.setItem('saldo7',saldo7);
+    sessionStorage.setItem('libro8',libro8);
+    sessionStorage.setItem('saldo8',saldo8);
+    sessionStorage.setItem('libro9',libro9);
+    sessionStorage.setItem('saldo9',saldo9);
+    sessionStorage.setItem('libro10',libro10);
+    sessionStorage.setItem('saldo10',saldo10);
     //end
  }
 
@@ -147,5 +236,26 @@ function calculateSaldo(saldo,AmountDebe, AmountHaber){
         case 3:
             saldo3 = saldo3 + parseInt(AmountDebe) - parseInt(AmountHaber);
             break;    
+        case 4:
+            saldo4 = saldo4 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 5:
+            saldo5 = saldo5 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 6:
+            saldo6 = saldo6 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 7:
+            saldo7 = saldo7 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 8:
+            saldo8 = saldo8 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 9:
+            saldo9 = saldo9 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 10:
+            saldo10 = saldo10 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
     }
  }
