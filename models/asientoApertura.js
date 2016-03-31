@@ -48,7 +48,7 @@ function cargarCuentas(){
     saldo8 = parseInt(sessionStorage.saldo8);
     saldo9 = parseInt(sessionStorage.saldo9);
     saldo10 = parseInt(sessionStorage.saldo10);
-	
+	document.getElementById("numberAsiento").innerHTML = "Asiento # "+ (numberAsientos+1);
     $('#registroAsiento select').empty().append(sessionStorage.optionsAsString);
     detailMayores = sessionStorage.detailMayores.split(',');
     drawAsientoApertura();
@@ -126,6 +126,7 @@ function registerAsiento(){
     }else{
         return;
     }
+    document.getElementById("numberAsiento").innerHTML = "Asiento # "+ (numberAsientos+1);
     $('#dateAsiento').val("");
     $('#glosa').val("");
     document.getElementById("totalDebeR").innerHTML = "";

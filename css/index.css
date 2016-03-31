@@ -66,17 +66,12 @@ h1
   transition: all 1s ease-in-out;
 }
 
-.insert.ejercicio
+.insert.conceptos
 {
   background: linear-gradient(to bottom, rgba(169,228,247,1) 0%,rgba(15,180,231,1) 100%);
 }
 
-.insert.conceptos
+.insert.tutorial
 {
   background: linear-gradient(to bottom, rgba(73,125,193,1) 0%,rgba(39,71,114,1) 100%);
-}
-
-.insert.tutorial
-{ 
-  background: linear-gradient(to bottom, rgba(255,48,25,1) 0%,rgba(207,4,4,1) 100%);
 }
