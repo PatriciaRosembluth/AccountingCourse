@@ -1,10 +1,12 @@
 var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10;
 var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10;
 var detailMayores;
+var stringLibro;
 window.onload = cargarLibros;
 
 function cargarLibros(){
 	detailMayores = sessionStorage.detailMayores.split(',');
+    stringLibro = "";
 	libro1 = sessionStorage.libro1.split(',');
 	libro2 = sessionStorage.libro2.split(',');
 	libro3 = sessionStorage.libro3.split(',');
@@ -25,67 +27,61 @@ function cargarLibros(){
 	saldo8 = parseInt(sessionStorage.saldo8);
 	saldo9 = parseInt(sessionStorage.saldo9);
 	saldo10 = parseInt(sessionStorage.saldo10);
+    $('select').empty().append(sessionStorage.optionsAsString);
 }
 
 function drawLibrosMayores(){
-    if (libro1[0]!=""){
-        document.getElementById("libro1").innerHTML = detailMayores[0];
-        for (var i = 0; i < libro1.length; i++) {
-            document.getElementById("libro1-"+ i).innerHTML = libro1[i];
+    libro = $('select').val();
+    mostrar = findLibro(libro);
+    switch (mostrar){
+        case 0:
+        drawLibro(libro1,0);
+        break;
+        case 1:
+        drawLibro(libro2,1);
+        break;
+        case 2:
+        drawLibro(libro3,2);
+        break;
+        case 3:
+        drawLibro(libro4,3);
+        break;
+        case 4:
+        drawLibro(libro5,4);
+        break;
+        case 5:
+        drawLibro(libro6,5);
+        break;
+        case 6:
+        drawLibro(libro7,6);
+        break;
+        case 7:
+        drawLibro(libro8,7);
+        break;
+        case 8:
+        drawLibro(libro9,8);
+        break;
+        case 9:
+        drawLibro(libro10,9);
+        break;
+    }    
+}
+
+function drawLibro(libro, index){
+    stringLibro = "";
+    if (libro[0]!=""){
+        document.getElementById("libro").innerHTML = detailMayores[index];
+        for (var i = 0; i < libro.length; i=i+5) {
+            stringLibro += "<tr><td>'"+libro[i]+"'</td><td>'"+libro[i+1]+"'</td><td>'"+libro[i+2]+"'</td><td>'"+libro[i+3]+"'</td><td>'"+libro[i+4]+"'</td></tr>";
         }
     }
-    if (libro2[0]!=""){
-        document.getElementById("libro2").innerHTML = detailMayores[1];
-         for (var i = 0; i < libro2.length; i++) {
-            document.getElementById("libro2-"+ i).innerHTML = libro2[i];
-        }
-    }
-    if (libro3[0]!=""){
-        document.getElementById("libro3").innerHTML =detailMayores[2];
-         for (var i = 0; i < libro3.length; i++) {
-            document.getElementById("libro3-"+ i).innerHTML = libro3[i];
-        }
-    }
-    if (libro4[0]!=""){
-        document.getElementById("libro4").innerHTML = detailMayores[3];
-         for (var i = 0; i < libro4.length; i++) {
-            document.getElementById("libro4-"+ i).innerHTML = libro4[i];
-        }
-    }
-    if (libro5[0]!=""){
-        document.getElementById("libro5").innerHTML = detailMayores[4];
-         for (var i = 0; i < libro5.length; i++) {
-            document.getElementById("libro5-"+ i).innerHTML = libro5[i];
-        }
-    }
-    if (libro6[0]!=""){
-        document.getElementById("libro6").innerHTML = detailMayores[5];
-         for (var i = 0; i < libro6.length; i++) {
-            document.getElementById("libro6-"+ i).innerHTML = libro6[i];
-        }
-    }
-    if (libro7[0]!=""){
-        document.getElementById("libro7").innerHTML = detailMayores[6];
-         for (var i = 0; i < libro7.length; i++) {
-            document.getElementById("libro7-"+ i).innerHTML = libro7[i];
-        }
-    }
-    if (libro8[0]!=""){
-        document.getElementById("libro8").innerHTML = detailMayores[7];
-         for (var i = 0; i < libro8.length; i++) {
-            document.getElementById("libro8-"+ i).innerHTML = libro8[i];
-        }
-    }
-    if (libro9[0]!=""){
-        document.getElementById("libro9").innerHTML = detailMayores[8];
-         for (var i = 0; i < libro9.length; i++) {
-            document.getElementById("libro9-"+ i).innerHTML = libro9[i];
-        }
-    }
-    if (libro10[0]!=""){
-        document.getElementById("libro10").innerHTML = detailMayores[9];
-         for (var i = 0; i < libro10.length; i++) {
-            document.getElementById("libro10-"+ i).innerHTML = libro10[i];
+    $('#showLibro tbody').empty().append(stringLibro);
+}
+
+ function findLibro(libro){
+    for (var i = 0; i < detailMayores.length; i++) {
+        if (libro === detailMayores[i]) {
+            return i;
         }
     }
  }

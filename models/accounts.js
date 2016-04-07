@@ -1,3 +1,18 @@
+var accounts = [];
+window.onload = drawAccount;
+
+function drawAccount(){
+    accounts = sessionStorage.accounts.split(',');
+    j=0;
+    if (accounts!=[]) {
+        for (var i = 0; i < accounts.length; i=i+2) {    
+            $('#account-'+j).val(accounts[i]);
+            $('#valueAccount-'+j).val(accounts[i+1]);
+            j++;
+        }
+    }
+
+}
 function getAccounts(){
     detailMayores = [];
     stringTypesAccounts = [];

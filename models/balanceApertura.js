@@ -1,3 +1,5 @@
+var preloadBalanceApetura = [];
+var preloadDate;
 var inputValuesBalanceApertura;
 var inputValuesAsientoApertura;
 var totalActivo;
@@ -15,6 +17,22 @@ window.onload = cargarCuentas;
 function cargarCuentas(){
     $("#balanceApertura select").empty().append(sessionStorage.optionsAsString);
     detailMayores = sessionStorage.detailMayores.split(',');
+    total = sessionStorage.totalHaber;
+    preloadBalanceApetura = sessionStorage.inputValuesBalanceApertura;
+    if (preloadBalanceApetura!=undefined) {
+        preloadBalanceApetura=preloadBalanceApetura.split(',');
+        preloadDate = sessionStorage.inputValuesAsientoApertura.split(',');
+        preloadDate = preloadDate[0];
+        $('#dateBalance').val(preloadDate);
+        j=0;
+        for (var i = 0; i < preloadBalanceApetura.length; i=i+2) {    
+            $('#valueAccount-'+j).val(preloadBalanceApetura[i]);
+            $('#amount-'+j).val(preloadBalanceApetura[i+1]);
+            j++;
+        }
+        document.getElementById("totalActivo").innerHTML = total;
+        document.getElementById("capital").innerHTML = total;
+    }  
 }
 
 function getAllValuesBalanceApertura() {
