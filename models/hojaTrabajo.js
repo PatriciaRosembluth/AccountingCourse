@@ -49,38 +49,24 @@ function getTypeAccount(account){
 }
 
 function drawHojaTrabajo(){
-     $('#uGastos').val("");
-     $('#uIngresos').val("");
-     $('#uActivo').val("");
-     $('#uPasivo').val("");
-    for (var i = 0; i < hojaTrabajo.length; i++) {
-        document.getElementById("hoja-"+ i).innerHTML = hojaTrabajo[i];
+    stringHojaTrabajo = "";
+    for (var i = 0; i < hojaTrabajo.length; i=i+7) {
+        stringHojaTrabajo+= "<tr><td>'"+hojaTrabajo[i]+"'</td><td>'"+hojaTrabajo[i+1]+"'</td><td>'"+hojaTrabajo[i+2]+"'</td><td>'"+hojaTrabajo[i+3]+"'</td><td>'"+hojaTrabajo[i+4]+"'</td><td>'"+hojaTrabajo[i+5]+"'</td><td>'"+hojaTrabajo[i+6]+"'</td></tr>";
     }
-    document.getElementById("totalDeudorHt").innerHTML = totalDeudorSs;
-    document.getElementById("totalAcreedorHt").innerHTML = totalAcreedorSs;
-    document.getElementById("totalGastoHt").innerHTML = totalGastoHt;
-    document.getElementById("totalIngresoHt").innerHTML = totalIngresoHt;
-    document.getElementById("totalActivoHt").innerHTML = totalActivoHt;
-    document.getElementById("totalCapitalHt").innerHTML = totalCapitalHt;
+    stringHojaTrabajo+= "<tr bgcolor='#A9E2F3'><td><b>Sumas:</b></td><td>'"+totalDeudorSs+"'</td><td>'"+totalAcreedorSs+"'</td><td>'"+totalGastoHt+"'</td><td>'"+totalIngresoHt+"'</td><td>'"+totalActivoHt+"'</td><td>'"+totalCapitalHt+"'</td></tr>";
+    
     utilidadNeta = totalIngresoHt - totalGastoHt;
     balanceGeneral.push("utilidad neta",utilidadNeta);
     estadoResultados.push("utilidad neta",utilidadNeta);
     if (utilidadNeta >= 0) {
-        document.getElementById("uGastos").innerHTML = utilidadNeta;
-        document.getElementById("uPasivo").innerHTML = utilidadNeta;
-        document.getElementById("totalGastosTs").innerHTML = totalGastoHt + utilidadNeta;
-        document.getElementById("totalIngresosTs").innerHTML = totalIngresoHt;
-        document.getElementById("totalActivoTs").innerHTML = totalActivoHt;
-        document.getElementById("totalPasivoTs").innerHTML = totalCapitalHt + utilidadNeta;
+        stringHojaTrabajo+= "<tr bgcolor='#00FF40'><td><b>Utilidad:</b></td><td></td><td></td><td>'"+utilidadNeta+"'</td><td></td><td></td><td>'"+utilidadNeta+"'</td></tr>";
+        stringHojaTrabajo+= "<tr><td><b>Total:</b></td><td></td><td></td><td>'"+(totalGastoHt + utilidadNeta)+"'</td><td>'"+totalIngresoHt+"'</td><td>'"+totalActivoHt+"'</td><td>'"+(totalCapitalHt + utilidadNeta)+"'</td></tr>";
     }else{
         utilidadNeta*=-1;
-        document.getElementById("uIngresos").innerHTML = utilidadNeta;
-        document.getElementById("uActivo").innerHTML = utilidadNeta;
-        document.getElementById("totalGastosTs").innerHTML = totalGastoHt;
-        document.getElementById("totalIngresosTs").innerHTML = totalIngresoHt + utilidadNeta;
-        document.getElementById("totalActivoTs").innerHTML = totalActivoHt + utilidadNeta;
-        document.getElementById("totalPasivoTs").innerHTML = totalCapitalHt;
+        stringHojaTrabajo+= "<tr bgcolor='#00FF40'><td><b>Utilidad:</b></td><td></td><td></td><td></td><td>'"+utilidadNeta+"'</td><td>'"+utilidadNeta+"'</td><td></td></tr>";
+        stringHojaTrabajo+= "<tr><td><b>Total:</b></td><td></td><td></td><td>'"+totalGastoHt+"'</td><td>'"+(totalIngresoHt + utilidadNeta)+"'</td><td>'"+(totalActivoHt + utilidadNeta)+"'</td><td>'"+totalCapitalHt+"'</td></tr>";
     }
+    $('#hojaTrabajo tbody').empty().append(stringHojaTrabajo);
      //variables de sesion
     sessionStorage.setItem('balanceGeneral',balanceGeneral);
     sessionStorage.setItem('estadoResultados',estadoResultados);

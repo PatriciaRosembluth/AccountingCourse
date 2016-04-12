@@ -65,16 +65,15 @@ function calculateDebeHaberLibro(libro,detalle){
 }
 
 function drawBalanceSumasSaldor(){
+    stringSumasSaldos = "";
     //variables de sesion
     sessionStorage.setItem('balanceSumasSaldos',balanceSumasSaldos);
     sessionStorage.setItem('totalDeudorSs',totalDeudorSs);
     sessionStorage.setItem('totalAcreedorSs',totalAcreedorSs);
     //end
-    for (var i = 0; i < balanceSumasSaldos.length; i++) {
-        document.getElementById("registro-"+ i).innerHTML = balanceSumasSaldos[i];
+    for (var i = 0; i < balanceSumasSaldos.length; i=i+5) {
+        stringSumasSaldos += "<tr><td>'"+balanceSumasSaldos[i]+"'</td><td>'"+balanceSumasSaldos[i+1]+"'</td><td>'"+balanceSumasSaldos[i+2]+"'</td><td>'"+balanceSumasSaldos[i+3]+"'</td><td>'"+balanceSumasSaldos[i+4]+"'</td></tr>";
     }
-    document.getElementById("totalDebeSs").innerHTML = totalDebeSs;
-    document.getElementById("totalHaberSs").innerHTML = totalHaberSs;
-    document.getElementById("totalDeudorSs").innerHTML = totalDeudorSs;
-    document.getElementById("totalAcreedorSs").innerHTML = totalAcreedorSs;
+    stringSumasSaldos += "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>'"+totalDebeSs+"'</td><td>'"+totalHaberSs+"'</td><td>'"+totalDeudorSs+"'</td><td>'"+totalAcreedorSs+"'</td></tr>";
+    $('#showSumasSaldos tbody').empty().append(stringSumasSaldos);
 }
