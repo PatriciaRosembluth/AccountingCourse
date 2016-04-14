@@ -17,7 +17,7 @@ function generateEstadoResultados(){
 			costoVentas = parseInt(estadoResultados[i+1]);
 		}else if (estadoResultados[i]==="utilidad neta") { 
 			document.getElementById("utilidad-neta").innerHTML = estadoResultados[i].toUpperCase()+" ----------------------------------------------------- " + estadoResultados[i+1];
-		}else if (estadoResultados[i]!= "almacenes") {
+		}else {
 			gastos+=parseInt(estadoResultados[i+1]);
 			stringGastos+="<i><h3>"+estadoResultados[i]+" ---------------- " + estadoResultados[i+1]+"</h3></i>"
 		}

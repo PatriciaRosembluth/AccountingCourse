@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Estado de Resultados</title>
+	<title>Asiento de Cierre</title>
 	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="/AccountingCourse/models/estadoResultados.js"></script>
+	<script src="/AccountingCourse/models/asientoCierre.js"></script>
 </head>
 <body>
 <header class="cabecera">
@@ -18,22 +18,23 @@
 </header>
 <div align="center">
 	<h2>Empresa X</h2>
-	<h1>Estado de Resultados</h1>
+	<h1>Asiento de Cierre</h1>
 	<h2>En bolivianos</h2>
 </div>
-<button onclick="generateEstadoResultados();">Generar Estado de Resultados</button><br><br>
-	<i><h3 id="ventas"></h3></i>
-    
-	<u><h2>-/Costo de Ventas</h2></u>
-	<i><h3 id="costo-ventas"></h3></i>
-    <i><h3 id="utilidad-bruta" style="color:#DF013A"></h3></i>
-
-	<u><h2>-/Gastos de operaciones</h2></u>
-	<div id="gastos">
-		
-	</div>
-	<i><h3 id="total-gastos" style="color:#DF013A"></h3></i>
-	<i><h3 id="utilidad-neta" style="color:#0404B4"></h3></i>
-<a href="asientoCierre.html">Asiento de Cierre</a>
+<button onclick="generateAsientoCierre();">Generar Asiento de Cierre</button><br><br>
+<table class="showtable" id="asientoCierre" border="1">
+  	<col width="180">
+  	<col width="180">
+  	<col width="180">		
+		<thead>
+			<tr>
+				<th>Detalle</th>
+				<th>Debe</th>
+				<th>Haber</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+</table><br>
 </body>
 </html>
