@@ -57,7 +57,7 @@ function cargarCuentas(){
 function appendAsientoApertura(fin){
     for (var i = 0; i < fin; i=i+4) {
         if (i===0) {
-            stringAsientoApertura += "<tr><td colspan = '4' align ='center'>A-'"+numberAsientos+"'</td></tr>";
+            stringAsientoApertura += "<tr><td colspan = '4' align ='center'> A-'"+numberAsientos+"'</td></tr>";
         }
         stringAsientoApertura += "<tr><td>'"+inputValuesAsientoApertura[i]+"'</td><td>'"+inputValuesAsientoApertura[i+1]+"'</td><td>'"+inputValuesAsientoApertura[i+2]+"'</td><td>'"+inputValuesAsientoApertura[i+3]+"'</td></tr>";
     }

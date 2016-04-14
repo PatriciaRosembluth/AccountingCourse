@@ -26,6 +26,7 @@ function generateAsientoCierre(){
 			totalDebeA1+=parseInt(estadoResultados[i+1]);
 		}
 	}
+	
 	stringEstadoResultados += "<tr><td>'"+estadoResultados[estadoResultados.length-2]+"'</td><td></td><td>'"+estadoResultados[estadoResultados.length-1]+"'</td></tr>";
 	totalHaberA1+=parseInt(estadoResultados[estadoResultados.length-1]);
 	stringEstadoResultados += "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>'"+totalDebeA1+"'</td><td>'"+totalHaberA1+"'</td></tr>";

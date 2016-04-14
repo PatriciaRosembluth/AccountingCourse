@@ -33,42 +33,6 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td id="activo-1"></td>
-			<td><select style = "width:200px;height:24px;">
-	  		<option value="0">Seleccionar</option>
-	  		<option value="D">Disponible</option>
-	  		<option value="AE">Exigible</option>
-	  		<option value="AF">Activo Fijo</option>
-			</select></td>
-		</tr>
-		<tr>
-			<td id="activo-2"></td>
-			<td><select style = "width:200px;height:24px;">
-	  		<option value="0">Seleccionar</option>
-	  		<option value="D">Disponible</option>
-	  		<option value="AE">Exigible</option>
-	  		<option value="AF">Activo Fijo</option>
-			</select></td>
-		</tr>
-		<tr>
-			<td id="activo-3"></td>
-			<td><select style = "width:200px;height:24px;">
-	  		<option value="0">Seleccionar</option>
-	  		<option value="D">Disponible</option>
-	  		<option value="AE">Exigible</option>
-	  		<option value="AF">Activo Fijo</option>
-			</select></td>
-		</tr>
-		<tr>
-			<td id="activo-4"></td>
-			<td><select style = "width:200px;height:24px;">
-	  		<option value="0">Seleccionar</option>
-	  		<option value="D">Disponible</option>
-	  		<option value="AE">Exigible</option>
-	  		<option value="AF">Activo Fijo</option>
-			</select></td>
-		</tr>
 	</tbody>
 </table>
 <u><h2>Pasivo / Capital</h2></u>
@@ -82,38 +46,6 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td id="pasivo-1"></td>
-			<td><select style = "width:200px;height:24px;">
-	  		<option value="0">Seleccionar</option>
-	  		<option value="PE">Exigible</option>
-	  		<option value="P">Patrimonio</option>
-			</select></td>
-		</tr>
-		<tr>
-			<td id="pasivo-2"></td>
-			<td><select style = "width:200px;height:24px;">
-	  		<option value="0">Seleccionar</option>
-	  		<option value="PE">Exigible</option>
-	  		<option value="P">Patrimonio</option>
-			</select></td>
-		</tr>
-		<tr>
-			<td id="pasivo-3"></td>
-			<td><select style = "width:200px;height:24px;">
-	  		<option value="0">Seleccionar</option>
-	  		<option value="PE">Exigible</option>
-	  		<option value="P">Patrimonio</option>
-			</select></td>
-		</tr>
-		<tr>
-			<td id="pasivo-4"></td>
-			<td><select style = "width:200px;height:24px;">
-	  		<option value="0">Seleccionar</option>
-	  		<option value="PE">Exigible</option>
-	  		<option value="P">Patrimonio</option>
-			</select></td>
-		</tr>
 	</tbody>
 </table><br>
 <button onclick="getTypesBalanceGeneral();">Generar Balance General</button><br><br>
@@ -122,12 +54,18 @@
     	<u><h1>Activo</h1></u>
 		<u><h2>Corriente</h2></u>
 		<u><h3>Disponible</h3></u>
+		<div id="activoD">
+			
+		</div>
 		<i><h3 id="activoD-1"></h3></i>
     	<i><h3 id="activoD-2"></h3></i>
     	<i><h3 id="activoD-3"></h3></i>
     	<i><h3 id="activoD-4"></h3></i>
 
 		<u><h3>Exigible</h3></u>
+		<div id="activoE">
+			
+		</div>
 		<i><h3 id="activoE-1"></h3></i>
     	<i><h3 id="activoE-2"></h3></i>
     	<i><h3 id="activoE-3"></h3></i>
@@ -135,6 +73,9 @@
 
 		<u><h2>No Corriente</h2></u>
 		<u><h3>Activo Fijo</h3></u>
+		<div id="activoF">
+			
+		</div>
 		<i><h3 id="activoF-1"></h3></i>
     	<i><h3 id="activoF-2"></h3></i>
     	<i><h3 id="activoF-3"></h3></i>
@@ -145,12 +86,18 @@
     	<u><h1>Pasivo</h1></u>
 		<u><h2>Corriente</h2></u>
 		<u><h3>Exigible</h3></u>
+		<div id="pasivoE">
+			
+		</div>
 		<i><h3 id="pasivoE-1"></h3></i>
     	<i><h3 id="pasivoE-2"></h3></i>
     	<i><h3 id="pasivoE-3"></h3></i>
     	<i><h3 id="pasivoE-4"></h3></i>
 
 		<u><h2>Patrimonio</h2></u>
+		<div id="pasivoP">
+			
+		</div>
 		<i><h3 id="pasivoP-1"></h3></i>
     	<i><h3 id="pasivoP-2"></h3></i>
     	<i><h3 id="pasivoP-3"></h3></i>

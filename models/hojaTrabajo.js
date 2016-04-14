@@ -63,7 +63,7 @@ function drawHojaTrabajo(){
         stringHojaTrabajo+= "<tr><td><b>Total:</b></td><td></td><td></td><td>'"+(totalGastoHt + utilidadNeta)+"'</td><td>'"+totalIngresoHt+"'</td><td>'"+totalActivoHt+"'</td><td>'"+(totalCapitalHt + utilidadNeta)+"'</td></tr>";
     }else{
         utilidadNeta*=-1;
-        stringHojaTrabajo+= "<tr bgcolor='#00FF40'><td><b>Utilidad:</b></td><td></td><td></td><td></td><td>'"+utilidadNeta+"'</td><td>'"+utilidadNeta+"'</td><td></td></tr>";
+        stringHojaTrabajo+= "<tr bgcolor='#F5A9A9'><td><b>Perdida:</b></td><td></td><td></td><td></td><td>'"+utilidadNeta+"'</td><td>'"+utilidadNeta+"'</td><td></td></tr>";
         stringHojaTrabajo+= "<tr><td><b>Total:</b></td><td></td><td></td><td>'"+totalGastoHt+"'</td><td>'"+(totalIngresoHt + utilidadNeta)+"'</td><td>'"+(totalActivoHt + utilidadNeta)+"'</td><td>'"+totalCapitalHt+"'</td></tr>";
     }
     $('#hojaTrabajo tbody').empty().append(stringHojaTrabajo);
