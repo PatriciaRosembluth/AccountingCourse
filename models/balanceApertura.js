@@ -114,13 +114,13 @@ function initializeAsientoApertura(){
 function appendAsientoApertura(fin){
     for (var i = 0; i < fin; i=i+4) {
         if (i===0) {
-            stringAsientoApertura += "<tr><td colspan = '4' align ='center'>A-'"+numberAsientos+"'</td></tr>";
+            stringAsientoApertura += "<tr><td colspan = '4' align ='center'>A-"+numberAsientos+"</td></tr>";
         }
-        stringAsientoApertura += "<tr><td>'"+inputValuesAsientoApertura[i]+"'</td><td>'"+inputValuesAsientoApertura[i+1]+"'</td><td>'"+inputValuesAsientoApertura[i+2]+"'</td><td>'"+inputValuesAsientoApertura[i+3]+"'</td></tr>";
+        stringAsientoApertura += "<tr><td>"+inputValuesAsientoApertura[i]+"</td><td>"+inputValuesAsientoApertura[i+1]+"</td><td>"+inputValuesAsientoApertura[i+2]+"</td><td>"+inputValuesAsientoApertura[i+3]+"</td></tr>";
     }
-    stringAsientoApertura += "<tr><td bgcolor='#D8D8D8' colspan = '4'>'"+inputValuesAsientoApertura[fin]+"'</td></tr>";
+    stringAsientoApertura += "<tr><td bgcolor='#D8D8D8' colspan = '4'>"+inputValuesAsientoApertura[fin]+"</td></tr>";
     
-    stringAsientoApertura += "<tr bgcolor='#A9E2F3'><td colspan = '2'><b>Total:</b></td><td>'"+totalDebe+"'</td><td>'"+totalHaber+"'</td></tr>";
+    stringAsientoApertura += "<tr bgcolor='#A9E2F3'><td colspan = '2'><b>Total:</b></td><td>"+totalDebe+"</td><td>"+totalHaber+"</td></tr>";
     //variables de session
     sessionStorage.setItem('stringAsientoApertura',stringAsientoApertura);
     //end

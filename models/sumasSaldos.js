@@ -72,8 +72,8 @@ function drawBalanceSumasSaldor(){
     sessionStorage.setItem('totalAcreedorSs',totalAcreedorSs);
     //end
     for (var i = 0; i < balanceSumasSaldos.length; i=i+5) {
-        stringSumasSaldos += "<tr><td>'"+balanceSumasSaldos[i]+"'</td><td>'"+balanceSumasSaldos[i+1]+"'</td><td>'"+balanceSumasSaldos[i+2]+"'</td><td>'"+balanceSumasSaldos[i+3]+"'</td><td>'"+balanceSumasSaldos[i+4]+"'</td></tr>";
+        stringSumasSaldos += "<tr><td>"+balanceSumasSaldos[i]+"</td><td>"+balanceSumasSaldos[i+1]+"</td><td>"+balanceSumasSaldos[i+2]+"</td><td>"+balanceSumasSaldos[i+3]+"</td><td>"+balanceSumasSaldos[i+4]+"</td></tr>";
     }
-    stringSumasSaldos += "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>'"+totalDebeSs+"'</td><td>'"+totalHaberSs+"'</td><td>'"+totalDeudorSs+"'</td><td>'"+totalAcreedorSs+"'</td></tr>";
+    stringSumasSaldos += "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>"+totalDebeSs+"</td><td>"+totalHaberSs+"</td><td>"+totalDeudorSs+"</td><td>"+totalAcreedorSs+"</td></tr>";
     $('#showSumasSaldos tbody').empty().append(stringSumasSaldos);
 }

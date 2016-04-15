@@ -72,7 +72,7 @@ function drawLibro(libro, index){
     if (libro[0]!=""){
         document.getElementById("libro").innerHTML = detailMayores[index];
         for (var i = 0; i < libro.length; i=i+5) {
-            stringLibro += "<tr><td>'"+libro[i]+"'</td><td>'"+libro[i+1]+"'</td><td>'"+libro[i+2]+"'</td><td>'"+libro[i+3]+"'</td><td>'"+libro[i+4]+"'</td></tr>";
+            stringLibro += "<tr><td>"+libro[i]+"</td><td>"+libro[i+1]+"</td><td>"+libro[i+2]+"</td><td>"+libro[i+3]+"</td><td>"+libro[i+4]+"</td></tr>";
         }
     }
     $('#showLibro tbody').empty().append(stringLibro);

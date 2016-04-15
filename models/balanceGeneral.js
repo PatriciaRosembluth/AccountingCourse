@@ -31,12 +31,12 @@ function putActivoPasivo(){
     indexP = 1;
     for (var i = 1; i < accounts.length; i = i+2) {
         if (accounts[i] === "A") {
-            stringAccountsA += "<tr><td>'"+accounts[i-1]+"'</td>" + stringSelectA;
+            stringAccountsA += "<tr><td>"+accounts[i-1]+"</td>" + stringSelectA;
             accountsA.push(accounts[i-1]);
 
             indexA ++;  
         }else if(accounts[i] === "P" || accounts[i] === "C"){
-            stringAccountsP += "<tr><td>'"+accounts[i-1]+"'</td>" + stringSelectP;  
+            stringAccountsP += "<tr><td>"+accounts[i-1]+"</td>" + stringSelectP;  
             accountsP.push(accounts[i-1]);
         }
     }
