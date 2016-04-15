@@ -74,6 +74,8 @@ function drawLibro(libro, index){
         for (var i = 0; i < libro.length; i=i+5) {
             stringLibro += "<tr><td>"+libro[i]+"</td><td>"+libro[i+1]+"</td><td>"+libro[i+2]+"</td><td>"+libro[i+3]+"</td><td>"+libro[i+4]+"</td></tr>";
         }
+    }else{
+        alert("No se registraron movimietos en la cuenta '"+detailMayores[index]+"'");
     }
     $('#showLibro tbody').empty().append(stringLibro);
 }

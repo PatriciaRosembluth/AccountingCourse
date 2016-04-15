@@ -16,6 +16,9 @@ function generateAsientoCierre(){
 	totalHaberA1 = 0;
 	totalDebeA2 = 0;
 	totalHaberA2 = 0;
+	utilidadGestionER = parseInt(estadoResultados[estadoResultados.length-1]);
+	utilidadGestionBG = parseInt(balanceGeneral[balanceGeneral.length-1]);
+	//Asiento 1 ER
 	for (var i = 0; i < estadoResultados.length-2; i=i+2) {
 		type = findTypeAccount(estadoResultados[i]);
 		if (type === "G") {
@@ -26,10 +29,16 @@ function generateAsientoCierre(){
 			totalDebeA1+=parseInt(estadoResultados[i+1]);
 		}
 	}
-	
-	stringEstadoResultados += "<tr><td>"+estadoResultados[estadoResultados.length-2]+"</td><td></td><td>"+estadoResultados[estadoResultados.length-1]+"</td></tr>";
-	totalHaberA1+=parseInt(estadoResultados[estadoResultados.length-1]);
+	if (utilidadGestionER>0) {
+		stringEstadoResultados += "<tr><td> utilidad de la gestion</td><td></td><td>"+utilidadGestionER+"</td></tr>";
+		totalHaberA1+=utilidadGestionER;
+	}else{
+		utilidadGestionER*=-1;
+		stringEstadoResultados += "<tr bgcolor='#F5A9A9'><td> perdida de la gestion</td><td>"+utilidadGestionER+"</td><td></td></tr>";
+		totalDebeA1+=utilidadGestionER;
+	}
 	stringEstadoResultados += "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>"+totalDebeA1+"</td><td>"+totalHaberA1+"</td></tr>";
+	//Asiento 2 BG
 	for (var i = 0; i < balanceGeneral.length-2; i=i+2) {
 		type = findTypeAccount(balanceGeneral[i]);
 		if (type === "A") {
@@ -40,8 +49,14 @@ function generateAsientoCierre(){
 			totalDebeA2+=parseInt(balanceGeneral[i+1]);
 		}
 	}
-	stringBalanceGeneral += "<tr><td>"+balanceGeneral[balanceGeneral.length-2]+"</td><td>"+balanceGeneral[balanceGeneral.length-1]+"</td><td></td></tr>";
-	totalDebeA2 += parseInt(balanceGeneral[balanceGeneral.length-1]);
+	if (utilidadGestionBG>0) {
+		stringBalanceGeneral += "<tr><td> utilidad de la gestion</td><td>"+utilidadGestionBG+"</td><td></td></tr>";
+		totalDebeA2 += utilidadGestionBG;
+	}else{
+		utilidadGestionBG*=-1;
+		stringBalanceGeneral += "<tr bgcolor='#F5A9A9'><td> perdida de la gestion</td><td></td><td>"+utilidadGestionBG+"</td></tr>";
+		totalHaberA2 +=utilidadGestionBG;
+	}
 	stringBalanceGeneral+= "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>"+totalDebeA2+"</td><td>"+totalHaberA2+"</td></tr>";
 	
 	asientoCierre = stringEstadoResultados+stringBalanceGeneral;

@@ -57,7 +57,11 @@ function getTypesBalanceGeneral(){
     for (var i = 0; i < accountsBG.length; i++) {
         typesBalanceGeneral.push(accountsBG[i],selectTypes[i]);
     }
-    drawBalanceGeneral();
+    if (selectTypes.length>0) {
+        drawBalanceGeneral();
+    }else{
+        alert("Debe seleccionar los tipos de las cuentas para generar el balance");
+    } 
 }
 
 function drawBalanceGeneral(){
