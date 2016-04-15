@@ -61,47 +61,40 @@ function getTypesBalanceGeneral(){
 }
 
 function drawBalanceGeneral(){
-    activoD = 1, activoE = 1, activoF = 1, pasivoE = 1, pasivoP = 1;
     totalActivo = 0, totalPasivo = 0;
     stringActivoD = "";
     stringActivoE = "";
     stringActivoF = "";
     stringPasivoP = "";
     stringPasivoE = "";
-    for (var i = 1; i < 5; i++) {
-        document.getElementById("activoD-"+i).innerHTML = "";
-        document.getElementById("activoE-"+i).innerHTML = "";
-        document.getElementById("activoF-"+i).innerHTML = "";
-        document.getElementById("pasivoP-"+i).innerHTML = "";
-        document.getElementById("pasivoE-"+i).innerHTML = "";
-    }
     for (var i = 0; i < balanceGeneral.length; i=i+2) {
         if (findType(balanceGeneral[i]) === "D" ) {
-            document.getElementById("activoD-"+activoD).innerHTML = balanceGeneral[i] +" ------- " +balanceGeneral[i+1];
-            totalActivo += parseInt(balanceGeneral[i+1]);
-            activoD++;  
+            stringActivoD += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+            totalActivo += parseInt(balanceGeneral[i+1]); 
         }
         if (findType(balanceGeneral[i]) === "AE" ) {
-            document.getElementById("activoE-"+activoE).innerHTML = balanceGeneral[i] +" ------- " +balanceGeneral[i+1];
+            stringActivoE += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalActivo += parseInt(balanceGeneral[i+1]);  
-            activoE++;
         }
         if (findType(balanceGeneral[i]) === "AF" ) {
-            document.getElementById("activoF-"+activoF).innerHTML = balanceGeneral[i] +" ------- " +balanceGeneral[i+1];
+            stringActivoF =+ "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalActivo += parseInt(balanceGeneral[i+1]); 
-            activoF++; 
         }
         if (findType(balanceGeneral[i]) === "P" ) {
-            document.getElementById("pasivoP-"+pasivoP).innerHTML = balanceGeneral[i] +" ------- " +balanceGeneral[i+1];
-            totalPasivo += parseInt(balanceGeneral[i+1]);  
-            pasivoP++;
+            stringPasivoP += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+            totalPasivo += parseInt(balanceGeneral[i+1]);
         }
         if (findType(balanceGeneral[i]) === "PE" ) {
-            document.getElementById("pasivoE-"+pasivoE).innerHTML = balanceGeneral[i] +" ------- " +balanceGeneral[i+1];
+            stringPasivoE += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalPasivo += parseInt(balanceGeneral[i+1]);
-            pasivoE++;  
         }
     }
+    $('#activoD').empty().append(stringActivoD);
+    $('#activoE').empty().append(stringActivoE);
+    $('#activoF').empty().append(stringActivoF);
+    
+     $('#pasivoE').empty().append(stringPasivoE);
+     $('#pasivoP').empty().append(stringPasivoP);
     document.getElementById("totalActivo").innerHTML = "TOTAL ACTIVO:  " + totalActivo;
     document.getElementById("totalPasivo").innerHTML = "TOTAL PASIVO/PATRIMONIO:  "+totalPasivo;
 }   
