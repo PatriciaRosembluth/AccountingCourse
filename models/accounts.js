@@ -36,7 +36,7 @@ function getAccounts(){
     //end
 
     for(var i = 0; i < accounts.length; i=i+2) {
-        optionsAsString += "<option value=" + accounts[i] + ">" + accounts[i] + "</option>";
+        optionsAsString += "<option value='" + accounts[i] + "'>" + accounts[i] + "</option>";
     }
     sessionStorage.setItem('optionsAsString',optionsAsString);  
 }
