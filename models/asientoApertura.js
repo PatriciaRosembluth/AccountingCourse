@@ -10,9 +10,12 @@ var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libr
 var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10;
 var stringAsientoApertura;
 var fechaAsiento;
+var lastDate;
 window.onload = cargarCuentas;
 
 function cargarCuentas(){
+    lastDate = sessionStorage.lastDate.split('-');
+    lastDate = new Date(lastDate[2], lastDate[1]-1, lastDate[0]);
 	numberAsientos = parseInt(sessionStorage.numberAsientos);
     stringAsientoApertura = (sessionStorage.stringAsientoApertura);
 	totalDebe = parseInt(sessionStorage.totalDebe);
@@ -79,7 +82,9 @@ function drawAsientoApertura(){
 
 function registerAsiento(){
     inputValuesAsientoApertura = [];
-    fechaAsiento = $('#dateAsiento').val().split("-").reverse().join("-");;
+    fechaAsiento = $('#dateAsiento').val().split("-").reverse().join("-");
+    fechAux = fechaAsiento.split('-');
+    fechAux = new Date(fechAux[2], fechAux[1]-1, fechAux[0]);
     glosa = $('#glosa').val();
     amountAsiento = [];
     accountAsiento = [];
@@ -98,27 +103,31 @@ function registerAsiento(){
             indexAsiento--;
         }
     });
-
     if(getTotalDebeYhaber(amountAsiento)){
         if (fechaAsiento!= "") {
-            if (glosa != "") {
-                for (var i = 0; i < amountAsiento.length-1; i=i+2) {
-                    //inputValuesAsientoApertura.push(fechaAsiento);
-                    inputValuesAsientoApertura.push(accountAsiento[j]);
-                    inputValuesAsientoApertura.push(amountAsiento[i]);
-                    inputValuesAsientoApertura.push(amountAsiento[i+1]);
-                    j++;
+            if (lastDate<=fechAux) {
+                if (glosa != "") {
+                    for (var i = 0; i < amountAsiento.length-1; i=i+2) {
+                        inputValuesAsientoApertura.push(accountAsiento[j]);
+                        inputValuesAsientoApertura.push(amountAsiento[i]);
+                        inputValuesAsientoApertura.push(amountAsiento[i+1]);
+                        j++;
+                    }
+                    inputValuesAsientoApertura.push(glosa);
+                    setSpaceFromArray();
+                    numberAsientos++;
+                    sessionStorage.setItem('numberAsientos',numberAsientos);
+                    generateLibrosMayores(inputValuesAsientoApertura);
+                    appendAsientoApertura(inputValuesAsientoApertura.length-1)
+                    lastDate = fechAux;
+                    sessionStorage.setItem('lastDate',fechaAsiento);
+                }else{
+                    alert("Debe poner glosa al asiento");
+                    return;
                 }
-                inputValuesAsientoApertura.push(glosa);
-                setSpaceFromArray();
-                numberAsientos++;
-                sessionStorage.setItem('numberAsientos',numberAsientos);
-                generateLibrosMayores(inputValuesAsientoApertura);
-                //bloque = posLastAsiento + inputValuesAsientoApertura.length;
-                appendAsientoApertura(inputValuesAsientoApertura.length-1)
             }else{
-                alert("Debe poner glosa al asiento");
-                return;
+                alert("Debe poner fecha posterior a la del ultimo asiento");
+                return; 
             }
         }else{
             alert("Debe poner fecha de inicio a al asiento");

@@ -13,6 +13,7 @@ var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, sald
 var detailMayores;
 var stringAsientoApertura;
 var fechaBalance;
+var lastDate;
 window.onload = cargarCuentas;
 
 function cargarCuentas(){
@@ -49,6 +50,7 @@ function getAllValuesBalanceApertura() {
     inputValuesAsientoApertura = [];
     totalActivo = 0;
     fechaBalance = $('#dateBalance').val().split("-").reverse().join("-");
+    lastDate = fechaBalance;
     sessionStorage.setItem('fechaBalance',fechaBalance);
     $('#balanceApertura select').each(function() {
         if ($(this).val()==="0") {return}
@@ -89,7 +91,6 @@ function initializeAsientoApertura(){
     totalDebe = totalActivo;
     totalHaber = totalActivo;
     for (var i = 0; i < inputValuesBalanceApertura.length; i=i+2) {
-        //inputValuesAsientoApertura.push(fechaBalance);
         if (inputValuesBalanceApertura[i] != "capital") {
             inputValuesAsientoApertura.push(inputValuesBalanceApertura[i]);
             inputValuesAsientoApertura.push(inputValuesBalanceApertura[i+1]);
@@ -107,6 +108,7 @@ function initializeAsientoApertura(){
     sessionStorage.setItem('numberAsientos',numberAsientos);
     sessionStorage.setItem('totalDebe',totalHaber);
     sessionStorage.setItem('totalHaber',totalHaber);
+    sessionStorage.setItem('lastDate',lastDate);
     //end
     appendAsientoApertura(inputValuesAsientoApertura.length-1)
     generateLibrosMayores(inputValuesAsientoApertura);
