@@ -18,7 +18,8 @@ window.onload = cargarCuentas;
 function cargarCuentas(){
     $("#balanceApertura select").empty().append(sessionStorage.optionsAsString);
     detailMayores = sessionStorage.detailMayores.split(',');
-    total = sessionStorage.totalHaber;
+    total = sessionStorage.inputValuesBalanceApertura.split(',');
+    total = total[total.length-1];
     preloadBalanceApetura = sessionStorage.inputValuesBalanceApertura;
     if (preloadBalanceApetura!=undefined) {
         preloadBalanceApetura=preloadBalanceApetura.split(',');
