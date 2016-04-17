@@ -9,6 +9,7 @@ var detailMayores;
 var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10;
 var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10;
 var stringAsientoApertura;
+var fechaAsiento;
 window.onload = cargarCuentas;
 
 function cargarCuentas(){
@@ -55,15 +56,15 @@ function cargarCuentas(){
 }
 
 function appendAsientoApertura(fin){
-    for (var i = 0; i < fin; i=i+4) {
+    for (var i = 0; i < fin; i=i+3) {
         if (i===0) {
-            stringAsientoApertura += "<tr><td colspan = '4' align ='center'> A-"+numberAsientos+"</td></tr>";
+            stringAsientoApertura += "<tr><td colspan = '3' align ='center'>A-"+numberAsientos+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+fechaAsiento+"</td></tr>";
         }
-        stringAsientoApertura += "<tr><td>"+inputValuesAsientoApertura[i]+"</td><td>"+inputValuesAsientoApertura[i+1]+"</td><td>"+inputValuesAsientoApertura[i+2]+"</td><td>"+inputValuesAsientoApertura[i+3]+"</td></tr>";
+        stringAsientoApertura += "<tr><td>"+inputValuesAsientoApertura[i]+"</td><td>"+inputValuesAsientoApertura[i+1]+"</td><td>"+inputValuesAsientoApertura[i+2]+"</td></tr>";
     }
-    stringAsientoApertura += "<tr><td bgcolor='#D8D8D8' colspan = '4'>"+inputValuesAsientoApertura[fin]+"</td></tr>";
+    stringAsientoApertura += "<tr><td bgcolor='#D8D8D8' colspan = '3'>"+inputValuesAsientoApertura[fin]+"</td></tr>";
     
-    stringAsientoApertura += "<tr bgcolor='#A9E2F3'><td colspan = '2'><b>Total:</b></td><td>"+totalDebe+"</td><td>"+totalHaber+"</td></tr>";
+    stringAsientoApertura += "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>"+totalDebe+"</td><td>"+totalHaber+"</td></tr>";
     //variables de session
     sessionStorage.setItem('stringAsientoApertura',stringAsientoApertura);
     sessionStorage.setItem('totalDebe',totalHaber);
@@ -78,7 +79,7 @@ function drawAsientoApertura(){
 
 function registerAsiento(){
     inputValuesAsientoApertura = [];
-    fechaAsiento = $('#dateAsiento').val();
+    fechaAsiento = $('#dateAsiento').val().split("-").reverse().join("-");;
     glosa = $('#glosa').val();
     amountAsiento = [];
     accountAsiento = [];
@@ -102,7 +103,7 @@ function registerAsiento(){
         if (fechaAsiento!= "") {
             if (glosa != "") {
                 for (var i = 0; i < amountAsiento.length-1; i=i+2) {
-                    inputValuesAsientoApertura.push(fechaAsiento);
+                    //inputValuesAsientoApertura.push(fechaAsiento);
                     inputValuesAsientoApertura.push(accountAsiento[j]);
                     inputValuesAsientoApertura.push(amountAsiento[i]);
                     inputValuesAsientoApertura.push(amountAsiento[i+1]);
@@ -113,7 +114,7 @@ function registerAsiento(){
                 numberAsientos++;
                 sessionStorage.setItem('numberAsientos',numberAsientos);
                 generateLibrosMayores(inputValuesAsientoApertura);
-                bloque = posLastAsiento + inputValuesAsientoApertura.length;
+                //bloque = posLastAsiento + inputValuesAsientoApertura.length;
                 appendAsientoApertura(inputValuesAsientoApertura.length-1)
             }else{
                 alert("Debe poner glosa al asiento");
@@ -174,87 +175,87 @@ function setSpaceFromArray(){
 
 function generateLibrosMayores(values){
     detalle = values[values.length-1];
-    for (var r = 0; r < values.length-1; r+=4) {
-        var libro = findLibro(inputValuesAsientoApertura[r+1]);
+    for (var r = 0; r < values.length; r+=3) {
+        var libro = findLibro(values[r]);
         switch (libro) {
             case 1:
-                libro1.push(values[r]);
+                libro1.push(fechaAsiento);
                 libro1.push(detalle);
+                libro1.push(values[r+1]);
                 libro1.push(values[r+2]);
-                libro1.push(values[r+3]);
-                calculateSaldo(1,values[r+2],values[r+3]);
+                calculateSaldo(1,values[r+1],values[r+2]);
                 libro1.push(saldo1);
             break;
             case 2:
-                libro2.push(values[r]);
+                libro2.push(fechaAsiento);
                 libro2.push(detalle);
+                libro2.push(values[r+1]);
                 libro2.push(values[r+2]);
-                libro2.push(values[r+3]);
-                calculateSaldo(2,values[r+2],values[r+3]);
+                calculateSaldo(2,values[r+1],values[r+2]);
                 libro2.push(saldo2);
             break;
             case 3:
-                libro3.push(values[r]);
+                libro3.push(fechaAsiento);
                 libro3.push(detalle);
+                libro3.push(values[r+1]);
                 libro3.push(values[r+2]);
-                libro3.push(values[r+3]);
-                calculateSaldo(3,values[r+2],values[r+3]);
+                calculateSaldo(3,values[r+1],values[r+2]);
                 libro3.push(saldo3);
             break;
             case 4:
-                libro4.push(values[r]);
+                libro4.push(fechaAsiento);
                 libro4.push(detalle);
+                libro4.push(values[r+1]);
                 libro4.push(values[r+2]);
-                libro4.push(values[r+3]);
-                calculateSaldo(4,values[r+2],values[r+3]);
+                calculateSaldo(4,values[r+1],values[r+2]);
                 libro4.push(saldo4);
             break;
             case 5:
-                libro5.push(values[r]);
+                libro5.push(fechaAsiento);
                 libro5.push(detalle);
+                libro5.push(values[r+1]);
                 libro5.push(values[r+2]);
-                libro5.push(values[r+3]);
-                calculateSaldo(5,values[r+2],values[r+3]);
+                calculateSaldo(5,values[r+1],values[r+2]);
                 libro5.push(saldo5);
             break;
             case 6:
-                libro6.push(values[r]);
+                libro6.push(fechaAsiento);
                 libro6.push(detalle);
+                libro6.push(values[r+1]);
                 libro6.push(values[r+2]);
-                libro6.push(values[r+3]);
-                calculateSaldo(6,values[r+2],values[r+3]);
+                calculateSaldo(6,values[r+1],values[r+2]);
                 libro6.push(saldo6);
             break;
             case 7:
-                libro7.push(values[r]);
+                libro7.push(fechaAsiento);
                 libro7.push(detalle);
+                libro7.push(values[r+1]);
                 libro7.push(values[r+2]);
-                libro7.push(values[r+3]);
-                calculateSaldo(7,values[r+2],values[r+3]);
+                calculateSaldo(7,values[r+1],values[r+2]);
                 libro7.push(saldo7);
             break;
             case 8:
-                libro8.push(values[r]);
+                libro8.push(fechaAsiento);
                 libro8.push(detalle);
+                libro8.push(values[r+1]);
                 libro8.push(values[r+2]);
-                libro8.push(values[r+3]);
-                calculateSaldo(8,values[r+2],values[r+3]);
+                calculateSaldo(8,values[r+1],values[r+2]);
                 libro8.push(saldo8);
             break;
             case 9:
-                libro9.push(values[r]);
+                libro9.push(fechaAsiento);
                 libro9.push(detalle);
+                libro9.push(values[r+1]);
                 libro9.push(values[r+2]);
-                libro9.push(values[r+3]);
-                calculateSaldo(9,values[r+2],values[r+3]);
+                calculateSaldo(9,values[r+1],values[r+2]);
                 libro9.push(saldo9);
             break;
             case 10:
-                libro10.push(values[r]);
+                libro10.push(fechaAsiento);
                 libro10.push(detalle);
+                libro10.push(values[r+1]);
                 libro10.push(values[r+2]);
-                libro10.push(values[r+3]);
-                calculateSaldo(10,values[r+2],values[r+3]);
+                calculateSaldo(10,values[r+1],values[r+2]);
                 libro10.push(saldo10);
              break;
         }
