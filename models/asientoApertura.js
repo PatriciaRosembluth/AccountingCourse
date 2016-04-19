@@ -103,10 +103,11 @@ function registerAsiento(){
             indexAsiento--;
         }
     });
-    if(getTotalDebeYhaber(amountAsiento)){
-        if (fechaAsiento!= "") {
-            if (lastDate<=fechAux) {
-                if (glosa != "") {
+    
+    if (fechaAsiento!= "") {
+        if (lastDate<=fechAux) {
+            if (glosa != "") {
+                if(getTotalDebeYhaber(amountAsiento)){
                     for (var i = 0; i < amountAsiento.length-1; i=i+2) {
                         inputValuesAsientoApertura.push(accountAsiento[j]);
                         inputValuesAsientoApertura.push(amountAsiento[i]);
@@ -122,18 +123,19 @@ function registerAsiento(){
                     lastDate = fechAux;
                     sessionStorage.setItem('lastDate',fechaAsiento);
                 }else{
-                    alert("Debe poner glosa al asiento");
+                    alert("Total Debe y Haber del registro deben ser iguales"); 
                     return;
                 }
             }else{
-                alert("Debe poner fecha posterior a la del ultimo asiento");
+                alert("Debe poner glosa al asiento");
                 return; 
             }
         }else{
-            alert("Debe poner fecha de inicio a al asiento");
+            alert("Debe seleccionar una fecha posterior o igual a la del ultimo asiento");
             return;
         }
     }else{
+        alert("Debe seleccionar una fecha de inicio del asiento");
         return;
     }
     document.getElementById("numberAsiento").innerHTML = "Asiento # "+ (numberAsientos+1);
@@ -169,7 +171,6 @@ function getTotalDebeYhaber(debeHaber){
         totalDebe+=totalDebeR;
         return true;
     }else{
-        alert("Total Debe y Haber del registro deben ser iguales");
         return false;
     }
 }
