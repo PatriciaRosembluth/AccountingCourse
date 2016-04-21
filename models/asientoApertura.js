@@ -60,11 +60,11 @@ function cargarCuentas(){
     saldo8 = parseInt(sessionStorage.saldo8);
     saldo9 = parseInt(sessionStorage.saldo9);
     saldo10 = parseInt(sessionStorage.saldo10);
-    saldo11 = parseInt(sessionStorage.saldo10);
-    saldo12 = parseInt(sessionStorage.saldo10);
-    saldo13 = parseInt(sessionStorage.saldo10);
-    saldo14 = parseInt(sessionStorage.saldo10);
-    saldo15 = parseInt(sessionStorage.saldo10);
+    saldo11 = parseInt(sessionStorage.saldo11);
+    saldo12 = parseInt(sessionStorage.saldo12);
+    saldo13 = parseInt(sessionStorage.saldo13);
+    saldo14 = parseInt(sessionStorage.saldo14);
+    saldo15 = parseInt(sessionStorage.saldo15);
 	document.getElementById("numberAsiento").innerHTML = "Asiento # "+ (numberAsientos+1);
     $('#registroAsiento select').empty().append(sessionStorage.optionsAsString);
     detailMayores = sessionStorage.detailMayores.split(',');
