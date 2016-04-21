@@ -29,7 +29,7 @@ function generateAsientoCierre(){
 			totalDebeA1+=parseInt(estadoResultados[i+1]);
 		}
 	}
-	if (utilidadGestionER>0) {
+	if (utilidadGestionER>=0) {
 		stringEstadoResultados += "<tr><td> utilidad de la gestion</td><td></td><td>"+utilidadGestionER+"</td></tr>";
 		totalHaberA1+=utilidadGestionER;
 	}else{
@@ -49,7 +49,7 @@ function generateAsientoCierre(){
 			totalDebeA2+=parseInt(balanceGeneral[i+1]);
 		}
 	}
-	if (utilidadGestionBG>0) {
+	if (utilidadGestionBG>=0) {
 		stringBalanceGeneral += "<tr><td> utilidad de la gestion</td><td>"+utilidadGestionBG+"</td><td></td></tr>";
 		totalDebeA2 += utilidadGestionBG;
 	}else{

@@ -314,12 +314,12 @@ function generateLibrosMayores(values){
                 libro14.push(saldo14);
              break;
             case 15:
-                libro5.push(fechaAsiento);
-                libro5.push(detalle);
-                libro5.push(values[r+1]);
-                libro5.push(values[r+2]);
-                calculateSaldo(5,values[r+1],values[r+2]);
-                libro5.push(saldo15);
+                libro15.push(fechaAsiento);
+                libro15.push(detalle);
+                libro15.push(values[r+1]);
+                libro15.push(values[r+2]);
+                calculateSaldo(15,values[r+1],values[r+2]);
+                libro15.push(saldo15);
              break;
         }
     }

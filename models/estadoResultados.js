@@ -1,13 +1,17 @@
 var estadoResultados;
+var accounts;
 window.onload = cargarDatos;
 
 function cargarDatos() {
 	estadoResultados = sessionStorage.estadoResultados.split(',');
+	accounts = sessionStorage.accounts.split(',');
 }
 
 function generateEstadoResultados(){
 	gastos = 0;
+	ingresos = 0;
 	stringGastos="";
+	stringIngresos="";
 	for (var i = 0; i < estadoResultados.length; i=i+2) {
 		if (estadoResultados[i]==="ventas") {
 			document.getElementById("ventas").innerHTML = estadoResultados[i]+" --------------------------- " + estadoResultados[i+1];
@@ -17,13 +21,27 @@ function generateEstadoResultados(){
 			costoVentas = parseInt(estadoResultados[i+1]);
 		}else if (estadoResultados[i]==="utilidad neta") { 
 			document.getElementById("utilidad-neta").innerHTML = estadoResultados[i].toUpperCase()+" ----------------------------------------------------- " + estadoResultados[i+1];
-		}else {
+		}else if(findTypeAccount(estadoResultados[i])==="G"){
 			gastos+=parseInt(estadoResultados[i+1]);
 			stringGastos+="<i><h3>"+estadoResultados[i]+" ---------------- " + estadoResultados[i+1]+"</h3></i>"
+		}else if(findTypeAccount(estadoResultados[i])==="I"){
+			ingresos+=parseInt(estadoResultados[i+1]);
+			stringIngresos+="<i><h3>"+estadoResultados[i]+" ---------------- " + estadoResultados[i+1]+"</h3></i>"
 		}
 	}
 	$('#gastos').empty().append(stringGastos);
+	$('#ingresos').empty().append(stringIngresos);
 	utilidadBruta = ventas - costoVentas;
-	document.getElementById("total-gastos").innerHTML = "total gastos --------------------------------- " + gastos;  	
+	document.getElementById("total-gastos").innerHTML = "total gastos --------------------------------- " + gastos;
+	document.getElementById("total-ingresos").innerHTML = "total ingresos --------------------------------- " + ingresos;
 	document.getElementById("utilidad-bruta").innerHTML = "utilidad bruta --------------------------------- " + utilidadBruta;  	
+}
+
+function findTypeAccount(account){
+	for (var i = 0; i < accounts.length; i++) {
+        if (account === accounts[i]) {
+            return accounts[i+1];
+        }
+    }
+
 }

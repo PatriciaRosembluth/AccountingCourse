@@ -20,40 +20,40 @@ var preloadPasivo;
 window.onload = cargarCuentas;
 
 function cargarCuentas(){
-    totalActivo = 0;
-    totalPasivoPatrimonio = 0;
-    preloadActivo = [];
-    preloadPasivo = [];
-    activo = false;
-    pasivo = false;
     detailMayores = sessionStorage.detailMayores.split(',');
-    if (sessionStorage.inputValuesBalanceAperturaActivo != undefined) {
-        preloadActivo = sessionStorage.inputValuesBalanceAperturaActivo.split(',');
-        activo = true;
-    }
-    if (sessionStorage.inputValuesBalanceAperturaPasivo != undefined) {
-        preloadPasivo = sessionStorage.inputValuesBalanceAperturaPasivo.split(',');
-        pasivo = true;
-    }
-    stringActivo = "";
-    stringPasivo = "";
-    if (activo) {
-        for (var i = 0; i < preloadActivo.length; i=i+2) {
-            stringActivo += "<tr><td><input type='text'/ style = 'width:196px;height:18px;' value ='"+preloadActivo[i]+"'></td><td><input type='text' value ='"+preloadActivo[i+1]+"'></td></tr>";
-            totalActivo += parseInt(preloadActivo[i+1]);
-        }
-    }
-    if (pasivo) {
-        for (var i = 0; i < preloadPasivo.length; i=i+2) {
-            stringPasivo += "<tr><td><input type='text'/ style = 'width:196px;height:18px;' value ='"+preloadPasivo[i]+"'></td><td><input type='text' value ='"+preloadPasivo[i+1]+"'></td></tr>";
-            totalPasivoPatrimonio += parseInt(preloadPasivo[i+1]);
-        }
-    }
-    $('#dateBalance').val(sessionStorage.fechaBalance.split("-").reverse().join("-"));
-    $('#balanceAperturaActivo tbody').append(stringActivo);
-    $('#balanceAperturaPasivo tbody').append(stringPasivo);
-    document.getElementById("totalActivo").innerHTML = totalActivo;
-    document.getElementById("totalPasivoPatrimonio").innerHTML = totalPasivoPatrimonio;
+    // totalActivo = 0;
+    // totalPasivoPatrimonio = 0;
+    // preloadActivo = [];
+    // preloadPasivo = [];
+    // activo = false;
+    // pasivo = false;
+    // if (sessionStorage.inputValuesBalanceAperturaActivo != undefined) {
+    //     preloadActivo = sessionStorage.inputValuesBalanceAperturaActivo.split(',');
+    //     activo = true;
+    // }
+    // if (sessionStorage.inputValuesBalanceAperturaPasivo != undefined) {
+    //     preloadPasivo = sessionStorage.inputValuesBalanceAperturaPasivo.split(',');
+    //     pasivo = true;
+    // }
+    // stringActivo = "";
+    // stringPasivo = "";
+    // if (activo) {
+    //     for (var i = 0; i < preloadActivo.length; i=i+2) {
+    //         stringActivo += "<tr><td><input type='text'/ style = 'width:196px;height:18px;' value ='"+preloadActivo[i]+"'></td><td><input type='text' value ='"+preloadActivo[i+1]+"'></td></tr>";
+    //         totalActivo += parseInt(preloadActivo[i+1]);
+    //     }
+    // }
+    // if (pasivo) {
+    //     for (var i = 0; i < preloadPasivo.length; i=i+2) {
+    //         stringPasivo += "<tr><td><input type='text'/ style = 'width:196px;height:18px;' value ='"+preloadPasivo[i]+"'></td><td><input type='text' value ='"+preloadPasivo[i+1]+"'></td></tr>";
+    //         totalPasivoPatrimonio += parseInt(preloadPasivo[i+1]);
+    //     }
+    // }
+    // $('#dateBalance').val(sessionStorage.fechaBalance.split("-").reverse().join("-"));
+    // $('#balanceAperturaActivo tbody').append(stringActivo);
+    // $('#balanceAperturaPasivo tbody').append(stringPasivo);
+    // document.getElementById("totalActivo").innerHTML = totalActivo;
+    // document.getElementById("totalPasivoPatrimonio").innerHTML = totalPasivoPatrimonio;
 }
 
 function addTransaccionActivo(){
@@ -305,12 +305,12 @@ function generateLibrosMayores(values){
                 libro14.push(saldo14);
              break;
             case 15:
-                libro5.push(fechaBalance);
-                libro5.push(detalle);
-                libro5.push(values[r+1]);
-                libro5.push(values[r+2]);
-                calculateSaldo(5,values[r+1],values[r+2]);
-                libro5.push(saldo15);
+                libro15.push(fechaBalance);
+                libro15.push(detalle);
+                libro15.push(values[r+1]);
+                libro15.push(values[r+2]);
+                calculateSaldo(15,values[r+1],values[r+2]);
+                libro15.push(saldo15);
              break;
         }
     }

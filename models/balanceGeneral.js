@@ -19,6 +19,7 @@ function putActivoPasivo(){
     stringSelectA = "<td><select style = 'width:200px;height:24px;'>"+
             "<option value='0'>Seleccionar</option>"+
             "<option value='D'>Disponible</option>"+
+            "<option value='AR'>Realizable</option>"+
             "<option value='AE'>Exigible</option>"+
             "<option value='AF'>Activo Fijo</option>"+
             "</select></td></tr>";
@@ -67,6 +68,7 @@ function drawBalanceGeneral(){
     stringActivoD = "";
     stringActivoE = "";
     stringActivoF = "";
+    stringActivoR = "";
     stringPasivoP = "";
     stringPasivoE = "";
     for (var i = 0; i < balanceGeneral.length; i=i+2) {
@@ -82,6 +84,10 @@ function drawBalanceGeneral(){
             stringActivoF += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalActivo += parseInt(balanceGeneral[i+1]); 
         }
+        if (findType(balanceGeneral[i]) === "AR" ) {
+            stringActivoR += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+            totalActivo += parseInt(balanceGeneral[i+1]); 
+        }
         if (findType(balanceGeneral[i]) === "P" ) {
             stringPasivoP += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalPasivo += parseInt(balanceGeneral[i+1]);
@@ -94,6 +100,7 @@ function drawBalanceGeneral(){
     $('#activoD').empty().append(stringActivoD);
     $('#activoE').empty().append(stringActivoE);
     $('#activoF').empty().append(stringActivoF);
+    $('#activoR').empty().append(stringActivoR);
     
      $('#pasivoE').empty().append(stringPasivoE);
      $('#pasivoP').empty().append(stringPasivoP);
