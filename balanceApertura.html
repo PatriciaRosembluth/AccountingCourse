@@ -21,33 +21,57 @@
 	<h1>Balance de Apertura</h1>
 	<h2>En bolivianos</h2>
 </div>
-<b>Fecha inicio actividades:  </b><input style = "height:24px;width:235px;" type = "date" id = "dateBalance">
+<b>Fecha inicio actividades:  </b><input style = "height:24px;width:235px;" type = "date" id = "dateBalance"><br>
 <u><h2>Activo</h2></u>
-<table class="inputtable" id="balanceApertura">
+<button class="button-add" onclick="addTransaccionActivo();">Agregar Activo</button><br><br>
+<table class="inputtable" id="balanceAperturaActivo">
 	<col width="200">
  	<col width="150">			
 		<thead>
 			<tr>
-				<th>Detalle</th>
+				<th>Cuenta</th>
 				<th>Monto</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
+			<!-- <tr>
 		        <td><select style = "width:200px;height:24px;" id = "valueAccount-0"></select></td>
 		        <td><input type='text' id = "amount-0"/></td>
 	        </tr>
 	        <tr>
 		        <td><select style = "width:200px;height:24px;" id = "valueAccount-1"></select></td>
 		        <td><input type='text' id = "amount-1"/></td>
+	        </tr> -->
+		</tbody>
+</table>
+<h2>Total Activo: <label id="totalActivo"></label></h2>
+<u><h2>Pasivo</h2></u>
+<button class="button-add" onclick="addTransaccionPasivo();">Agregar Pasivo</button><br><br>
+<table class="inputtable" id="balanceAperturaPasivo">
+	<col width="200">
+ 	<col width="150">			
+		<thead>
+			<tr>
+				<th>Cuenta</th>
+				<th>Monto</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- <tr>
+		        <td><select style = "width:200px;height:24px;" id = "valueAccount-0"></select></td>
+		        <td><input type='text' id = "amount-0"/></td>
 	        </tr>
+	        <tr>
+		        <td><select style = "width:200px;height:24px;" id = "valueAccount-1"></select></td>
+		        <td><input type='text' id = "amount-1"/></td>
+	        </tr> -->
 		</tbody>
 	</table>
 	<br>
 	<button onclick="getAllValuesBalanceApertura();">Registrar balance</button><br><br>
-	<h2>Total Activo: <label id="totalActivo"></label></h2>
-	<h3><u><strong>Capital</strong></u></h3>
-	<h2>Capital: <label id="capital"></label></h2><br>
+	<h2>Capital: <label id="capital"></label></h2>
+	<h2>Total Pasivo y Patrimonio: <label id="totalPasivoPatrimonio"></label></h2>
+	
 	<a href="asientoApertura.html">Asiento Apertura</a>
 </body>
 </html>

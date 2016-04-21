@@ -135,7 +135,7 @@ function registerAsiento(){
             return;
         }
     }else{
-        alert("Debe seleccionar una fecha de inicio del asiento");
+        alert("Debe seleccionar una fecha para el asiento");
         return;
     }
     document.getElementById("numberAsiento").innerHTML = "Asiento # "+ (numberAsientos+1);

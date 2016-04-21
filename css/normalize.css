@@ -86,3 +86,9 @@ button:active {
   box-shadow: 0 2px 0 #006599;
   transform: translateY(3px);
 }
+
+.button-add {
+    padding: 5px 10px;
+    background: #4479BA;
+    color: #FFF;
+}

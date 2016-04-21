@@ -1,8 +1,9 @@
-var preloadBalanceApetura = [];
-var preloadDate;
-var inputValuesBalanceApertura;
+var inputValuesBalanceAperturaActivo;
+var inputValuesBalanceAperturaPasivo;
 var inputValuesAsientoApertura;
 var totalActivo;
+var capital;
+var totalPasivoPatrimonio;
 var numberAsientos;
 var totalDebe;
 var totalHaber;
@@ -17,71 +18,92 @@ var lastDate;
 window.onload = cargarCuentas;
 
 function cargarCuentas(){
-    $("#balanceApertura select").empty().append(sessionStorage.optionsAsString);
     detailMayores = sessionStorage.detailMayores.split(',');
-    total = sessionStorage.inputValuesBalanceApertura.split(',');
-    total = total[total.length-1];
-    preloadBalanceApetura = sessionStorage.inputValuesBalanceApertura;
-    if (preloadBalanceApetura!=undefined) {
-        preloadBalanceApetura=preloadBalanceApetura.split(',');
-        preloadDate = sessionStorage.fechaBalance.split("-").reverse().join("-");
-        $('#dateBalance').val(preloadDate);
-        j=0;
-        for (var i = 0; i < preloadBalanceApetura.length; i=i+2) {    
-            $('#valueAccount-'+j).val(preloadBalanceApetura[i]);
-            $('#amount-'+j).val(preloadBalanceApetura[i+1]);
-            j++;
-        }
-        document.getElementById("totalActivo").innerHTML = total;
-        document.getElementById("capital").innerHTML = total;
-    }  
+}
+
+function addTransaccionActivo(){
+    stringTransaccionActivo = "<tr>"+
+                "<td><select style = 'width:200px;height:24px;'></select></td>"+
+                "<td><input type='text'/></td>"+
+                "</tr>";
+    $('#balanceAperturaActivo tbody').append(stringTransaccionActivo);
+    $("#balanceAperturaActivo select").empty().append(sessionStorage.optionsAsString);             
+}
+
+function addTransaccionPasivo(){
+    stringTransaccionPasivo = "<tr>"+
+                "<td><select style = 'width:200px;height:24px;'></select></td>"+
+                "<td><input type='text'/></td>"+
+                "</tr>";
+    $('#balanceAperturaPasivo tbody').append(stringTransaccionPasivo);
+    $("#balanceAperturaPasivo select").empty().append(sessionStorage.optionsAsString);
 }
 
 function getAllValuesBalanceApertura() {
     libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [],libro7 = [], libro8 = [], libro9 = [], libro10 = [];
     saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0, saldo5 = 0, saldo6 = 0, saldo7 = 0, saldo8 = 0, saldo9 = 0, saldo10 = 0;
-    //variables de sesion 
-    sessionStorage.setItem('totalDebe',0);
-    sessionStorage.setItem('totalHaber',0);
-    //end
-    accountsBalance = [];
-    amountBalance = [];
-    inputValuesBalanceApertura = [];
+    accountsBalanceActivo = [];
+    accountsBalancePasivo = [];
+    amountBalanceActivo = [];
+    amountBalancePasivo = [];
+    inputValuesBalanceAperturaActivo = [];
+    inputValuesBalanceAperturaPasivo = [];
     inputValuesAsientoApertura = [];
     totalActivo = 0;
+    capital = 0;
+    totalPasivoPatrimonio = 0;
     fechaBalance = $('#dateBalance').val().split("-").reverse().join("-");
     lastDate = fechaBalance;
     sessionStorage.setItem('fechaBalance',fechaBalance);
-    $('#balanceApertura select').each(function() {
+    $('#balanceAperturaActivo select').each(function() {
         if ($(this).val()==="0") {return}
-         accountsBalance.push($(this).val()); 
+         accountsBalanceActivo.push($(this).val()); 
     });
-    $('#balanceApertura input').each(function() {
-        amountBalance.push($(this).val()); 
+    $('#balanceAperturaPasivo select').each(function() {
+        if ($(this).val()==="0") {return}
+         accountsBalancePasivo.push($(this).val()); 
+    });
+    $('#balanceAperturaActivo input').each(function() {
+        amountBalanceActivo.push($(this).val()); 
+    });
+    $('#balanceAperturaPasivo input').each(function() {
+        amountBalancePasivo.push($(this).val()); 
     });
     if (fechaBalance != "") {
-        for (var i = 0; i <accountsBalance.length; i++) {
-           inputValuesBalanceApertura.push(accountsBalance[i]);
-           inputValuesBalanceApertura.push(amountBalance[i]); 
+        for (var i = 0; i <accountsBalanceActivo.length; i++) {
+           inputValuesBalanceAperturaActivo.push(accountsBalanceActivo[i]);
+           inputValuesBalanceAperturaActivo.push(amountBalanceActivo[i]); 
         }
-        calculateTotalActivo();
+        for (var i = 0; i <accountsBalancePasivo.length; i++) {
+           inputValuesBalanceAperturaPasivo.push(accountsBalancePasivo[i]);
+           inputValuesBalanceAperturaPasivo.push(amountBalancePasivo[i]); 
+        }
+        calculateTotalActivoCapital();
         initializeAsientoApertura();
         document.getElementById("totalActivo").innerHTML = totalActivo;
-        document.getElementById("capital").innerHTML = totalActivo;
+        document.getElementById("capital").innerHTML = capital;
+        document.getElementById("totalPasivoPatrimonio").innerHTML = totalPasivoPatrimonio;
     }else{
         alert("Ingrese la fecha de incio de actividades");
         return;
     }
 }
 
-function calculateTotalActivo(){
-    for (var i = 1; i < inputValuesBalanceApertura.length; i=i+2) {
-        totalActivo += parseInt(inputValuesBalanceApertura[i]);
+function calculateTotalActivoCapital(){
+    for (var i = 1; i < inputValuesBalanceAperturaActivo.length; i=i+2) {
+        totalActivo += parseInt(inputValuesBalanceAperturaActivo[i]);
+        capital += parseInt(inputValuesBalanceAperturaActivo[i]);
     }
-    inputValuesBalanceApertura.push("capital");
-    inputValuesBalanceApertura.push(totalActivo);
+    for (var i = 1; i < inputValuesBalanceAperturaPasivo.length; i=i+2) { 
+        capital -= parseInt(inputValuesBalanceAperturaPasivo[i]);
+        totalPasivoPatrimonio += parseInt(inputValuesBalanceAperturaPasivo[i]);
+        totalPasivoPatrimonio += capital;
+    }
+    inputValuesBalanceAperturaPasivo.push("capital");
+    inputValuesBalanceAperturaPasivo.push(capital);
     //variables de sesion
-    sessionStorage.setItem('inputValuesBalanceApertura',inputValuesBalanceApertura);
+    sessionStorage.setItem('inputValuesBalanceAperturaActivo',inputValuesBalanceAperturaActivo);
+    sessionStorage.setItem('inputValuesBalanceAperturaPasivo',inputValuesBalanceAperturaPasivo);
     //end
 }
 
@@ -90,16 +112,15 @@ function initializeAsientoApertura(){
     numberAsientos = 0;
     totalDebe = totalActivo;
     totalHaber = totalActivo;
-    for (var i = 0; i < inputValuesBalanceApertura.length; i=i+2) {
-        if (inputValuesBalanceApertura[i] != "capital") {
-            inputValuesAsientoApertura.push(inputValuesBalanceApertura[i]);
-            inputValuesAsientoApertura.push(inputValuesBalanceApertura[i+1]);
+    for (var i = 0; i < inputValuesBalanceAperturaActivo.length; i=i+2) {
+            inputValuesAsientoApertura.push(inputValuesBalanceAperturaActivo[i]);
+            inputValuesAsientoApertura.push(inputValuesBalanceAperturaActivo[i+1]);
             inputValuesAsientoApertura.push(0);
-        }else{
-            inputValuesAsientoApertura.push(inputValuesBalanceApertura[i]);
-            inputValuesAsientoApertura.push(0);
-            inputValuesAsientoApertura.push(inputValuesBalanceApertura[i+1]);
-        }
+    }
+    for (var i = 0; i < inputValuesBalanceAperturaPasivo.length; i=i+2) {
+        inputValuesAsientoApertura.push(inputValuesBalanceAperturaPasivo[i]);
+        inputValuesAsientoApertura.push(0);
+        inputValuesAsientoApertura.push(inputValuesBalanceAperturaPasivo[i+1]);
     }
     inputValuesAsientoApertura.push("Inicio de actividades");
     numberAsientos++;

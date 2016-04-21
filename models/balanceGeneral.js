@@ -33,8 +33,6 @@ function putActivoPasivo(){
         if (accounts[i] === "A") {
             stringAccountsA += "<tr><td>"+accounts[i-1]+"</td>" + stringSelectA;
             accountsA.push(accounts[i-1]);
-
-            indexA ++;  
         }else if(accounts[i] === "P" || accounts[i] === "C"){
             stringAccountsP += "<tr><td>"+accounts[i-1]+"</td>" + stringSelectP;  
             accountsP.push(accounts[i-1]);
@@ -81,7 +79,7 @@ function drawBalanceGeneral(){
             totalActivo += parseInt(balanceGeneral[i+1]);  
         }
         if (findType(balanceGeneral[i]) === "AF" ) {
-            stringActivoF =+ "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+            stringActivoF += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalActivo += parseInt(balanceGeneral[i+1]); 
         }
         if (findType(balanceGeneral[i]) === "P" ) {
