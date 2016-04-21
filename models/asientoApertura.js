@@ -1,4 +1,3 @@
-var inputValuesBalanceApertura;
 var inputValuesAsientoApertura;
 var numberAsientos;
 var posLastAsiento;
@@ -6,8 +5,8 @@ var glosaAsiento;
 var totalDebe;
 var totalHaber;
 var detailMayores;
-var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10;
-var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10;
+var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15;
+var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15;
 var stringAsientoApertura;
 var fechaAsiento;
 var lastDate;
@@ -20,7 +19,6 @@ function cargarCuentas(){
     stringAsientoApertura = (sessionStorage.stringAsientoApertura);
 	totalDebe = parseInt(sessionStorage.totalDebe);
 	totalHaber = parseInt(sessionStorage.totalHaber);
-    inputValuesBalanceApertura = sessionStorage.inputValuesBalanceApertura.split(',');
 	inputValuesAsientoApertura = sessionStorage.inputValuesAsientoApertura.split(',');
 	libro1 = sessionStorage.libro1.split(',');
     if (libro1.length === 1) {libro1 = [];}
@@ -42,6 +40,16 @@ function cargarCuentas(){
     if (libro9.length === 1) {libro9 = [];}
     libro10 = sessionStorage.libro10.split(',');
     if (libro10.length === 1) {libro10 = [];}
+    libro11 = sessionStorage.libro11.split(',');
+    if (libro11.length === 1) {libro11 = [];}
+    libro12 = sessionStorage.libro12.split(',');
+    if (libro12.length === 1) {libro12 = [];}
+    libro13 = sessionStorage.libro13.split(',');
+    if (libro13.length === 1) {libro13 = [];}
+    libro14 = sessionStorage.libro14.split(',');
+    if (libro14.length === 1) {libro14 = [];}
+    libro15 = sessionStorage.libro15.split(',');
+    if (libro15.length === 1) {libro15 = [];}
 	saldo1 = parseInt(sessionStorage.saldo1);
 	saldo2 = parseInt(sessionStorage.saldo2);
 	saldo3 = parseInt(sessionStorage.saldo3);
@@ -52,6 +60,11 @@ function cargarCuentas(){
     saldo8 = parseInt(sessionStorage.saldo8);
     saldo9 = parseInt(sessionStorage.saldo9);
     saldo10 = parseInt(sessionStorage.saldo10);
+    saldo11 = parseInt(sessionStorage.saldo10);
+    saldo12 = parseInt(sessionStorage.saldo10);
+    saldo13 = parseInt(sessionStorage.saldo10);
+    saldo14 = parseInt(sessionStorage.saldo10);
+    saldo15 = parseInt(sessionStorage.saldo10);
 	document.getElementById("numberAsiento").innerHTML = "Asiento # "+ (numberAsientos+1);
     $('#registroAsiento select').empty().append(sessionStorage.optionsAsString);
     detailMayores = sessionStorage.detailMayores.split(',');
@@ -268,6 +281,46 @@ function generateLibrosMayores(values){
                 calculateSaldo(10,values[r+1],values[r+2]);
                 libro10.push(saldo10);
              break;
+            case 11:
+                libro11.push(fechaAsiento);
+                libro11.push(detalle);
+                libro11.push(values[r+1]);
+                libro11.push(values[r+2]);
+                calculateSaldo(11,values[r+1],values[r+2]);
+                libro11.push(saldo11);
+             break;
+            case 12:
+                libro12.push(fechaAsiento);
+                libro12.push(detalle);
+                libro12.push(values[r+1]);
+                libro12.push(values[r+2]);
+                calculateSaldo(12,values[r+1],values[r+2]);
+                libro12.push(saldo12);
+             break;
+            case 13:
+                libro13.push(fechaAsiento);
+                libro13.push(detalle);
+                libro13.push(values[r+1]);
+                libro13.push(values[r+2]);
+                calculateSaldo(13,values[r+1],values[r+2]);
+                libro13.push(saldo13);
+             break;
+            case 14:
+                libro14.push(fechaAsiento);
+                libro14.push(detalle);
+                libro14.push(values[r+1]);
+                libro14.push(values[r+2]);
+                calculateSaldo(14,values[r+1],values[r+2]);
+                libro14.push(saldo14);
+             break;
+            case 15:
+                libro5.push(fechaAsiento);
+                libro5.push(detalle);
+                libro5.push(values[r+1]);
+                libro5.push(values[r+2]);
+                calculateSaldo(5,values[r+1],values[r+2]);
+                libro5.push(saldo15);
+             break;
         }
     }
     //variables de sesion
@@ -291,6 +344,16 @@ function generateLibrosMayores(values){
     sessionStorage.setItem('saldo9',saldo9);
     sessionStorage.setItem('libro10',libro10);
     sessionStorage.setItem('saldo10',saldo10);
+    sessionStorage.setItem('libro11',libro11);
+    sessionStorage.setItem('saldo11',saldo11);
+    sessionStorage.setItem('libro12',libro12);
+    sessionStorage.setItem('saldo12',saldo12);
+    sessionStorage.setItem('libro13',libro13);
+    sessionStorage.setItem('saldo13',saldo13);
+    sessionStorage.setItem('libro14',libro14);
+    sessionStorage.setItem('saldo14',saldo14);
+    sessionStorage.setItem('libro15',libro15);
+    sessionStorage.setItem('saldo15',saldo15);
     //end
  }
 
@@ -335,5 +398,21 @@ function calculateSaldo(saldo,AmountDebe, AmountHaber){
         case 10:
             saldo10 = saldo10 + parseInt(AmountDebe) - parseInt(AmountHaber);
             break;
+        case 11:
+            saldo11 = saldo11 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 12:
+            saldo12 = saldo12 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 13:
+            saldo13 = saldo13 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 14:
+            saldo14 = saldo14 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 15:
+            saldo15 = saldo15 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+
     }
  }

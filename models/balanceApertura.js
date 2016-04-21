@@ -9,8 +9,8 @@ var totalDebe;
 var totalHaber;
 var glosaAsiento;
 var posLastAsiento;
-var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10;
-var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10;
+var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15;
+var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15;
 var detailMayores;
 var stringAsientoApertura;
 var fechaBalance;
@@ -40,8 +40,8 @@ function addTransaccionPasivo(){
 }
 
 function getAllValuesBalanceApertura() {
-    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [],libro7 = [], libro8 = [], libro9 = [], libro10 = [];
-    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0, saldo5 = 0, saldo6 = 0, saldo7 = 0, saldo8 = 0, saldo9 = 0, saldo10 = 0;
+    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [],libro7 = [], libro8 = [], libro9 = [], libro10 = [], libro11 = [], libro12 = [], libro13 = [], libro14 = [], libro15 = [];
+    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0, saldo5 = 0, saldo6 = 0, saldo7 = 0, saldo8 = 0, saldo9 = 0, saldo10 = 0, saldo11 = 0, saldo12 = 0, saldo13 = 0, saldo14 = 0, saldo15 = 0;
     accountsBalanceActivo = [];
     accountsBalancePasivo = [];
     amountBalanceActivo = [];
@@ -236,6 +236,46 @@ function generateLibrosMayores(values){
                 calculateSaldo(10,values[r+1],values[r+2]);
                 libro10.push(saldo10);
              break;
+            case 11:
+                libro11.push(fechaBalance);
+                libro11.push(detalle);
+                libro11.push(values[r+1]);
+                libro11.push(values[r+2]);
+                calculateSaldo(11,values[r+1],values[r+2]);
+                libro11.push(saldo11);
+             break;
+            case 12:
+                libro12.push(fechaBalance);
+                libro12.push(detalle);
+                libro12.push(values[r+1]);
+                libro12.push(values[r+2]);
+                calculateSaldo(12,values[r+1],values[r+2]);
+                libro12.push(saldo12);
+             break;
+            case 13:
+                libro13.push(fechaBalance);
+                libro13.push(detalle);
+                libro13.push(values[r+1]);
+                libro13.push(values[r+2]);
+                calculateSaldo(13,values[r+1],values[r+2]);
+                libro13.push(saldo13);
+             break;
+            case 14:
+                libro14.push(fechaBalance);
+                libro14.push(detalle);
+                libro14.push(values[r+1]);
+                libro14.push(values[r+2]);
+                calculateSaldo(14,values[r+1],values[r+2]);
+                libro14.push(saldo14);
+             break;
+            case 15:
+                libro5.push(fechaBalance);
+                libro5.push(detalle);
+                libro5.push(values[r+1]);
+                libro5.push(values[r+2]);
+                calculateSaldo(5,values[r+1],values[r+2]);
+                libro5.push(saldo15);
+             break;
         }
     }
     //variables de sesion
@@ -259,6 +299,16 @@ function generateLibrosMayores(values){
     sessionStorage.setItem('saldo9',saldo9);
     sessionStorage.setItem('libro10',libro10);
     sessionStorage.setItem('saldo10',saldo10);
+    sessionStorage.setItem('libro11',libro11);
+    sessionStorage.setItem('saldo11',saldo11);
+    sessionStorage.setItem('libro12',libro12);
+    sessionStorage.setItem('saldo12',saldo12);
+    sessionStorage.setItem('libro13',libro13);
+    sessionStorage.setItem('saldo13',saldo13);
+    sessionStorage.setItem('libro14',libro14);
+    sessionStorage.setItem('saldo14',saldo14);
+    sessionStorage.setItem('libro15',libro15);
+    sessionStorage.setItem('saldo15',saldo15);
     //end
  }
 
@@ -303,5 +353,21 @@ function calculateSaldo(saldo,AmountDebe, AmountHaber){
         case 10:
             saldo10 = saldo10 + parseInt(AmountDebe) - parseInt(AmountHaber);
             break;
+        case 11:
+            saldo11 = saldo11 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 12:
+            saldo12 = saldo12 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 13:
+            saldo13 = saldo13 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 14:
+            saldo14 = saldo14 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 15:
+            saldo15 = saldo15 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+
     }
  }
