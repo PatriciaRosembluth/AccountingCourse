@@ -5,8 +5,8 @@ var glosaAsiento;
 var totalDebe;
 var totalHaber;
 var detailMayores;
-var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15;
-var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15;
+var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15, libro16, libro17, libro18, libro19, libro20, libro21, libro22, libro23, libro25, libro25, libro26, libro27, libro28, libro29, libro30;
+var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15, saldo16, saldo17, saldo18, saldo19, saldo20, saldo21, saldo22, saldo23, saldo24, saldo25, saldo26, saldo27, saldo28, saldo29, saldo30;
 var stringAsientoApertura;
 var fechaAsiento;
 var lastDate;
@@ -50,7 +50,37 @@ function cargarCuentas(){
     if (libro14.length === 1) {libro14 = [];}
     libro15 = sessionStorage.libro15.split(',');
     if (libro15.length === 1) {libro15 = [];}
-	saldo1 = parseInt(sessionStorage.saldo1);
+    libro16 = sessionStorage.libro16.split(',');
+    if (libro16.length === 1) {libro16 = [];}
+    libro17 = sessionStorage.libro17.split(',');
+    if (libro17.length === 1) {libro17 = [];}
+    libro18 = sessionStorage.libro18.split(',');
+    if (libro18.length === 1) {libro18 = [];}
+    libro19 = sessionStorage.libro19.split(',');
+    if (libro19.length === 1) {libro19 = [];}
+    libro20 = sessionStorage.libro20.split(',');
+    if (libro20.length === 1) {libro20 = [];}
+    libro21 = sessionStorage.libro21.split(',');
+    if (libro21.length === 1) {libro21 = [];}
+    libro22 = sessionStorage.libro22.split(',');
+    if (libro22.length === 1) {libro22 = [];}
+    libro23 = sessionStorage.libro23.split(',');
+    if (libro23.length === 1) {libro23 = [];}
+    libro24 = sessionStorage.libro24.split(',');
+    if (libro24.length === 1) {libro24 = [];}
+    libro25 = sessionStorage.libro25.split(',');
+    if (libro25.length === 1) {libro25 = [];}
+    libro26 = sessionStorage.libro26.split(',');
+    if (libro26.length === 1) {libro26 = [];}
+    libro27 = sessionStorage.libro27.split(',');
+    if (libro27.length === 1) {libro27 = [];}
+    libro28 = sessionStorage.libro28.split(',');
+    if (libro28.length === 1) {libro28 = [];}
+    libro29 = sessionStorage.libro29.split(',');
+    if (libro29.length === 1) {libro29 = [];}
+    libro30 = sessionStorage.libro30.split(',');
+    if (libro30.length === 1) {libro30 = [];}
+    saldo1 = parseInt(sessionStorage.saldo1);
 	saldo2 = parseInt(sessionStorage.saldo2);
 	saldo3 = parseInt(sessionStorage.saldo3);
     saldo4 = parseInt(sessionStorage.saldo4);
@@ -65,6 +95,21 @@ function cargarCuentas(){
     saldo13 = parseInt(sessionStorage.saldo13);
     saldo14 = parseInt(sessionStorage.saldo14);
     saldo15 = parseInt(sessionStorage.saldo15);
+    saldo16 = parseInt(sessionStorage.saldo16);
+    saldo17 = parseInt(sessionStorage.saldo17);
+    saldo18 = parseInt(sessionStorage.saldo18);
+    saldo19 = parseInt(sessionStorage.saldo19);
+    saldo20 = parseInt(sessionStorage.saldo20);
+    saldo21 = parseInt(sessionStorage.saldo21);
+    saldo22 = parseInt(sessionStorage.saldo22);
+    saldo23 = parseInt(sessionStorage.saldo23);
+    saldo24 = parseInt(sessionStorage.saldo24);
+    saldo25 = parseInt(sessionStorage.saldo25);
+    saldo26 = parseInt(sessionStorage.saldo26);
+    saldo27 = parseInt(sessionStorage.saldo27);
+    saldo28 = parseInt(sessionStorage.saldo28);
+    saldo29 = parseInt(sessionStorage.saldo29);
+    saldo30 = parseInt(sessionStorage.saldo30);
 	document.getElementById("numberAsiento").innerHTML = "Asiento # "+ (numberAsientos+1);
     $('#registroAsiento select').empty().append(sessionStorage.optionsAsString);
     detailMayores = sessionStorage.detailMayores.split(',');
@@ -196,6 +241,8 @@ function setSpaceFromArray(){
     }
 }
 
+
+
 function generateLibrosMayores(values){
     detalle = values[values.length-1];
     for (var r = 0; r < values.length; r+=3) {
@@ -280,7 +327,7 @@ function generateLibrosMayores(values){
                 libro10.push(values[r+2]);
                 calculateSaldo(10,values[r+1],values[r+2]);
                 libro10.push(saldo10);
-             break;
+            break;
             case 11:
                 libro11.push(fechaAsiento);
                 libro11.push(detalle);
@@ -288,7 +335,7 @@ function generateLibrosMayores(values){
                 libro11.push(values[r+2]);
                 calculateSaldo(11,values[r+1],values[r+2]);
                 libro11.push(saldo11);
-             break;
+            break;
             case 12:
                 libro12.push(fechaAsiento);
                 libro12.push(detalle);
@@ -296,7 +343,7 @@ function generateLibrosMayores(values){
                 libro12.push(values[r+2]);
                 calculateSaldo(12,values[r+1],values[r+2]);
                 libro12.push(saldo12);
-             break;
+            break;
             case 13:
                 libro13.push(fechaAsiento);
                 libro13.push(detalle);
@@ -312,7 +359,7 @@ function generateLibrosMayores(values){
                 libro14.push(values[r+2]);
                 calculateSaldo(14,values[r+1],values[r+2]);
                 libro14.push(saldo14);
-             break;
+            break;
             case 15:
                 libro15.push(fechaAsiento);
                 libro15.push(detalle);
@@ -320,7 +367,127 @@ function generateLibrosMayores(values){
                 libro15.push(values[r+2]);
                 calculateSaldo(15,values[r+1],values[r+2]);
                 libro15.push(saldo15);
+            break;
+            case 16:
+                libro16.push(fechaAsiento);
+                libro16.push(detalle);
+                libro16.push(values[r+1]);
+                libro16.push(values[r+2]);
+                calculateSaldo(16,values[r+1],values[r+2]);
+                libro16.push(saldo16);
+            break;
+            case 17:
+                libro17.push(fechaAsiento);
+                libro17.push(detalle);
+                libro17.push(values[r+1]);
+                libro17.push(values[r+2]);
+                calculateSaldo(17,values[r+1],values[r+2]);
+                libro17.push(saldo17);
+            break;
+            case 18:
+                libro18.push(fechaAsiento);
+                libro18.push(detalle);
+                libro18.push(values[r+1]);
+                libro18.push(values[r+2]);
+                calculateSaldo(18,values[r+1],values[r+2]);
+                libro18.push(saldo18);
+            break;
+            case 19:
+                libro19.push(fechaAsiento);
+                libro19.push(detalle);
+                libro19.push(values[r+1]);
+                libro19.push(values[r+2]);
+                calculateSaldo(19,values[r+1],values[r+2]);
+                libro19.push(saldo19);
+            break;
+            case 20:
+                libro20.push(fechaAsiento);
+                libro20.push(detalle);
+                libro20.push(values[r+1]);
+                libro20.push(values[r+2]);
+                calculateSaldo(20,values[r+1],values[r+2]);
+                libro20.push(saldo20);
+            break;
+            case 21:
+                libro21.push(fechaAsiento);
+                libro21.push(detalle);
+                libro21.push(values[r+1]);
+                libro21.push(values[r+2]);
+                calculateSaldo(21,values[r+1],values[r+2]);
+                libro21.push(saldo21);
+            break;
+            case 22:
+                libro22.push(fechaAsiento);
+                libro22.push(detalle);
+                libro22.push(values[r+1]);
+                libro22.push(values[r+2]);
+                calculateSaldo(22,values[r+1],values[r+2]);
+                libro22.push(saldo22);
+            break;
+            case 23:
+                libro23.push(fechaAsiento);
+                libro23.push(detalle);
+                libro23.push(values[r+1]);
+                libro23.push(values[r+2]);
+                calculateSaldo(23,values[r+1],values[r+2]);
+                libro23.push(saldo23);
+            break;
+            case 24:
+                libro24.push(fechaAsiento);
+                libro24.push(detalle);
+                libro24.push(values[r+1]);
+                libro24.push(values[r+2]);
+                calculateSaldo(24,values[r+1],values[r+2]);
+                libro24.push(saldo24);
+            break;
+            case 25:
+                libro25.push(fechaAsiento);
+                libro25.push(detalle);
+                libro25.push(values[r+1]);
+                libro25.push(values[r+2]);
+                calculateSaldo(25,values[r+1],values[r+2]);
+                libro25.push(saldo25);
+            break;
+            case 26:
+                libro26.push(fechaAsiento);
+                libro26.push(detalle);
+                libro26.push(values[r+1]);
+                libro26.push(values[r+2]);
+                calculateSaldo(26,values[r+1],values[r+2]);
+                libro26.push(saldo26);
+            break;
+            case 27:
+                libro27.push(fechaAsiento);
+                libro27.push(detalle);
+                libro27.push(values[r+1]);
+                libro27.push(values[r+2]);
+                calculateSaldo(27,values[r+1],values[r+2]);
+                libro27.push(saldo27);
+            break;
+            case 28:
+                libro28.push(fechaAsiento);
+                libro28.push(detalle);
+                libro28.push(values[r+1]);
+                libro28.push(values[r+2]);
+                calculateSaldo(28,values[r+1],values[r+2]);
+                libro28.push(saldo28);
              break;
+            case 29:
+                libro29.push(fechaAsiento);
+                libro29.push(detalle);
+                libro29.push(values[r+1]);
+                libro29.push(values[r+2]);
+                calculateSaldo(29,values[r+1],values[r+2]);
+                libro29.push(saldo29);
+            break;
+            case 30:
+                libro30.push(fechaAsiento);
+                libro30.push(detalle);
+                libro30.push(values[r+1]);
+                libro30.push(values[r+2]);
+                calculateSaldo(30,values[r+1],values[r+2]);
+                libro30.push(saldo30);
+            break;
         }
     }
     //variables de sesion
@@ -354,6 +521,36 @@ function generateLibrosMayores(values){
     sessionStorage.setItem('saldo14',saldo14);
     sessionStorage.setItem('libro15',libro15);
     sessionStorage.setItem('saldo15',saldo15);
+    sessionStorage.setItem('libro16',libro16);
+    sessionStorage.setItem('saldo16',saldo16);
+    sessionStorage.setItem('libro17',libro17);
+    sessionStorage.setItem('saldo17',saldo17);
+    sessionStorage.setItem('libro18',libro18);
+    sessionStorage.setItem('saldo18',saldo18);
+    sessionStorage.setItem('libro19',libro19);
+    sessionStorage.setItem('saldo19',saldo19);
+    sessionStorage.setItem('libro20',libro20);
+    sessionStorage.setItem('saldo20',saldo20);
+    sessionStorage.setItem('libro21',libro21);
+    sessionStorage.setItem('saldo21',saldo21);
+    sessionStorage.setItem('libro22',libro22);
+    sessionStorage.setItem('saldo22',saldo22);
+    sessionStorage.setItem('libro23',libro23);
+    sessionStorage.setItem('saldo23',saldo23);
+    sessionStorage.setItem('libro24',libro24);
+    sessionStorage.setItem('saldo24',saldo24);
+    sessionStorage.setItem('libro25',libro25);
+    sessionStorage.setItem('saldo25',saldo25);
+    sessionStorage.setItem('libro26',libro26);
+    sessionStorage.setItem('saldo26',saldo26);
+    sessionStorage.setItem('libro27',libro27);
+    sessionStorage.setItem('saldo27',saldo27);
+    sessionStorage.setItem('libro28',libro28);
+    sessionStorage.setItem('saldo28',saldo28);
+    sessionStorage.setItem('libro29',libro29);
+    sessionStorage.setItem('saldo29',saldo29);
+    sessionStorage.setItem('libro30',libro30);
+    sessionStorage.setItem('saldo30',saldo30);
     //end
  }
 
@@ -413,6 +610,50 @@ function calculateSaldo(saldo,AmountDebe, AmountHaber){
         case 15:
             saldo15 = saldo15 + parseInt(AmountDebe) - parseInt(AmountHaber);
             break;
-
+        case 16:
+            saldo16 = saldo16 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 17:
+            saldo17 = saldo17 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 18:
+            saldo18 = saldo18 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;    
+        case 19:
+            saldo19 = saldo19 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 20:
+            saldo20 = saldo20 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 21:
+            saldo21 = saldo21 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 22:
+            saldo22 = saldo22 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 23:
+            saldo23 = saldo23 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 24:
+            saldo24 = saldo24 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 25:
+            saldo25 = saldo25 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 26:
+            saldo26 = saldo26 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 27:
+            saldo27 = saldo27 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 28:
+            saldo28 = saldo28 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 29:
+            saldo29 = saldo29 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 30:
+            saldo30 = saldo30 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
     }
  }

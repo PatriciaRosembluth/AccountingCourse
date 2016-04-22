@@ -2,6 +2,9 @@ var accounts = [];
 window.onload = drawAccount;
 
 function drawAccount(){
+    for (var i = 0; i < 30; i++) {
+        
+    }
     accounts = sessionStorage.accounts.split(',');
     j=0;
     if (accounts!=[]) {

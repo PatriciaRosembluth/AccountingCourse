@@ -1,6 +1,6 @@
 var balanceSumasSaldos;
-var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15;
-var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15;
+var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15, libro16, libro17, libro18, libro19, libro20, libro21, libro22, libro23, libro25, libro25, libro26, libro27, libro28, libro29, libro30;
+var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15, saldo16, saldo17, saldo18, saldo19, saldo20, saldo21, saldo22, saldo23, saldo24, saldo25, saldo26, saldo27, saldo28, saldo29, saldo30;
 var totalDebeSs;
 var totalHaberSs;
 var totalDeudorSs;
@@ -9,6 +9,7 @@ var detailMayores;
 window.onload = cargarLibros;
 
 function cargarLibros(){
+    detailMayores = sessionStorage.detailMayores.split(',');
     libro1 = sessionStorage.libro1.split(',');
     libro2 = sessionStorage.libro2.split(',');
     libro3 = sessionStorage.libro3.split(',');
@@ -24,7 +25,21 @@ function cargarLibros(){
     libro13 = sessionStorage.libro13.split(',');
     libro14 = sessionStorage.libro14.split(',');
     libro15 = sessionStorage.libro15.split(',');
-    detailMayores = sessionStorage.detailMayores.split(',');
+    libro16 = sessionStorage.libro16.split(',');
+    libro17 = sessionStorage.libro17.split(',');
+    libro18 = sessionStorage.libro18.split(',');
+    libro19 = sessionStorage.libro19.split(',');
+    libro20 = sessionStorage.libro20.split(',');
+    libro21 = sessionStorage.libro21.split(',');
+    libro22 = sessionStorage.libro22.split(',');
+    libro23 = sessionStorage.libro23.split(',');
+    libro24 = sessionStorage.libro24.split(',');
+    libro25 = sessionStorage.libro25.split(',');
+    libro26 = sessionStorage.libro26.split(',');
+    libro27 = sessionStorage.libro27.split(',');
+    libro28 = sessionStorage.libro28.split(',');
+    libro29 = sessionStorage.libro29.split(',');
+    libro30 = sessionStorage.libro30.split(',');
 }
 
 function generateSumasSaldos(){
@@ -45,6 +60,21 @@ function generateSumasSaldos(){
     calculateDebeHaberLibro(libro13,12);
     calculateDebeHaberLibro(libro14,13);
     calculateDebeHaberLibro(libro15,14);
+    calculateDebeHaberLibro(libro16,15);
+    calculateDebeHaberLibro(libro17,16);
+    calculateDebeHaberLibro(libro18,17);
+    calculateDebeHaberLibro(libro19,18);
+    calculateDebeHaberLibro(libro20,19);
+    calculateDebeHaberLibro(libro21,20);
+    calculateDebeHaberLibro(libro22,21);
+    calculateDebeHaberLibro(libro23,22);
+    calculateDebeHaberLibro(libro24,23);
+    calculateDebeHaberLibro(libro25,24);
+    calculateDebeHaberLibro(libro26,25);
+    calculateDebeHaberLibro(libro27,26);
+    calculateDebeHaberLibro(libro28,27);
+    calculateDebeHaberLibro(libro29,28);
+    calculateDebeHaberLibro(libro30,29);
     drawBalanceSumasSaldor();
 }
 
