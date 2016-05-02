@@ -1,5 +1,5 @@
-var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15, libro16, libro17, libro18, libro19, libro20, libro21, libro22, libro23, libro25, libro25, libro26, libro27, libro28, libro29, libro30;
-var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15, saldo16, saldo17, saldo18, saldo19, saldo20, saldo21, saldo22, saldo23, saldo24, saldo25, saldo26, saldo27, saldo28, saldo29, saldo30;
+var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15, libro16, libro17, libro18, libro19, libro20, libro21, libro22, libro23, libro24, libro25, libro26, libro27, libro28, libro29, libro30, libro31, libro32, libro33, libro34, libro35, libro36, libro37, libro38, libro39, libro40;
+var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15, saldo16, saldo17, saldo18, saldo19, saldo20, saldo21, saldo22, saldo23, saldo24, saldo25, saldo26, saldo27, saldo28, saldo29, saldo30, saldo31, saldo32, saldo33, saldo34, saldo35, saldo36, saldo37, saldo38, saldo39, saldo40;
 var detailMayores;
 var stringLibro;
 window.onload = cargarLibros;
@@ -37,6 +37,17 @@ function cargarLibros(){
     libro28 = sessionStorage.libro28.split(',');
     libro29 = sessionStorage.libro29.split(',');
     libro30 = sessionStorage.libro30.split(',');
+    libro31 = sessionStorage.libro31.split(',');
+    libro32 = sessionStorage.libro32.split(',');
+    libro33 = sessionStorage.libro33.split(',');
+    libro34 = sessionStorage.libro34.split(',');
+    libro35 = sessionStorage.libro35.split(',');
+    libro36 = sessionStorage.libro36.split(',');
+    libro37 = sessionStorage.libro37.split(',');
+    libro38 = sessionStorage.libro38.split(',');
+    libro39 = sessionStorage.libro39.split(',');
+    libro40 = sessionStorage.libro40.split(',');
+
     saldo1 = parseInt(sessionStorage.saldo1);
     saldo2 = parseInt(sessionStorage.saldo2);
     saldo3 = parseInt(sessionStorage.saldo3);
@@ -67,6 +78,16 @@ function cargarLibros(){
     saldo28 = parseInt(sessionStorage.saldo28);
     saldo29 = parseInt(sessionStorage.saldo29);
     saldo30 = parseInt(sessionStorage.saldo30);
+    saldo31 = parseInt(sessionStorage.saldo31);
+    saldo32 = parseInt(sessionStorage.saldo32);
+    saldo33 = parseInt(sessionStorage.saldo33);
+    saldo34 = parseInt(sessionStorage.saldo34);
+    saldo35 = parseInt(sessionStorage.saldo35);
+    saldo36 = parseInt(sessionStorage.saldo36);
+    saldo37 = parseInt(sessionStorage.saldo37);
+    saldo38 = parseInt(sessionStorage.saldo38);
+    saldo39 = parseInt(sessionStorage.saldo39);
+    saldo40 = parseInt(sessionStorage.saldo40);
     $('select').empty().append(sessionStorage.optionsAsString);
 }
 
@@ -163,6 +184,33 @@ function drawLibrosMayores(){
         break;
         case 29:
         drawLibro(libro30,29);
+        break;
+        case 31:
+        drawLibro(libro32,31);
+        break;
+        case 32:
+        drawLibro(libro33,32);
+        break;
+        case 33:
+        drawLibro(libro34,33);
+        break;
+        case 34:
+        drawLibro(libro35,34);
+        break;
+        case 35:
+        drawLibro(libro36,35);
+        break;
+        case 36:
+        drawLibro(libro37,36);
+        break;
+        case 37:
+        drawLibro(libro38,37);
+        break;
+        case 38:
+        drawLibro(libro39,38);
+        break;
+        case 39:
+        drawLibro(libro40,39);
         break;
     }    
 }

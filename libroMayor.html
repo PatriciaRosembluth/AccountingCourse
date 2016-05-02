@@ -17,7 +17,14 @@
 	</div>
 </header>
 <h1 align="center">Libro Mayor</h1>
-Ingrese la cuenta: <select style = "width:206px;height:24px;"></select><br><br>
+<details>
+  <summary></summary>
+  	<p><u style="color:#2E64FE">Instrucciones</u></p>
+  	<p><i>&#126; En esta planilla podr&aacute; ver los movimientos de la cuenta que seleccione.</i></p>
+  	<p><u style="color:#2E64FE">Tomar en cuenta</u></p>
+  	<p>&raquo; La cuenta debe tener al menos un movimiento para ser visualizada.</p>
+</details><br>
+Cuenta: <select style = "width:206px;height:24px;"></select><br><br>
 	<button onclick="drawLibrosMayores();">Generar libros Mayores</button>
 	<u><h3 id="libro"></h3></u>
 	<table class="showtable" id="showLibro">
@@ -38,6 +45,7 @@ Ingrese la cuenta: <select style = "width:206px;height:24px;"></select><br><br>
 		<tbody>
 		</tbody>
 	</table>
+	<br>
 <a href="sumasSaldos.html">Sumas y Saldos</a>
 
 </body>

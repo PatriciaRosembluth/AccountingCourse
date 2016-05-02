@@ -2,9 +2,21 @@ var accounts = [];
 window.onload = drawAccount;
 
 function drawAccount(){
-    for (var i = 0; i < 30; i++) {
-        
+    stringAccount = "";
+    for (var i = 0; i < 40; i++) {
+       stringAccount += "<tr>"+
+        "<td><input id = 'account-"+i+"' type='text' size='30'/></td>"+
+        "<td><select style = 'width:200px;height:24px;' id = 'valueAccount-"+i+"'>"+
+        "<option value='0'>Seleccionar</option>"+
+        "<option value='A'>Activo</option>"+
+        "<option value='P'>Pasivo</option>"+
+        "<option value='C'>Capital</option>"+
+        "<option value='G'>Gasto</option>"+
+        "<option value='I'>Ingreso</option>"+
+        "</select></td>"+
+        "</tr>";  
     }
+    $('#accounts tbody').append(stringAccount);
     accounts = sessionStorage.accounts.split(',');
     j=0;
     if (accounts!=[]) {
@@ -20,6 +32,7 @@ function getAccounts(){
     detailMayores = [];
     stringTypesAccounts = [];
     accounts = [];
+    sortAccount = [];
     optionsAsString = "<option value = 0>Seleccionar</option>";
     $('#accounts input').each(function() {
         if ($(this).val()==="") {return}
@@ -37,9 +50,9 @@ function getAccounts(){
     sessionStorage.setItem('accounts',accounts);
     sessionStorage.setItem('detailMayores',detailMayores);
     //end
-
-    for(var i = 0; i < accounts.length; i=i+2) {
-        optionsAsString += "<option value='" + accounts[i] + "'>" + accounts[i] + "</option>";
+    sortAccount = detailMayores.sort();
+    for(var i = 0; i < sortAccount.length; i++) {
+        optionsAsString += "<option value='" + sortAccount[i] + "'>" + sortAccount[i] + "</option>";
     }
     sessionStorage.setItem('optionsAsString',optionsAsString);  
 }

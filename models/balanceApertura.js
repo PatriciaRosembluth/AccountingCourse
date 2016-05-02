@@ -9,8 +9,8 @@ var totalDebe;
 var totalHaber;
 var glosaAsiento;
 var posLastAsiento;
-var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15, libro16, libro17, libro18, libro19, libro20, libro21, libro22, libro23, libro25, libro25, libro26, libro27, libro28, libro29, libro30;
-var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15, saldo16, saldo17, saldo18, saldo19, saldo20, saldo21, saldo22, saldo23, saldo24, saldo25, saldo26, saldo27, saldo28, saldo29, saldo30;
+var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15, libro16, libro17, libro18, libro19, libro20, libro21, libro22, libro23, libro24, libro25, libro26, libro27, libro28, libro29, libro30, libro31, libro32, libro33, libro34, libro35, libro36, libro37, libro38, libro39, libro40;
+var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15, saldo16, saldo17, saldo18, saldo19, saldo20, saldo21, saldo22, saldo23, saldo24, saldo25, saldo26, saldo27, saldo28, saldo29, saldo30, saldo31, saldo32, saldo33, saldo34, saldo35, saldo36, saldo37, saldo38, saldo39, saldo40;
 var detailMayores;
 var stringAsientoApertura;
 var fechaBalance;
@@ -75,8 +75,8 @@ function addTransaccionPasivo(){
 }
 
 function getAllValuesBalanceApertura() {
-    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [],libro7 = [], libro8 = [], libro9 = [], libro10 = [], libro11 = [], libro12 = [], libro13 = [], libro14 = [], libro15 = [], libro16 = [], libro17 = [], libro18 = [], libro19 = [], libro20 = [], libro21 = [],libro22 = [], libro23 = [], libro24 = [], libro25 = [], libro26 = [], libro27 = [], libro28 = [], libro29 = [], libro30 = [];
-    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0, saldo5 = 0, saldo6 = 0, saldo7 = 0, saldo8 = 0, saldo9 = 0, saldo10 = 0, saldo11 = 0, saldo12 = 0, saldo13 = 0, saldo14 = 0, saldo15 = 0, saldo16 = 0, saldo17 = 0, saldo18 = 0, saldo19 = 0, saldo20 = 0, saldo21 = 0, saldo22 = 0, saldo23 = 0, saldo24 = 0, saldo25 = 0, saldo26 = 0, saldo27 = 0, saldo28 = 0, saldo29 = 0, saldo30 = 0;
+    libro1 = [], libro2 = [], libro3 = [], libro4 = [], libro5 = [], libro6 = [],libro7 = [], libro8 = [], libro9 = [], libro10 = [], libro11 = [], libro12 = [], libro13 = [], libro14 = [], libro15 = [], libro16 = [], libro17 = [], libro18 = [], libro19 = [], libro20 = [], libro21 = [],libro22 = [], libro23 = [], libro24 = [], libro25 = [], libro26 = [], libro27 = [], libro28 = [], libro29 = [], libro30 = [], libro31 = [], libro32 = [],libro33 = [], libro34 = [], libro35 = [], libro36 = [], libro37 = [], libro38 = [], libro39 = [], libro40 = [];
+    saldo1 = 0, saldo2 = 0, saldo3 = 0, saldo4 = 0, saldo5 = 0, saldo6 = 0, saldo7 = 0, saldo8 = 0, saldo9 = 0, saldo10 = 0, saldo11 = 0, saldo12 = 0, saldo13 = 0, saldo14 = 0, saldo15 = 0, saldo16 = 0, saldo17 = 0, saldo18 = 0, saldo19 = 0, saldo20 = 0, saldo21 = 0, saldo22 = 0, saldo23 = 0, saldo24 = 0, saldo25 = 0, saldo26 = 0, saldo27 = 0, saldo28 = 0, saldo29 = 0, saldo30 = 0, saldo31 = 0, saldo32 = 0, saldo33 = 0, saldo34 = 0, saldo35 = 0, saldo36 = 0, saldo37 = 0, saldo38 = 0, saldo39 = 0, saldo40 = 0;
     accountsBalanceActivo = [];
     accountsBalancePasivo = [];
     amountBalanceActivo = [];
@@ -431,6 +431,86 @@ function generateLibrosMayores(values){
                 calculateSaldo(30,values[r+1],values[r+2]);
                 libro30.push(saldo30);
             break;
+            case 31:
+                libro31.push(fechaBalance);
+                libro31.push(detalle);
+                libro31.push(values[r+1]);
+                libro31.push(values[r+2]);
+                calculateSaldo(31,values[r+1],values[r+2]);
+                libro31.push(saldo31);
+            break;
+            case 32:
+                libro32.push(fechaBalance);
+                libro32.push(detalle);
+                libro32.push(values[r+1]);
+                libro32.push(values[r+2]);
+                calculateSaldo(32,values[r+1],values[r+2]);
+                libro32.push(saldo32);
+            break;
+            case 33:
+                libro33.push(fechaBalance);
+                libro33.push(detalle);
+                libro33.push(values[r+1]);
+                libro33.push(values[r+2]);
+                calculateSaldo(33,values[r+1],values[r+2]);
+                libro33.push(saldo33);
+            break;
+            case 34:
+                libro34.push(fechaBalance);
+                libro34.push(detalle);
+                libro34.push(values[r+1]);
+                libro34.push(values[r+2]);
+                calculateSaldo(34,values[r+1],values[r+2]);
+                libro34.push(saldo34);
+            break;
+            case 35:
+                libro35.push(fechaBalance);
+                libro35.push(detalle);
+                libro35.push(values[r+1]);
+                libro35.push(values[r+2]);
+                calculateSaldo(35,values[r+1],values[r+2]);
+                libro35.push(saldo35);
+            break;
+            case 36:
+                libro36.push(fechaBalance);
+                libro36.push(detalle);
+                libro36.push(values[r+1]);
+                libro36.push(values[r+2]);
+                calculateSaldo(36,values[r+1],values[r+2]);
+                libro36.push(saldo36);
+            break;
+            case 37:
+                libro37.push(fechaBalance);
+                libro37.push(detalle);
+                libro37.push(values[r+1]);
+                libro37.push(values[r+2]);
+                calculateSaldo(37,values[r+1],values[r+2]);
+                libro37.push(saldo37);
+            break;
+            case 38:
+                libro38.push(fechaBalance);
+                libro38.push(detalle);
+                libro38.push(values[r+1]);
+                libro38.push(values[r+2]);
+                calculateSaldo(38,values[r+1],values[r+2]);
+                libro38.push(saldo38);
+             break;
+            case 39:
+                libro39.push(fechaBalance);
+                libro39.push(detalle);
+                libro39.push(values[r+1]);
+                libro39.push(values[r+2]);
+                calculateSaldo(39,values[r+1],values[r+2]);
+                libro39.push(saldo39);
+            break;
+            case 40:
+                libro40.push(fechaBalance);
+                libro40.push(detalle);
+                libro40.push(values[r+1]);
+                libro40.push(values[r+2]);
+                calculateSaldo(40,values[r+1],values[r+2]);
+                libro40.push(saldo40);
+            break;
         }
     }
     //variables de sesion
@@ -493,7 +573,26 @@ function generateLibrosMayores(values){
     sessionStorage.setItem('libro29',libro29);
     sessionStorage.setItem('saldo29',saldo29);
     sessionStorage.setItem('libro30',libro30);
-    sessionStorage.setItem('saldo30',saldo30);
+    sessionStorage.setItem('libro31',libro31);
+    sessionStorage.setItem('saldo31',saldo31);
+    sessionStorage.setItem('libro32',libro32);
+    sessionStorage.setItem('saldo32',saldo32);
+    sessionStorage.setItem('libro33',libro33);
+    sessionStorage.setItem('saldo33',saldo33);
+    sessionStorage.setItem('libro34',libro34);
+    sessionStorage.setItem('saldo34',saldo34);
+    sessionStorage.setItem('libro35',libro35);
+    sessionStorage.setItem('saldo35',saldo35);
+    sessionStorage.setItem('libro36',libro36);
+    sessionStorage.setItem('saldo36',saldo36);
+    sessionStorage.setItem('libro37',libro37);
+    sessionStorage.setItem('saldo37',saldo37);
+    sessionStorage.setItem('libro38',libro38);
+    sessionStorage.setItem('saldo38',saldo38);
+    sessionStorage.setItem('libro39',libro39);
+    sessionStorage.setItem('saldo39',saldo39);
+    sessionStorage.setItem('libro40',libro40);
+    sessionStorage.setItem('saldo40',saldo40);
     //end
  }
 
@@ -597,6 +696,36 @@ function calculateSaldo(saldo,AmountDebe, AmountHaber){
             break;
         case 30:
             saldo30 = saldo30 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 31:
+            saldo31 = saldo31 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 32:
+            saldo32 = saldo32 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 33:
+            saldo33 = saldo33 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 34:
+            saldo34 = saldo34 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 35:
+            saldo35 = saldo35 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 36:
+            saldo36 = saldo36 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 37:
+            saldo37 = saldo37 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 38:
+            saldo38 = saldo38 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 39:
+            saldo39 = saldo39 + parseInt(AmountDebe) - parseInt(AmountHaber);
+            break;
+        case 40:
+            saldo40 = saldo40 + parseInt(AmountDebe) - parseInt(AmountHaber);
             break;
     }
  }

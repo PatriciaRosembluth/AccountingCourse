@@ -1,6 +1,6 @@
 var balanceSumasSaldos;
-var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15, libro16, libro17, libro18, libro19, libro20, libro21, libro22, libro23, libro25, libro25, libro26, libro27, libro28, libro29, libro30;
-var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15, saldo16, saldo17, saldo18, saldo19, saldo20, saldo21, saldo22, saldo23, saldo24, saldo25, saldo26, saldo27, saldo28, saldo29, saldo30;
+var libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, libro9, libro10, libro11, libro12, libro13, libro14, libro15, libro16, libro17, libro18, libro19, libro20, libro21, libro22, libro23, libro24, libro25, libro26, libro27, libro28, libro29, libro30, libro31, libro32, libro33, libro34, libro35, libro36, libro37, libro38, libro39, libro40;
+var saldo1, saldo2, saldo3, saldo4, saldo5, saldo6, saldo7, saldo8, saldo9, saldo10, saldo11, saldo12, saldo13, saldo14, saldo15, saldo16, saldo17, saldo18, saldo19, saldo20, saldo21, saldo22, saldo23, saldo24, saldo25, saldo26, saldo27, saldo28, saldo29, saldo30, saldo31, saldo32, saldo33, saldo34, saldo35, saldo36, saldo37, saldo38, saldo39, saldo40;
 var totalDebeSs;
 var totalHaberSs;
 var totalDeudorSs;
@@ -40,6 +40,16 @@ function cargarLibros(){
     libro28 = sessionStorage.libro28.split(',');
     libro29 = sessionStorage.libro29.split(',');
     libro30 = sessionStorage.libro30.split(',');
+    libro31 = sessionStorage.libro31.split(',');
+    libro32 = sessionStorage.libro32.split(',');
+    libro33 = sessionStorage.libro33.split(',');
+    libro34 = sessionStorage.libro34.split(',');
+    libro35 = sessionStorage.libro35.split(',');
+    libro36 = sessionStorage.libro36.split(',');
+    libro37 = sessionStorage.libro37.split(',');
+    libro38 = sessionStorage.libro38.split(',');
+    libro39 = sessionStorage.libro39.split(',');
+    libro40 = sessionStorage.libro40.split(',');
 }
 
 function generateSumasSaldos(){
@@ -75,6 +85,16 @@ function generateSumasSaldos(){
     calculateDebeHaberLibro(libro28,27);
     calculateDebeHaberLibro(libro29,28);
     calculateDebeHaberLibro(libro30,29);
+    calculateDebeHaberLibro(libro31,30);
+    calculateDebeHaberLibro(libro32,31);
+    calculateDebeHaberLibro(libro33,32);
+    calculateDebeHaberLibro(libro34,33);
+    calculateDebeHaberLibro(libro35,34);
+    calculateDebeHaberLibro(libro36,35);
+    calculateDebeHaberLibro(libro37,36);
+    calculateDebeHaberLibro(libro38,37);
+    calculateDebeHaberLibro(libro39,38);
+    calculateDebeHaberLibro(libro40,39);
     drawBalanceSumasSaldor();
 }
 
