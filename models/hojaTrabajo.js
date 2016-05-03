@@ -31,10 +31,26 @@ function generateHojaTrabajo(){
         hojaTrabajo.push(balanceSumasSaldos[i+4]);
         if (balanceSumasSaldos[i+3] != 0) {valor = parseInt(balanceSumasSaldos[i+3]);}else{valor = parseInt(balanceSumasSaldos[i+4]);}
 
-        if (getTypeAccount(balanceSumasSaldos[i]) === "A") {hojaTrabajo.push(0,0,valor,0); totalActivoHt+=valor; balanceGeneral.push(balanceSumasSaldos[i],valor);}
-        if (getTypeAccount(balanceSumasSaldos[i]) === "P" || getTypeAccount(balanceSumasSaldos[i]) === "C") {hojaTrabajo.push(0,0,0,valor); totalCapitalHt+=valor; balanceGeneral.push(balanceSumasSaldos[i],valor)}
-        if (getTypeAccount(balanceSumasSaldos[i]) === "G") {hojaTrabajo.push(valor,0,0,0); totalGastoHt+=valor; estadoResultados.push(balanceSumasSaldos[i],valor);}
-        if (getTypeAccount(balanceSumasSaldos[i]) === "I") {hojaTrabajo.push(0,valor,0,0);totalIngresoHt+=valor; estadoResultados.push(balanceSumasSaldos[i],valor);}
+        if (getTypeAccount(balanceSumasSaldos[i]) === "A") {
+            hojaTrabajo.push(0,0,valor,0); 
+            totalActivoHt+=valor; 
+            balanceGeneral.push(balanceSumasSaldos[i],valor);
+        }
+        if (getTypeAccount(balanceSumasSaldos[i]) === "P" || getTypeAccount(balanceSumasSaldos[i]) === "C") {
+            hojaTrabajo.push(0,0,0,valor); 
+            totalCapitalHt+=valor; 
+            balanceGeneral.push(balanceSumasSaldos[i],valor)
+        }
+        if (getTypeAccount(balanceSumasSaldos[i]) === "G") {
+            hojaTrabajo.push(valor,0,0,0); 
+            totalGastoHt+=valor; 
+            estadoResultados.push(balanceSumasSaldos[i],valor);
+        }
+        if (getTypeAccount(balanceSumasSaldos[i]) === "I") {
+            hojaTrabajo.push(0,valor,0,0);
+            totalIngresoHt+=valor; 
+            estadoResultados.push(balanceSumasSaldos[i],valor);
+        }
         j=j+2;
     }
     drawHojaTrabajo();

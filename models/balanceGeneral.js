@@ -28,10 +28,8 @@ function putActivoPasivo(){
             "<option value='PE'>Exigible</option>"+
             "<option value='P'>Patrimonio</option>"+
             "</select></td></tr>";
-    indexA = 1;
-    indexP = 1;
     for (var i = 1; i < accounts.length; i = i+2) {
-        if (accounts[i] === "A") {
+        if (accounts[i] === "A" || accounts[i-1].indexOf("DA") != -1) {
             stringAccountsA += "<tr><td>"+accounts[i-1]+"</td>" + stringSelectA;
             accountsA.push(accounts[i-1]);
         }else if(accounts[i] === "P" || accounts[i] === "C"){
@@ -81,8 +79,14 @@ function drawBalanceGeneral(){
             totalActivo += parseInt(balanceGeneral[i+1]);  
         }
         if (findType(balanceGeneral[i]) === "AF" ) {
+            
+            if(balanceGeneral[i].indexOf("DA") != -1){
+                stringActivoF += "<i><h3>-/"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+                totalActivo -= parseInt(balanceGeneral[i+1]);
+            }else{
             stringActivoF += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalActivo += parseInt(balanceGeneral[i+1]); 
+            }
         }
         if (findType(balanceGeneral[i]) === "AR" ) {
             stringActivoR += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";

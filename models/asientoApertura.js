@@ -659,6 +659,7 @@ function generateLibrosMayores(values){
     sessionStorage.setItem('libro29',libro29);
     sessionStorage.setItem('saldo29',saldo29);
     sessionStorage.setItem('libro30',libro30);
+    sessionStorage.setItem('saldo30',saldo30);
     sessionStorage.setItem('libro31',libro31);
     sessionStorage.setItem('saldo31',saldo31);
     sessionStorage.setItem('libro32',libro32);
