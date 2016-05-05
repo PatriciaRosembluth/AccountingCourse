@@ -71,33 +71,33 @@ function drawBalanceGeneral(){
     stringPasivoE = "";
     for (var i = 0; i < balanceGeneral.length; i=i+2) {
         if (findType(balanceGeneral[i]) === "D" ) {
-            stringActivoD += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+            stringActivoD += "<i><h3 style='color:#0000FF'>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalActivo += parseInt(balanceGeneral[i+1]); 
         }
         if (findType(balanceGeneral[i]) === "AE" ) {
-            stringActivoE += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+            stringActivoE += "<i><h3 style='color:#0000FF'>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalActivo += parseInt(balanceGeneral[i+1]);  
         }
         if (findType(balanceGeneral[i]) === "AF" ) {
             
             if(balanceGeneral[i].indexOf("DA") != -1){
-                stringActivoF += "<i><h3>-/"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+                stringActivoF += "<i><h3 style='color:#0000FF'>-/"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
                 totalActivo -= parseInt(balanceGeneral[i+1]);
             }else{
-            stringActivoF += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+            stringActivoF += "<i><h3 style='color:#0000FF'>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalActivo += parseInt(balanceGeneral[i+1]); 
             }
         }
         if (findType(balanceGeneral[i]) === "AR" ) {
-            stringActivoR += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+            stringActivoR += "<i><h3 style='color:#0000FF'>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalActivo += parseInt(balanceGeneral[i+1]); 
         }
         if (findType(balanceGeneral[i]) === "P" ) {
-            stringPasivoP += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+            stringPasivoP += "<i><h3 style='color:#0000FF'>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalPasivo += parseInt(balanceGeneral[i+1]);
         }
         if (findType(balanceGeneral[i]) === "PE" ) {
-            stringPasivoE += "<i><h3>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
+            stringPasivoE += "<i><h3 style='color:#0000FF'>"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
             totalPasivo += parseInt(balanceGeneral[i+1]);
         }
     }
