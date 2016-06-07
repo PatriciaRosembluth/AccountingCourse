@@ -12,10 +12,10 @@ var estadoResultados;
 window.onload = cargarSumasSaldos;
 
 function cargarSumasSaldos(){
-	balanceSumasSaldos = sessionStorage.balanceSumasSaldos.split(','); 
-	accounts = sessionStorage.accounts.split(',');
-	totalDeudorSs = parseInt(sessionStorage.totalDeudorSs);
-	totalAcreedorSs = parseInt(sessionStorage.totalAcreedorSs);
+	balanceSumasSaldos = localStorage.balanceSumasSaldos.split(','); 
+	accounts = localStorage.accounts.split(',');
+	totalDeudorSs = parseInt(localStorage.totalDeudorSs);
+	totalAcreedorSs = parseInt(localStorage.totalAcreedorSs);
 }
 
 function generateHojaTrabajo(){
@@ -84,7 +84,8 @@ function drawHojaTrabajo(){
     }
     $('#hojaTrabajo tbody').empty().append(stringHojaTrabajo);
      //variables de sesion
-    sessionStorage.setItem('balanceGeneral',balanceGeneral);
-    sessionStorage.setItem('estadoResultados',estadoResultados);
+    localStorage.setItem('balanceGeneral',balanceGeneral);
+    localStorage.setItem('estadoResultados',estadoResultados);
+     localStorage.setItem('stringHojaTrabajo',stringHojaTrabajo);
     //end
 }

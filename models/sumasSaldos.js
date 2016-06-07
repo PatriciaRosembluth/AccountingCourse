@@ -9,47 +9,47 @@ var detailMayores;
 window.onload = cargarLibros;
 
 function cargarLibros(){
-    detailMayores = sessionStorage.detailMayores.split(',');
-    libro1 = sessionStorage.libro1.split(',');
-    libro2 = sessionStorage.libro2.split(',');
-    libro3 = sessionStorage.libro3.split(',');
-    libro4 = sessionStorage.libro4.split(',');
-    libro5 = sessionStorage.libro5.split(',');
-    libro6 = sessionStorage.libro6.split(',');
-    libro7 = sessionStorage.libro7.split(',');
-    libro8 = sessionStorage.libro8.split(',');
-    libro9 = sessionStorage.libro9.split(',');
-    libro10 = sessionStorage.libro10.split(',');
-    libro11 = sessionStorage.libro11.split(',');
-    libro12 = sessionStorage.libro12.split(',');
-    libro13 = sessionStorage.libro13.split(',');
-    libro14 = sessionStorage.libro14.split(',');
-    libro15 = sessionStorage.libro15.split(',');
-    libro16 = sessionStorage.libro16.split(',');
-    libro17 = sessionStorage.libro17.split(',');
-    libro18 = sessionStorage.libro18.split(',');
-    libro19 = sessionStorage.libro19.split(',');
-    libro20 = sessionStorage.libro20.split(',');
-    libro21 = sessionStorage.libro21.split(',');
-    libro22 = sessionStorage.libro22.split(',');
-    libro23 = sessionStorage.libro23.split(',');
-    libro24 = sessionStorage.libro24.split(',');
-    libro25 = sessionStorage.libro25.split(',');
-    libro26 = sessionStorage.libro26.split(',');
-    libro27 = sessionStorage.libro27.split(',');
-    libro28 = sessionStorage.libro28.split(',');
-    libro29 = sessionStorage.libro29.split(',');
-    libro30 = sessionStorage.libro30.split(',');
-    libro31 = sessionStorage.libro31.split(',');
-    libro32 = sessionStorage.libro32.split(',');
-    libro33 = sessionStorage.libro33.split(',');
-    libro34 = sessionStorage.libro34.split(',');
-    libro35 = sessionStorage.libro35.split(',');
-    libro36 = sessionStorage.libro36.split(',');
-    libro37 = sessionStorage.libro37.split(',');
-    libro38 = sessionStorage.libro38.split(',');
-    libro39 = sessionStorage.libro39.split(',');
-    libro40 = sessionStorage.libro40.split(',');
+    detailMayores = localStorage.detailMayores.split(',');
+    libro1 = localStorage.libro1.split(',');
+    libro2 = localStorage.libro2.split(',');
+    libro3 = localStorage.libro3.split(',');
+    libro4 = localStorage.libro4.split(',');
+    libro5 = localStorage.libro5.split(',');
+    libro6 = localStorage.libro6.split(',');
+    libro7 = localStorage.libro7.split(',');
+    libro8 = localStorage.libro8.split(',');
+    libro9 = localStorage.libro9.split(',');
+    libro10 = localStorage.libro10.split(',');
+    libro11 = localStorage.libro11.split(',');
+    libro12 = localStorage.libro12.split(',');
+    libro13 = localStorage.libro13.split(',');
+    libro14 = localStorage.libro14.split(',');
+    libro15 = localStorage.libro15.split(',');
+    libro16 = localStorage.libro16.split(',');
+    libro17 = localStorage.libro17.split(',');
+    libro18 = localStorage.libro18.split(',');
+    libro19 = localStorage.libro19.split(',');
+    libro20 = localStorage.libro20.split(',');
+    libro21 = localStorage.libro21.split(',');
+    libro22 = localStorage.libro22.split(',');
+    libro23 = localStorage.libro23.split(',');
+    libro24 = localStorage.libro24.split(',');
+    libro25 = localStorage.libro25.split(',');
+    libro26 = localStorage.libro26.split(',');
+    libro27 = localStorage.libro27.split(',');
+    libro28 = localStorage.libro28.split(',');
+    libro29 = localStorage.libro29.split(',');
+    libro30 = localStorage.libro30.split(',');
+    libro31 = localStorage.libro31.split(',');
+    libro32 = localStorage.libro32.split(',');
+    libro33 = localStorage.libro33.split(',');
+    libro34 = localStorage.libro34.split(',');
+    libro35 = localStorage.libro35.split(',');
+    libro36 = localStorage.libro36.split(',');
+    libro37 = localStorage.libro37.split(',');
+    libro38 = localStorage.libro38.split(',');
+    libro39 = localStorage.libro39.split(',');
+    libro40 = localStorage.libro40.split(',');
 }
 
 function generateSumasSaldos(){
@@ -127,13 +127,14 @@ function calculateDebeHaberLibro(libro,detalle){
 function drawBalanceSumasSaldor(){
     stringSumasSaldos = "";
     //variables de sesion
-    sessionStorage.setItem('balanceSumasSaldos',balanceSumasSaldos);
-    sessionStorage.setItem('totalDeudorSs',totalDeudorSs);
-    sessionStorage.setItem('totalAcreedorSs',totalAcreedorSs);
+    localStorage.setItem('balanceSumasSaldos',balanceSumasSaldos);
+    localStorage.setItem('totalDeudorSs',totalDeudorSs);
+    localStorage.setItem('totalAcreedorSs',totalAcreedorSs);
     //end
     for (var i = 0; i < balanceSumasSaldos.length; i=i+5) {
         stringSumasSaldos += "<tr><td>"+balanceSumasSaldos[i]+"</td><td>"+balanceSumasSaldos[i+1]+"</td><td>"+balanceSumasSaldos[i+2]+"</td><td>"+balanceSumasSaldos[i+3]+"</td><td>"+balanceSumasSaldos[i+4]+"</td></tr>";
     }
     stringSumasSaldos += "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>"+totalDebeSs+"</td><td>"+totalHaberSs+"</td><td>"+totalDeudorSs+"</td><td>"+totalAcreedorSs+"</td></tr>";
     $('#showSumasSaldos tbody').empty().append(stringSumasSaldos);
+     localStorage.setItem('stringSumasSaldos',stringSumasSaldos);
 }

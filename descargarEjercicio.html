@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Entregar ejercicio</title>
+<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/default.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<center><h1>Descargar Practica de Contabilidad Basica</h1></center>
+<center><img onclick="WriteFile();" src="/AccountingCourse/img/descarga.jpg"></center>
+<script>
+function WriteFile()
+{
+	var valuesApertura = localStorage.stringAsientoApertura;
+	var valuesSumasSaldos = localStorage.stringSumasSaldos;
+	var valuesHojaTrabajo = localStorage.stringHojaTrabajo; 
+	var stringActivoD = localStorage.stringActivoD;
+	var stringActivoE = localStorage.stringActivoE;
+	var stringActivoR = localStorage.stringActivoR;
+	var stringActivoF = localStorage.stringActivoF;
+	var stringTotalActivo = localStorage.stringTotalActivo;
+	var stringPasivoE = localStorage.stringPasivoE;
+	var stringPasivoP = localStorage.stringPasivoP;
+	var stringTotalPasivo = localStorage.stringTotalPasivo;
+	var stringVentas = localStorage.stringVentas;
+	var stringCostoVentas = localStorage.stringCostoVentas;
+	var stringGastos = localStorage.stringGastos;
+	var stringTotalGastos = localStorage.stringTotalGastos;
+	var stringIngresos = localStorage.stringIngresos;
+	var stringTotalIngresos = localStorage.stringTotalIngresos;
+	var stringUtilidadNeta = localStorage.stringUtilidadNeta;
+	var stringUtilidadBruta = localStorage.stringUtilidadBruta;
+	var stringAsientoCierre = localStorage.stringAsientoCierre;
+	var asientoApertura = "<h1 align='center'>Asiento de Apertura</h1><h2 align='center'>Libro Diario</h2><br><table border='1'><col width='225'><col width='225'><col width='225'><thead><tr><th style = 'width:241px'>Cuenta</th><th style = 'width:222px'>Debe</th><th style = 'width:222px'>Haber</th></tr></thead><tbody>"+valuesApertura+"</tbody></table><br>";
+	var sumasSaldos = "<h1 align='center'>Balance de Comprobacion de Sumas y Saldos</h1><br><br><table border='1'><col width='230'><col width='150'><col width='150'><col width='150'><col width='150'>	<thead><tr><th>Cuenta</th><th colspan='2'>Sumas</th><th colspan='2'>Saldos</th></tr><tr align='center'><td></td><td>Debe</td><td>Haber</td><td>Deudor</td><td>Acreedor</td></tr></thead><tbody></tbody>"+valuesSumasSaldos+"</table>";
+	var hojaTrabajo = "<h1 align='center'>Hoja de Trabajo</h1><br><table border='1'><col width='230'><col width='150'><col width='150'><col width='150'><col width='150'><col width='150'><col width='150'><thead><tr><th>Cuenta</th><th colspan='2'>Saldos</th><th colspan='2'>Esta. de Resultado</th><th colspan='2'>Balance General</th></tr><tr align='center'><td></td><td>Deudor</td><td>Acreedor</td><td>Gasto</td><td>Ingreso</td><td>Activo</td><td>Pasivo/Capital</td></tr></thead><tbody>"+valuesHojaTrabajo+"</tbody></table>";
+	var balanceGeneral = "<h1 align='center'>Balance General</h1><div style='width: 100%; overflow: hidden;'><div style='width: 600px; float: left;'><u><h1>Activo</h1></u><u><h2>Corriente</h2></u><u><h3>Disponible</h3></u>"+stringActivoD+"<u><h3>Exigible</h3></u>"+stringActivoE+"<u><h3>Realizable</h3></u>"+stringActivoR+"<u><h2>No Corriente</h2></u><u><h3>Activo Fijo</h3></u>"+stringActivoF+"<b><h2 style='color:#DF013A'>"+"TOTAL ACTIVO: "+stringTotalActivo+"</h2></b></div><div style='margin-left: 620px;'><u><h1>Pasivo</h1></u><u><h2>Corriente</h2></u><u><h3>Exigible</h3></u>"+stringPasivoE+"<u><h2>Patrimonio</h2></u>"+stringPasivoP+"<b><h2 style='color:#DF013A'>"+"TOTAL PASIVO: "+stringTotalPasivo+"</h2></b></div><br></div>";
+	var estadoResultado = "<h1 align='center'>Estado de Resultados</h1><br><i><h3>"+stringVentas+"</h3></i><u><h2>-/Costo de Ventas</h2></u><i><h3>"+stringCostoVentas+"</h3></i><i><h3 style='color:#DF013A'>utilidad bruta --------------------------------- "+stringUtilidadBruta+"</h3></i><u><h2>-/Gastos de operaciones</h2></u>"+stringGastos+"<i><h3 style='color:#DF013A'>total gastos --------------------------------- "+stringTotalGastos+"</h3></i><u><h2>+/Otros ingresos</h2></u>"+stringIngresos+"<i><h3 style='color:#DF013A'>total ingresos --------------------------------- "+stringTotalIngresos+"</h3></i><i><h3 style='color:#0404B4'>"+stringUtilidadNeta+"</h3></i>";
+	var asientoCierre = "<h1 align='center'>Asiento de Cierre</h1><br><table border='1'><col width='180'><col width='180'><col width='180'><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody>"+stringAsientoCierre+"</tbody></table>";
+	var text = asientoApertura+sumasSaldos+hojaTrabajo+balanceGeneral+estadoResultado+asientoCierre;
+	var filename = "practicaContabilidad.html";
+	var blob = new Blob([text], {type:'text/html'});
+	var link = document.createElement("a");
+	link.download = filename;
+	link.innerHTML = "Descargar Practica";
+	link.style.cssFloat = "right";
+	link.href = window.URL.createObjectURL(blob);
+	document.body.appendChild(link);
+}
+</script>
+</body>
+</html>

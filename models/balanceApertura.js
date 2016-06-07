@@ -20,19 +20,19 @@ var preloadPasivo;
 window.onload = cargarCuentas;
 
 function cargarCuentas(){
-    detailMayores = sessionStorage.detailMayores.split(',');
+    detailMayores = localStorage.detailMayores.split(',');
     // totalActivo = 0;
     // totalPasivoPatrimonio = 0;
     // preloadActivo = [];
     // preloadPasivo = [];
     // activo = false;
     // pasivo = false;
-    // if (sessionStorage.inputValuesBalanceAperturaActivo != undefined) {
-    //     preloadActivo = sessionStorage.inputValuesBalanceAperturaActivo.split(',');
+    // if (localStorage.inputValuesBalanceAperturaActivo != undefined) {
+    //     preloadActivo = localStorage.inputValuesBalanceAperturaActivo.split(',');
     //     activo = true;
     // }
-    // if (sessionStorage.inputValuesBalanceAperturaPasivo != undefined) {
-    //     preloadPasivo = sessionStorage.inputValuesBalanceAperturaPasivo.split(',');
+    // if (localStorage.inputValuesBalanceAperturaPasivo != undefined) {
+    //     preloadPasivo = localStorage.inputValuesBalanceAperturaPasivo.split(',');
     //     pasivo = true;
     // }
     // stringActivo = "";
@@ -49,7 +49,7 @@ function cargarCuentas(){
     //         totalPasivoPatrimonio += parseInt(preloadPasivo[i+1]);
     //     }
     // }
-    // $('#dateBalance').val(sessionStorage.fechaBalance.split("-").reverse().join("-"));
+    // $('#dateBalance').val(localStorage.fechaBalance.split("-").reverse().join("-"));
     // $('#balanceAperturaActivo tbody').append(stringActivo);
     // $('#balanceAperturaPasivo tbody').append(stringPasivo);
     // document.getElementById("totalActivo").innerHTML = totalActivo;
@@ -62,7 +62,7 @@ function addTransaccionActivo(){
                 "<td><input type='text'/></td>"+
                 "</tr>";
     $('#balanceAperturaActivo tbody').append(stringTransaccionActivo);
-    $("#balanceAperturaActivo select").empty().append(sessionStorage.optionsAsString);             
+    $("#balanceAperturaActivo select").empty().append(localStorage.optionsAsString);             
 }
 
 function addTransaccionPasivo(){
@@ -71,7 +71,7 @@ function addTransaccionPasivo(){
                 "<td><input type='text'/></td>"+
                 "</tr>";
     $('#balanceAperturaPasivo tbody').append(stringTransaccionPasivo);
-    $("#balanceAperturaPasivo select").empty().append(sessionStorage.optionsAsString);
+    $("#balanceAperturaPasivo select").empty().append(localStorage.optionsAsString);
 }
 
 function getAllValuesBalanceApertura() {
@@ -89,7 +89,7 @@ function getAllValuesBalanceApertura() {
     totalPasivoPatrimonio = 0;
     fechaBalance = $('#dateBalance').val().split("-").reverse().join("-");
     lastDate = fechaBalance;
-    sessionStorage.setItem('fechaBalance',fechaBalance);
+    localStorage.setItem('fechaBalance',fechaBalance);
     $('#balanceAperturaActivo select').each(function() {
         if ($(this).val()==="0") {return}
          accountsBalanceActivo.push($(this).val()); 
@@ -138,8 +138,8 @@ function calculateTotalActivoCapital(){
     inputValuesBalanceAperturaPasivo.push("capital");
     inputValuesBalanceAperturaPasivo.push(capital);
     //variables de sesion
-    sessionStorage.setItem('inputValuesBalanceAperturaActivo',inputValuesBalanceAperturaActivo);
-    sessionStorage.setItem('inputValuesBalanceAperturaPasivo',inputValuesBalanceAperturaPasivo);
+    localStorage.setItem('inputValuesBalanceAperturaActivo',inputValuesBalanceAperturaActivo);
+    localStorage.setItem('inputValuesBalanceAperturaPasivo',inputValuesBalanceAperturaPasivo);
     //end
 }
 
@@ -161,11 +161,11 @@ function initializeAsientoApertura(){
     inputValuesAsientoApertura.push("Inicio de actividades");
     numberAsientos++;
     //variables de sesion
-    sessionStorage.setItem('inputValuesAsientoApertura',inputValuesAsientoApertura);
-    sessionStorage.setItem('numberAsientos',numberAsientos);
-    sessionStorage.setItem('totalDebe',totalHaber);
-    sessionStorage.setItem('totalHaber',totalHaber);
-    sessionStorage.setItem('lastDate',lastDate);
+    localStorage.setItem('inputValuesAsientoApertura',inputValuesAsientoApertura);
+    localStorage.setItem('numberAsientos',numberAsientos);
+    localStorage.setItem('totalDebe',totalHaber);
+    localStorage.setItem('totalHaber',totalHaber);
+    localStorage.setItem('lastDate',lastDate);
     //end
     appendAsientoApertura(inputValuesAsientoApertura.length-1)
     generateLibrosMayores(inputValuesAsientoApertura);
@@ -182,7 +182,7 @@ function appendAsientoApertura(fin){
     
     stringAsientoApertura += "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>"+totalDebe+"</td><td>"+totalHaber+"</td></tr>";
     //variables de session
-    sessionStorage.setItem('stringAsientoApertura',stringAsientoApertura);
+    localStorage.setItem('stringAsientoApertura',stringAsientoApertura);
     //end
 }
 
@@ -514,86 +514,86 @@ function generateLibrosMayores(values){
         }
     }
     //variables de sesion
-    sessionStorage.setItem('libro1',libro1);
-    sessionStorage.setItem('saldo1',saldo1);
-    sessionStorage.setItem('libro2',libro2);
-    sessionStorage.setItem('saldo2',saldo2);
-    sessionStorage.setItem('libro3',libro3);
-    sessionStorage.setItem('saldo3',saldo3);
-    sessionStorage.setItem('libro4',libro4);
-    sessionStorage.setItem('saldo4',saldo4);
-    sessionStorage.setItem('libro5',libro5);
-    sessionStorage.setItem('saldo5',saldo5);
-    sessionStorage.setItem('libro6',libro6);
-    sessionStorage.setItem('saldo6',saldo6);
-    sessionStorage.setItem('libro7',libro7);
-    sessionStorage.setItem('saldo7',saldo7);
-    sessionStorage.setItem('libro8',libro8);
-    sessionStorage.setItem('saldo8',saldo8);
-    sessionStorage.setItem('libro9',libro9);
-    sessionStorage.setItem('saldo9',saldo9);
-    sessionStorage.setItem('libro10',libro10);
-    sessionStorage.setItem('saldo10',saldo10);
-    sessionStorage.setItem('libro11',libro11);
-    sessionStorage.setItem('saldo11',saldo11);
-    sessionStorage.setItem('libro12',libro12);
-    sessionStorage.setItem('saldo12',saldo12);
-    sessionStorage.setItem('libro13',libro13);
-    sessionStorage.setItem('saldo13',saldo13);
-    sessionStorage.setItem('libro14',libro14);
-    sessionStorage.setItem('saldo14',saldo14);
-    sessionStorage.setItem('libro15',libro15);
-    sessionStorage.setItem('saldo15',saldo15);
-    sessionStorage.setItem('libro16',libro16);
-    sessionStorage.setItem('saldo16',saldo16);
-    sessionStorage.setItem('libro17',libro17);
-    sessionStorage.setItem('saldo17',saldo17);
-    sessionStorage.setItem('libro18',libro18);
-    sessionStorage.setItem('saldo18',saldo18);
-    sessionStorage.setItem('libro19',libro19);
-    sessionStorage.setItem('saldo19',saldo19);
-    sessionStorage.setItem('libro20',libro20);
-    sessionStorage.setItem('saldo20',saldo20);
-    sessionStorage.setItem('libro21',libro21);
-    sessionStorage.setItem('saldo21',saldo21);
-    sessionStorage.setItem('libro22',libro22);
-    sessionStorage.setItem('saldo22',saldo22);
-    sessionStorage.setItem('libro23',libro23);
-    sessionStorage.setItem('saldo23',saldo23);
-    sessionStorage.setItem('libro24',libro24);
-    sessionStorage.setItem('saldo24',saldo24);
-    sessionStorage.setItem('libro25',libro25);
-    sessionStorage.setItem('saldo25',saldo25);
-    sessionStorage.setItem('libro26',libro26);
-    sessionStorage.setItem('saldo26',saldo26);
-    sessionStorage.setItem('libro27',libro27);
-    sessionStorage.setItem('saldo27',saldo27);
-    sessionStorage.setItem('libro28',libro28);
-    sessionStorage.setItem('saldo28',saldo28);
-    sessionStorage.setItem('libro29',libro29);
-    sessionStorage.setItem('saldo29',saldo29);
-    sessionStorage.setItem('libro30',libro30);
-    sessionStorage.setItem('saldo30',saldo30);
-    sessionStorage.setItem('libro31',libro31);
-    sessionStorage.setItem('saldo31',saldo31);
-    sessionStorage.setItem('libro32',libro32);
-    sessionStorage.setItem('saldo32',saldo32);
-    sessionStorage.setItem('libro33',libro33);
-    sessionStorage.setItem('saldo33',saldo33);
-    sessionStorage.setItem('libro34',libro34);
-    sessionStorage.setItem('saldo34',saldo34);
-    sessionStorage.setItem('libro35',libro35);
-    sessionStorage.setItem('saldo35',saldo35);
-    sessionStorage.setItem('libro36',libro36);
-    sessionStorage.setItem('saldo36',saldo36);
-    sessionStorage.setItem('libro37',libro37);
-    sessionStorage.setItem('saldo37',saldo37);
-    sessionStorage.setItem('libro38',libro38);
-    sessionStorage.setItem('saldo38',saldo38);
-    sessionStorage.setItem('libro39',libro39);
-    sessionStorage.setItem('saldo39',saldo39);
-    sessionStorage.setItem('libro40',libro40);
-    sessionStorage.setItem('saldo40',saldo40);
+    localStorage.setItem('libro1',libro1);
+    localStorage.setItem('saldo1',saldo1);
+    localStorage.setItem('libro2',libro2);
+    localStorage.setItem('saldo2',saldo2);
+    localStorage.setItem('libro3',libro3);
+    localStorage.setItem('saldo3',saldo3);
+    localStorage.setItem('libro4',libro4);
+    localStorage.setItem('saldo4',saldo4);
+    localStorage.setItem('libro5',libro5);
+    localStorage.setItem('saldo5',saldo5);
+    localStorage.setItem('libro6',libro6);
+    localStorage.setItem('saldo6',saldo6);
+    localStorage.setItem('libro7',libro7);
+    localStorage.setItem('saldo7',saldo7);
+    localStorage.setItem('libro8',libro8);
+    localStorage.setItem('saldo8',saldo8);
+    localStorage.setItem('libro9',libro9);
+    localStorage.setItem('saldo9',saldo9);
+    localStorage.setItem('libro10',libro10);
+    localStorage.setItem('saldo10',saldo10);
+    localStorage.setItem('libro11',libro11);
+    localStorage.setItem('saldo11',saldo11);
+    localStorage.setItem('libro12',libro12);
+    localStorage.setItem('saldo12',saldo12);
+    localStorage.setItem('libro13',libro13);
+    localStorage.setItem('saldo13',saldo13);
+    localStorage.setItem('libro14',libro14);
+    localStorage.setItem('saldo14',saldo14);
+    localStorage.setItem('libro15',libro15);
+    localStorage.setItem('saldo15',saldo15);
+    localStorage.setItem('libro16',libro16);
+    localStorage.setItem('saldo16',saldo16);
+    localStorage.setItem('libro17',libro17);
+    localStorage.setItem('saldo17',saldo17);
+    localStorage.setItem('libro18',libro18);
+    localStorage.setItem('saldo18',saldo18);
+    localStorage.setItem('libro19',libro19);
+    localStorage.setItem('saldo19',saldo19);
+    localStorage.setItem('libro20',libro20);
+    localStorage.setItem('saldo20',saldo20);
+    localStorage.setItem('libro21',libro21);
+    localStorage.setItem('saldo21',saldo21);
+    localStorage.setItem('libro22',libro22);
+    localStorage.setItem('saldo22',saldo22);
+    localStorage.setItem('libro23',libro23);
+    localStorage.setItem('saldo23',saldo23);
+    localStorage.setItem('libro24',libro24);
+    localStorage.setItem('saldo24',saldo24);
+    localStorage.setItem('libro25',libro25);
+    localStorage.setItem('saldo25',saldo25);
+    localStorage.setItem('libro26',libro26);
+    localStorage.setItem('saldo26',saldo26);
+    localStorage.setItem('libro27',libro27);
+    localStorage.setItem('saldo27',saldo27);
+    localStorage.setItem('libro28',libro28);
+    localStorage.setItem('saldo28',saldo28);
+    localStorage.setItem('libro29',libro29);
+    localStorage.setItem('saldo29',saldo29);
+    localStorage.setItem('libro30',libro30);
+    localStorage.setItem('saldo30',saldo30);
+    localStorage.setItem('libro31',libro31);
+    localStorage.setItem('saldo31',saldo31);
+    localStorage.setItem('libro32',libro32);
+    localStorage.setItem('saldo32',saldo32);
+    localStorage.setItem('libro33',libro33);
+    localStorage.setItem('saldo33',saldo33);
+    localStorage.setItem('libro34',libro34);
+    localStorage.setItem('saldo34',saldo34);
+    localStorage.setItem('libro35',libro35);
+    localStorage.setItem('saldo35',saldo35);
+    localStorage.setItem('libro36',libro36);
+    localStorage.setItem('saldo36',saldo36);
+    localStorage.setItem('libro37',libro37);
+    localStorage.setItem('saldo37',saldo37);
+    localStorage.setItem('libro38',libro38);
+    localStorage.setItem('saldo38',saldo38);
+    localStorage.setItem('libro39',libro39);
+    localStorage.setItem('saldo39',saldo39);
+    localStorage.setItem('libro40',libro40);
+    localStorage.setItem('saldo40',saldo40);
     //end
  }
 

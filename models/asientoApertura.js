@@ -12,138 +12,138 @@ var lastDate;
 window.onload = cargarCuentas;
 
 function cargarCuentas(){
-    lastDate = sessionStorage.lastDate.split('-');
+    lastDate = localStorage.lastDate.split('-');
     lastDate = new Date(lastDate[2], lastDate[1]-1, lastDate[0]);
-	numberAsientos = parseInt(sessionStorage.numberAsientos);
-    stringAsientoApertura = (sessionStorage.stringAsientoApertura);
-	totalDebe = parseInt(sessionStorage.totalDebe);
-	totalHaber = parseInt(sessionStorage.totalHaber);
-	inputValuesAsientoApertura = sessionStorage.inputValuesAsientoApertura.split(',');
-	libro1 = sessionStorage.libro1.split(',');
+	numberAsientos = parseInt(localStorage.numberAsientos);
+    stringAsientoApertura = (localStorage.stringAsientoApertura);
+	totalDebe = parseInt(localStorage.totalDebe);
+	totalHaber = parseInt(localStorage.totalHaber);
+	inputValuesAsientoApertura = localStorage.inputValuesAsientoApertura.split(',');
+	libro1 = localStorage.libro1.split(',');
     if (libro1.length === 1) {libro1 = [];}
-	libro2 = sessionStorage.libro2.split(',');
+	libro2 = localStorage.libro2.split(',');
     if (libro2.length === 1) {libro2 = [];}
-	libro3 = sessionStorage.libro3.split(',');
+	libro3 = localStorage.libro3.split(',');
     if (libro3.length === 1) {libro3 = [];}
-    libro4 = sessionStorage.libro4.split(',');
+    libro4 = localStorage.libro4.split(',');
     if (libro4.length === 1) {libro4 = [];}
-    libro5 = sessionStorage.libro5.split(',');
+    libro5 = localStorage.libro5.split(',');
     if (libro5.length === 1) {libro5 = [];}
-    libro6 = sessionStorage.libro6.split(',');
+    libro6 = localStorage.libro6.split(',');
     if (libro6.length === 1) {libro6 = [];}
-    libro7 = sessionStorage.libro7.split(',');
+    libro7 = localStorage.libro7.split(',');
     if (libro7.length === 1) {libro7 = [];}
-    libro8 = sessionStorage.libro8.split(',');
+    libro8 = localStorage.libro8.split(',');
     if (libro8.length === 1) {libro8 = [];}
-    libro9 = sessionStorage.libro9.split(',');
+    libro9 = localStorage.libro9.split(',');
     if (libro9.length === 1) {libro9 = [];}
-    libro10 = sessionStorage.libro10.split(',');
+    libro10 = localStorage.libro10.split(',');
     if (libro10.length === 1) {libro10 = [];}
-    libro11 = sessionStorage.libro11.split(',');
+    libro11 = localStorage.libro11.split(',');
     if (libro11.length === 1) {libro11 = [];}
-    libro12 = sessionStorage.libro12.split(',');
+    libro12 = localStorage.libro12.split(',');
     if (libro12.length === 1) {libro12 = [];}
-    libro13 = sessionStorage.libro13.split(',');
+    libro13 = localStorage.libro13.split(',');
     if (libro13.length === 1) {libro13 = [];}
-    libro14 = sessionStorage.libro14.split(',');
+    libro14 = localStorage.libro14.split(',');
     if (libro14.length === 1) {libro14 = [];}
-    libro15 = sessionStorage.libro15.split(',');
+    libro15 = localStorage.libro15.split(',');
     if (libro15.length === 1) {libro15 = [];}
-    libro16 = sessionStorage.libro16.split(',');
+    libro16 = localStorage.libro16.split(',');
     if (libro16.length === 1) {libro16 = [];}
-    libro17 = sessionStorage.libro17.split(',');
+    libro17 = localStorage.libro17.split(',');
     if (libro17.length === 1) {libro17 = [];}
-    libro18 = sessionStorage.libro18.split(',');
+    libro18 = localStorage.libro18.split(',');
     if (libro18.length === 1) {libro18 = [];}
-    libro19 = sessionStorage.libro19.split(',');
+    libro19 = localStorage.libro19.split(',');
     if (libro19.length === 1) {libro19 = [];}
-    libro20 = sessionStorage.libro20.split(',');
+    libro20 = localStorage.libro20.split(',');
     if (libro20.length === 1) {libro20 = [];}
-    libro21 = sessionStorage.libro21.split(',');
+    libro21 = localStorage.libro21.split(',');
     if (libro21.length === 1) {libro21 = [];}
-    libro22 = sessionStorage.libro22.split(',');
+    libro22 = localStorage.libro22.split(',');
     if (libro22.length === 1) {libro22 = [];}
-    libro23 = sessionStorage.libro23.split(',');
+    libro23 = localStorage.libro23.split(',');
     if (libro23.length === 1) {libro23 = [];}
-    libro24 = sessionStorage.libro24.split(',');
+    libro24 = localStorage.libro24.split(',');
     if (libro24.length === 1) {libro24 = [];}
-    libro25 = sessionStorage.libro25.split(',');
+    libro25 = localStorage.libro25.split(',');
     if (libro25.length === 1) {libro25 = [];}
-    libro26 = sessionStorage.libro26.split(',');
+    libro26 = localStorage.libro26.split(',');
     if (libro26.length === 1) {libro26 = [];}
-    libro27 = sessionStorage.libro27.split(',');
+    libro27 = localStorage.libro27.split(',');
     if (libro27.length === 1) {libro27 = [];}
-    libro28 = sessionStorage.libro28.split(',');
+    libro28 = localStorage.libro28.split(',');
     if (libro28.length === 1) {libro28 = [];}
-    libro29 = sessionStorage.libro29.split(',');
+    libro29 = localStorage.libro29.split(',');
     if (libro29.length === 1) {libro29 = [];}
-    libro30 = sessionStorage.libro30.split(',');
+    libro30 = localStorage.libro30.split(',');
     if (libro30.length === 1) {libro30 = [];}
-    libro31 = sessionStorage.libro31.split(',');
+    libro31 = localStorage.libro31.split(',');
     if (libro31.length === 1) {libro31 = [];}
-    libro32 = sessionStorage.libro32.split(',');
+    libro32 = localStorage.libro32.split(',');
     if (libro32.length === 1) {libro32 = [];}
-    libro33 = sessionStorage.libro33.split(',');
+    libro33 = localStorage.libro33.split(',');
     if (libro33.length === 1) {libro33 = [];}
-    libro34 = sessionStorage.libro34.split(',');
+    libro34 = localStorage.libro34.split(',');
     if (libro34.length === 1) {libro34 = [];}
-    libro35 = sessionStorage.libro35.split(',');
+    libro35 = localStorage.libro35.split(',');
     if (libro35.length === 1) {libro35 = [];}
-    libro36 = sessionStorage.libro36.split(',');
+    libro36 = localStorage.libro36.split(',');
     if (libro36.length === 1) {libro36 = [];}
-    libro37 = sessionStorage.libro37.split(',');
+    libro37 = localStorage.libro37.split(',');
     if (libro37.length === 1) {libro37 = [];}
-    libro38 = sessionStorage.libro38.split(',');
+    libro38 = localStorage.libro38.split(',');
     if (libro38.length === 1) {libro38 = [];}
-    libro39 = sessionStorage.libro39.split(',');
+    libro39 = localStorage.libro39.split(',');
     if (libro39.length === 1) {libro39 = [];}
-    libro40 = sessionStorage.libro40.split(',');
+    libro40 = localStorage.libro40.split(',');
     if (libro40.length === 1) {libro40 = [];}
 
-    saldo1 = parseInt(sessionStorage.saldo1);
-	saldo2 = parseInt(sessionStorage.saldo2);
-	saldo3 = parseInt(sessionStorage.saldo3);
-    saldo4 = parseInt(sessionStorage.saldo4);
-    saldo5 = parseInt(sessionStorage.saldo5);
-    saldo6 = parseInt(sessionStorage.saldo6);
-    saldo7 = parseInt(sessionStorage.saldo7);
-    saldo8 = parseInt(sessionStorage.saldo8);
-    saldo9 = parseInt(sessionStorage.saldo9);
-    saldo10 = parseInt(sessionStorage.saldo10);
-    saldo11 = parseInt(sessionStorage.saldo11);
-    saldo12 = parseInt(sessionStorage.saldo12);
-    saldo13 = parseInt(sessionStorage.saldo13);
-    saldo14 = parseInt(sessionStorage.saldo14);
-    saldo15 = parseInt(sessionStorage.saldo15);
-    saldo16 = parseInt(sessionStorage.saldo16);
-    saldo17 = parseInt(sessionStorage.saldo17);
-    saldo18 = parseInt(sessionStorage.saldo18);
-    saldo19 = parseInt(sessionStorage.saldo19);
-    saldo20 = parseInt(sessionStorage.saldo20);
-    saldo21 = parseInt(sessionStorage.saldo21);
-    saldo22 = parseInt(sessionStorage.saldo22);
-    saldo23 = parseInt(sessionStorage.saldo23);
-    saldo24 = parseInt(sessionStorage.saldo24);
-    saldo25 = parseInt(sessionStorage.saldo25);
-    saldo26 = parseInt(sessionStorage.saldo26);
-    saldo27 = parseInt(sessionStorage.saldo27);
-    saldo28 = parseInt(sessionStorage.saldo28);
-    saldo29 = parseInt(sessionStorage.saldo29);
-    saldo30 = parseInt(sessionStorage.saldo30);
-    saldo31 = parseInt(sessionStorage.saldo31);
-    saldo32 = parseInt(sessionStorage.saldo32);
-    saldo33 = parseInt(sessionStorage.saldo33);
-    saldo34 = parseInt(sessionStorage.saldo34);
-    saldo35 = parseInt(sessionStorage.saldo35);
-    saldo36 = parseInt(sessionStorage.saldo36);
-    saldo37 = parseInt(sessionStorage.saldo37);
-    saldo38 = parseInt(sessionStorage.saldo38);
-    saldo39 = parseInt(sessionStorage.saldo39);
-    saldo40 = parseInt(sessionStorage.saldo40);
+    saldo1 = parseInt(localStorage.saldo1);
+	saldo2 = parseInt(localStorage.saldo2);
+	saldo3 = parseInt(localStorage.saldo3);
+    saldo4 = parseInt(localStorage.saldo4);
+    saldo5 = parseInt(localStorage.saldo5);
+    saldo6 = parseInt(localStorage.saldo6);
+    saldo7 = parseInt(localStorage.saldo7);
+    saldo8 = parseInt(localStorage.saldo8);
+    saldo9 = parseInt(localStorage.saldo9);
+    saldo10 = parseInt(localStorage.saldo10);
+    saldo11 = parseInt(localStorage.saldo11);
+    saldo12 = parseInt(localStorage.saldo12);
+    saldo13 = parseInt(localStorage.saldo13);
+    saldo14 = parseInt(localStorage.saldo14);
+    saldo15 = parseInt(localStorage.saldo15);
+    saldo16 = parseInt(localStorage.saldo16);
+    saldo17 = parseInt(localStorage.saldo17);
+    saldo18 = parseInt(localStorage.saldo18);
+    saldo19 = parseInt(localStorage.saldo19);
+    saldo20 = parseInt(localStorage.saldo20);
+    saldo21 = parseInt(localStorage.saldo21);
+    saldo22 = parseInt(localStorage.saldo22);
+    saldo23 = parseInt(localStorage.saldo23);
+    saldo24 = parseInt(localStorage.saldo24);
+    saldo25 = parseInt(localStorage.saldo25);
+    saldo26 = parseInt(localStorage.saldo26);
+    saldo27 = parseInt(localStorage.saldo27);
+    saldo28 = parseInt(localStorage.saldo28);
+    saldo29 = parseInt(localStorage.saldo29);
+    saldo30 = parseInt(localStorage.saldo30);
+    saldo31 = parseInt(localStorage.saldo31);
+    saldo32 = parseInt(localStorage.saldo32);
+    saldo33 = parseInt(localStorage.saldo33);
+    saldo34 = parseInt(localStorage.saldo34);
+    saldo35 = parseInt(localStorage.saldo35);
+    saldo36 = parseInt(localStorage.saldo36);
+    saldo37 = parseInt(localStorage.saldo37);
+    saldo38 = parseInt(localStorage.saldo38);
+    saldo39 = parseInt(localStorage.saldo39);
+    saldo40 = parseInt(localStorage.saldo40);
 
 	document.getElementById("numberAsiento").innerHTML = "Asiento # "+ (numberAsientos+1);
-    $('#registroAsiento select').empty().append(sessionStorage.optionsAsString);
-    detailMayores = sessionStorage.detailMayores.split(',');
+    $('#registroAsiento select').empty().append(localStorage.optionsAsString);
+    detailMayores = localStorage.detailMayores.split(',');
     drawAsientoApertura();
 }
 
@@ -158,15 +158,15 @@ function appendAsientoApertura(fin){
     
     stringAsientoApertura += "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>"+totalDebe+"</td><td>"+totalHaber+"</td></tr>";
     //variables de session
-    sessionStorage.setItem('stringAsientoApertura',stringAsientoApertura);
-    sessionStorage.setItem('totalDebe',totalHaber);
-    sessionStorage.setItem('totalHaber',totalHaber);
+    localStorage.setItem('stringAsientoApertura',stringAsientoApertura);
+    localStorage.setItem('totalDebe',totalHaber);
+    localStorage.setItem('totalHaber',totalHaber);
     //end
     drawAsientoApertura();
 }
 
 function drawAsientoApertura(){
-    $('#asientoApertura tbody').empty().append(sessionStorage.stringAsientoApertura);
+    $('#asientoApertura tbody').empty().append(localStorage.stringAsientoApertura);
 }
 
 function registerAsiento(){
@@ -206,11 +206,11 @@ function registerAsiento(){
                     inputValuesAsientoApertura.push(glosa);
                     setSpaceFromArray();
                     numberAsientos++;
-                    sessionStorage.setItem('numberAsientos',numberAsientos);
+                    localStorage.setItem('numberAsientos',numberAsientos);
                     generateLibrosMayores(inputValuesAsientoApertura);
                     appendAsientoApertura(inputValuesAsientoApertura.length-1)
                     lastDate = fechAux;
-                    sessionStorage.setItem('lastDate',fechaAsiento);
+                    localStorage.setItem('lastDate',fechaAsiento);
                 }else{
                     alert("Total Debe y Haber del registro deben ser iguales"); 
                     return;
@@ -600,86 +600,86 @@ function generateLibrosMayores(values){
         }
     }
     //variables de sesion
-    sessionStorage.setItem('libro1',libro1);
-    sessionStorage.setItem('saldo1',saldo1);
-    sessionStorage.setItem('libro2',libro2);
-    sessionStorage.setItem('saldo2',saldo2);
-    sessionStorage.setItem('libro3',libro3);
-    sessionStorage.setItem('saldo3',saldo3);
-    sessionStorage.setItem('libro4',libro4);
-    sessionStorage.setItem('saldo4',saldo4);
-    sessionStorage.setItem('libro5',libro5);
-    sessionStorage.setItem('saldo5',saldo5);
-    sessionStorage.setItem('libro6',libro6);
-    sessionStorage.setItem('saldo6',saldo6);
-    sessionStorage.setItem('libro7',libro7);
-    sessionStorage.setItem('saldo7',saldo7);
-    sessionStorage.setItem('libro8',libro8);
-    sessionStorage.setItem('saldo8',saldo8);
-    sessionStorage.setItem('libro9',libro9);
-    sessionStorage.setItem('saldo9',saldo9);
-    sessionStorage.setItem('libro10',libro10);
-    sessionStorage.setItem('saldo10',saldo10);
-    sessionStorage.setItem('libro11',libro11);
-    sessionStorage.setItem('saldo11',saldo11);
-    sessionStorage.setItem('libro12',libro12);
-    sessionStorage.setItem('saldo12',saldo12);
-    sessionStorage.setItem('libro13',libro13);
-    sessionStorage.setItem('saldo13',saldo13);
-    sessionStorage.setItem('libro14',libro14);
-    sessionStorage.setItem('saldo14',saldo14);
-    sessionStorage.setItem('libro15',libro15);
-    sessionStorage.setItem('saldo15',saldo15);
-    sessionStorage.setItem('libro16',libro16);
-    sessionStorage.setItem('saldo16',saldo16);
-    sessionStorage.setItem('libro17',libro17);
-    sessionStorage.setItem('saldo17',saldo17);
-    sessionStorage.setItem('libro18',libro18);
-    sessionStorage.setItem('saldo18',saldo18);
-    sessionStorage.setItem('libro19',libro19);
-    sessionStorage.setItem('saldo19',saldo19);
-    sessionStorage.setItem('libro20',libro20);
-    sessionStorage.setItem('saldo20',saldo20);
-    sessionStorage.setItem('libro21',libro21);
-    sessionStorage.setItem('saldo21',saldo21);
-    sessionStorage.setItem('libro22',libro22);
-    sessionStorage.setItem('saldo22',saldo22);
-    sessionStorage.setItem('libro23',libro23);
-    sessionStorage.setItem('saldo23',saldo23);
-    sessionStorage.setItem('libro24',libro24);
-    sessionStorage.setItem('saldo24',saldo24);
-    sessionStorage.setItem('libro25',libro25);
-    sessionStorage.setItem('saldo25',saldo25);
-    sessionStorage.setItem('libro26',libro26);
-    sessionStorage.setItem('saldo26',saldo26);
-    sessionStorage.setItem('libro27',libro27);
-    sessionStorage.setItem('saldo27',saldo27);
-    sessionStorage.setItem('libro28',libro28);
-    sessionStorage.setItem('saldo28',saldo28);
-    sessionStorage.setItem('libro29',libro29);
-    sessionStorage.setItem('saldo29',saldo29);
-    sessionStorage.setItem('libro30',libro30);
-    sessionStorage.setItem('saldo30',saldo30);
-    sessionStorage.setItem('libro31',libro31);
-    sessionStorage.setItem('saldo31',saldo31);
-    sessionStorage.setItem('libro32',libro32);
-    sessionStorage.setItem('saldo32',saldo32);
-    sessionStorage.setItem('libro33',libro33);
-    sessionStorage.setItem('saldo33',saldo33);
-    sessionStorage.setItem('libro34',libro34);
-    sessionStorage.setItem('saldo34',saldo34);
-    sessionStorage.setItem('libro35',libro35);
-    sessionStorage.setItem('saldo35',saldo35);
-    sessionStorage.setItem('libro36',libro36);
-    sessionStorage.setItem('saldo36',saldo36);
-    sessionStorage.setItem('libro37',libro37);
-    sessionStorage.setItem('saldo37',saldo37);
-    sessionStorage.setItem('libro38',libro38);
-    sessionStorage.setItem('saldo38',saldo38);
-    sessionStorage.setItem('libro39',libro39);
-    sessionStorage.setItem('saldo39',saldo39);
-    sessionStorage.setItem('libro40',libro40);
-    sessionStorage.setItem('saldo40',saldo40);
+    localStorage.setItem('libro1',libro1);
+    localStorage.setItem('saldo1',saldo1);
+    localStorage.setItem('libro2',libro2);
+    localStorage.setItem('saldo2',saldo2);
+    localStorage.setItem('libro3',libro3);
+    localStorage.setItem('saldo3',saldo3);
+    localStorage.setItem('libro4',libro4);
+    localStorage.setItem('saldo4',saldo4);
+    localStorage.setItem('libro5',libro5);
+    localStorage.setItem('saldo5',saldo5);
+    localStorage.setItem('libro6',libro6);
+    localStorage.setItem('saldo6',saldo6);
+    localStorage.setItem('libro7',libro7);
+    localStorage.setItem('saldo7',saldo7);
+    localStorage.setItem('libro8',libro8);
+    localStorage.setItem('saldo8',saldo8);
+    localStorage.setItem('libro9',libro9);
+    localStorage.setItem('saldo9',saldo9);
+    localStorage.setItem('libro10',libro10);
+    localStorage.setItem('saldo10',saldo10);
+    localStorage.setItem('libro11',libro11);
+    localStorage.setItem('saldo11',saldo11);
+    localStorage.setItem('libro12',libro12);
+    localStorage.setItem('saldo12',saldo12);
+    localStorage.setItem('libro13',libro13);
+    localStorage.setItem('saldo13',saldo13);
+    localStorage.setItem('libro14',libro14);
+    localStorage.setItem('saldo14',saldo14);
+    localStorage.setItem('libro15',libro15);
+    localStorage.setItem('saldo15',saldo15);
+    localStorage.setItem('libro16',libro16);
+    localStorage.setItem('saldo16',saldo16);
+    localStorage.setItem('libro17',libro17);
+    localStorage.setItem('saldo17',saldo17);
+    localStorage.setItem('libro18',libro18);
+    localStorage.setItem('saldo18',saldo18);
+    localStorage.setItem('libro19',libro19);
+    localStorage.setItem('saldo19',saldo19);
+    localStorage.setItem('libro20',libro20);
+    localStorage.setItem('saldo20',saldo20);
+    localStorage.setItem('libro21',libro21);
+    localStorage.setItem('saldo21',saldo21);
+    localStorage.setItem('libro22',libro22);
+    localStorage.setItem('saldo22',saldo22);
+    localStorage.setItem('libro23',libro23);
+    localStorage.setItem('saldo23',saldo23);
+    localStorage.setItem('libro24',libro24);
+    localStorage.setItem('saldo24',saldo24);
+    localStorage.setItem('libro25',libro25);
+    localStorage.setItem('saldo25',saldo25);
+    localStorage.setItem('libro26',libro26);
+    localStorage.setItem('saldo26',saldo26);
+    localStorage.setItem('libro27',libro27);
+    localStorage.setItem('saldo27',saldo27);
+    localStorage.setItem('libro28',libro28);
+    localStorage.setItem('saldo28',saldo28);
+    localStorage.setItem('libro29',libro29);
+    localStorage.setItem('saldo29',saldo29);
+    localStorage.setItem('libro30',libro30);
+    localStorage.setItem('saldo30',saldo30);
+    localStorage.setItem('libro31',libro31);
+    localStorage.setItem('saldo31',saldo31);
+    localStorage.setItem('libro32',libro32);
+    localStorage.setItem('saldo32',saldo32);
+    localStorage.setItem('libro33',libro33);
+    localStorage.setItem('saldo33',saldo33);
+    localStorage.setItem('libro34',libro34);
+    localStorage.setItem('saldo34',saldo34);
+    localStorage.setItem('libro35',libro35);
+    localStorage.setItem('saldo35',saldo35);
+    localStorage.setItem('libro36',libro36);
+    localStorage.setItem('saldo36',saldo36);
+    localStorage.setItem('libro37',libro37);
+    localStorage.setItem('saldo37',saldo37);
+    localStorage.setItem('libro38',libro38);
+    localStorage.setItem('saldo38',saldo38);
+    localStorage.setItem('libro39',libro39);
+    localStorage.setItem('saldo39',saldo39);
+    localStorage.setItem('libro40',libro40);
+    localStorage.setItem('saldo40',saldo40);
     //end
  }
 

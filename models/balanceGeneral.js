@@ -5,8 +5,8 @@ var typesBalanceGeneral;
 window.onload = cargarAccounts;
 
 function cargarAccounts(){
-	accounts = sessionStorage.accounts.split(',');
-    balanceGeneral = sessionStorage.balanceGeneral.split(',');
+	accounts = localStorage.accounts.split(',');
+    balanceGeneral = localStorage.balanceGeneral.split(',');
 	putActivoPasivo();
 }
 
@@ -79,7 +79,7 @@ function drawBalanceGeneral(){
             totalActivo += parseInt(balanceGeneral[i+1]);  
         }
         if (findType(balanceGeneral[i]) === "AF" ) {
-            
+            //filtra depreciacion acumulada
             if(balanceGeneral[i].indexOf("DA") != -1){
                 stringActivoF += "<i><h3 style='color:#0000FF'>-/"+balanceGeneral[i]+" ------- " +balanceGeneral[i+1]+"</h3></i>";
                 totalActivo -= parseInt(balanceGeneral[i+1]);
@@ -108,6 +108,18 @@ function drawBalanceGeneral(){
     
      $('#pasivoE').empty().append(stringPasivoE);
      $('#pasivoP').empty().append(stringPasivoP);
+
+     //variables de sesion
+     localStorage.setItem('stringActivoD',stringActivoD);
+     localStorage.setItem('stringActivoE',stringActivoE);
+     localStorage.setItem('stringActivoF',stringActivoF);
+     localStorage.setItem('stringActivoR',stringActivoR);
+     localStorage.setItem('stringTotalActivo',totalActivo);
+
+     localStorage.setItem('stringPasivoE',stringPasivoE);
+     localStorage.setItem('stringPasivoP',stringPasivoP);
+     localStorage.setItem('stringTotalPasivo',totalPasivo);
+     //end
     document.getElementById("totalActivo").innerHTML = "TOTAL ACTIVO:  " + totalActivo;
     document.getElementById("totalPasivo").innerHTML = "TOTAL PASIVO/PATRIMONIO:  "+totalPasivo;
 }   

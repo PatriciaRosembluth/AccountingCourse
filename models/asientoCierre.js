@@ -4,9 +4,9 @@ var accounts;
 window.onload = cargarDatos;
 
 function cargarDatos(){
-	estadoResultados = sessionStorage.estadoResultados.split(',');
-	balanceGeneral = sessionStorage.balanceGeneral.split(',');
-	accounts = sessionStorage.accounts.split(',');
+	estadoResultados = localStorage.estadoResultados.split(',');
+	balanceGeneral = localStorage.balanceGeneral.split(',');
+	accounts = localStorage.accounts.split(',');
 }
 
 function generateAsientoCierre(){
@@ -60,6 +60,7 @@ function generateAsientoCierre(){
 	stringBalanceGeneral+= "<tr bgcolor='#A9E2F3'><td><b>Total:</b></td><td>"+totalDebeA2+"</td><td>"+totalHaberA2+"</td></tr>";
 	
 	asientoCierre = stringEstadoResultados+stringBalanceGeneral;
+	localStorage.setItem('stringAsientoCierre',asientoCierre);
 	$('#asientoCierre tbody').empty().append(asientoCierre);
 }
 

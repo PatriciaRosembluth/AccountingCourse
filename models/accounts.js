@@ -17,7 +17,7 @@ function drawAccount(){
         "</tr>";  
     }
     $('#accounts tbody').append(stringAccount);
-    accounts = sessionStorage.accounts.split(',');
+    accounts = localStorage.accounts.split(',');
     j=0;
     if (accounts!=[]) {
         for (var i = 0; i < accounts.length; i=i+2) {    
@@ -47,12 +47,12 @@ function getAccounts(){
         accounts.push(stringTypesAccounts[i]); 
     }
     //Variables de sesion
-    sessionStorage.setItem('accounts',accounts);
-    sessionStorage.setItem('detailMayores',detailMayores);
+    localStorage.setItem('accounts',accounts);
+    localStorage.setItem('detailMayores',detailMayores);
     //end
     sortAccount = detailMayores.sort();
     for(var i = 0; i < sortAccount.length; i++) {
         optionsAsString += "<option value='" + sortAccount[i] + "'>" + sortAccount[i] + "</option>";
     }
-    sessionStorage.setItem('optionsAsString',optionsAsString);  
+    localStorage.setItem('optionsAsString',optionsAsString);  
 }
