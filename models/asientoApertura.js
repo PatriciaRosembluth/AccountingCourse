@@ -212,19 +212,19 @@ function registerAsiento(){
                     lastDate = fechAux;
                     localStorage.setItem('lastDate',fechaAsiento);
                 }else{
-                    alert("Total Debe y Haber del registro deben ser iguales"); 
+                    jAlert('Total Debe y Haber del registro deben ser iguales', 'Registro incorrecto'); 
                     return;
                 }
             }else{
-                alert("Debe poner glosa al asiento");
+                jAlert('Debe poner glosa al asiento', 'Registro incorrecto'); 
                 return; 
             }
         }else{
-            alert("Debe seleccionar una fecha posterior o igual a la del ultimo asiento");
+            jAlert('Debe seleccionar una fecha posterior o igual a la del ultimo asiento', 'Registro incorrecto'); 
             return;
         }
     }else{
-        alert("Debe seleccionar una fecha para el asiento");
+        jAlert('Debe seleccionar una fecha para el asiento', 'Registro incorrecto');
         return;
     }
     document.getElementById("numberAsiento").innerHTML = "Asiento # "+ (numberAsientos+1);

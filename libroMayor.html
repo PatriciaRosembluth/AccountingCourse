@@ -7,6 +7,8 @@
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/AccountingCourse/models/libroMayor.js"></script>
+	<link rel="stylesheet" type="text/css" href="/AccountingCourse/css/jquery.alerts.css">
+	<script src="/AccountingCourse/models/jquery.alerts.js"></script>
 </head>
 <body>
 <header class="cabecera">
@@ -25,7 +27,7 @@
   	<p>&raquo; La cuenta debe tener al menos un movimiento para ser visualizada.</p>
 </details><br>
 Cuenta: <select style = "width:206px;height:24px;"></select><br><br>
-	<button onclick="drawLibrosMayores();">Generar libros Mayores</button>
+	<button onclick="drawLibrosMayores();" id = "alert_button">Generar libro Mayor</button>
 	<u><h3 id="libro"></h3></u>
 	<table class="showtable" id="showLibro">
 	<col width="150">
@@ -36,7 +38,7 @@ Cuenta: <select style = "width:206px;height:24px;"></select><br><br>
 	<thead>
 			<tr>
 				<th>Fecha</th>
-				<th>Cuenta</th>
+				<th>Detalle</th>
 				<th>Debe</th>
 				<th>Haber</th>
 				<th>Saldo</th>

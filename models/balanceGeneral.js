@@ -57,7 +57,7 @@ function getTypesBalanceGeneral(){
     if (selectTypes.length>0) {
         drawBalanceGeneral();
     }else{
-        alert("Debe seleccionar los tipos de las cuentas para generar el balance");
+        jAlert('Debe seleccionar los tipos de las cuentas para generar el balance', 'Alerta');
     } 
 }
 
