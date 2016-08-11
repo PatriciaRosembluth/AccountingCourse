@@ -120,7 +120,7 @@ function getAllValuesBalanceApertura() {
         $('#balanceAperturaPasivo tbody').append(stringCapital);
         document.getElementById("totalPasivoPatrimonio").innerHTML = totalPasivoPatrimonio;
     }else{
-        alert("Ingrese la fecha de incio de actividades");
+        jAlert('Ingrese la fecha de incio de actividades', 'Registro incorrecto');
         return;
     }
 }

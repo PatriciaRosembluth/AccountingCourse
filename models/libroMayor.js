@@ -220,7 +220,13 @@ function drawLibro(libro, index){
     if (libro[0]!=""){
         document.getElementById("libro").innerHTML = detailMayores[index];
         for (var i = 0; i < libro.length; i=i+5) {
-            stringLibro += "<tr><td>"+libro[i]+"</td><td>"+libro[i+1]+"</td><td>"+libro[i+2]+"</td><td>"+libro[i+3]+"</td><td>"+libro[i+4]+"</td></tr>";
+            //Determinar si el saldo es negativo cambiar a positivo
+            saldoAux = parseInt(libro[i+4]);
+            if (saldoAux<0) {
+                saldoAux = saldoAux*-1;
+            }
+            //end
+            stringLibro += "<tr><td>"+libro[i]+"</td><td>"+libro[i+1]+"</td><td>"+libro[i+2]+"</td><td>"+libro[i+3]+"</td><td>"+saldoAux+"</td></tr>";
         }
     }else{
         jPrompt("No se registraron movimientos en la cuenta '"+detailMayores[index]+"'", 'Ups!'); 
