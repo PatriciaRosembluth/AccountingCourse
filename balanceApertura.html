@@ -14,7 +14,7 @@
 <header class="cabecera">
 	<div class="container clearfix">
 		<div class="logo">
-			<a href="index.html"><img src="/AccountingCourse/img/logo.png"></a>
+			<a href="index.html"><img src="/AccountingCourse/img/logo.jpg"></a>
 		</div>
 	</div>
 </header>
@@ -32,11 +32,13 @@
 	<p>&raquo; Este Balance se ingresa UNA SOLA VEZ para iniciar el ejercicio y ser&aacute; reflejado en el Asiento de Apertura.</p>
 </details><br>
 <b>Fecha inicio actividades:  </b><input style = "height:24px;width:235px;" type = "date" id = "dateBalance"><br>
-<u><h2>Activo</h2></u>
-<button class="button-add" onclick="addTransaccionActivo();">Agregar Activo</button><br><br>
-<table class="inputtable" id="balanceAperturaActivo">
-	<col width="200">
- 	<col width="150">			
+<div style="width: 100%; overflow: hidden;">
+	<div style="width: 600px; float: left;">
+		<u><h2>Activo</h2></u>
+		<button class="button-add" onclick="addTransaccionActivo();">Agregar Activo</button><br><br>
+		<table class="inputtable" id="balanceAperturaActivo">
+		<col width="200">
+	 	<col width="150">			
 		<thead>
 			<tr>
 				<th>Cuenta</th>
@@ -45,13 +47,15 @@
 		</thead>
 		<tbody>
 		</tbody>
-</table>
-<h2>Total Activo: <label id="totalActivo"></label></h2>
-<u><h2>Pasivo</h2></u>
-<button class="button-add" onclick="addTransaccionPasivo();">Agregar Pasivo</button><br><br>
-<table class="inputtable" id="balanceAperturaPasivo">
-	<col width="200">
- 	<col width="150">			
+		</table>
+		<h2>Total Activo: <label id="totalActivo"></label></h2>
+	</div>
+	<div style="margin-left: 620px;">
+		<u><h2>Pasivo</h2></u>
+		<button class="button-add" onclick="addTransaccionPasivo();">Agregar Pasivo</button><br><br>
+		<table class="inputtable" id="balanceAperturaPasivo">
+		<col width="200">
+	 	<col width="150">			
 		<thead>
 			<tr>
 				<th>Cuenta</th>
@@ -60,12 +64,11 @@
 		</thead>
 		<tbody>
 		</tbody>
-	</table>
-	<br>
-	<button onclick="getAllValuesBalanceApertura();">Registrar balance</button><br><br>
-	<!-- <h2>Capital: <label id="capital"></label></h2> -->
-	<h2>Total Pasivo y Patrimonio: <label id="totalPasivoPatrimonio"></label></h2>
-	
-	<a href="asientoApertura.html">Asiento Apertura</a>
+		</table>
+		<h2>Total Pasivo y Patrimonio: <label id="totalPasivoPatrimonio"></label></h2>
+	</div>
+</div>
+<button onclick="getAllValuesBalanceApertura();">Registrar balance</button><br><br>
+<a href="asientoApertura.html">Asiento Apertura</a>
 </body>
 </html>
