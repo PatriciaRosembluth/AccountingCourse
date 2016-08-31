@@ -1,8 +1,6 @@
 function initExcercise(){
 	localStorage.clear();
-	window.location.replace("http://localhost/AccountingCourse/planCuentas.html");
+	jPrompt("Puede proseguir registrando su plan de cuentas.", 'Reinicio Exitoso'); 
 }
 
-function conceptos(){
-	window.location.replace("http://localhost/AccountingCourse/conceptos.html");
-}
+

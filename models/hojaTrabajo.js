@@ -6,6 +6,10 @@ var totalGastoHt;
 var totalIngresoHt;
 var totalActivoHt;
 var totalCapitalHt;
+var totalGasto;
+var totalIngreso;
+var totalActivo;
+var totalCapital;
 var accounts;
 var balanceGeneral;
 var estadoResultados;
@@ -75,12 +79,20 @@ function drawHojaTrabajo(){
     balanceGeneral.push("utilidad neta",utilidadNeta);
     estadoResultados.push("utilidad neta",utilidadNeta);
     if (utilidadNeta >= 0) {
+        totalGasto = totalGastoHt + utilidadNeta;
+        totalCapital = totalCapitalHt + utilidadNeta;
+        totalIngreso = totalIngresoHt;
+        totalActivo = totalActivoHt;
         stringHojaTrabajo+= "<tr bgcolor='#00FF40'><td><b>Utilidad:</b></td><td></td><td></td><td>"+utilidadNeta+"</td><td></td><td></td><td>"+utilidadNeta+"</td></tr>";
-        stringHojaTrabajo+= "<tr><td><b>Total:</b></td><td></td><td></td><td>"+(totalGastoHt + utilidadNeta)+"</td><td>"+totalIngresoHt+"</td><td>"+totalActivoHt+"</td><td>"+(totalCapitalHt + utilidadNeta)+"</td></tr>";
+        stringHojaTrabajo+= "<tr><td><b>Total:</b></td><td></td><td></td><td>"+totalGasto+"</td><td>"+totalIngresoHt+"</td><td>"+totalActivoHt+"</td><td>"+totalCapital+"</td></tr>";
     }else{
         utilidadNeta*=-1;
+        totalIngreso = totalIngresoHt + utilidadNeta;
+        totalActivo = totalActivoHt + utilidadNeta;
+        totalGasto = totalGastoHt;
+        totalCapital = totalCapitalHt;
         stringHojaTrabajo+= "<tr bgcolor='#F5A9A9'><td><b>Perdida:</b></td><td></td><td></td><td></td><td>"+utilidadNeta+"</td><td>"+utilidadNeta+"</td><td></td></tr>";
-        stringHojaTrabajo+= "<tr><td><b>Total:</b></td><td></td><td></td><td>"+totalGastoHt+"</td><td>"+(totalIngresoHt + utilidadNeta)+"</td><td>"+(totalActivoHt + utilidadNeta)+"</td><td>"+totalCapitalHt+"</td></tr>";
+        stringHojaTrabajo+= "<tr><td><b>Total:</b></td><td></td><td></td><td>"+totalGastoHt+"</td><td>"+totalIngreso+"</td><td>"+totalActivo+"</td><td>"+totalCapitalHt+"</td></tr>";
     }
     $('#hojaTrabajo tbody').empty().append(stringHojaTrabajo);
      //variables de sesion
@@ -88,4 +100,10 @@ function drawHojaTrabajo(){
     localStorage.setItem('estadoResultados',estadoResultados);
      localStorage.setItem('stringHojaTrabajo',stringHojaTrabajo);
     //end
+    if (totalIngreso != totalGasto) {
+        jAlert('El total de EGRESO e INGRESO NO SON IGUALES, revise la selecci\u00f3n del tipo de cuenta en el plan de cuentas o quiza un asiento este mal elaborado', 'Alerta!'); 
+    }else if(totalActivo != totalCapital){
+        jAlert('El total de ACTIVO e PASIVO/CAPITAL NO SON IGUALES, revise la selecci\u00f3n del tipo de cuenta en el plan de cuentas o quiza un asiento este mal elaborado', 'Alerta!'); 
+    }
+
 }

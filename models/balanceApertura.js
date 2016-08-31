@@ -21,39 +21,6 @@ window.onload = cargarCuentas;
 
 function cargarCuentas(){
     detailMayores = localStorage.detailMayores.split(',');
-    // totalActivo = 0;
-    // totalPasivoPatrimonio = 0;
-    // preloadActivo = [];
-    // preloadPasivo = [];
-    // activo = false;
-    // pasivo = false;
-    // if (localStorage.inputValuesBalanceAperturaActivo != undefined) {
-    //     preloadActivo = localStorage.inputValuesBalanceAperturaActivo.split(',');
-    //     activo = true;
-    // }
-    // if (localStorage.inputValuesBalanceAperturaPasivo != undefined) {
-    //     preloadPasivo = localStorage.inputValuesBalanceAperturaPasivo.split(',');
-    //     pasivo = true;
-    // }
-    // stringActivo = "";
-    // stringPasivo = "";
-    // if (activo) {
-    //     for (var i = 0; i < preloadActivo.length; i=i+2) {
-    //         stringActivo += "<tr><td><input type='text'/ style = 'width:196px;height:18px;' value ='"+preloadActivo[i]+"'></td><td><input type='text' value ='"+preloadActivo[i+1]+"'></td></tr>";
-    //         totalActivo += parseInt(preloadActivo[i+1]);
-    //     }
-    // }
-    // if (pasivo) {
-    //     for (var i = 0; i < preloadPasivo.length; i=i+2) {
-    //         stringPasivo += "<tr><td><input type='text'/ style = 'width:196px;height:18px;' value ='"+preloadPasivo[i]+"'></td><td><input type='text' value ='"+preloadPasivo[i+1]+"'></td></tr>";
-    //         totalPasivoPatrimonio += parseInt(preloadPasivo[i+1]);
-    //     }
-    // }
-    // $('#dateBalance').val(localStorage.fechaBalance.split("-").reverse().join("-"));
-    // $('#balanceAperturaActivo tbody').append(stringActivo);
-    // $('#balanceAperturaPasivo tbody').append(stringPasivo);
-    // document.getElementById("totalActivo").innerHTML = totalActivo;
-    // document.getElementById("totalPasivoPatrimonio").innerHTML = totalPasivoPatrimonio;
 }
 
 function addTransaccionActivo(){

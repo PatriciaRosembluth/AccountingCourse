@@ -5,7 +5,7 @@ function drawAccount(){
     stringAccount = "";
     for (var i = 0; i < 40; i++) {
        stringAccount += "<tr>"+
-        "<td><input id = 'account-"+i+"' type='text' size='30'/></td>"+
+        "<td><input id = 'account-"+i+"' type='text' size='50'/></td>"+
         "<td><select style = 'width:200px;height:24px;' id = 'valueAccount-"+i+"'>"+
         "<option value='0'>Seleccionar</option>"+
         "<option value='A'>Activo</option>"+
