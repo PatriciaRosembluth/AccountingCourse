@@ -13,7 +13,7 @@ function generateEstadoResultados(){
 	stringGastos="";
 	stringIngresos="";
 	for (var i = 0; i < estadoResultados.length; i=i+2) {
-		if (estadoResultados[i]==="ventas") {
+		if (estadoResultados[i]==="ventas" || estadoResultados[i]==="ingreso por ventas" ) {
 			document.getElementById("ventas").innerHTML = estadoResultados[i]+" --------------------------- " + estadoResultados[i+1];
 			localStorage.setItem('stringVentas',estadoResultados[i]+" --------------------------- " + estadoResultados[i+1]);
 			ventas = parseInt(estadoResultados[i+1]);  

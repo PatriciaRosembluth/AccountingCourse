@@ -103,7 +103,7 @@ function drawHojaTrabajo(){
     if (totalIngreso != totalGasto) {
         jAlert('El total de EGRESO e INGRESO NO SON IGUALES, revise la selecci\u00f3n del tipo de cuenta en el plan de cuentas o quiza un asiento este mal elaborado', 'Alerta!'); 
     }else if(totalActivo != totalCapital){
-        jAlert('El total de ACTIVO e PASIVO/CAPITAL NO SON IGUALES, revise la selecci\u00f3n del tipo de cuenta en el plan de cuentas o quiza un asiento este mal elaborado', 'Alerta!'); 
+        jAlert('El total de ACTIVO y PASIVO/CAPITAL NO SON IGUALES, revise la selecci\u00f3n del tipo de cuenta en el plan de cuentas o quiza un asiento este mal elaborado', 'Alerta!'); 
     }
 
 }

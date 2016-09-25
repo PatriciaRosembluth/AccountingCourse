@@ -46,6 +46,7 @@ function getAccounts(){
         accounts.push(detailMayores[i]);
         accounts.push(stringTypesAccounts[i]); 
     }
+    jPrompt("Plan de cuentas registrado exitosamente", 'Registro correcto');
     //Variables de sesion
     localStorage.setItem('accounts',accounts);
     localStorage.setItem('detailMayores',detailMayores);
