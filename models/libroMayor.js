@@ -185,6 +185,9 @@ function drawLibrosMayores(){
         case 29:
         drawLibro(libro30,29);
         break;
+        case 30:
+        drawLibro(libro31,30);
+        break;
         case 31:
         drawLibro(libro32,31);
         break;

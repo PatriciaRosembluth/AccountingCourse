@@ -20,6 +20,12 @@
 window.onload = cargarDatos;
 var text;
 function cargarDatos(){
+	var preloadActivo = localStorage.inputValuesBalanceAperturaActivo.split(','); 
+	var preloadPasivo = localStorage.inputValuesBalanceAperturaPasivo.split(',');
+	var totalActivo = 0;
+	var totalPasivoPatrimonio = 0;
+	var stringActivo = "";     
+    var stringPasivo = ""; 
 	var valuesApertura = localStorage.stringAsientoApertura;
 	var valuesSumasSaldos = localStorage.stringSumasSaldos;
 	var valuesHojaTrabajo = localStorage.stringHojaTrabajo; 
@@ -40,20 +46,63 @@ function cargarDatos(){
 	var stringUtilidadNeta = localStorage.stringUtilidadNeta;
 	var stringUtilidadBruta = localStorage.stringUtilidadBruta;
 	var stringAsientoCierre = localStorage.stringAsientoCierre;
+
+	    
+    for (var i = 0; i < preloadActivo.length; i=i+2) {     
+        stringActivo += "<tr><td>"+preloadActivo[i]+"</td><td>"+preloadActivo[i+1]+"</td></tr>";     
+        totalActivo += parseInt(preloadActivo[i+1]);       
+    }      
+          
+          
+    for (var i = 0; i < preloadPasivo.length; i=i+2) {     
+        stringPasivo += "<tr><td>"+preloadPasivo[i]+"</td><td>"+preloadPasivo[i+1]+"</td></tr>";     
+        totalPasivoPatrimonio += parseInt(preloadPasivo[i+1]);     
+    }      
+          
+
+	var balanceApertura = "<h1 align='center'>Balance de Apertura</h1><div style='width: 100%; overflow: hidden;'><div style='width: 400px; float: left; margin-left: 10px;'><u><h1>Activo</h1></u><table border='1'><col width='200'><col width='150'><thead><tr><th>Cuenta</th><th>Monto</th></tr></thead><tbody>"+stringActivo+"</tbody></table><h2>"+"TOTAL ACTIVO: "+totalActivo+"</h2></div><div><u><h1>Pasivo</h1></u><table border='1'><col width='200'><col width='150'><thead><tr><th>Cuenta</th><th>Monto</th></tr></thead><tbody>"+stringPasivo+"</tbody></table><h2>"+"TOTAL PASIVO Y PATRIMONIO: "+totalPasivoPatrimonio+"</h2></div><br></div>";
 	
 	var asientoApertura = "<h1 align='center'>Asiento de Apertura</h1><h2 align='center'>Libro Diario</h2><br><table align='center' border='1'><col width='225'><col width='225'><col width='225'><thead><tr><th style = 'width:241px'>Cuenta</th><th style = 'width:222px'>Debe</th><th style = 'width:222px'>Haber</th></tr></thead><tbody>"+valuesApertura+"</tbody></table><br>";
+	
 	var sumasSaldos = "<h1 align='center'>Balance de Comprobacion de Sumas y Saldos</h1><br><br><table border='1' align='center'><col width='230'><col width='150'><col width='150'><col width='150'><col width='150'>	<thead><tr><th>Cuenta</th><th colspan='2'>Sumas</th><th colspan='2'>Saldos</th></tr><tr align='center'><td></td><td>Debe</td><td>Haber</td><td>Deudor</td><td>Acreedor</td></tr></thead><tbody></tbody>"+valuesSumasSaldos+"</table>";
+	
 	var hojaTrabajo = "<h1 align='center'>Hoja de Trabajo</h1><br><table align='center' border='1'><col width='230'><col width='150'><col width='150'><col width='150'><col width='150'><col width='150'><col width='150'><thead><tr><th>Cuenta</th><th colspan='2'>Saldos</th><th colspan='2'>Esta. de Resultado</th><th colspan='2'>Balance General</th></tr><tr align='center'><td></td><td>Deudor</td><td>Acreedor</td><td>Gasto</td><td>Ingreso</td><td>Activo</td><td>Pasivo/Capital</td></tr></thead><tbody>"+valuesHojaTrabajo+"</tbody></table>";
-	var balanceGeneral = "<h1 align='center'>Balance General</h1><div style='width: 100%; overflow: hidden;'><div style='width: 600px; float: left; margin-left: 70px;'><u><h1>Activo</h1></u><u><h2>Corriente</h2></u><u><h3>Disponible</h3></u>"+stringActivoD+"<u><h3>Exigible</h3></u>"+stringActivoE+"<u><h3>Realizable</h3></u>"+stringActivoR+"<u><h2>No Corriente</h2></u><u><h3>Activo Fijo</h3></u>"+stringActivoF+"<b><h2 style='color:#DF013A'>"+"TOTAL ACTIVO: "+stringTotalActivo+"</h2></b></div><div style='margin-left: 690px;'><u><h1>Pasivo</h1></u><u><h2>Corriente</h2></u><u><h3>Exigible</h3></u>"+stringPasivoE+"<u><h2>Patrimonio</h2></u>"+stringPasivoP+"<b><h2 style='color:#DF013A'>"+"TOTAL PASIVO: "+stringTotalPasivo+"</h2></b></div><br></div>";
+	
+	var balanceGeneral = "<h1 align='center'>Balance General</h1><div style='width: 100%; overflow: hidden;'><div style='width: 400px; float: left; margin-left: 60px;'><u><h1>Activo</h1></u><u><h2>Corriente</h2></u><u><h3>Disponible</h3></u>"+stringActivoD+"<u><h3>Exigible</h3></u>"+stringActivoE+"<u><h3>Realizable</h3></u>"+stringActivoR+"<u><h2>No Corriente</h2></u><u><h3>Activo Fijo</h3></u>"+stringActivoF+"<b><h2 style='color:#DF013A'>"+"TOTAL ACTIVO: "+stringTotalActivo+"</h2></b></div><div><u><h1>Pasivo</h1></u><u><h2>Corriente</h2></u><u><h3>Exigible</h3></u>"+stringPasivoE+"<u><h2>Patrimonio</h2></u>"+stringPasivoP+"<b><h2 style='color:#DF013A'>"+"TOTAL PASIVO: "+stringTotalPasivo+"</h2></b></div><br></div>";
+	
 	var estadoResultado = "<h1 align='center'>Estado de Resultados</h1><br><div style= 'margin-left: 70px;'><i><h3>"+stringVentas+"</h3></i><u><h2>-/Costo de Ventas</h2></u><i><h3>"+stringCostoVentas+"</h3></i><i><h3 style='color:#DF013A'>utilidad bruta --------------------------------- "+stringUtilidadBruta+"</h3></i><u><h2>-/Gastos de operaciones</h2></u>"+stringGastos+"<i><h3 style='color:#DF013A'>total gastos --------------------------------- "+stringTotalGastos+"</h3></i><u><h2>+/Otros ingresos</h2></u>"+stringIngresos+"<i><h3 style='color:#DF013A'>total ingresos --------------------------------- "+stringTotalIngresos+"</h3></i><i><h3 style='color:#0404B4'>"+stringUtilidadNeta+"</h3></i></div>";
+	
 	var asientoCierre = "<h1 align='center'>Asiento de Cierre</h1><br><table align='center' border='1'><col width='180'><col width='180'><col width='180'><thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead><tbody>"+stringAsientoCierre+"</tbody></table>";
 
-	text = asientoApertura+sumasSaldos+hojaTrabajo+balanceGeneral+estadoResultado+asientoCierre;
+	text = balanceApertura+asientoApertura+sumasSaldos+hojaTrabajo+balanceGeneral+estadoResultado+asientoCierre;
 	$('#vistaPrevia p').empty().append(text);
+}
+
+function encriptar(){
+		today = new Date();
+		dd = today.getDate();
+		mm = today.getMonth()+1; //January is 0!
+		yyyy = today.getFullYear();
+		date = String(dd)+"/"+String(mm)+"/"+String(yyyy);
+        
+        palabra = document.getElementById("inputFileNameToSaveAs").value;
+        codigo = palabra +"-"+date;
+        palabra_codificada = btoa(codigo);
+        return palabra_codificada;
+        
+}
+ 
+function desencriptar(){
+        var palabra = document.getElementById("inputFileNameToSaveAs").value;
+        var palabra_descodificada = atob(palabra);
+        //document.getElementById("resultado").innerHTML = palabra_descodificada;
 }
 
 function saveTextAsFile()
 {
+	llave = "<br><br><p>Llave: "+encriptar()+"</p>";
+	text+=llave;
+
     var textToSaveAsBlob = new Blob([text], {type:"text/html"});
     var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
     var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;

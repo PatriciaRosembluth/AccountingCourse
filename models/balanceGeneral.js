@@ -29,7 +29,7 @@ function putActivoPasivo(){
             "<option value='P'>Patrimonio</option>"+
             "</select></td></tr>";
     for (var i = 1; i < accounts.length; i = i+2) {
-        if (accounts[i] === "A" || accounts[i-1].indexOf("depreciacion") != -1) {
+        if (accounts[i] === "A" || accounts[i-1].indexOf("DA") != -1) {
             stringAccountsA += "<tr><td>"+accounts[i-1]+"</td>" + stringSelectA;
             accountsA.push(accounts[i-1]);
         }else if(accounts[i] === "P" || accounts[i] === "C"){
