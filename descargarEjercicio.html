@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Entregar ejercicio</title>
-<link rel="stylesheet" href="/TutorialContable/css/finish.css">
+<link rel="stylesheet" href="../TutorialContable/css/finish.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 </head>
@@ -19,6 +19,7 @@
 <script>
 window.onload = cargarDatos;
 var text;
+var stringUtilidadNeta;
 function cargarDatos(){
 	var preloadActivo = localStorage.inputValuesBalanceAperturaActivo.split(','); 
 	var preloadPasivo = localStorage.inputValuesBalanceAperturaPasivo.split(',');
@@ -43,7 +44,7 @@ function cargarDatos(){
 	var stringTotalGastos = localStorage.stringTotalGastos;
 	var stringIngresos = localStorage.stringIngresos;
 	var stringTotalIngresos = localStorage.stringTotalIngresos;
-	var stringUtilidadNeta = localStorage.stringUtilidadNeta;
+	stringUtilidadNeta = localStorage.stringUtilidadNeta;
 	var stringUtilidadBruta = localStorage.stringUtilidadBruta;
 	var stringAsientoCierre = localStorage.stringAsientoCierre;
 
@@ -64,7 +65,7 @@ function cargarDatos(){
 	
 	var asientoApertura = "<h1 align='center'>Asiento de Apertura</h1><h2 align='center'>Libro Diario</h2><br><table align='center' border='1'><col width='225'><col width='225'><col width='225'><thead><tr><th style = 'width:241px'>Cuenta</th><th style = 'width:222px'>Debe</th><th style = 'width:222px'>Haber</th></tr></thead><tbody>"+valuesApertura+"</tbody></table><br>";
 	
-	var sumasSaldos = "<h1 align='center'>Balance de Comprobacion de Sumas y Saldos</h1><br><br><table border='1' align='center'><col width='230'><col width='150'><col width='150'><col width='150'><col width='150'>	<thead><tr><th>Cuenta</th><th colspan='2'>Sumas</th><th colspan='2'>Saldos</th></tr><tr align='center'><td></td><td>Debe</td><td>Haber</td><td>Deudor</td><td>Acreedor</td></tr></thead><tbody></tbody>"+valuesSumasSaldos+"</table>";
+	var sumasSaldos = "<h1 align='center'>Balance de Comprobaci&oacute;n de Sumas y Saldos</h1><br><br><table border='1' align='center'><col width='230'><col width='150'><col width='150'><col width='150'><col width='150'>	<thead><tr><th>Cuenta</th><th colspan='2'>Sumas</th><th colspan='2'>Saldos</th></tr><tr align='center'><td></td><td>Debe</td><td>Haber</td><td>Deudor</td><td>Acreedor</td></tr></thead><tbody></tbody>"+valuesSumasSaldos+"</table>";
 	
 	var hojaTrabajo = "<h1 align='center'>Hoja de Trabajo</h1><br><table align='center' border='1'><col width='230'><col width='150'><col width='150'><col width='150'><col width='150'><col width='150'><col width='150'><thead><tr><th>Cuenta</th><th colspan='2'>Saldos</th><th colspan='2'>Esta. de Resultado</th><th colspan='2'>Balance General</th></tr><tr align='center'><td></td><td>Deudor</td><td>Acreedor</td><td>Gasto</td><td>Ingreso</td><td>Activo</td><td>Pasivo/Capital</td></tr></thead><tbody>"+valuesHojaTrabajo+"</tbody></table>";
 	
@@ -86,7 +87,7 @@ function encriptar(){
 		date = String(dd)+"/"+String(mm)+"/"+String(yyyy);
         
         palabra = document.getElementById("inputFileNameToSaveAs").value;
-        codigo = palabra +"-"+date;
+        codigo = palabra +" Fecha: "+date+stringUtilidadNeta;
         palabra_codificada = btoa(codigo);
         return palabra_codificada;
         
