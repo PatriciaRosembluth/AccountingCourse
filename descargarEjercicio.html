@@ -79,31 +79,8 @@ function cargarDatos(){
 	$('#vistaPrevia p').empty().append(text);
 }
 
-function encriptar(){
-		today = new Date();
-		dd = today.getDate();
-		mm = today.getMonth()+1; //January is 0!
-		yyyy = today.getFullYear();
-		date = String(dd)+"/"+String(mm)+"/"+String(yyyy);
-        
-        palabra = document.getElementById("inputFileNameToSaveAs").value;
-        codigo = palabra +" Fecha: "+date+stringUtilidadNeta;
-        palabra_codificada = btoa(codigo);
-        return palabra_codificada;
-        
-}
- 
-function desencriptar(){
-        var palabra = document.getElementById("inputFileNameToSaveAs").value;
-        var palabra_descodificada = atob(palabra);
-        //document.getElementById("resultado").innerHTML = palabra_descodificada;
-}
-
 function saveTextAsFile()
 {
-	llave = "<br><br><p>Llave: "+encriptar()+"</p>";
-	text+=llave;
-
     var textToSaveAsBlob = new Blob([text], {type:"text/html"});
     var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
     var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
